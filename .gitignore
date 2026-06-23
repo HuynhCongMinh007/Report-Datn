@@ -1,0 +1,47 @@
+# Core LaTeX auxiliary/build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ila
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+*.pdfsync
+*.pgf
+*.pre
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# Backup and temp files
+*~
+*.bak
+*.sav
+*.tmp
+
+# Folder/OS specific files
+.DS_Store
+Thumbs.db
+
+# Compiled PDF (Uncomment the line below if you want to exclude the output PDF from Git)
+# *.pdf
