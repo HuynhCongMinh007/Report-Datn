@@ -19,8 +19,8 @@
 %	backend=biber,
 %    style=ieee
 %	defernumbers=true]{biblatex}
-\usepackage[style=ieee]{biblatex}
-\usepackage[unicode]{hyperref} % Bookmark tiếng Việt
+\usepackage[style=ieee,defernumbers=true]{biblatex}
+\usepackage[unicode,hypertexnames=false]{hyperref} % Bookmark tiếng Việt
 \addbibresource{References/references.bib}
 %\bibliographystyle{IEEEtran}
 %\bibliography{IEEEabrv,references}
@@ -112,7 +112,8 @@
 % Trang bìa
 \usepackage{tikz}
 \usetikzlibrary{calc}
-\newcommand\HRule{\rule{\textwidth}{1pt}}
+% Định nghĩa khung hình mẫu (placeholder)
+\newcommand{\rectbox}[1]{\fbox{\parbox[c][6cm][c]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering #1}}}
 
 % ========================================================================================= %
 % CHÚ Ý: Thông tin chung về KLTN - sinh viên điền vào đây để tự động update các trang khác  %
@@ -185,14 +186,16 @@
 
 \include{Chapter3/chapter3}
 
-% Nội dung bổ sung từ thư mục Content
-\include{Content/content}
+\include{Chapter4/chapter4}
+
+\include{Chapter5/chapter5}
 
 % Công trình của tác giả (nếu không có thì comment 02 dòng dưới)
 \addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}
 \include{Appendix/publish}
 
 % In tài liệu tham khảo
+\nocite{*}
 \addcontentsline{toc}{chapter}{Tài liệu tham khảo}
 \printbibheading[title={Tài liệu tham khảo}]
 
@@ -202,8 +205,8 @@
 
 \printbibliography[heading=subbibliography, title={Tiếng Việt}, keyword=Viet, resetnumbers=true]
 
-\DeclareNameAlias{sortname}{last-first}
-\DeclareNameAlias{default}{last-first}
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{default}{family-given}
 
 \printbibliography[heading=subbibliography, title={Tiếng Anh}, notkeyword=Viet, resetnumbers=4] 
 % ===================================================================== %

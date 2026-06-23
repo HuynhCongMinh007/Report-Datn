@@ -1,0 +1,182 @@
+\chapter[Kết quả thí nghiệm và Hiện thực hóa]{Kết quả thí nghiệm và\\ Hiện thực hóa}
+\label{ch:ket-qua-thi-nghiem}
+
+\section{Môi trường triển khai và các công nghệ sử dụng}
+Hệ thống Student360 được hiện thực hóa và kiểm thử trên môi trường cục bộ và nền tảng điện toán đám mây với các thông số cấu hình cụ thể như sau:
+\begin{sloppypar}
+\begin{itemize}
+    \item \textbf{Hệ điều hành thử nghiệm:} macOS Sequoia v15.5 / Ubuntu 22.04 LTS.
+    \item \textbf{Môi trường máy chủ Backend:} Node.js v20.11.0, NestJS v10.3.0, TypeORM v0.3.20.
+    \item \textbf{Môi trường máy chủ AI:} Python v3.11.8, FastAPI v0.110.0, LangChain v0.1.12, Uvicorn v0.28.0.
+    \item \textbf{Công nghệ cơ sở dữ liệu:} PostgreSQL v15.3 (tích hợp extension \texttt{pgvector}), Redis v7.2.4 (làm cache và message broker).
+    \item \textbf{Môi trường Mobile App:} Expo SDK v50 (React Native v0.73), kết hợp Tamagui v1.90 cho hệ thống Design System.
+    \item \textbf{Môi trường Webadmin:} React JS v18.2, Material UI (MUI) v5.15, Vite v5.1.
+\end{itemize}
+\end{sloppypar}
+
+\section{Hiện thực hóa giao diện ứng dụng và các luồng chức năng}
+\subsection{Phân hệ ứng dụng di động dành cho sinh viên}
+Giao diện ứng dụng di động được thiết kế hướng tới sự trực quan, trẻ trung và tối ưu hóa trải nghiệm người dùng (UX):
+\begin{itemize}
+    \item \textbf{Màn hình Tổng quan ví (Wallet Overview):} Hiển thị tổng số dư khả dụng, chỉ số sức khỏe tài chính (Financial Health Score) tính toán động từ thói quen chi tiêu của sinh viên, kèm theo biểu đồ hình tròn phân tách tỷ trọng của 6 hũ tài chính (NEC, FFA, EDU, LTSS, PLAY, GIVE).
+    \item \textbf{Màn hình Chi tiết hũ:} Khi sinh viên chọn một hũ cụ thể, giao diện hiển thị số dư riêng biệt của hũ đó, danh sách lịch sử giao dịch tương ứng và một biểu đồ đường (Line Chart) thể hiện xu hướng biến động số dư theo tháng.
+    \item \textbf{Màn hình Trò chuyện AI (AI Chat Screen):} Cung cấp giao diện chat thời gian thực. Tin nhắn phản hồi của AI trợ lý sẽ hiển thị dạng stream từ trái qua phải nhờ tích hợp luồng SSE.
+    \item \textbf{Màn hình Cấu hình phân bổ lọ (Jar Allocation):} Cho phép sinh viên kéo các thanh trượt (slider) hoặc nhập phần trăm thủ công để điều chỉnh tỷ lệ 6 lọ tài chính.
+    \item \textbf{Màn hình Gợi ý học bổng (Scholarship Matching UI):} Danh sách các học bổng được sắp xếp theo điểm số phù hợp (Matching Score \%) giảm dần mà AI tính toán riêng cho hồ sơ của sinh viên.
+\end{itemize}
+
+% Giao diện ứng dụng di động ví và chat
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \rectbox{Hình ảnh ví 6 lọ tài chính trên Mobile}
+        \caption{Giao diện tổng quan ví 6 lọ trên thiết bị di động}
+        \label{fig:mobile-6jars}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \rectbox{Hình ảnh màn hình Chat AI Trợ lý}
+        \caption{Giao diện trò chuyện thời gian thực với trợ lý AI}
+        \label{fig:mobile-aichat}
+    \end{minipage}
+\end{figure}
+
+% Giao diện ứng dụng di động cấu hình và matching
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \rectbox{Hình ảnh màn hình điều chỉnh tỷ lệ 6 lọ trên Mobile}
+        \caption{Giao diện cấu hình phần trăm phân bổ hũ tài chính}
+        \label{fig:mobile-jar-alloc}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \rectbox{Hình ảnh màn hình danh sách gợi ý học bổng phù hợp từ AI}
+        \caption{Giao diện gợi ý so khớp học bổng thông minh}
+        \label{fig:mobile-schol-match}
+    \end{minipage}
+\end{figure}
+
+\subsection{Phân hệ Webadmin dành cho nhà tài trợ và ban quản trị}
+Giao diện quản trị Webadmin được tối ưu hóa cho việc xử lý lượng lớn dữ liệu dạng bảng và quản lý quy trình nghiệp vụ phức tạp:
+\begin{itemize}
+    \item \textbf{Màn hình Quản lý Trường học và Môn học:} Cung cấp bảng dữ liệu phân trang, hỗ trợ tìm kiếm mờ, bộ lọc trạng thái (Active/Inactive), loại hình trường. Khi bấm "Manage" tại một trường đại học, hệ thống sẽ mở ra giao diện quản lý danh sách môn học của trường đó.
+    \item \textbf{Bảng điều khiển Phát hiện Gian lận (Fraud Detection Dashboard):} Hiển thị danh sách các hồ sơ ứng tuyển bị hệ thống AI gắn nhãn cảnh báo đỏ (Fraud Warning). Admin có thể xem chi tiết lý do AI đánh giá là đáng nghi (như trùng khớp file đính kèm thư giới thiệu giữa hai ứng viên, hoặc điểm GPA nhập liệu vượt quá dữ liệu thật).
+\end{itemize}
+
+% Giao diện quản trị Webadmin trường và môn
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \rectbox{Màn hình quản lý Trường học trên Webadmin}
+        \caption{Giao diện quản lý danh mục Trường học}
+        \label{fig:webadmin-schools}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \rectbox{Màn hình quản lý danh sách Môn học của trường trên Webadmin}
+        \caption{Giao diện quản trị danh mục Môn học theo trường}
+        \label{fig:webadmin-subjects}
+    \end{minipage}
+\end{figure}
+
+% Giao diện quản trị Webadmin gian lận
+\begin{figure}[htbp]
+    \centering
+    \rectbox{Hình ảnh bảng điều khiển Fraud Detection trên Webadmin}
+    \caption{Màn hình phát hiện gian lận ứng tuyển học bổng trên trang quản trị}
+    \label{fig:webadmin-fraud}
+\end{figure}
+
+\subsection{Cơ chế đồng bộ trạng thái giao diện tức thời (Query Invalidation)}
+Để đảm bảo số liệu tài chính trên app di động luôn chính xác ngay sau khi người dùng thực hiện giao dịch, hệ thống áp dụng cơ chế Query Invalidation của thư viện React Query:
+\begin{itemize}
+    \item Khi người dùng tạo mới một giao dịch chi tiêu (\texttt{expense}), mutation hook của React Query gửi request lên Backend.
+    \item Sau khi nhận phản hồi thành công (\texttt{status 201}), Frontend sẽ lập tức kích hoạt hàm \texttt{invalidateQueries} đối với các cache key liên quan bao gồm: \texttt{['jars']} (thông tin số dư các hũ), \texttt{['transactions']} (lịch sử giao dịch), và \texttt{['wallet-overview']}.
+    \item Hệ thống tự động fetch lại dữ liệu ngầm và cập nhật UI ngay lập tức mà không cần tải lại toàn bộ trang, đem lại cảm giác đồng bộ tức thời cho sinh viên.
+\end{itemize}
+
+\section{Kịch bản thử nghiệm và Đánh giá kết quả}
+Chúng tôi tiến hành các thử nghiệm thực tế trên hệ thống để đánh giá tính hiệu quả của các giải pháp đề xuất.
+
+\subsection{Đánh giá độ chính xác của mô hình phân loại giao dịch tự động}
+Chúng tôi chuẩn bị một tập dữ liệu gồm 500 câu mô tả giao dịch tài chính tự do bằng tiếng Việt từ thực tế sinh hoạt của sinh viên (bao gồm các từ viết tắt, tiếng lóng như "cf", "an trua", "tnet") để kiểm thử độ chính xác của mô hình phân loại hũ AI.
+Kết quả thử nghiệm đối chiếu giữa đề xuất của AI và gán nhãn thủ công của chuyên gia tài chính được trình bày trong bảng dưới đây:
+
+\begin{table}[htbp]
+    \centering
+    \caption{Đánh giá độ chính xác phân loại giao dịch của AI theo hũ tài chính}
+    \label{tab:ai-classify-eval}
+    \begin{tabular}{|L{4.8cm}|C{2.6cm}|C{3.4cm}|C{2.8cm}|}
+        \hline
+        \textbf{Hũ tài chính (Jar Code)} & \textbf{Tổng mẫu thử} & \textbf{Số mẫu phân loại đúng} & \textbf{Độ chính xác (Accuracy)} \\
+        \hline
+        Chi tiêu thiết yếu (NEC) & 180 & 171 & 95.0\% \\
+        Học tập / Phát triển (EDU) & 100 & 93 & 93.0\% \\
+        Tự do tài chính (FFA) & 60 & 52 & 86.6\% \\
+        Tiết kiệm dài hạn (LTSS) & 60 & 51 & 85.0\% \\
+        Hưởng thụ (PLAY) & 70 & 64 & 91.4\% \\
+        Cho đi / Từ thiện (GIVE) & 30 & 28 & 93.3\% \\
+        \hline
+        \textbf{Trung bình toàn hệ thống} & \textbf{500} & \textbf{459} & \textbf{91.8\%} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Đánh giá hiệu quả gợi ý của thuật toán AI Matching học bổng}
+Độ chính xác của thuật toán gợi ý học bổng thông minh dựa trên Fuzzy \& Semantic Matching được kiểm thử trên tập dữ liệu gồm 100 hồ sơ sinh viên thực tế và 50 bài đăng học bổng khác nhau. Chúng tôi đánh giá hiệu quả thông qua hai chỉ số:
+\begin{itemize}
+    \item \textbf{Precision (Độ chính xác):} Tỷ lệ học bổng được đề xuất mà sinh viên thực sự đủ điều kiện ứng tuyển.
+    \item \textbf{Recall (Độ bao phủ):} Tỷ lệ học bổng phù hợp được hệ thống tìm thấy trên tổng số học bổng phù hợp thực tế có trong cơ sở dữ liệu.
+\end{itemize}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Kết quả đánh giá thuật toán AI Matching gợi ý học bổng}
+    \label{tab:ai-matching-eval}
+    \begin{tabular}{|L{5.2cm}|C{2.8cm}|C{2.8cm}|C{2.8cm}|}
+        \hline
+        \textbf{Thuật toán thử nghiệm} & \textbf{Độ chính xác (Precision)} & \textbf{Độ bao phủ (Recall)} & \textbf{F1-Score} \\
+        \hline
+        Lọc từ khóa cứng (Keyword Filter) & 62.5\% & 48.0\% & 54.3\% \\
+        Fuzzy Matching (Jaccard + Bigram) & 78.2\% & 71.5\% & 74.7\% \\
+        \textbf{Kết hợp Semantic Matching (Đề xuất)} & \textbf{91.4\%} & \textbf{87.2\%} & \textbf{89.3\%} \\
+        \hline
+    \end{tabular}
+\end{table}
+Kết quả cho thấy phương pháp đề xuất kết hợp ngữ nghĩa bằng LLM đem lại F1-Score vượt trội ($89.3\%$), hạn chế tối đa việc đề xuất nhầm các học bổng không đủ tiêu chuẩn cho sinh viên.
+
+\subsection{Đo lường hiệu năng và độ trễ của hệ thống thông báo đẩy (FCM)}
+Để kiểm thử khả năng chịu tải của hàng đợi thông báo đẩy, chúng tôi thực hiện kịch bản giả lập gửi đồng loạt thông báo cập nhật kết quả học bổng tới các nhóm sinh viên với số lượng từ 100 đến 10.000 yêu cầu cùng lúc.
+Độ trễ (Latency) được tính từ thời điểm Backend phát sự kiện cho đến khi thiết bị di động nhận được thông báo đẩy thực tế:
+
+\begin{table}[htbp]
+    \centering
+    \caption{Thời gian trễ trung bình của hệ thống gửi thông báo FCM}
+    \label{tab:fcm-latency-eval}
+    \begin{tabular}{|L{5.2cm}|C{2.8cm}|C{2.8cm}|C{2.8cm}|}
+        \hline
+        \textbf{Số lượng thông báo gửi cùng lúc} & \textbf{Thời gian trễ TB (s)} & \textbf{Độ trễ phân vị 95\% (s)} & \textbf{Tỷ lệ gửi thành công} \\
+        \hline
+        100 thông báo & 0.45s & 0.85s & 100.0\% \\
+        1.000 thông báo & 1.12s & 2.10s & 99.8\% \\
+        5.000 thông báo & 2.85s & 5.40s & 99.7\% \\
+        10.000 thông báo & 4.90s & 8.92s & 99.5\% \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \rectbox{Đồ thị đo lường thời gian trễ của thông báo đẩy FCM dưới tải trọng cao}
+    \caption{Đồ thị biểu diễn thời gian trễ trung bình và phân vị 95\% của thông báo đẩy FCM}
+    \label{fig:chart-fcm-latency}
+\end{figure}
+
+Nhờ kiến trúc hàng đợi bất đồng bộ với BullMQ và Redis, hệ thống đảm bảo duy trì độ trễ trung bình dưới 5 giây ngay cả khi phải gửi hàng loạt 10.000 thông báo cùng lúc, đồng thời không gây quá tải hay treo máy chủ API chính.

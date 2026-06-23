@@ -1,18 +1,80 @@
-\chapter{Ngôn ngữ}
-\label{Chapter1}
+\chapter{Giới thiệu}
+\label{ch:gioi-thieu}
 
-Ngôn ngữ để viết và trình bày báo cáo khóa luận tốt nghiệp, Thực tập tốt nghiệp, Thực tập dự án tốt nghiệp (sau đây gọi chung là báo cáo) là tiếng Việt hoặc tiếng Anh. 
+\section{Lý do chọn đề tài và bối cảnh nghiên cứu}
+Trong kỷ nguyên số hóa hiện nay, đời sống sinh viên tại các trường Đại học đang đối mặt với nhiều biến động và thách thức to lớn. Sự chuyển dịch kinh tế kéo theo chi phí sinh hoạt, học phí và các nhu cầu dịch vụ học tập ngày càng gia tăng. Đối với phần lớn sinh viên, việc tự chủ cuộc sống khi bước vào môi trường đại học là một bước ngoặt lớn, đi kèm với áp lực tự quản lý bản thân trên nhiều phương diện. Trong số đó, hai vấn đề nổi cộm nhất ảnh hưởng trực tiếp đến chất lượng học tập và sự phát triển bền vững của sinh viên là quản lý tài chính cá nhân và cơ hội tiếp cận các nguồn lực hỗ trợ như học bổng học thuật.
 
-Trường hợp chọn ngôn ngữ tiếng Anh để viết và trình bày báo cáo,  sinh viên cần có đơn đề nghị, được giảng viên hướng dẫn (GVHD) đồng ý và nộp cho bộ phận Giáo vụ của Khoa vào thời điểm đăng ký đề tài để xin ý kiến.
+Về khía cạnh quản lý tài chính cá nhân, sinh viên thường thiếu kiến thức nền tảng và kỹ năng quản lý dòng tiền. Thói quen chi tiêu tự phát, thiếu kế hoạch, và không kiểm soát được các khoản phát sinh dẫn đến tình trạng mất cân đối tài chính thường xuyên. Điều này không chỉ gây căng thẳng tâm lý mà còn gián tiếp làm suy giảm kết quả học tập khi sinh viên phải dành nhiều thời gian để đi làm thêm trang trải cuộc sống. Phương pháp quản lý tài chính "6 cái lọ" (6 Jars) của T. Harv Eker là một mô hình nổi tiếng thế giới, giúp phân bổ thu nhập một cách khoa học vào các quỹ chi tiêu thiết yếu, đầu tư, giáo dục, tiết kiệm dài hạn, hưởng thụ và từ thiện. Tuy nhiên, việc áp dụng mô hình này một cách thủ công thường gặp nhiều khó khăn do tính phức tạp trong việc ghi chép, phân loại giao dịch hàng ngày và thiếu tính kỷ luật tự giác.
 
-Báo cáo viết và trình bày bằng tiếng Anh phải có bản tóm tắt viết bằng tiếng Việt.
+Về khía cạnh tiếp cận nguồn lực hỗ trợ, học bổng là một trong những mục tiêu quan trọng giúp sinh viên giảm bớt gánh nặng tài chính và tạo động lực phấn đấu trong học tập. Hiện nay, các nguồn thông tin về học bổng rất đa dạng nhưng phân tán từ nhiều nhà tài trợ, doanh nghiệp, tổ chức phi chính phủ đến chính sách nội bộ của từng trường. Sinh viên thường bỏ lỡ các cơ hội học bổng phù hợp do không tiếp cận được thông tin kịp thời hoặc hồ sơ năng lực cá nhân chưa được so khớp tối ưu với các tiêu chí xét tuyển phức tạp. Đồng thời, các nhà tài trợ cũng gặp khó khăn trong việc tìm kiếm đúng đối tượng sinh viên đáp ứng đầy đủ yêu cầu học thuật và hoàn cảnh cụ thể.
 
+Xuất phát từ thực trạng trên, đề tài \textbf{"Student360: Hệ thống quản lý toàn diện đời sống và hỗ trợ tài chính thông minh cho sinh viên"} được nghiên cứu và phát triển. Đề tài hướng tới việc xây dựng một hệ sinh thái tích hợp đa nền tảng, áp dụng các giải pháp công nghệ hiện đại và trí tuệ nhân tạo (AI) để giải quyết triệt để hai bài toán cốt lõi: tự động hóa quản lý tài chính cá nhân theo mô hình 6 lọ và tối ưu hóa quy trình so khớp học bổng thông minh cho sinh viên.
 
-%Tóm tắt luận văn được trình bày nhiều nhất trong 24 trang in trên hai mặt giấy, cỡ chữ Times New Roman 11 của hệ soạn thảo Winword hoặc phần mềm soạn thảo Latex đối với các chuyên ngành thuộc ngành Toán.
+\section{Mục tiêu và phạm vi nghiên cứu}
+\subsection{Mục tiêu nghiên cứu}
+Đề tài tập trung vào việc nghiên cứu, thiết kế và phát triển các mục tiêu cụ thể sau:
+\begin{itemize}
+    \item Nghiên cứu cơ sở lý thuyết và hiện thực hóa mô hình quản lý tài chính cá nhân "6 cái lọ" trên ứng dụng di động, giúp sinh viên thiết lập và duy trì thói quen chi tiêu khoa học.
+    \item Ứng dụng trí tuệ nhân tạo (AI Agent và Large Language Models - LLM) để tự động hóa quy trình phân loại giao dịch tài chính từ ngôn ngữ tự nhiên, cũng như tư vấn tài chính cá nhân thời gian thực thông qua Chatbot trợ lý ảo.
+    \item Phát triển thuật toán so khớp học bổng thông minh dựa trên hồ sơ năng lực học thuật, hoạt động ngoại khóa, kỹ năng và hoàn cảnh cá nhân của sinh viên nhằm tối đa hóa cơ hội nhận học bổng.
+    \item Xây dựng hệ thống đẩy thông báo di động (FCM Push Notification) thông minh, chạy ngầm định kỳ nhằm đưa ra các cảnh báo tài chính chủ động và thông tin học bổng khẩn cấp tới sinh viên.
+    \item Phát triển hệ thống quản trị Webadmin giúp các nhà quản lý trường học dễ dàng đồng bộ cơ sở dữ liệu học thuật (Trường, Khoa, Môn) và hỗ trợ nhà tài trợ kiểm soát quy trình xét duyệt học bổng, phát hiện các hành vi gian lận hồ sơ.
+\end{itemize}
 
-%Mật độ chữ bình thường, không được nén hoặc kéo dãn khoảng cách giữa các chữ.
-%Chế độ dãn dòng là Exactly 17pt.
-%Lề trên, lề dưới, lề trái, lề phải đều là 1.5 cm.
-%Các bảng biểu trình bày theo chiều ngang khổ giấy thì đầu bảng là lề trái của trang.
-%Tóm tắt luận án phải phản ảnh trung thực kết cấu, bố cục và nội dung của luận án, phải ghi đầy đủ toàn văn kết luận của luận án.
-%Mẫu trình bày trang bìa của tóm tắt luận văn (phụ lục 1).
+\subsection{Phạm vi nghiên cứu}
+\begin{itemize}
+    \item \textbf{Về đối tượng nghiên cứu:} Tập trung vào hành vi tài chính, chi tiêu sinh hoạt thường nhật và hồ sơ năng lực học thuật của sinh viên đại học.
+    \item \textbf{Về mặt công nghệ:} Phát triển hệ thống đa dịch vụ (Monorepo) tích hợp: Backend (NestJS, TypeScript), AI Service (FastAPI, Python, LangChain, Google Gemini API), Mobile App (Expo React Native), và Web Portal Admin (React JS, Material UI).
+    \item \textbf{Về mặt dữ liệu:} Khai thác dữ liệu học thuật mẫu mô phỏng theo cấu trúc đào tạo tín chỉ tại các trường đại học lớn tại Việt Nam (điển hình là mô hình Đại học Quốc gia TP.HCM).
+\end{itemize}
+
+\section{Mô tả bài toán đề tài giải quyết}
+\subsection{Bài toán quản lý tài chính cá nhân sinh viên theo phương pháp 6 lọ}
+Bài toán yêu cầu xây dựng một mô hình số hóa 6 quỹ tài chính độc lập cho từng người dùng, đảm bảo các nguyên tắc:
+\begin{itemize}
+    \item \textbf{Tính phân bổ tự động:} Khi người dùng phát sinh nguồn thu nhập mới (lương, học bổng, trợ cấp), hệ thống phải tự động phân chia dòng tiền vào 6 lọ theo tỷ lệ phần trăm được cấu hình trước.
+    \item \textbf{Tính toàn vẹn dữ liệu tài chính:} Số dư của từng hũ tài chính phải là kết quả tính toán động từ dòng tiền thu chi thực tế trong lịch sử giao dịch để tránh sai lệch số liệu. Khi có hành vi xóa hoặc rebalance (điều chỉnh tỷ lệ hũ), hệ thống phải thực hiện các giao dịch bù trừ nội bộ để đảm bảo tổng tài sản của người dùng không bị thay đổi bất thường.
+    \item \textbf{Hạn mức ngân sách (Budgeting):} Cho phép người dùng giới hạn chi tiêu trong từng lọ theo chu kỳ tháng để cảnh báo khi chi tiêu vượt ngưỡng thiết yếu.
+\end{itemize}
+
+\subsection{Bài toán kết nối và gợi ý học bổng thông minh bằng AI}
+Bài toán đặt ra là làm thế nào để kết nối một lượng lớn sinh viên với hàng trăm nguồn học bổng khác nhau từ các nhà tài trợ. Do mỗi học bổng có bộ tiêu chí tuyển chọn (GPA tối thiểu, ngành học cụ thể, kỹ năng cần thiết) và yêu cầu hồ sơ (chứng chỉ ngoại ngữ, thư giới thiệu, bài luận) rất khác nhau, hệ thống cần:
+\begin{itemize}
+    \item Xây dựng một thuật toán so khớp (Matching Algorithm) có khả năng định lượng mức độ phù hợp giữa hồ sơ sinh viên (Student Profile) và tiêu chuẩn học bổng (Scholarship Criteria).
+    \item Sử dụng các độ đo tương đồng văn bản (như Jaccard, Token Overlap, n-grams) kết hợp sức mạnh phân tích ngữ nghĩa của mô hình ngôn ngữ lớn (LLM) để xếp hạng các học bổng có tỷ lệ đạt cao nhất cho từng cá nhân, giảm thiểu thời gian tìm kiếm thủ công.
+\end{itemize}
+
+\subsection{Bài toán quản trị cơ sở dữ liệu học thuật của trường học}
+Để dữ liệu học bổng và hồ sơ sinh viên có tính nhất quán, hệ thống quản trị Webadmin cần giải quyết bài toán đồng bộ hóa dữ liệu danh mục nền (Master Data):
+\begin{itemize}
+    \item Thiết lập cấu hình quản lý phân cấp từ Trường Đại học $\rightarrow$ Khoa/Viện đào tạo $\rightarrow$ Môn học/Học phần (bao gồm số tín chỉ, thang điểm quy đổi).
+    \item Hỗ trợ nhà tài trợ trong việc thu thập hồ sơ ứng tuyển trực tuyến, tổ chức hội đồng đánh giá và phê duyệt học bổng theo quy trình chuẩn.
+    \item Ứng dụng AI giúp phát hiện sớm các hồ sơ có hành vi gian lận (Fraud Detection) như làm giả điểm số, sử dụng một tài liệu giới thiệu cho nhiều hồ sơ ứng tuyển, hoặc trùng lặp tài khoản thụ hưởng.
+\end{itemize}
+
+\section{Những thách thức và hướng giải quyết của đề tài}
+\subsection{Những thách thức lớn}
+Trong quá trình xây dựng hệ thống, nhóm nghiên cứu đối mặt với các thách thức chính sau:
+\begin{enumerate}
+    \item \textbf{Độ trễ và chi phí tích hợp AI:} Việc gọi trực tiếp các API của mô hình ngôn ngữ lớn (như Gemini) có độ trễ phản hồi tương đối cao và tốn kém tài nguyên.
+    \item \textbf{Tính chính xác trong phân loại giao dịch:} Ngôn ngữ tự nhiên mà người dùng nhập vào khi ghi chép chi tiêu thường mang tính viết tắt, không chuẩn hóa ngữ pháp (ví dụ: "an trua 50k", "cf 30k").
+    \item \textbf{Đồng bộ trạng thái giao diện thời gian thực:} Giao diện điện thoại di động yêu cầu cập nhật tức thì số dư của các hũ và biểu đồ báo cáo ngay sau khi người dùng thực hiện giao dịch mà không làm chậm trải nghiệm ứng dụng.
+    \item \textbf{Quá tải hàng gửi thông báo:} Khi có các đợt cập nhật học bổng lớn hoặc chạy job quét chi tiêu cuối ngày, việc gửi hàng nghìn tin nhắn Push Notification cùng lúc có thể gây quá tải cho Backend.
+\end{enumerate}
+
+\subsection{Hướng tiếp cận giải quyết}
+Để vượt qua các thách thức trên, đề tài đề xuất các hướng giải quyết kỹ thuật cụ thể:
+\begin{itemize}
+    \item \textbf{Sử dụng kiến trúc AI Agent và Caching:} FastAPI AI Service được thiết kế độc lập, đóng vai trò điều phối (orchestration) sử dụng các Tool-calling Agent của LangChain để tối ưu hóa việc gọi mô hình. Áp dụng cơ chế lưu đệm Redis Caching với TTL (Time-to-Live) từ 5-15 phút tại Backend để lưu trữ các nhận định tài chính (AI Insights), giảm tải số lượng request trùng lặp gửi đến Gemini API.
+    \item \textbf{Huấn luyện LLM Classifier với Rule Engine:} Sử dụng các bộ quy tắc gán cứng (Rule-based) kết hợp với kỹ thuật Few-shot Prompting để hướng dẫn mô hình Gemini phân loại các thuật ngữ viết tắt của người dùng một cách chính xác vào 6 lọ tài chính.
+    \item \textbf{Đồng bộ giao diện qua React Query:} Áp dụng thư viện quản lý state React Query (TanStack Query) trên Expo Frontend để quản lý cơ chế Invalidation. Khi có bất kỳ thay đổi nào từ phía dữ liệu, hệ thống tự động làm mới bộ đệm cục bộ và render lại màn hình mà không cần reload toàn bộ app.
+    \item \textbf{Hàng đợi thông báo bất đồng bộ:} Sử dụng Redis và BullMQ để xây dựng hàng đợi tin nhắn (Message Queue) tại Backend. Các tác vụ gửi thông báo đẩy (FCM) sẽ được chuyển vào hàng đợi và xử lý song song bởi các Worker chạy ngầm, tránh gây nghẽn tiến trình xử lý API chính.
+\end{itemize}
+
+\section{Các đóng góp của đề tài}
+Đề tài mang lại các đóng góp thiết thực cả về mặt học thuật lẫn ứng dụng thực tiễn:
+\begin{itemize}
+    \item \textbf{Về mặt công nghệ:} Hiện thực hóa thành công một kiến trúc Monorepo đa dịch vụ ổn định, giải quyết bài toán giao tiếp bất đồng bộ và đồng bộ trạng thái giao diện thời gian thực giữa thiết bị di động, máy chủ API và lõi AI.
+    \item \textbf{Về mặt ứng dụng tài chính:} Số hóa thành công mô hình quản lý tài chính 6 lọ, bổ sung thêm các tính năng thông minh như cảnh báo ngân sách tự động, gợi ý tái cấu trúc hũ hằng tháng (Jars Rebalancing) và trợ lý ảo tư vấn tài chính thân thiện với sinh viên.
+    \item \textbf{Về hỗ trợ học tập:} Xây dựng cổng thông tin học bổng tích hợp bộ công cụ so khớp thông minh, giúp rút ngắn khoảng cách giữa sinh viên xuất sắc và các nguồn quỹ tài trợ xã hội, đồng thời cung cấp giải pháp duyệt hồ sơ an toàn, phát hiện gian lận cho các tổ chức giáo dục.
+\end{itemize}

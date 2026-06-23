@@ -1,120 +1,245 @@
-\chapter{Hướng dẫn sử dụng template}
-\label{Chapter3}
+\chapter{Phương pháp đề xuất và Thiết kế hệ thống}
+\label{ch:phuong-phap-de-xuat}
 
-\section{Trích dẫn tài liệu}
+\section{Kiến trúc tổng thể hệ thống (System Architecture)}
+Hệ thống Student360 được thiết kế dựa trên mô hình monorepo đa dịch vụ nhằm đảm bảo tính phân tách trách nhiệm (Separation of Concerns), khả năng mở rộng độc lập và dễ dàng quản lý mã nguồn trong quá trình phát triển nhóm. Hệ thống bao gồm ba phân hệ chính hoạt động độc lập nhưng giao tiếp chặt chẽ với nhau thông qua mạng nội bộ và các giao thức kết nối tiêu chuẩn như HTTP REST, Server-Sent Events (SSE), và Message Queues.
 
-Dùng lệnh $\textbackslash cite$ để trích dẫn một hoặc nhiều tài liệu tham khảo.
-Tài liệu tham khảo có thể là trang web~\cite{Listings,HDLVThS}, bài báo khoa học~\cite{1994-Cavnar}, sách~\cite{1984-TeX-Knuth,2006-DDien,2006-NPTV}, bài tạp chí~\cite{1989-TED} hoặc các nguồn tham khảo khác. 
-Lưu ý khi trích dẫn tài liệu tham khảo, cần viết câu sao cho bỏ phần trong cặp ngoặc vuông đi thì câu vẫn đầy đủ ý nghĩa.
-Ví dụ, thay vì viết ``Nghiên cứu~\cite{1989-TED} chỉ ra rằng ... '' thì nên viết ``Nghiên cứu của Zhang~\cite{1989-TED} chỉ ra rằng ...''.
-Một ví dụ khác, thay vì viết ``... như trong công trình nghiên cứu~\cite{1994-Cavnar}.'' thì nên viết ``... như trong công trình nghiên cứu của Cavnar và Trenkle~\cite{1994-Cavnar}.''
+\subsection{Kiến trúc Monorepo đa dịch vụ}
+Cấu trúc hệ thống bao gồm bốn thành phần cốt lõi:
+\begin{itemize}
+    \item \textbf{Frontend Mobile Application (Expo - React Native):} Đây là ứng dụng di động đa nền tảng dành cho đối tượng sinh viên. Nó chịu trách nhiệm hiển thị giao diện người dùng, thu thập thông tin giao dịch tài chính, cung cấp cổng tương tác trò chuyện thời gian thực với trợ lý ảo, đăng ký nhận thông báo đẩy (Push Notification) và chuẩn bị hồ sơ ứng tuyển học bổng. Phân hệ này quản lý trạng thái dữ liệu thông qua cơ chế React Query để đảm bảo tính đồng bộ tức thời.
+    \item \textbf{Web Admin Portal (React JS \& Vite):} Phân hệ web dành cho nhà tài trợ và ban quản trị trường học. Cung cấp các công cụ quản lý cơ sở dữ liệu học thuật quy mô lớn (Trường, Khoa, Môn), duyệt học bổng và hiển thị bảng điều khiển phát hiện gian lận ứng tuyển (Fraud Detection Dashboard).
+    \item \textbf{Backend Monolith (NestJS):} Máy chủ trung tâm đóng vai trò xử lý toàn bộ logic nghiệp vụ (Business Logic), quản lý xác thực người dùng (Authentication), phân quyền dựa trên vai trò (Role-Based Access Control - RBAC), xử lý nghiệp vụ tài chính, quản lý hàng đợi BullMQ, và đóng vai trò proxy điều hướng an toàn yêu cầu tới AI Service.
+    \item \textbf{AI Service (FastAPI):} Máy chủ trí tuệ nhân tạo chuyên biệt chịu trách nhiệm chạy các LangChain Agent kết nối với Google Gemini API, thực hiện so khớp học bổng ngữ nghĩa (Semantic Matching) và phát hiện bất thường chi tiêu (Anomaly Detection).
+\end{itemize}
 
-\section{Chèn mã nguồn}
-
-Để chèn mã nguồn, cần dùng package listings~\cite{Listings}:
-
-\begin{lstlisting}
-\usepackage{listings}
-\end{lstlisting}
-
-Mã nguồn có thể được chèn trực tiếp như sau:
-
-\begin{lstlisting}[language=Python]
-print "Hello, World!"
-\end{lstlisting}
-
-hoặc chèn thông qua tập tin chứa mã nguồn trong thư mục $SourceCode$ như sau:
-
-\lstinputlisting[language=C++]{SourceCode/hello.cpp}
-
-Để chèn mã giả, cần dùng package algorithm~\cite{Algorithm}:
-
-\begin{lstlisting}
-\usepackage{algorithm}
-\end{lstlisting}
-
-Có thể chèn mã giả vào như sau:
-
-\begin{algorithm}
-\caption{My algorithm}\label{euclid}
-\begin{algorithmic}[1]
-\Procedure{MyProcedure}{}
-\State $\textit{stringlen} \gets \text{length of }\textit{string}$
-\State $i \gets \textit{patlen}$
-\BState \emph{top}:
-\If {$i > \textit{stringlen}$} \Return false
-\EndIf
-\State $j \gets \textit{patlen}$
-\BState \emph{loop}:
-\If {$\textit{string}(i) = \textit{path}(j)$}
-\State $j \gets j-1$.
-\State $i \gets i-1$.
-\State \textbf{goto} \emph{loop}.
-\State \textbf{close};
-\EndIf
-\State $i \gets i+\max(\textit{delta}_1(\textit{string}(i)),\textit{delta}_2(j))$.
-\State \textbf{goto} \emph{top}.
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
-
-\section{Hình ảnh}
-
-Để chèn hình ảnh, cần dùng package graphicx~\cite{Figures}:
-
-\begin{lstlisting}
-\usepackage{graphicx}
-\end{lstlisting}
-
-Hình \ref{fig:vd1}, hình \ref{fig:vd2} là một số ví dụ về chèn hình ảnh.
-
-\begin{figure}[htp]
-\centering
-\includegraphics[width=9 cm]{images/logo.png}
-\caption{Hình ví dụ 1}
-\label{fig:vd1}
+\begin{figure}[htbp]
+    \centering
+    \rectbox{Sơ đồ kiến trúc Monorepo đa dịch vụ của hệ thống Student360}
+    \caption{Sơ đồ kiến trúc Monorepo đa dịch vụ của hệ thống Student360}
+    \label{fig:monorepo-arch}
 \end{figure}
 
-\begin{figure*}[htp]
-\centering
-\includegraphics[width=60 mm]{images/logo.png}
-\caption{Hình ví dụ 2}
-\label{fig:vd2}
-\end{figure*}
+\subsection{Luồng truyền thông điệp và tích hợp dịch vụ}
+Các phân hệ trong hệ thống giao tiếp với nhau theo hai cơ chế chính:
+\begin{enumerate}
+    \item \textbf{Đồng bộ (Synchronous):} Sử dụng các RESTful API HTTP thông thường. Khi Mobile App hoặc Webadmin gửi yêu cầu cập nhật (như tạo giao dịch, sửa thông tin trường học), Backend sẽ ghi dữ liệu trực tiếp vào database PostgreSQL và trả về phản hồi lập tức.
+    \item \textbf{Bất đồng bộ (Asynchronous):} Đối với các tác vụ tốn nhiều tài nguyên hoặc chạy ngầm (như quét phát hiện bất thường, gửi thông báo FCM, phân tích dữ liệu ứng tuyển), Backend sử dụng Redis làm Message Broker để đẩy các tác vụ vào hàng đợi BullMQ. Worker ngầm sẽ lấy tác vụ từ hàng đợi ra xử lý độc lập để tránh làm nghẽn tiến trình xử lý API chính của máy chủ.
+\end{enumerate}
 
-\section{Bảng biểu}
+\subsection{Cơ chế xác thực giao tiếp giữa các dịch vụ (Service-to-Service Auth)}
+Để đảm bảo an toàn thông tin và tránh việc kẻ xấu gọi trực tiếp vào lõi AI để bào mòn chi phí API Gemini, giao tiếp giữa NestJS Backend và FastAPI AI Service được bảo vệ nghiêm ngặt bằng cơ chế xác thực nội bộ:
+\begin{itemize}
+    \item API Gateway của Backend và FastAPI AI sử dụng chung một mã khóa bí mật được cấu hình qua biến môi trường \texttt{AI\_SERVICE\_SECRET}.
+    \item Mỗi khi Backend gửi yêu cầu so khớp học bổng hoặc phân loại giao dịch tới FastAPI, nó sẽ đính kèm mã token này trong header của HTTP request dưới dạng Bearer Token. FastAPI AI Service sẽ giải mã và kiểm tra mã token này trước khi xử lý yêu cầu, đảm bảo chỉ có NestJS Backend được phép truy cập vào lõi AI.
+\end{itemize}
 
-Để tạo bảng biểu, tham khảo thêm tại sharelatex.com~\cite{Tables}.
-Bảng~\ref{tab:vd1} là một ví dụ về bảng.
-Ngoài ra, có một số tool online~\footnote{Như trang http://www.tablesgenerator.com/} có thể được dùng để tạo bảng biểu một cách trực quan.
+\section{Thiết kế cơ sở dữ liệu (Database Design)}
+Hệ thống sử dụng cơ sở dữ liệu quan hệ PostgreSQL tích hợp extension \texttt{pgvector} phục vụ lưu trữ vector embeddings cho tìm kiếm ngữ nghĩa, và Redis để quản lý session và hàng đợi.
 
-\begin{table}[ht]
-\caption{Bảng ví dụ 1}
+\subsection{Sơ đồ thực thể liên kết (ERD) cho mô-đun Tài chính 6 lọ}
+Các bảng dữ liệu phục vụ quản lý tài chính được thiết kế tối ưu nhằm lưu vết toàn bộ lịch sử chi dùng:
+\begin{sloppypar}
+\begin{itemize}
+    \item \textbf{\texttt{money\_jars} (Các hũ tài chính):} Lưu trữ số dư và thông tin phân bổ của từng hũ.
+        \begin{itemize}
+            \item \texttt{id} (UUID, khóa chính): Định danh duy nhất cho hũ.
+            \item \texttt{user\_id} (UUID, khóa ngoại): Tham chiếu đến bảng \texttt{users}.
+            \item \texttt{jar\_code} (VARCHAR): Phân loại hũ (\texttt{nec}, \texttt{ffa}, \texttt{edu}, \texttt{ltss}, \texttt{play}, \texttt{give}).
+            \item \texttt{name} (VARCHAR): Tên hiển thị của hũ.
+            \item \texttt{percentage} (INT): Tỷ lệ phần trăm phân bổ (Tổng 6 lọ phải bằng 100\%).
+            \item \texttt{balance} (DECIMAL): Số dư hiện tại của hũ.
+        \end{itemize}
+    \item \textbf{\texttt{financial\_transactions} (Giao dịch tài chính):} Lưu vết tất cả biến động dòng tiền.
+        \begin{itemize}
+            \item \texttt{id} (UUID, khóa chính): Định danh giao dịch.
+            \item \texttt{user\_id} (UUID, khóa ngoại): Định danh người dùng thực hiện.
+            \item \texttt{money\_jar\allowbreak\_id} (UUID, khóa ngoại): Tham chiếu đến hũ nguồn hoặc hũ đích.
+            \item \texttt{amount} (DECIMAL): Số tiền thu hoặc chi.
+            \item \texttt{type} (VARCHAR): Phân loại giao dịch (\texttt{income}, \texttt{expense}, \texttt{transfer}).
+            \item \texttt{category} (VARCHAR): Danh mục chi tiết (ăn uống, đi lại, học tập...).
+            \item \texttt{description} (TEXT): Mô tả chi tiết giao dịch.
+            \item \texttt{transaction\allowbreak\_date} (TIMESTAMPTZ): Thời điểm giao dịch phát sinh.
+        \end{itemize}
+    \item \textbf{\texttt{budgets} (Hạn mức ngân sách):} Lưu trữ hạn mức chi tiêu tự cấu hình của người dùng.
+        \begin{itemize}
+            \item \texttt{id} (UUID, khóa chính): Định danh ngân sách.
+            \item \texttt{user\_id} (UUID, khóa ngoại): Tham chiếu người dùng.
+            \item \texttt{money\_jar\_id} (UUID, khóa ngoại): Lọ áp dụng hạn mức.
+            \item \texttt{limit\_amount} (DECIMAL): Hạn mức chi tối đa cho phép.
+            \item \texttt{spent\_amount} (DECIMAL): Số tiền thực tế đã chi trong chu kỳ.
+            \item \texttt{month} (INT), \texttt{year} (INT): Khoảng thời gian áp dụng hạn mức.
+        \end{itemize}
+\end{itemize}
+\end{sloppypar}
 
-\label{tab:vd1}%
-\begin{center}
-\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
- \hline
- \multicolumn{4}{|c|}{Country List} \\
- \hline
- Country Name     or Area Name& ISO ALPHA 2 Code &ISO ALPHA 3 Code&ISO numeric Code\\
- \hline
- Afghanistan   & AF    &AFG&   004\\
- Aland Islands&   AX  & ALA   &248\\
- Albania &AL & ALB&  008\\
- Algeria    &DZ & DZA&  012\\
- American Samoa&   AS  & ASM&016\\
- Andorra& AD  & AND   &020\\
- Angola& AO  & AGO&024\\
- \hline
-\end{tabular}
-\end{center}
-\end{table}
+\begin{figure}[htbp]
+    \centering
+    \rectbox{Sơ đồ thực thể liên kết (ERD) cho mô-đun Tài chính 6 lọ}
+    \caption{Sơ đồ thực thể liên kết (ERD) cho mô-đun Tài chính 6 lọ}
+    \label{fig:erd-finance}
+\end{figure}
 
-\section{Công thức}
+\subsection{Sơ đồ thực thể liên kết (ERD) cho mô-đun Học bổng và Học thuật}
+Các bảng dữ liệu nền tảng học thuật và học bổng bao gồm các liên kết khóa ngoại chặt chẽ:
+\begin{sloppypar}
+\begin{itemize}
+    \item \textbf{\texttt{universities} (Trường đại học):} Lưu trữ danh mục các trường liên kết. Gồm các cột: \texttt{id} (UUID), \texttt{code} (VARCHAR), \texttt{name} (VARCHAR), \texttt{city} (VARCHAR), \texttt{status} (VARCHAR).
+    \item \textbf{\texttt{university\_subjects} (Môn học):} Lưu trữ danh sách môn học của từng trường. Gồm các cột: \texttt{id} (UUID), \texttt{university\_id} (UUID, khóa ngoại), \texttt{subject\_code} (VARCHAR), \texttt{subject\_name} (VARCHAR), \texttt{credits} (INT), \texttt{status} (VARCHAR).
+    \item \textbf{\texttt{scholarships} (Học bổng):} Gồm các cột: \texttt{id} (UUID), \texttt{name} (VARCHAR), \texttt{provider} (VARCHAR), \texttt{amount} (DECIMAL), \texttt{quantity} (INT), \texttt{application\_deadline} (DATE), \texttt{eligibility\_criteria} (TEXT), \texttt{is\_active} (BOOLEAN).
+    \item \textbf{\texttt{scholarship\_requirements} (Điều kiện học bổng):} Chi tiết các điều kiện học thuật cần đáp ứng. Gồm: \texttt{id} (UUID), \texttt{scholarship\_id} (UUID, khóa ngoại), \texttt{title} (VARCHAR), \texttt{description} (TEXT), \texttt{is\_required} (BOOLEAN).
+    \item \textbf{\texttt{scholarship\_documents} (Tài liệu yêu cầu):} Hồ sơ sinh viên cần chuẩn bị để đính kèm. Gồm: \texttt{id} (UUID), \texttt{scholarship\_id} (UUID, khóa ngoại), \texttt{document\_name} (VARCHAR), \texttt{document\_type} (VARCHAR), \texttt{is\_required} (BOOLEAN).
+    \item \textbf{\texttt{scholarship\_applications} (Hồ sơ ứng tuyển):} Quản lý đơn nộp của sinh viên. Gồm: \texttt{id} (UUID), \texttt{scholarship\_id} (UUID, khóa ngoại), \texttt{user\_id} (UUID, khóa ngoại), \texttt{status} (VARCHAR: \texttt{pending}, \texttt{under\_review}, \texttt{awarded}, \texttt{rejected}), \texttt{applied\_at} (TIMESTAMPTZ).
+\end{itemize}
+\end{sloppypar}
 
-Công thức có thể chèn vào trong cùng một dòng như $ \sqrt{a^2+b^2} $ hoặc nằm trên dòng riêng như công thức~\ref{eu_eqn}.
+\begin{figure}[htbp]
+    \centering
+    \rectbox{Sơ đồ thực thể liên kết (ERD) cho mô-đun Học bổng và Học thuật}
+    \caption{Sơ đồ thực thể liên kết (ERD) cho mô-đun Học bổng và Học thuật}
+    \label{fig:erd-academic}
+\end{figure}
 
-\begin{equation} \label{eu_eqn}
-x = a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}
-\end{equation}
+\section{Thiết kế chi tiết mô-đun Tài chính 6 lọ}
+\subsection{Quy trình phân bổ nguồn thu và quản lý chi tiêu}
+Quy trình phân bổ dòng tiền được thực hiện tự động nhằm giảm thiểu thao tác nhập liệu thủ công cho sinh viên:
+\begin{enumerate}
+    \item Khi người dùng nhận một khoản thu mới (ví dụ: Học bổng khuyến khích học tập trị giá $10.000.000$ VNĐ) và chọn hình thức phân bổ tự động.
+    \item Hệ thống gọi API \texttt{POST /distribute-income}. Lõi Backend NestJS sẽ truy vấn cấu hình tỷ lệ phần trăm của 6 lọ hiện tại của người dùng (ví dụ cấu hình chuẩn: 55-10-10-10-10-5).
+    \item Hệ thống tự động tính toán số tiền tương ứng cho từng lọ (ví dụ: hũ NEC nhận $5.500.000$ VNĐ, hũ FFA nhận $1.000.000$ VNĐ...) và thực hiện ghi đồng thời (Batch write) 6 lệnh cộng tiền tương ứng vào cơ sở dữ liệu.
+\end{enumerate}
+
+\subsection{Cơ chế lập lịch giao dịch định kỳ (Auto-transfer \& Recurring)}
+Để quản lý các khoản phí cố định phát sinh hàng tháng, hệ thống cho phép người dùng thiết lập lịch giao dịch:
+\begin{itemize}
+    \item Người dùng khai báo các khoản chi tiêu định kỳ (như Tiền nhà trọ, tiền mạng internet) kèm ngày thanh toán và hạn mức.
+    \item Một Cron Job ngầm tại Backend chạy vào lúc 00:05 mỗi ngày để quét các lịch trình kích hoạt trong ngày hiện tại, tự động tạo giao dịch \texttt{expense} từ lọ được chỉ định và gửi thông báo nhắc nhở tới thiết bị của người dùng.
+\end{itemize}
+
+\subsection{Cơ chế đảm bảo tính toàn vẹn số dư hũ}
+Nhằm ngăn ngừa hiện tượng sai lệch hoặc thất thoát số dư do lỗi bất đồng bộ mạng hoặc lỗi phần mềm, hệ thống áp dụng nguyên tắc:
+\begin{itemize}
+    \item \textbf{Số dư động (Dynamic Balance):} Số dư hiển thị trên giao diện của từng hũ không được lưu trữ tĩnh mà luôn được tính toán lại bằng công thức tích lũy từ lịch sử các dòng tiền thực tế:
+    $$\text{Số dư hũ} = \sum (\text{Thu vào}) - \sum (\text{Chi ra}) \pm \sum (\text{Chuyển quỹ})$$
+    \item \textbf{Hành vi khi xóa hũ tài chính:} Khi người dùng muốn xóa một hũ tài chính tùy chỉnh, hệ thống không chỉ đơn giản là xóa dòng dữ liệu trong DB. Nếu hũ đó có số dư khác 0, hệ thống bắt buộc người dùng chọn một hũ đích để nhận lại tiền. Sau đó, hệ thống thực thi một Transaction DB để tạo đồng thời một cặp giao dịch bù trừ: trừ tiền ở hũ nguồn (Giao dịch \texttt{expense}) và cộng tiền vào hũ đích (Giao dịch \texttt{income}) để đảm bảo tổng tài sản của người dùng hoàn toàn bất biến.
+\end{itemize}
+
+\section{Phương pháp tích hợp Trí tuệ nhân tạo (AI Integration)}
+Lõi AI được tích hợp sâu vào hệ thống qua FastAPI AI Service, khai thác năng lực suy luận của mô hình Large Language Model (Gemini 1.5 Flash/Pro) kết hợp thư viện LangChain để xây dựng hệ thống tác nhân (AI Agents).
+
+\subsection{Thiết kế Trợ lý tài chính ảo thời gian thực qua stream SSE}
+Để mang lại trải nghiệm trò chuyện mượt mà giống như các ứng dụng ChatGPT hay Gemini thương mại, hệ thống sử dụng giao thức Server-Sent Events (SSE):
+\begin{sloppypar}
+\begin{itemize}
+    \item Khi sinh viên đặt câu hỏi (ví dụ: "Tháng này tôi đã tiêu bao nhiêu tiền ăn?"), ứng dụng di động sẽ kết nối tới Backend thông qua endpoint \texttt{/ai/chat}.
+    \item Backend hoạt động như một Proxy chuyển tiếp request này sang cổng \texttt{/api/v1/chat/stream} của FastAPI AI Core.
+    \item AI Service sử dụng LangChain Agent để điều phối câu hỏi. Agent phân tích câu hỏi và quyết định gọi các Tool nghiệp vụ (như \texttt{get\_jar\_balance}, \texttt{get\_transaction\_history}) để truy vấn số liệu thực tế từ Backend.
+    \item Sau khi nhận kết quả từ database, Agent truyền nội dung trả lời về cho Backend dưới dạng các token văn bản nối tiếp nhau. Backend lập tức đẩy các token này về Mobile App thông qua kênh SSE kết nối sẵn, giúp chữ hiển thị chạy ra màn hình ngay lập tức thay vì phải đợi toàn bộ câu trả lời hoàn tất.
+\end{itemize}
+\end{sloppypar}
+
+\begin{figure}[htbp]
+    \centering
+    \rectbox{Luồng xử lý và truyền stream câu trả lời của AI Agent qua SSE}
+    \caption{Luồng xử lý và truyền stream câu trả lời của AI Agent qua SSE}
+    \label{fig:ai-sse-stream}
+\end{figure}
+
+\subsection{Thuật toán phân loại giao dịch tự động bằng LLM (AI Transaction Classifier)}
+Khi người dùng nhập mô tả giao dịch (ví dụ: "mua sach 150k" hoặc "di cho 80k"), hệ thống gọi endpoint \texttt{/api/ai/6jars/classify}.
+\begin{itemize}
+    \item Hệ thống gửi văn bản mô tả và số tiền tới LLM Classifier.
+    \item Mô hình sử dụng Few-shot Prompting kết hợp cơ chế gán nhãn để phân tích ngữ nghĩa, tự động suy luận ra:
+        \begin{itemize}
+            \item "mua sach" $\rightarrow$ Lọ đề xuất: \texttt{education} (EDU), Danh mục: \texttt{Sách vở/Học cụ}.
+            \item "di cho" $\rightarrow$ Lọ đề xuất: \texttt{necessity} (NEC), Danh mục: \texttt{Thực phẩm/Ăn uống}.
+        \end{itemize}
+    \item \textbf{Cơ chế Override (Học hành vi người dùng):} Nếu AI phân loại sai hũ (ví dụ đề xuất lọ PLAY nhưng người dùng sửa thủ công thành lọ GIVE trước khi lưu), hệ thống sẽ gọi API \texttt{/override} để lưu cặp dữ liệu sửa lỗi này vào bảng học tập của AI. Lần sau khi gặp từ khóa tương tự, AI sẽ ưu tiên lựa chọn sửa đổi của người dùng.
+\end{itemize}
+
+\subsection{Thuật toán so khớp học bổng thông minh dựa trên hồ sơ sinh viên (Fuzzy \& Semantic Matching)}
+Thuật toán so khớp học bổng được thiết kế qua hai giai đoạn chính để cân bằng giữa tốc độ tìm kiếm và độ chính xác ngữ nghĩa:
+
+\textbf{Giai đoạn 1: Lọc thô bằng Fuzzy Matching (Tìm kiếm mờ)}
+Để giải quyết bài toán viết tắt hoặc sai lệch từ ngữ, hệ thống sử dụng thuật toán tính toán độ tương đồng tập hợp Jaccard kết hợp với Bigram (n-grams với $n=2$).
+Công thức tính độ tương đồng Jaccard giữa hai tập hợp token từ vựng của truy vấn $A$ và mô tả học bổng $B$:
+$$J(A, B) = \frac{|A \cap B|}{|A \cup B|}$$
+
+Đồng thời, hệ thống phân tích tập hợp các ký tự n-gram 2 ký tự (Bigrams) để tăng khả năng chống chịu lỗi chính tả:
+$$N(S, 2) = \{s_i s_{i+1} \mid i = 1, 2, ..., |S|-1\}$$
+Ví dụ với chuỗi $S = \text{"mactex"} \rightarrow N(S,2) = \{\text{"ma"}, \text{"ac"}, \text{"ct"}, \text{"te"}, \text{"ex"}\}$.
+Độ khớp tổng hợp là tổ hợp tuyến tính giữa điểm Jaccard của từ vựng và điểm Jaccard của n-gram ký tự, kèm điểm thưởng tiền tố (prefix bonus) nếu từ khóa trùng khớp phần đầu của tên học bổng.
+
+\textbf{Giai đoạn 2: Đánh giá chi tiết bằng Semantic Matching (Khớp ngữ nghĩa)}
+AI Service sử dụng LLM để phân tích ngữ nghĩa sâu của hồ sơ học thuật sinh viên (gồm ngành học, khoa, điểm số GPA, hoạt động ngoại khóa) đối chiếu trực tiếp với đoạn văn bản mô tả điều kiện nhận học bổng (Eligibility criteria) để đưa ra điểm số tương thích phần trăm và giải thích lý do tại sao sinh viên phù hợp hoặc thiếu điều kiện gì.
+
+\subsection{Cơ chế bộ nhớ đệm (Caching với TTL) tối ưu chi phí gọi LLM}
+Để giải quyết thách thức về chi phí API và độ trễ phản hồi:
+\begin{sloppypar}
+\begin{itemize}
+    \item Khi người dùng mở màn hình báo cáo, hệ thống cần hiển thị một khối "Góc nhìn AI" (AI Insights) nhận định tình hình tài chính của tháng.
+    \item Thay vì gọi mô hình Gemini phân tích lại từ đầu mỗi khi người dùng chuyển đổi tab, Backend NestJS sẽ lưu trữ đoạn văn bản nhận xét của AI vào bộ nhớ đệm Redis Cache.
+    \item Khóa cache (Cache Key) được định danh duy nhất theo định dạng \texttt{user\_id:month:year}. Thời gian tồn tại của cache (TTL) được cấu hình là 15 phút.
+    \item Bất kỳ yêu cầu tải báo cáo nào trong khoảng thời gian này sẽ được Backend trả về ngay lập tức từ Redis mà không tốn chi phí gọi LLM, rút ngắn thời gian phản hồi từ khoảng 8 giây xuống còn dưới 50 mili giây.
+\end{itemize}
+\end{sloppypar}
+
+\section{Cơ chế thông báo di động đa kênh (Notification System)}
+Hệ thống thông báo đẩy được thiết kế để hoạt động ổn định dưới tải trọng cao và đảm bảo tính thời gian thực.
+
+\subsection{Mô hình xử lý hàng đợi bất đồng bộ với Redis và BullMQ}
+Luồng xử lý thông báo được tổ chức như sau:
+\begin{enumerate}
+    \item Khi một sự kiện cần gửi thông báo xảy ra (ví dụ: Học bổng mới được duyệt hoặc phát hiện chi tiêu bất thường).
+    \item NestJS Service đóng vai trò Producer tạo ra một Job chứa thông tin tiêu đề, nội dung và danh sách các token thiết bị di động của người nhận, sau đó đẩy Job này vào hàng đợi Redis thông qua BullMQ.
+    \item Một cụm các tiến trình Worker chạy ngầm sẽ liên tục lấy các Job ra khỏi hàng đợi Redis để xử lý. Việc xử lý bất đồng bộ giúp máy chủ API chính không bị block kết nối mạng khi phải thực thi các tác vụ gửi tin nhắn IO-intensive ra bên ngoài.
+\end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+    \rectbox{Mô hình xử lý hàng đợi bất đồng bộ với Redis và BullMQ}
+    \caption{Mô hình xử lý hàng đợi bất đồng bộ với Redis và BullMQ}
+    \label{fig:notif-queue}
+\end{figure}
+
+\subsection{Giải pháp đẩy thông báo thời gian thực qua Firebase Cloud Messaging (FCM)}
+Các Worker sử dụng thư viện \texttt{firebase-admin} của Firebase SDK để kết nối tới máy chủ Google FCM:
+\begin{itemize}
+    \item Hệ thống xây dựng cấu trúc tải tin (Payload) tối ưu cho từng nền tảng hệ điều hành.
+    \item Đối với Android: Đặt độ ưu tiên cao (\texttt{high}), thời gian sống của tin nhắn (TTL) là 24 giờ, sử dụng kênh thông báo chuyên biệt \texttt{student360\_notifications} để kích hoạt âm thanh mặc định và chế độ rung trên thiết bị.
+    \item Đối với iOS (APNs): Đính kèm tiêu đề và nội dung tin nhắn trong cấu trúc APNs headers với độ ưu tiên cao (\texttt{apns-priority: 10}) để đánh thức thiết bị ở chế độ nền.
+\end{itemize}
+
+\subsection{Cơ chế Idempotency và khử trùng lặp cảnh báo bất thường}
+\begin{sloppypar}
+Khi chạy job quét phát hiện chi tiêu bất thường định kỳ vào cuối ngày, hệ thống có thể phát hiện cùng một hũ chi thiết yếu (NEC) của người dùng liên tục bị vượt hạn mức hoặc tăng vọt đột biến. Để tránh làm phiền người dùng bằng việc gửi lặp đi lặp lại một thông báo cảnh báo:
+\begin{itemize}
+    \item Hệ thống áp dụng cơ chế loại bỏ trùng lặp (Deduplication) dựa trên khóa Idempotency.
+    \item Khóa này được tính toán dựa trên tổ hợp: \texttt{user\_id + module\_type + alert\_type + target\_id + month}.
+    \item Trước khi insert một cảnh báo bất thường mới vào bảng \texttt{ai\_anomaly\allowbreak\_alerts} và kích hoạt job gửi Push Notification, Worker sẽ kiểm tra trong database xem đã tồn tại cảnh báo nào có cùng khóa Idempotency trong tháng hiện tại chưa. Nếu đã có, hệ thống sẽ bỏ qua việc tạo mới và không gửi thêm thông báo đẩy.
+\end{itemize}
+\end{sloppypar}
+
+\section{Thiết kế phân hệ Webadmin quản trị Master Data và Học bổng}
+Phân hệ Webadmin được xây dựng trên nền tảng React JS, phục vụ công tác quản lý của Ban giám hiệu trường học và các Nhà tài trợ học bổng.
+
+\subsection{Thiết kế quản lý phân cấp Trường học - Khoa - Môn học}
+Dữ liệu học thuật được mô hình hóa theo cấu trúc cây phân cấp nghiêm ngặt nhằm phục vụ việc kiểm soát thông tin sinh viên:
+\begin{itemize}
+    \item Cấp 1: \textbf{Trường Đại học (University):} Định nghĩa mã trường, tên trường, khu vực địa lý.
+    \item Cấp 2: \textbf{Khoa/Viện đào tạo (Faculty):} Liên kết trực tiếp trong hồ sơ học sinh, quy định ngành học chính của sinh viên.
+    \item Cấp 3: \textbf{Môn học (Subject):} Quản lý mã môn học, tên môn học, số tín chỉ, thang điểm và trạng thái môn học.
+\end{itemize}
+Hệ thống sử dụng các ràng buộc khóa ngoại (Foreign Key Constraints) mức cơ sở dữ liệu để ngăn chặn việc xóa các thực thể cha (ví dụ xóa môn học khi môn học đó đã có điểm số của sinh viên), đảm bảo tính nhất quán của học bạ điện tử sinh viên.
+
+\subsection{Quy trình kiểm soát, phê duyệt học bổng và phát hiện gian lận (Fraud Detection)}
+Quy trình được thiết kế khép kín nhằm tối đa hóa tính minh bạch:
+\begin{enumerate}
+    \item Nhà tài trợ đăng bài $\rightarrow$ Ban quản trị duyệt xuất bản $\rightarrow$ Sinh viên ứng tuyển trực tuyến.
+    \item Webadmin cung cấp bảng điều khiển xét duyệt tập trung (Applications Review Portal) hiển thị chi tiết hồ sơ học thuật, file đính kèm của từng ứng viên.
+    \item \textbf{Tính năng Fraud Detection (Phát hiện gian lận):} Hệ thống tích hợp một màn hình cảnh báo đặc biệt. AI Service sẽ phân tích chéo toàn bộ dữ liệu ứng cử viên để phát hiện và gắn nhãn đỏ cảnh báo đối với các trường hợp:
+        \begin{itemize}
+            \item Sinh viên làm giả bảng điểm (điểm số lưu trên hồ sơ ứng tuyển không khớp với dữ liệu điểm số thật trong Master Data môn học).
+            \item Phát hiện trùng lặp dữ liệu: Hai sinh viên khác nhau nhưng nộp chung một file thư giới thiệu (Recommendation Letter) hoặc đăng ký cùng một số tài khoản ngân hàng thụ hưởng học bổng.
+        \end{itemize}
+\end{enumerate}
