@@ -19,7 +19,7 @@ Hệ thống Student360 được hiện thực hóa và kiểm thử trên môi 
 \subsection{Phân hệ ứng dụng di động dành cho sinh viên}
 Giao diện ứng dụng di động được thiết kế hướng tới sự trực quan, trẻ trung và tối ưu hóa trải nghiệm người dùng (UX):
 \begin{itemize}
-    \item \textbf{Màn hình Tổng quan ví (Wallet Overview):} Hiển thị tổng số dư khả dụng, chỉ số sức khỏe tài chính (Financial Health Score) tính toán động từ thói quen chi tiêu của sinh viên, kèm theo biểu đồ hình tròn phân tách tỷ trọng của 6 hũ tài chính (NEC, FFA, EDU, LTSS, PLAY, GIVE).
+    \item \textbf{Màn hình Tổng quan ví (Wallet Overview):} Hiển thị tổng số dư khả dụng, chỉ số sức khỏe tài chính (Financial Health Score) tính toán động từ thói quen chi tiêu của sinh viên, kèm theo biểu đồ hình tròn biểu diễn tỷ lệ phân bổ của các hũ tài chính (bao gồm chi tiêu thiết yếu, tự do tài chính, học tập, tiết kiệm dài hạn, hưởng thụ và cho đi).
     \item \textbf{Màn hình Chi tiết hũ:} Khi sinh viên chọn một hũ cụ thể, giao diện hiển thị số dư riêng biệt của hũ đó, danh sách lịch sử giao dịch tương ứng và một biểu đồ đường (Line Chart) thể hiện xu hướng biến động số dư theo tháng.
     \item \textbf{Màn hình Trò chuyện AI (AI Chat Screen):} Cung cấp giao diện chat thời gian thực. Tin nhắn phản hồi của AI trợ lý sẽ hiển thị dạng stream từ trái qua phải nhờ tích hợp luồng SSE.
     \item \textbf{Màn hình Cấu hình phân bổ lọ (Jar Allocation):} Cho phép sinh viên kéo các thanh trượt (slider) hoặc nhập phần trăm thủ công để điều chỉnh tỷ lệ 6 lọ tài chính.
@@ -260,21 +260,21 @@ Kết quả thử nghiệm đối chiếu giữa đề xuất của AI và gán 
     \label{tab:ai-classify-eval}
     \begin{tabular}{|L{4.8cm}|C{2.6cm}|C{3.4cm}|C{2.8cm}|}
         \hline
-        \textbf{Hũ tài chính (Jar Code)} & \textbf{Tổng mẫu thử} & \textbf{Số mẫu phân loại đúng} & \textbf{Độ chính xác (Accuracy)} \\
+        \textbf{Hũ tài chính} & \textbf{Tổng mẫu thử} & \textbf{Số mẫu phân loại đúng} & \textbf{Độ chính xác (Accuracy)} \\
         \hline
-        Chi tiêu thiết yếu (NEC) & 180 & 171 & 95.0\% \\
-        Học tập / Phát triển (EDU) & 100 & 93 & 93.0\% \\
-        Tự do tài chính (FFA) & 60 & 52 & 86.6\% \\
-        Tiết kiệm dài hạn (LTSS) & 60 & 51 & 85.0\% \\
-        Hưởng thụ (PLAY) & 70 & 64 & 91.4\% \\
-        Cho đi / Từ thiện (GIVE) & 30 & 28 & 93.3\% \\
+        Chi tiêu thiết yếu & 180 & 171 & 95.0\% \\
+        Học tập / Phát triển & 100 & 93 & 93.0\% \\
+        Tự do tài chính & 60 & 52 & 86.6\% \\
+        Tiết kiệm dài hạn & 60 & 51 & 85.0\% \\
+        Hưởng thụ & 70 & 64 & 91.4\% \\
+        Cho đi / Từ thiện & 30 & 28 & 93.3\% \\
         \hline
         \textbf{Trung bình toàn hệ thống} & \textbf{500} & \textbf{459} & \textbf{91.8\%} \\
         \hline
     \end{tabular}
 \end{table}
 
-Kết quả cho thấy mô hình AI đạt độ chính xác trung bình \textbf{91.8\%} trên toàn bộ 500 mẫu thử, trong đó hũ Chi tiêu thiết yếu (NEC) đạt độ chính xác cao nhất ở mức 95.0\% do được huấn luyện với nhiều mẫu nhất và thuật ngữ sinh hoạt hàng ngày phong phú hơn. Hai hũ FFA (86.6\%) và LTSS (85.0\%) có độ chính xác thấp hơn do người dùng thường dùng các thuật ngữ trừu tượng (``tiết kiệm'', ``đầu tư'') có thể bị nhầm lẫn giữa hai hũ này.
+Kết quả cho thấy mô hình AI đạt độ chính xác trung bình \textbf{91.8\%} trên toàn bộ 500 mẫu thử. Trong đó, hũ Chi tiêu thiết yếu đạt độ chính xác cao nhất ở mức 95.0\% do được huấn luyện với lượng dữ liệu mẫu phong phú liên quan đến các hoạt động sinh hoạt hàng ngày. Ngược lại, hai hũ Tự do tài chính (86.6\%) và Tiết kiệm dài hạn (85.0\%) có tỷ lệ chính xác thấp hơn một chút, nguyên nhân là do người dùng có xu hướng sử dụng các thuật ngữ chi tiêu mang tính trừu tượng (như ``tiết kiệm'', ``đầu tư'') dễ gây nhầm lẫn giữa hai nhóm mục đích này.
 
 \section{Đánh giá hiệu quả gợi ý của thuật toán so khớp học bổng}
 Độ chính xác của thuật toán gợi ý học bổng thông minh dựa trên kết hợp Jaccard + Bigram + SequenceMatcher được kiểm thử trên tập dữ liệu gồm 100 hồ sơ sinh viên thực tế và 50 bài đăng học bổng khác nhau. Chúng tôi đánh giá hiệu quả thông qua hai chỉ số:

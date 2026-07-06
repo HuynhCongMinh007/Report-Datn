@@ -79,6 +79,7 @@
 % Bảng biểu
 \usepackage{multirow}
 \usepackage{array}
+\usepackage{longtable}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -126,7 +127,7 @@
 % ========================================================================================= %
 \newcommand{\tenSV}{Nguyễn~Văn~A~-~Trần~Văn~B} % Dấu ~ là khoảng trắng không được tách (các chữ nối với nhau bằng dấu ~ sẽ nằm cùng 1 dòng
 \newcommand{\mssv}{1234567}
-\newcommand{\tenKL}{Sử~dụng~LaTeX trong Khoá~luận~tốt~nghiệp} % Chú ý dấu ~ trong tên khóa luận
+\newcommand{\tenKL}{Hệ~thống~hỗ~trợ~sinh~viên~-~phân~hệ~quản~lý~tài~chính} % Chú ý dấu ~ trong tên khóa luận
 \newcommand{\tenGVHD}{Tên~Giáo~Viên}
 \newcommand{\tenBM}{Công nghệ tri thức}
 
@@ -181,39 +182,32 @@
 \cleardoublepage
 \addcontentsline{toc}{chapter}{Danh mục từ viết tắt}
 \chapter*{Danh mục từ viết tắt}
-\begin{center}
-\begin{tabular}{|l|l|p{8.5cm}|}
+\begin{longtable}{|l|l|p{8.5cm}|}
 \hline
 \textbf{STT} & \textbf{Từ viết tắt} & \textbf{Giải thích} \\
 \hline
+\endhead
 1  & AI     & Trí tuệ nhân tạo (Artificial Intelligence) \\
 2  & API    & Giao diện lập trình ứng dụng (Application Programming Interface) \\
 3  & CRUD   & Tạo - Đọc - Cập nhật - Xóa (Create, Read, Update, Delete) \\
 4  & DB     & Cơ sở dữ liệu (Database) \\
-5  & EDU    & Hũ Giáo dục (Education Jar) \\
-6  & ERD    & Sơ đồ thực thể liên kết (Entity Relationship Diagram) \\
-7  & FCM    & Dịch vụ thông báo đám mây của Firebase (Firebase Cloud Messaging) \\
-8  & FFA    & Hũ Tự do tài chính (Financial Freedom Account Jar) \\
-9  & GPA    & Điểm trung bình tích lũy (Grade Point Average) \\
-10 & GIVE   & Hũ Cho đi / Từ thiện (Give Jar) \\
-11 & HTTP   & Giao thức truyền siêu văn bản (HyperText Transfer Protocol) \\
-12 & JSON   & Ký hiệu đối tượng JavaScript (JavaScript Object Notation) \\
-13 & JWT    & Mã thông báo JSON Web (JSON Web Token) \\
-14 & LLM    & Mô hình ngôn ngữ lớn (Large Language Model) \\
-15 & LTSS   & Hũ Tiết kiệm dài hạn (Long-Term Saving for Spending Jar) \\
-16 & NEC    & Hũ Chi tiêu thiết yếu (Necessities Jar) \\
-17 & NLP    & Xử lý ngôn ngữ tự nhiên (Natural Language Processing) \\
-18 & PLAY   & Hũ Hưởng thụ (Play / Entertainment Jar) \\
-19 & RBAC   & Kiểm soát truy cập dựa trên vai trò (Role-Based Access Control) \\
-20 & REST   & Chuyển trạng thái đại diện (Representational State Transfer) \\
-21 & SSE    & Sự kiện gửi từ máy chủ (Server-Sent Events) \\
-22 & TTL    & Thời gian sống của bộ nhớ đệm (Time-To-Live) \\
-23 & UI     & Giao diện người dùng (User Interface) \\
-24 & UUID   & Định danh duy nhất toàn cầu (Universally Unique Identifier) \\
-25 & UX     & Trải nghiệm người dùng (User Experience) \\
+5  & ERD    & Sơ đồ thực thể liên kết (Entity Relationship Diagram) \\
+6  & FCM    & Dịch vụ thông báo đám mây của Firebase (Firebase Cloud Messaging) \\
+7  & GPA    & Điểm trung bình tích lũy (Grade Point Average) \\
+8  & HTTP   & Giao thức truyền siêu văn bản (HyperText Transfer Protocol) \\
+9  & JSON   & Ký hiệu đối tượng JavaScript (JavaScript Object Notation) \\
+10 & JWT    & Mã thông báo JSON Web (JSON Web Token) \\
+11 & LLM    & Mô hình ngôn ngữ lớn (Large Language Model) \\
+12 & NLP    & Xử lý ngôn ngữ tự nhiên (Natural Language Processing) \\
+13 & RBAC   & Kiểm soát truy cập dựa trên vai trò (Role-Based Access Control) \\
+14 & REST   & Chuyển trạng thái đại diện (Representational State Transfer) \\
+15 & SSE    & Sự kiện gửi từ máy chủ (Server-Sent Events) \\
+16 & TTL    & Thời gian sống của bộ nhớ đệm (Time-To-Live) \\
+17 & UI     & Giao diện người dùng (User Interface) \\
+18 & UUID   & Định danh duy nhất toàn cầu (Universally Unique Identifier) \\
+19 & UX     & Trải nghiệm người dùng (User Experience) \\
 \hline
-\end{tabular}
-\end{center}
+\end{longtable}
 
 \addcontentsline{toc}{chapter}{Tóm tắt}
 \include{Appendix/summary}
