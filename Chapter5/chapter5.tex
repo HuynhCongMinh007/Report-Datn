@@ -6,8 +6,10 @@
 \begin{itemize}
     \item \textbf{Về mặt kỹ thuật phần mềm:} Hiện thực hóa thành công một kiến trúc Monorepo đa dịch vụ hiện đại, tích hợp trơn tru giữa ứng dụng di động React Native, trang quản trị React JS, Backend NestJS và máy chủ AI FastAPI. Cơ chế hàng đợi BullMQ + Redis đã xử lý tốt luồng dữ liệu bất đồng bộ và đồng bộ giao diện thời gian thực qua React Query.
     \item \textbf{Về mặt quản lý tài chính:} Số hóa thành công mô hình quản lý tài chính 6 lọ nổi tiếng, phát triển cơ chế tự động phân chia thu nhập, lập lịch giao dịch định kỳ và đảm bảo tính toàn vẹn số dư động thông qua lịch sử giao dịch thực tế.
-    \item \textbf{Về mặt ứng dụng AI:} Xây dựng hệ tác nhân AI trợ lý ảo hỗ trợ trả lời câu hỏi tài chính của sinh viên thời gian thực qua stream SSE; huấn luyện bộ phân loại giao dịch tự động từ ngôn ngữ tự nhiên đạt độ chính xác trung bình \textbf{91.8\%} trên 500 mẫu thử; và triển khai thuật toán so khớp học bổng thông minh kết hợp Jaccard, Bigram và SequenceMatcher đạt F1-Score \textbf{81.4\%}, vượt trội so với phương pháp lọc từ khóa truyền thống (F1 = 54.3\%).
-    \item \textbf{Về mặt quản trị hệ thống:} Cung cấp giải pháp Webadmin quản trị dữ liệu nền đào tạo (Trường, Khoa, Môn) đồng bộ chặt chẽ và trang bị công cụ Fraud Detection dựa trên AI để bảo vệ tính công bằng trong xét duyệt học bổng.
+    \item \textbf{Về mặt học bổng:} Hoàn thiện quy trình học bổng trực tuyến từ công bố chương trình, cấu hình điều kiện và tài liệu yêu cầu, sinh viên lưu nháp hoặc nộp hồ sơ, đến nhà tài trợ xét duyệt và phản hồi kết quả. Hệ thống quản lý trạng thái hồ sơ rõ ràng, lưu lịch sử thay đổi và đảm bảo không phát sinh hồ sơ trùng cho cùng một sinh viên và học bổng.
+    \item \textbf{Về mặt ứng dụng AI:} Xây dựng hệ tác nhân AI trợ lý ảo hỗ trợ trả lời câu hỏi tài chính của sinh viên thời gian thực qua stream SSE và huấn luyện bộ phân loại giao dịch tự động từ ngôn ngữ tự nhiên đạt độ chính xác trung bình \textbf{91.8\%} trên 500 mẫu thử.
+    \item \textbf{Về mặt quản trị dữ liệu học thuật:} Hoàn thiện luồng quản lý trường đại học, khoa/chương trình đào tạo và môn học trên Webadmin; hỗ trợ import hàng loạt, lọc dữ liệu và đồng bộ danh mục môn học sang Mobile App để sinh viên sử dụng trong bảng điểm cá nhân.
+    \item \textbf{Về mặt bảng điểm sinh viên:} Hoàn thiện chức năng cho phép sinh viên theo dõi GPA, tổng tín chỉ, mục tiêu tín chỉ, thêm/sửa/xóa điểm từng môn và import điểm hàng loạt từ file TXT/CSV. Hệ thống kiểm tra điểm theo thang điểm của môn và dùng số tín chỉ để tính GPA có trọng số.
 \end{itemize}
 
 \subsection{Đánh giá so sánh hiệu quả với các giải pháp hiện hành}
@@ -24,14 +26,15 @@
         Tự động phân bổ ví 6 lọ & Không (Thủ công) & Không (Thủ công) & Không & \textbf{Có (Tự động)} \\
         Nhận diện giao dịch AI bằng NLP & Có (Chỉ tiếng Anh) & Không & Không & \textbf{Có (Tiếng Việt viết tắt, lóng)} \\
         Trợ lý ảo tư vấn tài chính & Không & Không & Không & \textbf{Có (Hệ Agent tương tác)} \\
-        So khớp học bổng thông minh & Không & Không & Không & \textbf{Có (Jaccard + Bigram + Sequence)} \\
-        Đồng bộ dữ liệu nền đào tạo & Không & Không & Không & \textbf{Có (Quản lý Master Data)} \\
+        Quy trình học bổng trực tuyến & Không & Không & Không & \textbf{Có (Sponsor/apply)} \\
+        Quản lý dữ liệu học thuật chuẩn hóa & Không & Không & Không & \textbf{Có (Trường, khoa/chương trình đào tạo, môn học)} \\
+        Bảng điểm cá nhân và GPA theo tín chỉ & Không & Không & Không & \textbf{Có (Gradebook)} \\
         Hàng đợi xử lý thông báo đẩy & Không cấu hình & Không có & Không có & \textbf{Có (BullMQ + Redis)} \\
         \hline
     \end{tabular}
 \end{table}
 
-Qua bảng so sánh trên, hệ thống Student360 thể hiện sự vượt trội rõ rệt nhờ việc thiết kế các tính năng chuyên biệt hóa cao độ cho đối tượng sinh viên. Sự tích hợp độc đáo giữa quản lý tài chính theo mô hình 6 lọ tự động bằng AI và hệ gợi ý so khớp học bổng tạo nên một hệ sinh thái hỗ trợ toàn diện, giải quyết trọn vẹn cả hai nhu cầu cốt lõi là quản lý dòng tiền và gia tăng thu nhập cho sinh viên.
+Qua bảng so sánh trên, hệ thống Student360 thể hiện sự vượt trội rõ rệt nhờ việc thiết kế các tính năng chuyên biệt hóa cao độ cho đối tượng sinh viên. Sự tích hợp giữa quản lý tài chính theo mô hình 6 lọ, bảng điểm cá nhân, quy trình học bổng trực tuyến, quản trị dữ liệu học thuật và cổng quản trị dành cho nhà tài trợ tạo nên một hệ sinh thái hỗ trợ toàn diện, giải quyết trọn vẹn cả hai nhu cầu cốt lõi là quản lý dòng tiền và gia tăng thu nhập cho sinh viên.
 
 \section{Hạn chế của hệ thống}
 Mặc dù đạt được những kết quả khả quan, hệ thống vẫn tồn tại một số điểm hạn chế cần được cải thiện trong tương lai:
