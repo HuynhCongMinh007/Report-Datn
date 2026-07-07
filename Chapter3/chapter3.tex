@@ -155,7 +155,7 @@ Nhằm ngăn ngừa hiện tượng sai lệch hoặc thất thoát số dư do 
 \end{itemize}
 
 \section{Phương pháp tích hợp Trí tuệ nhân tạo (AI Integration)}
-Lõi AI được tích hợp sâu vào hệ thống qua FastAPI AI Service, khai thác năng lực suy luận của mô hình Large Language Model (Gemini 1.5 Flash/Pro) kết hợp thư viện LangChain để xây dựng hệ thống tác nhân (AI Agents).
+Lõi AI được tích hợp sâu vào hệ thống qua FastAPI AI Service, khai thác năng lực suy luận của mô hình Large Language Model (Gemini 2.5 Flash/Pro) kết hợp thư viện LangChain để xây dựng hệ thống tác nhân (AI Agents).
 
 \subsection{Thiết kế Trợ lý tài chính ảo thời gian thực qua stream SSE}
 Để mang lại trải nghiệm trò chuyện mượt mà giống như các ứng dụng ChatGPT hay Gemini thương mại, hệ thống sử dụng giao thức Server-Sent Events (SSE):
@@ -403,8 +403,14 @@ Quy trình được thiết kế theo hai nhóm người dùng chính: quản tr
 \end{figure}
 
 \subsection{Quy trình tạo, nộp và xét duyệt hồ sơ học bổng}
-Quy trình học bổng được thiết kế theo hai vai trò chính: nhà tài trợ và sinh viên.
+Quy trình học bổng được thiết kế theo hai vai trò chính: nhà tài trợ và sinh viên. Quy trình tổng quan gồm các bước:
+\begin{enumerate}
+    \item Nhà tài trợ đăng bài $\rightarrow$ Ban quản trị duyệt xuất bản $\rightarrow$ Sinh viên ứng tuyển trực tuyến.
+    \item Webadmin cung cấp bảng điều khiển xét duyệt tập trung (Applications Review Portal) hiển thị chi tiết hồ sơ học thuật, file đính kèm của từng ứng viên.
+    \item Admin có thể đối chiếu hồ sơ nộp vào với dữ liệu học thuật chuẩn trong Master Data (ngành học, điểm số môn học) qua giao diện trực quan, giúp phát hiện chênh lệch dữ liệu mà không cần phải chạy thuật toán AI riêng.
+\end{enumerate}
 
+Chi tiết các bước thực hiện ở mức hệ thống và API được mô tả như sau:
 \begin{enumerate}
     \item \textbf{Nhà tài trợ tạo học bổng:} Nhà tài trợ đăng nhập Webadmin, nhập thông tin chương trình học bổng và gửi yêu cầu \texttt{POST /scholarships}. Backend lưu bản ghi vào bảng \texttt{scholarships}, trong đó \texttt{provider\_id} liên kết học bổng với tổ chức tài trợ trong bảng \texttt{organizations}.
     \item \textbf{Cấu hình điều kiện và tài liệu:} Sau khi tạo học bổng, nhà tài trợ cấu hình các điều kiện xét tuyển qua \texttt{POST /scholarships/\{id\}/requirements} và danh sách tài liệu yêu cầu qua \texttt{POST /scholarships/\{id\}/documents}.
