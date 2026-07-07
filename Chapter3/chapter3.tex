@@ -349,6 +349,17 @@ Quy trình được thiết kế theo hai nhóm người dùng chính: quản tr
     \item \textbf{Sinh viên quản lý bảng điểm:} Sinh viên xem danh sách điểm qua \texttt{GET /student/grades}, xóa điểm qua \texttt{DELETE /student/grades/\{gradeId\}}, xem dashboard qua \texttt{GET /student/dashboard} và cập nhật mục tiêu tín chỉ qua \texttt{PATCH /student/gradebook-target}.
 \end{enumerate}
 
+\begin{figure}[htbp]
+    \centering
+    \IfFileExists{Images/chapter3/academic/student-gradebook-flow.png}{%
+        \includegraphics[width=0.9\textwidth]{Images/chapter3/academic/student-gradebook-flow.png}%
+    }{%
+        \rectbox{Sơ đồ Student Flow cho luồng bảng điểm sinh viên}
+    }
+    \caption{Sơ đồ luồng thao tác bảng điểm của sinh viên}
+    \label{fig:student-gradebook-flow}
+\end{figure}
+
 \subsection{Quy trình tạo, nộp và xét duyệt hồ sơ học bổng}
 Quy trình học bổng được thiết kế theo hai vai trò chính: nhà tài trợ và sinh viên.
 
