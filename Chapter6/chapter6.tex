@@ -1,0 +1,62 @@
+\chapter{Kết luận và Hướng phát triển}
+\label{ch:ket-luan}
+
+\section{Những kết quả đạt được của đề tài}
+Đề tài "Hệ thống hỗ trợ sinh viên - phân hệ quản lý tài chính" đã hoàn thành đầy đủ các mục tiêu đề ra ban đầu cả về nghiên cứu lý thuyết lẫn ứng dụng thực tiễn:
+\begin{itemize}
+    \item \textbf{Về mặt kỹ thuật phần mềm:} Hiện thực hóa thành công một kiến trúc Monorepo đa dịch vụ hiện đại, tích hợp trơn tru giữa ứng dụng di động React Native, trang quản trị React JS, Backend NestJS và máy chủ AI FastAPI. Cơ chế hàng đợi BullMQ + Redis đã xử lý tốt luồng dữ liệu bất đồng bộ và đồng bộ giao diện thời gian thực qua React Query.
+    \item \textbf{Về mặt quản lý tài chính:} Số hóa thành công mô hình quản lý tài chính 6 lọ nổi tiếng, phát triển cơ chế tự động phân chia thu nhập, lập lịch giao dịch định kỳ và đảm bảo tính toàn vẹn số dư động thông qua lịch sử giao dịch thực tế.
+    \item \textbf{Về mặt học bổng:} Hoàn thiện quy trình học bổng trực tuyến từ công bố chương trình, cấu hình điều kiện và tài liệu yêu cầu, sinh viên lưu nháp hoặc nộp hồ sơ, đến nhà tài trợ xét duyệt và phản hồi kết quả. Hệ thống quản lý trạng thái hồ sơ rõ ràng, lưu lịch sử thay đổi và đảm bảo không phát sinh hồ sơ trùng cho cùng một sinh viên và học bổng.
+    \item \textbf{Về mặt ứng dụng AI:} Xây dựng hệ tác nhân AI trợ lý ảo hỗ trợ trả lời câu hỏi tài chính của sinh viên thời gian thực qua stream SSE và huấn luyện bộ phân loại giao dịch tự động từ ngôn ngữ tự nhiên đạt độ chính xác ước tính trung bình khoảng \textbf{91.8\%} qua quan sát thử nghiệm thực tế trong quá trình phát triển (chi tiết và giới hạn về phương pháp đánh giá xem Chương 5).
+    \item \textbf{Về mặt quản trị dữ liệu học thuật:} Hoàn thiện luồng quản lý trường đại học, khoa/chương trình đào tạo và môn học trên Webadmin; hỗ trợ import hàng loạt, lọc dữ liệu và đồng bộ danh mục môn học sang Mobile App để sinh viên sử dụng trong bảng điểm cá nhân.
+    \item \textbf{Về mặt bảng điểm sinh viên:} Hoàn thiện chức năng cho phép sinh viên theo dõi GPA, tổng tín chỉ, mục tiêu tín chỉ, thêm/sửa/xóa điểm từng môn và import điểm hàng loạt từ file TXT/CSV. Hệ thống kiểm tra điểm theo thang điểm của môn và dùng số tín chỉ để tính GPA có trọng số.
+\end{itemize}
+
+\subsection{Đánh giá mức độ hoàn thiện hệ thống}
+Để đánh giá mức độ hoàn thiện và năng lực ứng dụng thực tiễn của hệ thống Student360, nhóm phát triển thực hiện đối chiếu các nhóm chức năng của hệ thống với ba ứng dụng quản lý tài chính phổ biến hiện nay: Money Lover, Sổ Thu Chi MISA và Spendee. Kết quả đối chiếu tính năng được tổng hợp chi tiết trong Bảng~\ref{tab:comparison-features}:
+
+\begin{table}[H]
+    \centering
+    \caption{Bảng so sánh tính năng giữa Student360 và các giải pháp hiện có}
+    \label{tab:comparison-features}
+    \begin{tabular}{|L{4.2cm}|C{2.6cm}|C{2.8cm}|C{2.8cm}|C{2.6cm}|}
+        \hline
+        \textbf{Tính năng so sánh} & \textbf{Money Lover} & \textbf{Sổ Thu Chi MISA} & \textbf{Spendee} & \textbf{Student360 (Đề xuất)} \\
+        \hline
+        Tự động phân bổ ví 6 lọ & Không (Thủ công) & Không (Thủ công) & Không (Thủ công) & \textbf{Có (Tự động)} \\ \hline
+        Nhận diện giao dịch AI bằng NLP & Có (Chỉ tiếng Anh) & Không & Không & \textbf{Có (Tiếng Việt viết tắt, lóng)} \\ \hline
+        Trợ lý ảo tư vấn tài chính & Không & Không & Không & \textbf{Có (Hệ Agent tương tác)} \\ \hline
+        So khớp học bổng thông minh & Không & Không & Không & \textbf{Có (Jaccard + Bigram + SequenceMatcher)} \\ \hline
+        Quy trình học bổng trực tuyến & Không & Không & Không & \textbf{Có (Sponsor/apply)} \\ \hline
+        Đồng bộ dữ liệu nền đào tạo & Không & Không & Không & \textbf{Có (Quản lý Master Data)} \\ \hline
+        Quản lý dữ liệu học thuật chuẩn hóa & Không & Không & Không & \textbf{Có (Trường, khoa/chương trình đào tạo, môn học)} \\ \hline
+        Bảng điểm cá nhân và GPA theo tín chỉ & Không & Không & Không & \textbf{Có (Gradebook)} \\ \hline
+        Hàng đợi xử lý thông báo đẩy & Không cấu hình & Không có & Không có & \textbf{Có (BullMQ + Redis)} \\ \hline
+    \end{tabular}
+\end{table}
+
+Qua bảng so sánh trên, hệ thống Student360 thể hiện sự vượt trội rõ rệt nhờ việc thiết kế các tính năng chuyên biệt hóa cao độ cho đối tượng sinh viên. Sự tích hợp giữa quản lý tài chính theo mô hình 6 lọ, bảng điểm cá nhân, quy trình học bổng trực tuyến, quản trị dữ liệu học thuật và cổng quản trị dành cho nhà tài trợ tạo nên một hệ sinh thái hỗ trợ toàn diện, giải quyết trọn vẹn cả hai nhu cầu cốt lõi là quản lý dòng tiền và gia tăng thu nhập cho sinh viên.
+
+\section{Hạn chế của hệ thống}
+Mặc dù đạt được những kết quả khả quan, hệ thống vẫn tồn tại một số điểm hạn chế cần được cải thiện trong tương lai:
+\begin{enumerate}
+    \item \textbf{Độ trễ khi gọi LLM:} Thời gian phản hồi trọn vẹn của AI Chatbot phụ thuộc hoàn toàn vào tốc độ sinh token của Gemini API qua mạng internet, đo thực tế trung bình khoảng 4 giây và có thể lên tới hơn 10 giây với các câu hỏi phức tạp cần gọi nhiều tool (xem Bảng kết quả E2E, Chương 5). Cơ chế lưu snapshot chỉ áp dụng cho phần nhận định tài chính định kỳ (AI Insights), chưa áp dụng được cho hội thoại chatbot vì mỗi câu hỏi của người dùng về bản chất là duy nhất.
+    \item \textbf{Giới hạn của cơ chế gợi ý học bổng:} Cơ chế hiện tại hoạt động dựa trên phân tích văn bản tĩnh (Jaccard Token + Bigram + SequenceMatcher), chưa có khả năng nắm bắt ý nghĩa ngữ nghĩa sâu (Semantic Understanding). Kết quả là thông tin trong hồ sơ có từ vựng khác nhau nhưng cùng ý nghĩa (ví dụ: ``kỹ thuật phần mềm'' và ``CNTT'', ``công nghệ thông tin'') có thể không được nhận diện là tương đương trong quá trình gợi ý.
+    \item \textbf{Kịch bản kiểm thử dữ liệu:} Dữ liệu học bổng và hồ sơ học thuật sử dụng trong thử nghiệm hiện tại chủ yếu là dữ liệu giả lập mô phỏng. Hệ thống chưa được kiểm thử diện rộng trên quy mô dữ liệu thực tế hàng chục nghìn hồ sơ sinh viên thật từ phòng đào tạo các trường đại học.
+    \item \textbf{Sự phụ thuộc vào bên thứ ba:} Cơ chế thông báo di động phụ thuộc lớn vào sự ổn định của dịch vụ đám mây Google FCM và kết nối mạng nền của thiết bị di động.
+    \item \textbf{Chưa liên kết tài khoản ngân hàng thực tế:} Luồng ghi nhận thu chi trong hệ thống hiện tại vẫn phụ thuộc vào hành vi nhập liệu thủ công của sinh viên hoặc phê duyệt đề xuất từ trợ lý ảo AI, chưa liên kết trực tiếp với tài khoản ngân hàng hoặc ví điện tử để tự động hóa việc đồng bộ dòng tiền thực tế.
+    \item \textbf{Một số thao tác tài chính tổng hợp chưa được bọc trong Database Transaction tường minh:} Cụ thể là luồng phân bổ thu nhập vào 6 hũ (\texttt{distributeIncome}) và luồng xóa hũ kèm giao dịch bù trừ hiện thực hiện các lệnh ghi độc lập thay vì một \texttt{QueryRunner} Transaction chung, nên vẫn còn rủi ro dữ liệu không nhất quán nếu có lỗi xảy ra giữa chừng (xem chi tiết Chương 3, Chương 4).
+    \item \textbf{Thiếu bộ benchmark định lượng chính thức cho các thành phần AI và hạ tầng:} Các số liệu về độ chính xác phân loại giao dịch, độ chính xác của cơ chế gợi ý học bổng và khả năng chịu tải của hàng đợi thông báo đẩy FCM hiện dựa trên quan sát và ước tính trong quá trình phát triển, chưa có bộ dữ liệu gán nhãn cố định và script đo lường tự động, có thể tái lập (xem giới hạn phương pháp đánh giá tại Chương 5).
+\end{enumerate}
+
+\section{Hướng phát triển tiếp theo}
+Để khắc phục các hạn chế và nâng cao năng lực ứng dụng của hệ thống, nhóm phát triển đề xuất các hướng phát triển tiếp theo:
+\begin{itemize}
+    \item \textbf{Nâng cấp cơ chế gợi ý học bổng bằng Semantic Search (Tìm kiếm ngữ nghĩa):} Để vượt qua giới hạn của phân tích văn bản tĩnh hiện tại, hướng phát triển tiếp theo là tích hợp các mô hình nhúng văn bản (Text Embedding Models) như \texttt{text-embedding-004} của Google để biểu diễn hồ sơ sinh viên và mô tả học bổng dưới dạng vector tâm lý đa chiều, cho phép tìm kiếm theo ngữ nghĩa vượt qua rào cản từ ngữ khác nhau.
+    \item \textbf{Phát hiện gian lận hồ sơ học bổng bằng AI (Fraud Detection):} Xây dựng mô đun AI phân tích chéo dữ liệu ứng viên để phát hiện các dấu hiệu gian lận như trùng lặp file tài liệu, chênh lệch điểm số giữa hồ sơ nộp và Master Data của trường, hoặc cùng số tài khoản ngân hàng thụ hưởng giữa nhiều hồ sơ khác nhau.
+    \item \textbf{Tối ưu hóa mô hình AI nội bộ (Local/Private LLM):} Nghiên cứu giải pháp Fine-tuning (tinh chỉnh) các mô hình ngôn ngữ lớn nguồn mở có kích thước nhỏ (như Llama-3-8B hoặc Qwen-1.5) chạy trực tiếp trên máy chủ nội bộ của nhà trường nhằm tăng tốc độ phản hồi dưới 1 giây, nâng cao tính bảo mật dữ liệu học bạ và tiết kiệm chi phí vận hành API.
+    \item \textbf{Hoàn thiện tính năng quét ảnh hóa đơn (OCR Receipt):} Tích hợp sâu thư viện OCR (Google Cloud Vision API hoặc mô hình thị giác máy tính) vào Mobile App để người dùng chỉ cần chụp ảnh hóa đơn là hệ thống tự động trích xuất và lưu giao dịch vào hũ phù hợp.
+    \item \textbf{Mở rộng kết nối API Ngân hàng và ví điện tử:} Nghiên cứu tích hợp các cổng thanh toán/ngân hàng mở tại Việt Nam (như VietQR, MoMo) để tự động hóa hoàn toàn luồng ghi nhận giao dịch của sinh viên mà không cần nhập liệu bằng tay.
+    \item \textbf{Xây dựng bộ benchmark định lượng chính thức cho các thành phần AI và hạ tầng:} Chuẩn hóa một bộ dữ liệu gán nhãn cố định (giao dịch tài chính tiếng Việt, hồ sơ học bổng) cùng script đo lường tự động, có thể tái lập cho độ chính xác phân loại giao dịch và độ chính xác gợi ý học bổng; đồng thời xây dựng script load-test (ví dụ k6 hoặc Artillery) đo trực tiếp độ trễ và tỷ lệ thành công của hàng đợi thông báo đẩy FCM ở các quy mô tải khác nhau, thay cho các số liệu ước tính hiện tại.
+    \item \textbf{Bổ sung Database Transaction tường minh cho các thao tác tài chính tổng hợp:} Bọc luồng phân bổ thu nhập vào 6 hũ và luồng xóa hũ kèm giao dịch bù trừ trong một \texttt{QueryRunner} Transaction chung của TypeORM, đảm bảo tính nguyên tử tuyệt đối tương đương với luồng chuyển khoản đơn hiện có.
+\end{itemize}

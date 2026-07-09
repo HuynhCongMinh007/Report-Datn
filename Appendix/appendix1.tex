@@ -1,6 +1,73 @@
 \appendix
 
-\chapter{Ngữ pháp tiếng Việt}
+\chapter{Đặc tả cấu trúc thông điệp API (API Specification)}
 \label{Appendix1}
 
-Đây là phụ lục.
+Phụ lục này trình bày chi tiết cấu trúc các gói dữ liệu JSON (Payload) được trao đổi qua giao thức HTTP REST giữa máy chủ NestJS Backend và FastAPI AI Service để phục vụ các chức năng phân tích trí tuệ nhân tạo tích hợp trong hệ thống Student360.
+
+\section{Payload phân loại giao dịch tài chính (POST /ai/classify-transaction)}
+Khi sinh viên nhập mô tả giao dịch chi tiêu hoặc thu nhập bằng ngôn ngữ tự nhiên trên Mobile App, Backend NestJS sẽ chuyển tiếp yêu cầu tới FastAPI AI Service với payload cấu trúc như sau:
+
+\begin{lstlisting}[caption={Payload yêu cầu phân loại giao dịch}]
+{
+  "userId": "d3b07384-d113-49cd-a5d6-84860d5b4a2f",
+  "rawMessage": "toi mua vo ghi bai het 15k bang tien mat",
+  "currentBalance": 450000.00
+}
+\end{lstlisting}
+
+FastAPI AI Service sau khi xử lý qua LLM Classifier sẽ trích xuất thực thể và trả về kết quả phân loại dưới dạng cấu trúc JSON:
+
+\begin{lstlisting}[caption={Response kết quả phân loại giao dịch từ AI}]
+{
+  "intent": "personal_finance",
+  "confidence": 0.942,
+  "action": {
+    "type": "expense",
+    "amount": 15000.0,
+    "jarCode": "edu",
+    "category": "hoc_tap",
+    "currency": "VND"
+  },
+  "rawResponse": "Da ghi nhan khoan chi 15,000 VND vao lo Giao duc."
+}
+\end{lstlisting}
+
+\section{Payload yêu cầu gợi ý học bổng (POST /ai/match-scholarships)}
+Để thực hiện so khớp và gợi ý học bổng cá nhân hóa cho sinh viên, Backend NestJS gửi toàn bộ hồ sơ học thuật, kỹ năng và hoạt động ngoại khóa của sinh viên qua payload cấu trúc như sau:
+
+\begin{lstlisting}[caption={Payload thông tin hồ sơ sinh viên để so khớp học bổng}]
+{
+  "studentProfile": {
+    "gpa": 3.65,
+    "faculty": "Cong nghe thong tin",
+    "skills": ["Python", "Machine Learning", "LaTeX"],
+    "activities": ["Tham gia nghien cuu khoa hoc", "CLB Tinh nguyen"]
+  },
+  "scholarshipsList": [
+    {
+      "id": "a901ff21-8255-4cc2-9854-9442ef5432ab",
+      "name": "Hoc bong Vingroup khoa hoc cong nghe",
+      "eligibility": "Sinh vien nganh CNTT hoac Dien tu vien thong co GPA tu 3.5 tro len va co thanh tich nghien cuu khoa hoc."
+    }
+  ]
+}
+\end{lstlisting}
+
+FastAPI AI Service chạy thuật toán so khớp có trọng số và trả về danh sách các học bổng tương thích kèm điểm số và lý do gợi ý cụ thể:
+
+\begin{lstlisting}[caption={Response gợi ý học bổng tương thích từ AI}]
+{
+  "matchedScholarships": [
+    {
+      "scholarshipId": "a901ff21-8255-4cc2-9854-9442ef5432ab",
+      "matchingScore": 0.814322,
+      "reasons": [
+        "Nganh hoc Cong nghe thong tin khop voi CNTT trong tieu chi.",
+        "Diem GPA 3.65 dat yeu cau tren 3.5.",
+        "Co ky nang nghien cuu khoa hoc."
+      ]
+    }
+  ]
+}
+\end{lstlisting}
