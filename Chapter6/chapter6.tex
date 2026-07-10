@@ -1,4 +1,4 @@
-\chapter{Hiện thực, kiểm thử và đánh giá hệ thống}
+\chapter{Kiểm thử và đánh giá hệ thống}
 \label{ch:hien-thuc-kiem-thu-danh-gia}
 \section{Môi trường triển khai và công nghệ sử dụng}
 Hệ thống Student360 được hiện thực hóa và kiểm thử trên môi trường cục bộ và nền tảng điện toán đám mây với các thông số cấu hình cụ thể như sau:
@@ -557,6 +557,6 @@ Thông qua toàn bộ quá trình triển khai và kiểm thử hệ thống Stu
 \begin{enumerate}
     \item \textbf{Mức độ hoàn thiện chức năng:} Hệ thống đã hiện thực hóa đầy đủ và chính xác tất cả các chức năng theo đặc tả bài toán. Phân hệ di động dành cho sinh viên hoạt động ổn định trên cả hệ điều hành Android và iOS, trong khi trang quản trị Webadmin hỗ trợ đắc lực việc kiểm soát dữ liệu Master Data và duyệt học bổng của nhà tài trợ.
     \item \textbf{Hiệu quả tích hợp trí tuệ nhân tạo (AI):} Hệ trợ lý ảo và bộ phân loại giao dịch tự động hoạt động tốt với ngôn ngữ tự nhiên viết tay của sinh viên Việt Nam qua các lượt thử nghiệm thực tế, đạt độ chính xác phân loại ước tính khoảng 91.8\% và F1-Score ước tính khoảng 81.4\% cho gợi ý học bổng (số liệu định lượng chính thức trên bộ dữ liệu chuẩn là hướng phát triển tiếp theo, xem Chương 7). Việc tích hợp stream SSE giúp cải thiện đáng kể trải nghiệm chờ đợi phản hồi của LLM so với mô hình chờ toàn bộ câu trả lời.
-    \item \textbf{Hiệu năng và khả năng mở rộng:} Kiến trúc Monorepo đa dịch vụ kết hợp hàng đợi bất đồng bộ BullMQ/Redis được thiết kế để phân tán việc gửi thông báo FCM hàng loạt thành nhiều job độc lập, tránh chặn tiến trình API chính. Khả năng chịu tải cụ thể ở quy mô lớn (ví dụ 10.000 thông báo) cần được xác nhận bằng một script load-test thực nghiệm trong giai đoạn tiếp theo thay vì số liệu ước tính hiện tại.
+    \item \textbf{Hiệu năng và khả năng mở rộng:} Kiến trúc Client-Server phân tán nhiều tầng kết hợp hàng đợi bất đồng bộ BullMQ/Redis được thiết kế để phân tán việc gửi thông báo FCM hàng loạt thành nhiều job độc lập, tránh chặn tiến trình API chính. Khả năng chịu tải cụ thể ở quy mô lớn (ví dụ 10.000 thông báo) cần được xác nhận bằng một script load-test thực nghiệm trong giai đoạn tiếp theo thay vì số liệu ước tính hiện tại.
     \item \textbf{Tính bảo mật của ứng dụng:} Các cơ chế bảo mật như xác thực JWT, RolesGuard phân quyền nhiều tầng, chống Prompt Injection và Scoping dữ liệu người dùng đã được hiện thực hóa đầy đủ, đảm bảo an toàn cho dữ liệu học tập và tài chính của sinh viên.
 \end{enumerate}
