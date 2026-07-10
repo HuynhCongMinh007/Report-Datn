@@ -167,8 +167,8 @@ Khi người dùng nhập mô tả giao dịch (ví dụ: "mua sach 150k" hoặc
     \item Hệ thống gửi văn bản mô tả và số tiền tới LLM Classifier.
     \item Mô hình sử dụng Few-shot Prompting kết hợp cơ chế gán nhãn để phân tích ngữ nghĩa, tự động suy luận ra:
         \begin{itemize}
-            \item "mua sach" $\rightarrow$ Lọ đề xuất: \texttt{education} (Học tập), Danh mục: \texttt{Sách vở/Học cụ}.
-            \item "di cho" $\rightarrow$ Lọ đề xuất: \texttt{necessity} (Nhu cầu thiết yếu), Danh mục: \texttt{Thực phẩm/Ăn uống}.
+            \item "mua sach" $\rightarrow$ Lọ đề xuất: \texttt{education} (Giáo dục), Danh mục: \texttt{Sách vở/Học cụ}.
+            \item "di cho" $\rightarrow$ Lọ đề xuất: \texttt{essentials} (Nhu cầu thiết yếu), Danh mục: \texttt{Thực phẩm/Ăn uống}.
         \end{itemize}
     \item \textbf{Cơ chế Override (Học hành vi người dùng):} Nếu AI phân loại sai hũ (ví dụ đề xuất lọ Hưởng thụ nhưng người dùng sửa thủ công thành lọ Cho đi trước khi lưu), hệ thống sẽ gọi API \texttt{/ai/6jars/classify/override} để lưu cặp dữ liệu sửa lỗi này vào bảng học tập của AI. Lần sau khi gặp từ khóa tương tự, AI sẽ ưu tiên lựa chọn sửa đổi của người dùng.
 \end{itemize}

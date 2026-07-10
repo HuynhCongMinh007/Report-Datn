@@ -132,11 +132,15 @@
 \newcommand{\tenGVHD}{Tên~Giáo~Viên}
 \newcommand{\tenBM}{Công nghệ tri thức}
 
+\newif\ifShowGVHD
+
 \begin{document}
 
+\ShowGVHDfalse
 \input{Title/title.tex}
-% Sasu trang Title, các bạn chèn nhận xét gủa GVHD và GVPB. Nhận xét sẽ được giáo vụ phát sau buổi bảo vệ để các bạn đóng quyển.
-
+\cleardoublepage
+\ShowGVHDtrue
+\input{Title/title.tex}
 \cleardoublepage
 
 \pagenumbering{roman} % Đánh số i, ii, iii, ...
@@ -147,14 +151,8 @@
 %\include{Appendix/reassurances}
 \include{Appendix/commitment}
 
-\addcontentsline{toc}{chapter}{Thuyết minh chỉnh sửa đề tài}
-\include{Appendix/edit}
-
-\addcontentsline{toc}{chapter}{Nhận xét của GV hướng dẫn}
-\include{Appendix/advisor}
-
-\addcontentsline{toc}{chapter}{Nhận xét của GV phản biện}
-\include{Appendix/reviewer}
+%\addcontentsline{toc}{chapter}{Nhận xét của GV phản biện}
+%\include{Appendix/reviewer}
 
 \addcontentsline{toc}{chapter}{Lời cảm ơn}
 \include{Appendix/thanks}
@@ -230,9 +228,11 @@
 
 \include{Chapter6/chapter6}
 
+\include{Chapter7/chapter7}
+
 % Công trình của tác giả (nếu không có thì comment 02 dòng dưới)
-\addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}
-\include{Appendix/publish}
+%\addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}
+%\include{Appendix/publish}
 
 % In tài liệu tham khảo
 \nocite{*}
@@ -254,7 +254,7 @@
 % ===================================================================== %
 
 % Phần phụ lục
-\include{Appendix/appendix1}
+%\include{Appendix/appendix1}
 %\include{Appendix/appendix2}
 
 \end{document} 

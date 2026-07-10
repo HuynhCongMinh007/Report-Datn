@@ -3,13 +3,7 @@
 Chương này tập trung phân tích tổng quan các chức năng hệ thống, xác định các tác nhân tham gia tương tác, và đặc tả chi tiết các luồng chức năng nghiệp vụ cốt lõi của hệ thống hỗ trợ sinh viên Student360.
 
 \section{Tổng quan chức năng hệ thống}
-Hệ thống Student360 được thiết kế nhằm đáp ứng nhu cầu học tập và quản lý đời sống của sinh viên một cách toàn diện. Hệ thống bao gồm 4 phân hệ chức năng cốt lõi:
-\begin{itemize}
-    \item \textbf{Phân hệ Quản lý tài chính cá nhân:} Hỗ trợ quản lý số dư theo mô hình 6 lọ tài chính, theo dõi thu chi, lập kế hoạch chi tiêu và quản lý dòng tiền.
-    \item \textbf{Phân hệ Trợ lý tài chính ảo AI:} Hỏi đáp, nhận diện giao dịch tự động qua tin nhắn ngôn ngữ tự nhiên và đưa ra cảnh báo chi tiêu vượt ngưỡng.
-    \item \textbf{Phân hệ Quản lý học bổng trực tuyến:} Kết nối các nhà tài trợ công bố học bổng và sinh viên nộp hồ sơ xin tài trợ trực tuyến.
-    \item \textbf{Phân hệ Quản lý học thuật và bảng điểm:} Quản trị danh mục trường học, ngành học, môn học và hỗ trợ sinh viên quản lý kết quả học tập cá nhân.
-\end{itemize}
+Như đã giới thiệu tại Chương 1, hệ thống Student360 gồm 4 phân hệ chức năng cốt lõi: Quản lý tài chính cá nhân, Trợ lý tài chính ảo AI, Quản lý học bổng trực tuyến và Quản lý học thuật/Bảng điểm. Các mục tiếp theo của chương này xác định các tác nhân tham gia, sơ đồ phân rã chức năng và đặc tả chi tiết nghiệp vụ của từng phân hệ.
 
 \section{Các tác nhân tham gia hệ thống}
 Hệ thống Student360 xác định 3 nhóm tác nhân (Actors) chính tham gia tương tác:
@@ -152,7 +146,7 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
         \item Mobile App gọi API \texttt{POST /api/ai/6jars/classify} kèm câu mô tả văn bản thô.
         \item Backend NestJS chuyển tiếp payload tới FastAPI AI Service.
         \item FastAPI sử dụng Few-shot Prompting kết hợp mô hình Gemini để phân tích ngữ nghĩa câu thô.
-        \item AI nhận diện: hành động là "chi tiêu" (\texttt{expense}), số tiền là $150.000$, hũ tài chính phù hợp là hũ "Giáo dục" (\texttt{edu}), danh mục đề xuất là "Sách vở/Học cụ".
+        \item AI nhận diện: hành động là "chi tiêu" (\texttt{expense}), số tiền là $150.000$, hũ tài chính phù hợp là hũ "Giáo dục" (\texttt{education}), danh mục đề xuất là "Sách vở/Học cụ".
         \item FastAPI trả về cấu trúc dữ liệu JSON chuẩn hóa chứa các trường thông tin đã trích xuất về Backend NestJS, Backend phản hồi lại cho Mobile App.
         \item Mobile App tự động điền giá trị $150.000$ vào ô Số tiền, chọn hũ Giáo dục và chọn danh mục Sách vở, đồng thời hiển thị nút "Lưu giao dịch".
         \item Sinh viên kiểm tra thấy thông tin chính xác và nhấn "Xác nhận".
