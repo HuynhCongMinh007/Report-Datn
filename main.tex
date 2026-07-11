@@ -119,7 +119,7 @@
   
 % Trang bìa
 \usepackage{tikz}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc,positioning}
 % Định nghĩa khung hình mẫu (không hiển thị khung viền đen nữa, chỉ giữ caption)
 \newcommand{\rectbox}[1]{}
 
@@ -132,11 +132,15 @@
 \newcommand{\tenGVHD}{Tên~Giáo~Viên}
 \newcommand{\tenBM}{Công nghệ tri thức}
 
+\newif\ifShowGVHD
+
 \begin{document}
 
+\ShowGVHDfalse
 \input{Title/title.tex}
-% Sasu trang Title, các bạn chèn nhận xét gủa GVHD và GVPB. Nhận xét sẽ được giáo vụ phát sau buổi bảo vệ để các bạn đóng quyển.
-
+\cleardoublepage
+\ShowGVHDtrue
+\input{Title/title.tex}
 \cleardoublepage
 
 \pagenumbering{roman} % Đánh số i, ii, iii, ...
@@ -147,14 +151,8 @@
 %\include{Appendix/reassurances}
 \include{Appendix/commitment}
 
-\addcontentsline{toc}{chapter}{Thuyết minh chỉnh sửa đề tài}
-\include{Appendix/edit}
-
-\addcontentsline{toc}{chapter}{Nhận xét của GV hướng dẫn}
-\include{Appendix/advisor}
-
-\addcontentsline{toc}{chapter}{Nhận xét của GV phản biện}
-\include{Appendix/reviewer}
+%\addcontentsline{toc}{chapter}{Nhận xét của GV phản biện}
+%\include{Appendix/reviewer}
 
 \addcontentsline{toc}{chapter}{Lời cảm ơn}
 \include{Appendix/thanks}
@@ -190,23 +188,28 @@
 \endhead
 1  & AI     & Trí tuệ nhân tạo (Artificial Intelligence) \\ \hline
 2  & API    & Giao diện lập trình ứng dụng (Application Programming Interface) \\ \hline
-3  & CRUD   & Tạo - Đọc - Cập nhật - Xóa (Create, Read, Update, Delete) \\ \hline
-4  & DB     & Cơ sở dữ liệu (Database) \\ \hline
-5  & ERD    & Sơ đồ thực thể liên kết (Entity Relationship Diagram) \\ \hline
-6  & FCM    & Dịch vụ thông báo đám mây của Firebase (Firebase Cloud Messaging) \\ \hline
-7  & GPA    & Điểm trung bình tích lũy (Grade Point Average) \\ \hline
-8  & HTTP   & Giao thức truyền siêu văn bản (HyperText Transfer Protocol) \\ \hline
-9  & JSON   & Ký hiệu đối tượng JavaScript (JavaScript Object Notation) \\ \hline
-10 & JWT    & Mã thông báo JSON Web (JSON Web Token) \\ \hline
-11 & LLM    & Mô hình ngôn ngữ lớn (Large Language Model) \\ \hline
-12 & NLP    & Xử lý ngôn ngữ tự nhiên (Natural Language Processing) \\ \hline
-13 & RBAC   & Kiểm soát truy cập dựa trên vai trò (Role-Based Access Control) \\ \hline
-14 & REST   & Chuyển trạng thái đại diện (Representational State Transfer) \\ \hline
-15 & SSE    & Sự kiện gửi từ máy chủ (Server-Sent Events) \\ \hline
-16 & TTL    & Thời gian sống của bộ nhớ đệm (Time-To-Live) \\ \hline
-17 & UI     & Giao diện người dùng (User Interface) \\ \hline
-18 & UUID   & Định danh duy nhất toàn cầu (Universally Unique Identifier) \\ \hline
-19 & UX     & Trải nghiệm người dùng (User Experience) \\ \hline
+3  & CCCD   & Căn cước công dân \\ \hline
+4  & CRUD   & Tạo - Đọc - Cập nhật - Xóa (Create, Read, Update, Delete) \\ \hline
+5  & DB     & Cơ sở dữ liệu (Database) \\ \hline
+6  & DTO    & Đối tượng truyền dữ liệu (Data Transfer Object) \\ \hline
+7  & ERD    & Sơ đồ thực thể liên kết (Entity Relationship Diagram) \\ \hline
+8  & FCM    & Dịch vụ thông báo đám mây của Firebase (Firebase Cloud Messaging) \\ \hline
+9  & GPA    & Điểm trung bình tích lũy (Grade Point Average) \\ \hline
+10 & HTTP   & Giao thức truyền siêu văn bản (HyperText Transfer Protocol) \\ \hline
+11 & JSON   & Ký hiệu đối tượng JavaScript (JavaScript Object Notation) \\ \hline
+12 & JWT    & Mã thông báo JSON Web (JSON Web Token) \\ \hline
+13 & LLM    & Mô hình ngôn ngữ lớn (Large Language Model) \\ \hline
+14 & NLP    & Xử lý ngôn ngữ tự nhiên (Natural Language Processing) \\ \hline
+15 & OCR    & Nhận dạng ký tự quang học (Optical Character Recognition) \\ \hline
+16 & RBAC   & Kiểm soát truy cập dựa trên vai trò (Role-Based Access Control) \\ \hline
+17 & REST   & Chuyển trạng thái đại diện (Representational State Transfer) \\ \hline
+18 & SDK    & Bộ công cụ phát triển phần mềm (Software Development Kit) \\ \hline
+19 & SSE    & Sự kiện gửi từ máy chủ (Server-Sent Events) \\ \hline
+20 & TTL    & Thời gian sống của bộ nhớ đệm (Time-To-Live) \\ \hline
+21 & UI     & Giao diện người dùng (User Interface) \\ \hline
+22 & URL    & Định vị tài nguyên thống nhất (Uniform Resource Locator) \\ \hline
+23 & UUID   & Định danh duy nhất toàn cầu (Universally Unique Identifier) \\ \hline
+24 & UX     & Trải nghiệm người dùng (User Experience) \\ \hline
 \end{longtable}
 
 \addcontentsline{toc}{chapter}{Tóm tắt}
@@ -230,9 +233,11 @@
 
 \include{Chapter6/chapter6}
 
+\include{Chapter7/chapter7}
+
 % Công trình của tác giả (nếu không có thì comment 02 dòng dưới)
-\addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}
-\include{Appendix/publish}
+%\addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}
+%\include{Appendix/publish}
 
 % In tài liệu tham khảo
 \nocite{*}
@@ -254,7 +259,7 @@
 % ===================================================================== %
 
 % Phần phụ lục
-\include{Appendix/appendix1}
+%\include{Appendix/appendix1}
 %\include{Appendix/appendix2}
 
 \end{document} 

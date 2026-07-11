@@ -3,13 +3,7 @@
 Chương này tập trung phân tích tổng quan các chức năng hệ thống, xác định các tác nhân tham gia tương tác, và đặc tả chi tiết các luồng chức năng nghiệp vụ cốt lõi của hệ thống hỗ trợ sinh viên Student360.
 
 \section{Tổng quan chức năng hệ thống}
-Hệ thống Student360 được thiết kế nhằm đáp ứng nhu cầu học tập và quản lý đời sống của sinh viên một cách toàn diện. Hệ thống bao gồm 4 phân hệ chức năng cốt lõi:
-\begin{itemize}
-    \item \textbf{Phân hệ Quản lý tài chính cá nhân:} Hỗ trợ quản lý số dư theo mô hình 6 lọ tài chính, theo dõi thu chi, lập kế hoạch chi tiêu và quản lý dòng tiền.
-    \item \textbf{Phân hệ Trợ lý tài chính ảo AI:} Hỏi đáp, nhận diện giao dịch tự động qua tin nhắn ngôn ngữ tự nhiên và đưa ra cảnh báo chi tiêu vượt ngưỡng.
-    \item \textbf{Phân hệ Quản lý học bổng trực tuyến:} Kết nối các nhà tài trợ công bố học bổng và sinh viên nộp hồ sơ xin tài trợ trực tuyến.
-    \item \textbf{Phân hệ Quản lý học thuật và bảng điểm:} Quản trị danh mục trường học, ngành học, môn học và hỗ trợ sinh viên quản lý kết quả học tập cá nhân.
-\end{itemize}
+Như đã giới thiệu tại Chương 1, hệ thống Student360 gồm 4 phân hệ chức năng cốt lõi: Quản lý tài chính cá nhân, Trợ lý tài chính ảo AI, Quản lý học bổng trực tuyến và Quản lý học thuật/Bảng điểm. Các mục tiếp theo của chương này xác định các tác nhân tham gia, sơ đồ phân rã chức năng và đặc tả chi tiết nghiệp vụ của từng phân hệ.
 
 \section{Các tác nhân tham gia hệ thống}
 Hệ thống Student360 xác định 3 nhóm tác nhân (Actors) chính tham gia tương tác:
@@ -59,7 +53,56 @@ Dưới đây là cấu trúc phân rã chức năng (Functional Decomposition) 
 Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ cốt lõi của hệ thống Student360.
 
 \subsection{Quản lý tài chính cá nhân}
-\noindent \textbf{Chức năng 1: Phân bổ thu nhập tự động}
+\noindent \textbf{Chức năng 1: Cấu hình tỷ lệ 6 lọ tài chính}
+\begin{itemize}
+    \item \textbf{Tên chức năng:} Cấu hình tỷ lệ phân bổ 6 lọ tài chính.
+    \item \textbf{Tác nhân (Actor):} Sinh viên.
+    \item \textbf{Mô tả:} Cho phép sinh viên tùy chỉnh tỷ lệ phần trăm phân bổ giữa các hũ tài chính (6 hũ mặc định theo mô hình 6 Jars, hoặc hũ tùy chỉnh do sinh viên tự thêm), làm cơ sở để hệ thống tự động chia khoản thu nhập mới ở Chức năng "Phân bổ thu nhập tự động" bên dưới.
+    \item \textbf{Điều kiện trước (Preconditions):} Sinh viên đã đăng nhập thành công vào Mobile App.
+    \item \textbf{Luồng chính (Basic Flow):}
+    \begin{enumerate}
+        \item Sinh viên truy cập màn hình cấu hình hũ tài chính.
+        \item Hệ thống hiển thị danh sách hũ hiện có kèm tỷ lệ phần trăm hiện tại và tổng tỷ lệ đang phân bổ.
+        \item Sinh viên điều chỉnh tỷ lệ phần trăm cho từng hũ, có thể thêm hũ tùy chỉnh mới (đặt tên, biểu tượng, màu sắc) hoặc gỡ bỏ hũ không còn sử dụng.
+        \item Sinh viên nhấn nút "Lưu".
+        \item Mobile App gửi toàn bộ danh sách phân bổ vừa chỉnh sửa lên Backend để lưu lại, mỗi phần tử gồm mã hũ hiện có (nếu là hũ đã tồn tại), tên, tỷ lệ phần trăm, biểu tượng và màu sắc.
+        \item Backend kiểm tra tổng tỷ lệ phần trăm của toàn bộ danh sách phải bằng đúng 100\% (sai lệch cho phép không quá 0.01), sau đó cập nhật hoặc tạo mới từng hũ tương ứng trong bảng \texttt{money\_jars}.
+        \item Backend phản hồi danh sách hũ đã được cập nhật.
+        \item Mobile App hiển thị lại danh sách hũ với tỷ lệ phân bổ mới.
+    \end{enumerate}
+    \item \textbf{Luồng ngoại lệ (Exception Flows):}
+    \begin{itemize}
+        \item \textit{Ngoại lệ 1 - Tổng tỷ lệ khác 100\%:} Backend từ chối toàn bộ yêu cầu và trả về lỗi 400 Bad Request. Mobile App hiển thị thông báo: "Tổng tỷ lệ phân bổ phải bằng 100\%".
+        \item \textit{Ngoại lệ 2 - Cập nhật hũ không thuộc sở hữu:} Nếu mã hũ gửi lên không thuộc về sinh viên hiện tại, Backend trả về lỗi 404 Not Found.
+    \end{itemize}
+    \item \textbf{Kết quả (Postconditions):} Tỷ lệ phân bổ mới được lưu vào cơ sở dữ liệu và áp dụng ngay cho các lần phân bổ thu nhập tự động tiếp theo.
+\end{itemize}
+
+\noindent \textbf{Chức năng 2: Ghi nhận giao dịch thủ công}
+\begin{itemize}
+    \item \textbf{Tên chức năng:} Ghi nhận giao dịch tài chính thủ công (Thu, Chi, Chuyển khoản).
+    \item \textbf{Tác nhân (Actor):} Sinh viên.
+    \item \textbf{Mô tả:} Cho phép sinh viên tự nhập trực tiếp một giao dịch Thu nhập, Chi tiêu hoặc Chuyển khoản giữa các hũ mà không cần qua bước phân tích của AI -- khác với Chức năng "Phân loại giao dịch bằng AI" ở mục Trợ lý AI tài chính, vốn tự động trích xuất thông tin từ một câu mô tả bằng ngôn ngữ tự nhiên.
+    \item \textbf{Điều kiện trước (Preconditions):} Sinh viên đã đăng nhập và có ít nhất một hũ tài chính.
+    \item \textbf{Luồng chính (Basic Flow):}
+    \begin{enumerate}
+        \item Sinh viên chọn loại giao dịch (Thu nhập, Chi tiêu hoặc Chuyển khoản) trên màn hình tương ứng.
+        \item Sinh viên nhập số tiền, chọn hũ nguồn; riêng với Chuyển khoản, sinh viên chọn thêm hũ đích. Sinh viên có thể chọn nhãn chi tiêu (mặc định là nhãn "Khác" nếu bỏ trống), nhập ngày giao dịch và mô tả/ghi chú.
+        \item Sinh viên nhấn nút "Lưu giao dịch".
+        \item Mobile App gửi yêu cầu tạo giao dịch mới kèm toàn bộ dữ liệu đã nhập lên Backend.
+        \item Backend xác thực dữ liệu (số tiền phải lớn hơn 0, các hũ tham chiếu phải thuộc về sinh viên hiện tại), tạo bản ghi mới trong bảng \texttt{financial\_transactions}.
+        \item Backend phản hồi thông tin giao dịch vừa tạo về Mobile App.
+        \item Mobile App cập nhật danh sách lịch sử giao dịch và số dư hũ liên quan theo cơ chế tính động đã mô tả ở Chức năng "Phân bổ thu nhập tự động" bên dưới.
+    \end{enumerate}
+    \item \textbf{Luồng ngoại lệ (Exception Flows):}
+    \begin{itemize}
+        \item \textit{Ngoại lệ 1 - Số tiền không hợp lệ:} Sinh viên nhập số tiền bằng 0 hoặc số âm, Backend từ chối yêu cầu và trả về lỗi 400 Bad Request.
+        \item \textit{Ngoại lệ 2 - Hũ không thuộc sở hữu:} Hũ nguồn hoặc hũ đích không thuộc về sinh viên hiện tại, Backend trả về lỗi 404 Not Found.
+    \end{itemize}
+    \item \textbf{Kết quả (Postconditions):} Giao dịch mới được lưu vào cơ sở dữ liệu và số dư các hũ liên quan được cập nhật ngay lập tức. Thao tác sửa và xóa giao dịch (vuốt trái trong màn hình lịch sử) được đánh giá riêng tại Chương 6.
+\end{itemize}
+
+\noindent \textbf{Chức năng 3: Phân bổ thu nhập tự động}
 \begin{itemize}
     \item \textbf{Tên chức năng:} Phân bổ thu nhập tự động theo mô hình 6 lọ.
     \item \textbf{Tác nhân (Actor):} Sinh viên.
@@ -71,23 +114,25 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
         \item Hệ thống hiển thị biểu mẫu nhập thông tin gồm: Số tiền thu nhập, nguồn thu nhập, mô tả chi tiết, và tùy chọn phân bổ.
         \item Sinh viên nhập số tiền (ví dụ: $10.000.000$ VNĐ), chọn danh mục nguồn thu (ví dụ: "Lương làm thêm"), viết mô tả và bật tùy chọn "Tự động phân bổ".
         \item Sinh viên nhấn nút "Xác nhận".
-        \item Mobile App gửi yêu cầu \texttt{POST /finance/transactions/distribute-income} kèm thông tin số tiền và mô tả lên Backend.
+        \item Mobile App gửi yêu cầu phân bổ thu nhập kèm thông tin số tiền và mô tả lên Backend.
         \item Backend nhận yêu cầu, truy vấn bảng \texttt{money\_jars} để lấy cấu hình tỷ lệ phần trăm của sinh viên hiện tại (ví dụ: 55\%, 10\%, 10\%, 10\%, 10\%, 5\%).
         \item Backend tính toán số tiền phân bổ cụ thể cho từng hũ tài chính, đồng thời kiểm tra tổng số tiền đã phân bổ cho các hũ phải khớp chính xác với số tiền thu nhập ban đầu.
-        \item Backend thực hiện đồng loạt (\texttt{Promise.all}) 6 lệnh ghi bản ghi giao dịch thu vào bảng \texttt{financial\_transactions}, mỗi lệnh cập nhật số dư của một hũ tương ứng. Đây hiện là các lệnh ghi độc lập chứ chưa được bọc trong một Database Transaction chung -- một điểm cần bổ sung để đảm bảo an toàn tuyệt đối nếu có lỗi xảy ra giữa chừng.
+        \item Backend thực hiện đồng loạt 6 lệnh ghi bản ghi giao dịch thu vào cơ sở dữ liệu, mỗi lệnh cập nhật số dư của một hũ tương ứng.
         \item Sau khi toàn bộ 6 lệnh ghi hoàn thành, Backend phản hồi kết quả về Mobile App.
         \item Mobile App cập nhật trạng thái dữ liệu (qua React Query) và hiển thị thông báo phân bổ tiền thành công kèm chi tiết số tiền từng lọ nhận được.
     \end{enumerate}
     \item \textbf{Luồng ngoại lệ (Exception Flows):}
     \begin{itemize}
         \item \textit{Ngoại lệ 1 - Số tiền không hợp lệ:} Tại bước 3, sinh viên nhập số tiền bằng 0 hoặc số âm. Hệ thống hiển thị lỗi ngay tại giao diện di động: "Số tiền thu nhập phải lớn hơn 0" và không cho phép gửi yêu cầu.
-        \item \textit{Ngoại lệ 2 - Tổng số tiền phân bổ không khớp:} Tại bước 6-7, nếu client tự gửi kèm danh sách phân bổ chi tiết theo từng hũ (\texttt{jarAllocations}) mà tổng số tiền của danh sách này không bằng đúng số tiền thu nhập ban đầu, Backend hủy tiến trình, trả về lỗi. Mobile App hiển thị thông báo: "Số tiền phân bổ không khớp với số tiền thu nhập, vui lòng kiểm tra lại". \textit{Lưu ý:} hiện tại Backend chưa kiểm tra độc lập việc tổng tỷ lệ phần trăm (\texttt{percentage}) của 6 hũ có bằng 100\% hay không trước khi phân bổ theo tỷ lệ mặc định -- nếu dữ liệu tỷ lệ hũ của người dùng bị lệch 100\% do thao tác trước đó, hệ thống vẫn phân bổ tiền theo đúng tỷ lệ đang lưu mà không cảnh báo. Đây là một khoảng trống cần bổ sung validation trong các phiên bản kế tiếp.
-        \item \textit{Ngoại lệ 3 - Lỗi kết nối cơ sở dữ liệu giữa chừng:} Tại bước 8, nếu một trong 6 lệnh ghi thất bại do mất kết nối cơ sở dữ liệu, các bản ghi giao dịch đã ghi thành công trước đó (nếu có) sẽ không được rollback tự động do chưa dùng chung một Database Transaction. Backend trả về lỗi HTTP 500 Internal Server Error, Mobile App hiển thị thông báo "Hệ thống bận, vui lòng thử lại sau" và khuyến nghị người dùng kiểm tra lại lịch sử giao dịch trước khi thực hiện lại thao tác.
+        \item \textit{Ngoại lệ 2 - Tổng số tiền phân bổ không khớp:} Tại bước 6-7, nếu client tự gửi kèm danh sách phân bổ chi tiết theo từng hũ (\texttt{jarAllocations}) mà tổng số tiền của danh sách này không bằng đúng số tiền thu nhập ban đầu, Backend hủy tiến trình, trả về lỗi. Mobile App hiển thị thông báo: "Số tiền phân bổ không khớp với số tiền thu nhập, vui lòng kiểm tra lại".
     \end{itemize}
     \item \textbf{Kết quả (Postconditions):} Số dư khả dụng của từng hũ được cập nhật tăng tương ứng. 6 bản ghi giao dịch thu nhập mới được lưu vào cơ sở dữ liệu PostgreSQL. Hệ thống đồng bộ dữ liệu số dư mới lên màn hình Tổng quan ví.
+    \item \textbf{Cơ chế đảm bảo tính toàn vẹn số dư hũ:} Số dư hiển thị của mỗi hũ không được lưu trữ tĩnh mà luôn được tính lại từ lịch sử giao dịch thực tế theo công thức tích lũy:
+    $$\text{Số dư hũ} = \sum (\text{Thu vào}) - \sum (\text{Chi ra}) \pm \sum (\text{Chuyển quỹ})$$
+    Cách tính này giúp tránh sai lệch số liệu do lỗi bất đồng bộ mạng hoặc lỗi phần mềm. Một trường hợp đặc biệt liên quan là khi sinh viên xóa một hũ tài chính tùy chỉnh đang có số dư khác 0: hệ thống bắt buộc chọn một hũ đích để nhận lại tiền, sau đó tạo đồng thời một cặp giao dịch bù trừ (trừ tiền ở hũ nguồn dưới dạng giao dịch \texttt{expense}, cộng tiền vào hũ đích dưới dạng giao dịch \texttt{income}) để tổng tài sản của người dùng không đổi, rồi tính lại số dư của cả hai hũ liên quan.
 \end{itemize}
 
-\noindent \textbf{Chức năng 2: Thiết lập ngưỡng cảnh báo chi tiêu theo hũ}
+\noindent \textbf{Chức năng 4: Thiết lập ngưỡng cảnh báo chi tiêu theo hũ}
 \begin{itemize}
     \item \textbf{Tên chức năng:} Thiết lập ngưỡng cảnh báo chi tiêu cho từng hũ tài chính.
     \item \textbf{Tác nhân (Actor):} Sinh viên.
@@ -99,16 +144,42 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
         \item Sinh viên nhấn chọn "Cài đặt cảnh báo chi tiêu".
         \item Hệ thống hiển thị giao diện với hai lựa chọn độc lập có thể bật/tắt riêng: "Cảnh báo theo số dư tối thiểu" (nhập số tiền, ví dụ $200.000$ VNĐ) và "Cảnh báo theo phần trăm đã chi" (nhập số nguyên từ 0-100, ví dụ 80\%).
         \item Sinh viên bật một hoặc cả hai lựa chọn, nhập giá trị tương ứng và nhấn "Lưu".
-        \item Mobile App gửi request \texttt{PUT /finance/jars/\{id\}/notification-settings} lên Backend.
+        \item Mobile App gửi yêu cầu lưu cấu hình cảnh báo vừa thiết lập lên Backend.
         \item Backend xác thực giá trị đầu vào (phần trăm phải là số nguyên trong khoảng 0-100, số tiền phải không âm), sau đó tạo mới hoặc cập nhật bản ghi duy nhất tương ứng với hũ trong bảng \texttt{jar\_notification\_settings}.
         \item Backend phản hồi thành công về Mobile App.
     \end{enumerate}
     \item \textbf{Luồng ngoại lệ (Exception Flows):}
     \begin{itemize}
         \item \textit{Ngoại lệ 1 - Giá trị nhập không hợp lệ:} Nếu sinh viên nhập phần trăm ngoài khoảng 0-100 hoặc số tiền âm, Backend từ chối yêu cầu ở tầng validate DTO và trả về lỗi 400 Bad Request. Mobile App hiển thị thông báo lỗi tương ứng ngay tại form nhập liệu.
-        \item \textit{Lưu ý về giới hạn hiện tại:} API cập nhật ngưỡng cảnh báo hiện chưa trả về kèm dữ liệu "đã chi bao nhiêu / ngưỡng bao nhiêu" đã tính sẵn, nên Mobile App chưa thể hiển thị trực tiếp thanh tiến trình (progress bar) chỉ từ phản hồi của API này mà cần tự tính toán thêm từ dữ liệu giao dịch. Đồng thời, nhánh cảnh báo theo phần trăm hiện dựa trên trường \texttt{spentAmount}/\texttt{amount} của bảng \texttt{budgets} (jar tags, xem Chương 3) — trường này chưa được các luồng nghiệp vụ hiện hành cập nhật chủ động, nên trong thực tế nhánh cảnh báo theo phần trăm có thể chưa hoạt động ổn định như nhánh cảnh báo theo số dư tối thiểu.
     \end{itemize}
     \item \textbf{Kết quả (Postconditions):} Bản ghi ngưỡng cảnh báo được cập nhật hoặc tạo mới trong bảng \texttt{jar\_notification\_settings}. Từ giao dịch chi tiêu tiếp theo trên hũ đó, hệ thống sẽ kiểm tra ngưỡng này ngay trong luồng tạo giao dịch (đồng bộ, không cần chờ job quét định kỳ) và gửi cảnh báo qua hàng đợi thông báo đẩy nếu vượt ngưỡng.
+    \item \textbf{Cơ chế Idempotency cho kênh cảnh báo bất thường tự động:} Bên cạnh ngưỡng cảnh báo do sinh viên tự cấu hình ở trên, hệ thống còn một kênh cảnh báo riêng do Backend tự động phát hiện: một Cron Job chạy định kỳ lúc 23:00 hằng ngày quét các giao dịch bất thường trong ngày. Vì job này có thể chạy lại hoặc xử lý trùng, hệ thống áp dụng cơ chế loại bỏ trùng lặp (Deduplication) dựa trên khóa Idempotency tính từ tổ hợp \texttt{user\_id + target\_id} (\texttt{target\_id} là mã giao dịch đang được đánh giá): trước khi thêm một cảnh báo mới vào bảng \texttt{ai\_anomaly\_alerts} và kích hoạt gửi thông báo đẩy, hệ thống kiểm tra đã tồn tại cảnh báo nào cùng khóa này chưa, nếu có thì bỏ qua không tạo mới.
+\end{itemize}
+
+\noindent \textbf{Chức năng 5: Lên lịch giao dịch định kỳ}
+\begin{itemize}
+    \item \textbf{Tên chức năng:} Lên lịch giao dịch tài chính định kỳ tự động.
+    \item \textbf{Tác nhân (Actor):} Sinh viên.
+    \item \textbf{Mô tả:} Cho phép sinh viên thiết lập một lịch giao dịch lặp lại tự động (ví dụ: thu nhập định kỳ như lương làm thêm, hoặc chi tiêu định kỳ như tiền trọ) theo tần suất hằng ngày, hằng tuần hoặc hằng tháng. Hệ thống tự động tạo giao dịch đúng thời điểm đã hẹn mà không cần sinh viên thao tác thủ công mỗi lần.
+    \item \textbf{Điều kiện trước (Preconditions):} Sinh viên đã đăng nhập và có ít nhất một hũ tài chính.
+    \item \textbf{Luồng chính (Basic Flow):}
+    \begin{enumerate}
+        \item Sinh viên truy cập màn hình "Lịch giao dịch tự động" và nhấn "Thêm lịch mới".
+        \item Hệ thống hiển thị biểu mẫu gồm: tên lịch, số tiền, loại giao dịch (thu nhập/chi tiêu), tần suất lặp lại (hằng ngày; hằng tuần kèm chọn thứ; hoặc hằng tháng kèm chọn ngày trong tháng), giờ thực thi, cách phân bổ (tự động theo tỷ lệ các hũ, chỉ định một hũ cụ thể, hoặc tùy chỉnh tỷ lệ theo từng hũ), tùy chọn nhắc trước/nhắc sau khi thực thi, và ngày kết thúc lịch (không bắt buộc).
+        \item Sinh viên điền thông tin, ví dụ: "Lương thực tập", $3.000.000$ VNĐ, loại Thu nhập, lặp lại hằng tháng vào ngày 5, phân bổ tự động theo tỷ lệ hũ, bật nhắc trước 1 ngày.
+        \item Sinh viên nhấn nút "Lưu lịch".
+        \item Mobile App gửi yêu cầu tạo lịch giao dịch mới kèm toàn bộ cấu hình đã nhập lên Backend.
+        \item Backend xác thực dữ liệu, lưu bản ghi lịch vào bảng \texttt{auto\_transfer\_schedules}, đồng thời đưa một Job trì hoãn (delayed job) vào hàng đợi BullMQ ứng với đúng thời điểm thực thi kế tiếp.
+        \item Đến đúng thời điểm đã lên lịch, Worker xử lý Job: tạo giao dịch tương ứng (phân bổ theo tỷ lệ các hũ nếu là thu nhập tự động phân bổ, hoặc tạo một giao dịch đơn vào hũ chỉ định), sau đó tự động đặt lại Job kế tiếp cho chu kỳ lặp tiếp theo.
+        \item Nếu sinh viên bật nhắc trước/nhắc sau, Worker gửi thêm thông báo đẩy tương ứng qua kênh thông báo hiện có.
+        \item Sinh viên có thể quay lại màn hình danh sách lịch để bật/tắt tạm thời, sửa hoặc xóa một lịch bất kỳ, hoặc kích hoạt thủ công ngay lập tức mà không cần chờ tới chu kỳ kế tiếp.
+    \end{enumerate}
+    \item \textbf{Luồng ngoại lệ (Exception Flows):}
+    \begin{itemize}
+        \item \textit{Ngoại lệ 1 - Lịch bị xóa trong lúc Job đang chờ thực thi:} Worker phát hiện lịch không còn tồn tại khi Job tới hạn xử lý, sẽ bỏ qua không tạo giao dịch và không thử lại.
+        \item \textit{Ngoại lệ 2 - Cấu hình phân bổ tùy chỉnh không hợp lệ:} Nếu sinh viên chọn phân bổ tùy chỉnh theo tỷ lệ nhưng dữ liệu tỷ lệ từng hũ không hợp lệ, Backend từ chối yêu cầu tạo lịch và trả về lỗi 400 Bad Request.
+    \end{itemize}
+    \item \textbf{Kết quả (Postconditions):} Lịch giao dịch định kỳ được lưu và kích hoạt; từ thời điểm lưu trở đi, hệ thống tự động tạo giao dịch đúng chu kỳ đã cấu hình mà không cần thao tác thủ công.
 \end{itemize}
 
 \subsection{Trợ lý AI tài chính}
@@ -122,8 +193,8 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
     \begin{enumerate}
         \item Sinh viên truy cập màn hình "Trợ lý AI" và nhập câu hỏi (ví dụ: "Tháng này mình đã tiêu bao nhiêu tiền ăn từ hũ thiết yếu?").
         \item Sinh viên nhấn nút gửi câu hỏi.
-        \item Mobile App tạo kết nối Server-Sent Events (SSE) tới endpoint \texttt{/ai/chat/stream} của Backend NestJS (phân biệt với endpoint \texttt{/ai/chat} trả JSON không streaming).
-        \item Backend NestJS xác thực token người dùng, sau đó chuyển tiếp yêu cầu sang FastAPI AI Service tại endpoint \texttt{/api/v1/chat/stream}.
+        \item Mobile App mở một kết nối truyền dữ liệu liên tục (Server-Sent Events - SSE) tới Backend NestJS để nhận phản hồi dạng luồng, khác với chế độ hỏi-đáp thông thường trả về trọn vẹn câu trả lời một lần.
+        \item Backend NestJS xác thực token người dùng, sau đó chuyển tiếp yêu cầu sang FastAPI AI Service.
         \item FastAPI AI Service khởi chạy LangChain Agent, gửi câu hỏi kèm lịch sử trò chuyện ngắn và mã định danh sinh viên.
         \item Agent phân tích ý định câu hỏi và nhận diện cần dữ liệu chi tiêu thực tế. Agent quyết định gọi tool \texttt{search\_transactions} (hoặc \texttt{get\_recent\_transactions} nếu chỉ cần các giao dịch gần nhất) với tham số truy vấn là tháng hiện tại và danh mục "ăn uống/thực phẩm".
         \item Agent gửi yêu cầu truy vấn ngược lại Backend NestJS để lấy dữ liệu giao dịch từ PostgreSQL.
@@ -149,10 +220,10 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
     \begin{enumerate}
         \item Sinh viên mở ô nhập nhanh giao dịch và gõ câu lệnh: "mua sach 150k bang tien mat".
         \item Sinh viên nhấn nút "Phân tích bằng AI".
-        \item Mobile App gọi API \texttt{POST /api/ai/6jars/classify} kèm câu mô tả văn bản thô.
+        \item Mobile App gửi câu mô tả văn bản thô lên Backend để yêu cầu phân loại bằng AI.
         \item Backend NestJS chuyển tiếp payload tới FastAPI AI Service.
         \item FastAPI sử dụng Few-shot Prompting kết hợp mô hình Gemini để phân tích ngữ nghĩa câu thô.
-        \item AI nhận diện: hành động là "chi tiêu" (\texttt{expense}), số tiền là $150.000$, hũ tài chính phù hợp là hũ "Giáo dục" (\texttt{edu}), danh mục đề xuất là "Sách vở/Học cụ".
+        \item AI nhận diện: hành động là "chi tiêu" (\texttt{expense}), số tiền là $150.000$, hũ tài chính phù hợp là hũ "Giáo dục" (\texttt{education}), danh mục đề xuất là "Sách vở/Học cụ".
         \item FastAPI trả về cấu trúc dữ liệu JSON chuẩn hóa chứa các trường thông tin đã trích xuất về Backend NestJS, Backend phản hồi lại cho Mobile App.
         \item Mobile App tự động điền giá trị $150.000$ vào ô Số tiền, chọn hũ Giáo dục và chọn danh mục Sách vở, đồng thời hiển thị nút "Lưu giao dịch".
         \item Sinh viên kiểm tra thấy thông tin chính xác và nhấn "Xác nhận".
@@ -160,13 +231,47 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
     \end{enumerate}
     \item \textbf{Luồng ngoại lệ (Exception Flows):}
     \begin{itemize}
-        \item \textit{Luồng phụ - Người dùng điều chỉnh lại gợi ý sai của AI:} Tại bước 8, nếu AI phân loại sai hũ (ví dụ gợi ý hũ Hưởng thụ thay vì Nhu cầu thiết yếu), sinh viên có thể tự tay chọn lại hũ Nhu cầu thiết yếu trên giao diện. Khi nhấn "Xác nhận", Mobile App sẽ gửi thêm một yêu cầu phụ tới endpoint \texttt{/ai/6jars/classify/override} để ghi nhận lỗi phân loại này, giúp AI tự cập nhật hành vi cho các lần phân tích sau.
+        \item \textit{Luồng phụ - Người dùng điều chỉnh lại gợi ý sai của AI:} Tại bước 8, nếu AI phân loại sai hũ (ví dụ gợi ý hũ Hưởng thụ thay vì Nhu cầu thiết yếu), sinh viên có thể tự tay chọn lại hũ Nhu cầu thiết yếu trên giao diện. Khi nhấn "Xác nhận", Mobile App sẽ gửi thêm một yêu cầu phụ để ghi nhận lại lỗi phân loại này, giúp AI tự cập nhật hành vi cho các lần phân tích sau.
     \end{itemize}
     \item \textbf{Kết quả (Postconditions):} Các trường thông tin được điền tự động và giao dịch được tạo chính xác trong DB.
 \end{itemize}
 
 \subsection{Quản lý học bổng}
-\noindent \textbf{Chức năng 1: Ứng tuyển học bổng trực tuyến}
+
+\noindent \textbf{Chức năng 1: Nhà tài trợ quản lý chương trình học bổng}
+\begin{itemize}
+    \item \textbf{Tên chức năng:} Tạo, chỉnh sửa và gỡ bỏ chương trình học bổng.
+    \item \textbf{Tác nhân (Actor):} Nhà tài trợ.
+    \item \textbf{Mô tả:} Cho phép nhà tài trợ tạo mới, chỉnh sửa hoặc gỡ bỏ một chương trình học bổng trên hệ thống, bao gồm thông tin cơ bản (tên, mô tả, đơn vị tài trợ, hình ảnh), giá trị học bổng (số tiền, số lượng suất), tiêu chí xét duyệt (GPA tối thiểu, ngành/trường áp dụng), thời hạn nộp hồ sơ, cùng danh sách tài liệu bắt buộc phải nộp kèm khi sinh viên ứng tuyển.
+    \item \textbf{Điều kiện trước (Preconditions):} Nhà tài trợ đã đăng nhập thành công vào Webadmin Portal với vai trò Sponsor.
+    \item \textbf{Luồng chính (Basic Flow):}
+    \begin{enumerate}
+        \item Nhà tài trợ truy cập màn hình "Học bổng của tôi" trên Webadmin và nhấn "Tạo học bổng mới".
+        \item Hệ thống hiển thị biểu mẫu nhiều phần: thông tin chung, giá trị học bổng, tiêu chí xét duyệt, mốc thời gian (ngày mở đơn, hạn nộp hồ sơ, ngày công bố kết quả) và thông tin liên hệ.
+        \item Nhà tài trợ điền thông tin và nhấn "Lưu". Webadmin gửi toàn bộ dữ liệu đã nhập lên Backend để tạo bản ghi học bổng mới.
+        \item Nhà tài trợ tiếp tục thêm danh sách tài liệu bắt buộc (ví dụ: Bảng điểm, Minh chứng hoàn cảnh gia đình) và các điều kiện xét duyệt chi tiết cho học bổng vừa tạo, mỗi mục được quản lý riêng biệt cho yêu cầu xét duyệt và tài liệu đính kèm của học bổng đó.
+        \item Nhà tài trợ kích hoạt học bổng (chuyển trạng thái sang công khai); từ thời điểm này học bổng mới hiển thị cho sinh viên trong danh sách để ứng tuyển ở Chức năng 2 bên dưới.
+        \item Đối với chỉnh sửa, nhà tài trợ mở lại học bổng đã tạo, cập nhật thông tin và Webadmin gửi yêu cầu cập nhật lên Backend; đối với gỡ bỏ, nhà tài trợ nhấn "Xóa" và Webadmin gửi yêu cầu xóa học bổng đó lên Backend.
+    \end{enumerate}
+    \item \textbf{Luồng ngoại lệ (Exception Flows):}
+    \begin{itemize}
+        \item \textit{Ngoại lệ 1 - Thiếu thông tin bắt buộc:} Nếu tên học bổng để trống, Backend trả về lỗi 400 Bad Request, Webadmin hiển thị lỗi ngay tại biểu mẫu nhập liệu.
+        \item \textit{Ngoại lệ 2 - Không có quyền thao tác:} Nếu tài khoản đang thao tác không mang vai trò Sponsor, Webadmin không hiển thị màn hình quản lý học bổng và chặn truy cập ngay khi định tuyến trang.
+    \end{itemize}
+    \item \textbf{Kết quả (Postconditions):} Bản ghi chương trình học bổng được tạo mới, cập nhật hoặc xóa tương ứng trong cơ sở dữ liệu; nếu ở trạng thái kích hoạt, học bổng xuất hiện trong danh sách mà sinh viên có thể xem và ứng tuyển.
+\end{itemize}
+
+\noindent \textbf{Thuật toán tính điểm số so khớp tương thích}
+
+Điểm số so khớp tương thích giữa hồ sơ sinh viên và một chương trình học bổng (nhắc tới ở Chức năng 2 bên dưới) được AI Service tính trực tiếp trên bộ nhớ RAM tại thời điểm truy vấn, không phụ thuộc cơ sở dữ liệu vector. Hệ thống gộp các trường thông tin có giá trị trong hồ sơ sinh viên (ngành học, trường, kỹ năng, hoạt động ngoại khóa) thành một đoạn văn bản, chuẩn hóa Unicode để đồng nhất cách hiển thị tiếng Việt trên các hệ điều hành khác nhau, rồi so sánh với tiêu đề và mô tả của học bổng bằng ba độ đo tương đồng văn bản kinh điển:
+\begin{itemize}
+    \item \textbf{Độ tương đồng Jaccard theo token} \cite{jaccard1901} (trọng số 0.5): so sánh tập từ vựng xuất hiện trong hồ sơ và trong học bổng, điểm càng cao khi hai văn bản dùng chung nhiều từ khóa.
+    \item \textbf{Độ tương đồng Jaccard theo Bigram ký tự} \cite{cavnar1994-ngram} (trọng số 0.3): so sánh theo từng cặp ký tự liền kề thay vì theo từ, giúp nhận diện các trường hợp viết tắt hoặc sai chính tả mà so khớp theo từ không phát hiện được.
+    \item \textbf{Tỷ lệ khớp chuỗi} bằng mô-đun \texttt{difflib.SequenceMatcher} của Python (trọng số 0.2): đo mức độ giống nhau tổng thể giữa hai chuỗi văn bản.
+\end{itemize}
+Ba độ đo trên được kết hợp theo trọng số cố định (0.5/0.3/0.2) thành một điểm số tổng hợp duy nhất trong khoảng từ 0 đến 1, hiển thị cho sinh viên dưới dạng phần trăm khớp (ví dụ: Khớp 85\%) ở Chức năng 2 bên dưới. Nếu hồ sơ sinh viên hoặc mô tả học bổng không có đủ dữ liệu văn bản để so sánh, hệ thống trả về điểm khớp bằng 0.
+
+\noindent \textbf{Chức năng 2: Ứng tuyển học bổng trực tuyến}
 \begin{itemize}
     \item \textbf{Tên chức năng:} Sinh viên ứng tuyển học bổng trực tuyến.
     \item \textbf{Tác nhân (Actor):} Sinh viên.
@@ -195,7 +300,7 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
     \item \textbf{Kết quả (Postconditions):} Một bản ghi hồ sơ ứng tuyển mới được tạo ở trạng thái "Đã nộp" (\texttt{submitted}) và được lưu thành công trên hệ thống.
 \end{itemize}
 
-\noindent \textbf{Chức năng 2: Xét duyệt hồ sơ học bổng}
+\noindent \textbf{Chức năng 3: Xét duyệt hồ sơ học bổng}
 \begin{itemize}
     \item \textbf{Tên chức năng:} Nhà tài trợ xét duyệt hồ sơ ứng tuyển học bổng.
     \item \textbf{Tác nhân (Actor):} Nhà tài trợ (Sponsor).
@@ -214,7 +319,7 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
             \item \textbf{Từ chối:} Cập nhật trạng thái sang "Từ chối" (\texttt{rejected}) kèm lý do từ chối.
         \end{itemize}
         \item Nhà tài trợ nhấn nút "Cập nhật".
-        \item Webadmin gửi yêu cầu \texttt{PUT /student-scholarships/\{id\}/status} kèm trạng thái mới và ghi chú duyệt lên Backend.
+        \item Webadmin gửi yêu cầu cập nhật trạng thái hồ sơ kèm trạng thái mới và ghi chú duyệt lên Backend.
         \item Backend thực thi một Transaction cập nhật trạng thái hồ sơ, ghi nhận lịch sử vào bảng \texttt{student\_scholarship\_history}.
         \item Backend tạo một tiến trình Job gửi thông báo đẩy và đẩy vào hàng đợi BullMQ.
         \item Worker ngầm của hệ thống lấy Job ra, gọi FCM SDK để gửi thông báo tới thiết bị di động của sinh viên tương ứng.
@@ -228,7 +333,38 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
 \end{itemize}
 
 \subsection{Quản lý dữ liệu học thuật}
-\noindent \textbf{Chức năng 1: Quản lý bảng điểm cá nhân}
+\noindent \textbf{Chức năng 1: Quản trị viên quản lý Master Data trường, khoa/chương trình đào tạo và môn học}
+\begin{itemize}
+    \item \textbf{Tên chức năng:} Quản trị danh mục dữ liệu học thuật chuẩn hóa (Master Data).
+    \item \textbf{Tác nhân (Actor):} Quản trị viên.
+    \item \textbf{Mô tả:} Cho phép quản trị viên tạo, cập nhật, xóa và import hàng loạt danh mục trường đại học, khoa/chương trình đào tạo và môn học trên Webadmin. Danh mục này là nguồn dữ liệu chuẩn hóa duy nhất được cả Webadmin và Mobile App sử dụng để phục vụ đăng ký thông tin học thuật, nhập điểm và đối chiếu điều kiện xét duyệt học bổng.
+    \item \textbf{Điều kiện trước (Preconditions):} Quản trị viên đã đăng nhập thành công vào Webadmin Portal với quyền quản trị hệ thống.
+    \item \textbf{Luồng chính (Basic Flow):}
+    \begin{enumerate}
+        \item Quản trị viên quản lý danh mục trường: Webadmin cho phép xem danh sách, tạo mới, cập nhật và xóa từng trường đại học.
+        \item Quản trị viên quản lý khoa/chương trình đào tạo: với từng trường, Webadmin cho phép xem danh sách, thêm mới, cập nhật, xóa từng khoa/chương trình đào tạo, hoặc import hàng loạt từ file.
+        \item Quản trị viên quản lý môn học: với từng trường, Webadmin cho phép xem danh sách, thêm mới, cập nhật, xóa từng môn học, hoặc import hàng loạt từ file.
+        \item Dữ liệu vừa cập nhật lập tức khả dụng cho Mobile App: sinh viên có thể chọn trường, khoa/chương trình đào tạo và môn học từ danh mục mới nhất khi khai báo hồ sơ cá nhân hoặc nhập điểm.
+    \end{enumerate}
+    \item \textbf{Luồng ngoại lệ (Exception Flows):}
+    \begin{itemize}
+        \item \textit{Ngoại lệ 1 - Import hàng loạt có bản ghi lỗi:} Khi import file dữ liệu hàng loạt, nếu một số dòng có dữ liệu không hợp lệ (thiếu trường bắt buộc, trùng mã), Backend trả về danh sách các dòng lỗi kèm lý do cụ thể thay vì từ chối toàn bộ file, cho phép quản trị viên sửa và import lại riêng các dòng lỗi.
+    \end{itemize}
+    \item \textbf{Kết quả (Postconditions):} Danh mục Master Data được cập nhật và đồng bộ ngay cho cả Webadmin lẫn Mobile App.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{Images/chapter3/academic/academic-admin-flow.png}{%
+        \includegraphics[width=0.9\textwidth]{Images/chapter3/academic/academic-admin-flow.png}%
+    }{%
+        \rectbox{Sơ đồ Admin Flow cho quản lý trường, khoa/chương trình đào tạo và môn học}
+    }
+    \caption{Sơ đồ luồng quản trị dữ liệu học thuật trên Webadmin}
+    \label{fig:academic-admin-flow}
+\end{figure}
+
+\noindent \textbf{Chức năng 2: Quản lý bảng điểm cá nhân}
 \begin{itemize}
     \item \textbf{Tên chức năng:} Quản lý bảng điểm cá nhân và tự động tính toán GPA.
     \item \textbf{Tác nhân (Actor):} Sinh viên.
@@ -241,10 +377,10 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
         \item Sinh viên nhấn nút "Thêm điểm môn học".
         \item Hệ thống hiển thị biểu mẫu bao gồm: Danh sách môn học chuẩn, Ô nhập điểm số.
         \item Sinh viên gõ tìm kiếm và chọn môn học (ví dụ: "Nhập môn Lập trình - 4 tín chỉ"), nhập điểm số đạt được (ví dụ: 8.5 hoặc điểm chữ A) và nhấn "Lưu".
-        \item Mobile App gửi yêu cầu \texttt{POST /student/grades} lên Backend.
+        \item Mobile App gửi thông tin môn học và điểm số vừa nhập lên Backend để lưu lại.
         \item Backend xác thực môn học thuộc về trường đại học sinh viên đang học, kiểm tra điểm số có nằm trong giới hạn thang điểm của môn học không.
-        \item Backend lưu bản ghi điểm môn học vào bảng \texttt{student\_grades} và phản hồi thành công về Mobile App. Điểm GPA tích lũy \textbf{không} được ghi đè trực tiếp vào bảng hồ sơ học thuật \texttt{student\_academic\_profiles} ngay tại bước này.
-        \item Khi sinh viên mở màn hình Dashboard bảng điểm (\texttt{GET /student/dashboard}), Backend mới truy vấn toàn bộ các môn học có điểm của sinh viên, lấy số tín chỉ và điểm số của từng môn để tính GPA tích lũy có trọng số theo công thức sau, tính trực tiếp tại thời điểm truy vấn (không lưu lại giá trị này vào cơ sở dữ liệu):
+        \item Backend lưu bản ghi điểm môn học và phản hồi thành công về Mobile App. Điểm GPA tích lũy \textbf{không} được ghi đè trực tiếp vào hồ sơ học thuật của sinh viên ngay tại bước này.
+        \item Khi sinh viên mở màn hình Dashboard bảng điểm, Backend mới truy vấn toàn bộ các môn học có điểm của sinh viên, lấy số tín chỉ và điểm số của từng môn để tính GPA tích lũy có trọng số theo công thức sau, tính trực tiếp tại thời điểm truy vấn (không lưu lại giá trị này vào cơ sở dữ liệu):
         $$\text{GPA} = \frac{\sum (\text{Điểm môn } i \times \text{Số tín chỉ môn } i)}{\sum (\text{Số tín chỉ})}$$
         \item Mobile App hiển thị bảng điểm được cập nhật mới kèm chỉ số GPA tích lũy tính theo thời gian thực (ví dụ: GPA: 3.42 / 4.0).
     \end{enumerate}
@@ -255,7 +391,18 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
     \item \textbf{Kết quả (Postconditions):} Bảng điểm và GPA tích lũy được cập nhật tức thời trên màn hình Dashboard học tập.
 \end{itemize}
 
-\noindent \textbf{Chức năng 2: Nhập điểm hàng loạt từ file}
+\begin{figure}[H]
+    \centering
+    \IfFileExists{Images/chapter3/academic/student-gradebook-flow.png}{%
+        \includegraphics[width=0.9\textwidth]{Images/chapter3/academic/student-gradebook-flow.png}%
+    }{%
+        \rectbox{Sơ đồ luồng thao tác bảng điểm của sinh viên}
+    }
+    \caption{Sơ đồ luồng thao tác bảng điểm của sinh viên}
+    \label{fig:student-gradebook-flow}
+\end{figure}
+
+\noindent \textbf{Chức năng 3: Nhập điểm hàng loạt từ file}
 \begin{itemize}
     \item \textbf{Tên chức năng:} Nhập điểm sinh viên hàng loạt từ file bảng điểm.
     \item \textbf{Tác nhân (Actor):} Sinh viên.
@@ -269,10 +416,10 @@ Dưới đây là phần đặc tả chi tiết các chức năng nghiệp vụ 
         \item Mobile App thực hiện đọc nội dung tệp tin cục bộ, sử dụng bộ Parser phân tích cú pháp từng dòng của tệp để trích xuất ra các cột thông tin: Mã môn học, Điểm số.
         \item Hệ thống hiển thị danh sách các môn học và điểm số đã parse được lên màn hình xem trước để sinh viên rà soát lại.
         \item Sinh viên kiểm tra thông tin và nhấn nút "Xác nhận lưu tất cả".
-        \item Mobile App gửi toàn bộ danh sách các cặp giá trị (Mã môn học, Điểm số) đã được parse trong một lần gọi duy nhất tới cùng endpoint \texttt{POST /student/grades} (không phải một endpoint \texttt{/bulk} riêng), với phần thân request là một mảng nhiều môn học/điểm số.
-        \item Backend kiểm tra sự tồn tại của các mã môn học trong cơ sở dữ liệu Master Data của trường đại học mà sinh viên đăng ký.
-        \item Backend lặp qua từng phần tử trong mảng để xóa điểm cũ của những môn học trùng lặp (nếu có) và thêm mới các bản ghi điểm môn học vào bảng \texttt{student\_grades}.
-        \item Backend phản hồi mã HTTP 200/201 kèm số lượng môn học đã lưu thành công. GPA tích lũy không được tính và lưu lại ở bước này, mà sẽ được tính theo thời gian thực khi sinh viên mở lại Dashboard bảng điểm (\texttt{GET /student/dashboard}), theo đúng cơ chế đã mô tả ở Chức năng 1.
+        \item Mobile App gửi toàn bộ danh sách các cặp giá trị (Mã môn học, Điểm số) đã được parse lên Backend trong một lần gửi duy nhất, tái sử dụng cùng luồng lưu điểm với Chức năng 2 ở trên chứ không qua một luồng nhập hàng loạt tách biệt riêng.
+        \item Backend kiểm tra sự tồn tại của các mã môn học trong danh mục Master Data của trường đại học mà sinh viên đăng ký.
+        \item Backend lặp qua từng phần tử trong danh sách để xóa điểm cũ của những môn học trùng lặp (nếu có) và thêm mới các bản ghi điểm môn học.
+        \item Backend phản hồi kết quả thành công kèm số lượng môn học đã lưu. GPA tích lũy không được tính và lưu lại ở bước này, mà sẽ được tính theo thời gian thực khi sinh viên mở lại Dashboard bảng điểm, theo đúng cơ chế đã mô tả ở Chức năng 2.
         \item Mobile App hiển thị thông báo "Đã nhập thành công X môn học vào bảng điểm" và tải lại giao diện bảng điểm mới.
     \end{enumerate}
     \item \textbf{Luồng ngoại lệ (Exception Flows):}
