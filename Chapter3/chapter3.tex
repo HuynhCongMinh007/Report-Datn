@@ -99,50 +99,15 @@ Một yêu cầu đi qua Backend lần lượt qua các tầng sau:
     \item \textbf{Tầng đẩy tác vụ nền:} đối với các tác vụ không cần phản hồi tức thời (gửi thông báo hàng loạt, lên lịch giao dịch định kỳ), Backend đẩy tác vụ vào hàng đợi Redis/BullMQ thay vì xử lý đồng bộ trong cùng một yêu cầu, giúp không làm chậm tiến trình xử lý API chính.
 \end{itemize}
 
-<<<<<<< HEAD
-\section{Thiết kế cơ sở dữ liệu (Database Design)}
-Hệ thống sử dụng cơ sở dữ liệu quan hệ \textbf{PostgreSQL 15} \cite{postgresql-docs} làm nền tảng lưu trữ chính cho toàn bộ dữ liệu nghiệp vụ (giao dịch tài chính, hồ sơ học bổng, dữ liệu học thuật). Bên cạnh đó, \textbf{Redis 7} \cite{redis-docs} được sử dụng chủ yếu làm Message Broker để quản lý hàng đợi BullMQ đẩy thông báo bất đồng bộ và các job lên lịch giao dịch định kỳ. Riêng kết quả phân tích AI Insights không lưu qua Redis mà được lưu bền vững trong bảng PostgreSQL \texttt{ai\_finance\_insight\_snapshots}, theo khóa duy nhất \texttt{user\_id + tháng + năm + ngày phân tích}, giúp các lượt truy cập báo cáo trong cùng chu kỳ không cần gọi lại LLM. Việc tính toán độ tương đồng trong cơ chế gợi ý học bổng được thực hiện hoàn toàn trên bộ nhớ RAM tại AI Service (Python), không phụ thuộc vào các extension như \texttt{pgvector}.
-=======
 \subsection{Tổ chức theo miền nghiệp vụ}
 Trong phạm vi đề tài này, Backend được tổ chức thành các miền nghiệp vụ chính: Xác thực và phân quyền, Tài chính 6 lọ, Học bổng, Học thuật/Bảng điểm và Thông báo. Cần lưu ý rằng Backend là nền tảng dùng chung cho toàn bộ hệ sinh thái Student360, phục vụ cả các phân hệ khác ngoài phạm vi đồ án này; nội dung trình bày trong báo cáo chỉ tập trung vào các miền nghiệp vụ liên quan trực tiếp tới tài chính, học bổng và học thuật.
->>>>>>> origin/main
 
 \subsection{Nguyên tắc thiết kế áp dụng}
 \begin{itemize}
-<<<<<<< HEAD
-    \item \textbf{\texttt{money\_jars} (Các hũ tài chính):} Lưu trữ số dư và thông tin phân bổ của từng hũ.
-        \begin{itemize}
-            \item \texttt{id} (UUID, khóa chính): Định danh duy nhất cho hũ.
-            \item \texttt{user\_id} (UUID, khóa ngoại): Tham chiếu đến bảng \texttt{users}.
-            \item \texttt{category\_type} (VARCHAR): Phân loại hũ, gồm 6 giá trị chuẩn \texttt{essentials} (Nhu cầu thiết yếu), \texttt{education} (Giáo dục), \texttt{investment} (Tự do tài chính), \texttt{reserve} (Tiết kiệm dài hạn), \texttt{enjoyment} (Hưởng thụ) và \texttt{sharing} (Cho đi).
-            \item \texttt{name} (VARCHAR): Tên hiển thị của hũ.
-            \item \texttt{percentage} (DECIMAL(5,2)): Tỷ lệ phần trăm phân bổ (Tổng 6 lọ phải bằng 100\%).
-            \item \texttt{current\_balance} (DECIMAL(15,2)): Số dư hiện tại của hũ, được đồng bộ lại định kỳ từ tổng hợp lịch sử giao dịch (không phải giá trị tính hoàn toàn tại thời điểm đọc).
-            \item \texttt{accumulated\_income}, \texttt{accumulated\_expense} (DECIMAL): Tổng thu và tổng chi lũy kế, dùng làm dữ liệu nguồn cho việc tính lại \texttt{current\_balance}.
-        \end{itemize}
-    \item \textbf{\texttt{financial\_transactions} (Giao dịch tài chính):} Lưu vết tất cả biến động dòng tiền.
-        \begin{itemize}
-            \item \texttt{id} (UUID, khóa chính): Định danh giao dịch.
-            \item \texttt{user\_id} (UUID, khóa ngoại, qua quan hệ): Định danh người dùng thực hiện.
-            \item \texttt{money\_jar\allowbreak\_id} (UUID, khóa ngoại): Tham chiếu đến hũ nguồn.
-            \item \texttt{counterpart\_jar\_id} (UUID, khóa ngoại, có thể NULL): Hũ đích khi giao dịch là một lượt chuyển quỹ giữa 2 hũ; hệ thống không dùng riêng một giá trị \texttt{type = transfer} mà mô hình hóa chuyển quỹ bằng cặp bản ghi thu/chi có \texttt{counterpart\_jar\_id} trỏ lẫn nhau.
-            \item \texttt{amount} (DECIMAL): Số tiền thu hoặc chi.
-            \item \texttt{type} (ENUM): Chỉ gồm 2 giá trị \texttt{income} và \texttt{expense}.
-            \item \texttt{budget\_id} (UUID, khóa ngoại, có thể NULL): Tham chiếu đến bản ghi trong bảng \texttt{budgets} đại diện cho nhãn (Jar Tag) mà giao dịch thuộc về.
-            \item \texttt{tags} (TEXT[]): Mảng chuỗi lưu các slug nhãn phân loại của giao dịch, phục vụ tìm kiếm nhanh và hiển thị phụ trợ; không phải khóa ngoại.
-            \item \texttt{notes} (TEXT): Mô tả chi tiết giao dịch.
-            \item \texttt{transaction\allowbreak\_date} (TIMESTAMPTZ): Thời điểm giao dịch phát sinh.
-        \end{itemize}
-    \item \textbf{\texttt{budgets} (Nhãn chi tiêu theo hũ -- Jar Tags):} Về mặt tên bảng và cấu trúc cột, đây là bảng được thiết kế ban đầu cho hạn mức ngân sách, nhưng hiện tại được hệ thống tái sử dụng làm cơ chế gắn nhãn/danh mục con (tag) cho từng hũ (ví dụ hũ Nhu cầu thiết yếu có các tag "Ăn uống", "Đi lại", "Hóa đơn"...), phục vụ việc phân loại chi tiêu chi tiết hơn 6 hũ gốc. Các trường chính: \texttt{id}, \texttt{money\_jar\_id} (hũ sở hữu tag), \texttt{name}, \texttt{slug}, \texttt{is\_tag} (luôn \texttt{true} trong luồng hiện tại), \texttt{is\_default}, \texttt{amount}/\texttt{spent\_amount}/\texttt{remaining\_amount} (giữ lại từ thiết kế hạn mức cũ nhưng không được cập nhật qua nghiệp vụ đang hoạt động), \texttt{period\_type} (\texttt{monthly}, \texttt{yearly}, \texttt{one\_time}). Mỗi hũ luôn có ít nhất một tag mặc định với \texttt{slug = 'khac'} được tự động tạo nếu chưa tồn tại, đảm bảo mọi giao dịch luôn có thể được phân loại. Khi người dùng tạo tag mới, hệ thống tự động sinh \texttt{slug} từ tên tag và kiểm tra trùng \texttt{slug} trong phạm vi cùng hũ; tag mặc định \texttt{'khac'} không thể bị xóa. Dữ liệu chi tiêu theo tag được tổng hợp trong biểu đồ thống kê của từng hũ, hiển thị top 5 tag có tổng chi tiêu lớn nhất.
-    \item \textbf{\texttt{auto\_transfer\_schedules} (Lịch trình chuyển tiền tự động):} Quản lý lịch trình tự động chuyển đổi số dư định kỳ.
-    \item \textbf{\texttt{jar\_notification\_settings} (Ngưỡng cảnh báo chi tiêu theo hũ):} Đây mới là cơ chế thực sự đóng vai trò "hạn mức chi tiêu" đang hoạt động trong hệ thống. Mỗi hũ có tối đa một bản ghi cấu hình ngưỡng cảnh báo, gồm \texttt{money\_jar\_id} (khóa ngoại, ràng buộc duy nhất 1-1 với hũ), \texttt{percent\_enabled}/\texttt{percent\_value} (bật cảnh báo khi chi tiêu vượt X\% số dư đầu kỳ) và \texttt{amount\_enabled}/\texttt{amount\_value} (bật cảnh báo khi chi tiêu vượt một số tiền cố định). Cấu hình này không giới hạn theo tháng/năm cụ thể mà áp dụng liên tục cho tới khi người dùng thay đổi.
-    \item \textbf{\texttt{ai\_user\_preferences\_6jars} (Cấu hình AI):} Lưu vết cấu hình và sở thích của người dùng để AI phân loại giao dịch chính xác hơn.
-=======
     \item \textbf{Phân tách trách nhiệm:} tầng xác thực/phân quyền và tầng chuẩn hóa phản hồi được tách hoàn toàn khỏi tầng xử lý nghiệp vụ, mỗi thay đổi về quy tắc xác thực hay định dạng phản hồi không ảnh hưởng tới logic nghiệp vụ.
     \item \textbf{Khả năng mở rộng:} việc module hóa theo miền nghiệp vụ cho phép bổ sung miền chức năng mới mà không ảnh hưởng tới các miền đã có; xử lý bất đồng bộ qua hàng đợi giúp hệ thống chịu tải tốt hơn khi cần gửi thông báo tới số lượng lớn người dùng cùng lúc.
     \item \textbf{Khả năng bảo trì:} cấu trúc module hóa rõ ràng theo miền nghiệp vụ giúp việc định vị và sửa lỗi trong một miền cụ thể không đòi hỏi phải hiểu toàn bộ hệ thống.
     \item \textbf{Khả năng tích hợp hệ thống ngoài:} việc gọi sang AI Service được cô lập qua một lớp client HTTP trung gian riêng biệt, giúp phần lõi nghiệp vụ của Backend không phụ thuộc trực tiếp vào chi tiết triển khai của AI Service, dễ dàng thay đổi hoặc nâng cấp AI Service mà không ảnh hưởng Backend.
->>>>>>> origin/main
 \end{itemize}
 
 \section{Kiến trúc hệ thống AI}
@@ -220,21 +185,8 @@ Sinh viên nhập một mô tả giao dịch bằng ngôn ngữ tự nhiên trê
 \subsection{Luồng trò chuyện AI thời gian thực}
 Sinh viên đặt câu hỏi trong màn hình trò chuyện AI. Mobile App mở một kết nối SSE tới Backend; Backend xác thực rồi chuyển tiếp yêu cầu sang AI Service; AI Service suy luận và truy vấn dữ liệu thật qua Backend khi cần, sau đó truyền câu trả lời về dưới dạng luồng token liên tục; Backend chuyển tiếp luồng này về Mobile App để hiển thị theo thời gian thực (Hình~\ref{fig:ai-flow}).
 
-<<<<<<< HEAD
-\subsection{Cơ chế đảm bảo tính toàn vẹn số dư hũ}
-Nhằm ngăn ngừa hiện tượng sai lệch hoặc thất thoát số dư do lỗi bất đồng bộ mạng hoặc lỗi phần mềm, hệ thống áp dụng nguyên tắc:
-\begin{itemize}
-    \item \textbf{Số dư động (Dynamic Balance):} Số dư hiển thị trên giao diện của từng hũ không được lưu trữ tĩnh mà luôn được tính toán lại bằng công thức tích lũy từ lịch sử các dòng tiền thực tế:
-    $$\text{Số dư hũ} = \sum (\text{Thu vào}) - \sum (\text{Chi ra}) \pm \sum (\text{Chuyển quỹ})$$
-    \item \textbf{Hàm tính lại số dư \texttt{updateJarBalanceFromTransactions}:} Thay vì lưu số dư tĩnh trong cột của bảng hũ, hệ thống luôn tính lại số dư từ số liệu gốc bằng cách tổng hợp (\texttt{SUM}) toàn bộ lịch sử giao dịch thu/chi thuộc về hũ đó. Hàm này được gọi sau mọi thao tác tạo, cập nhật hoặc xóa giao dịch, giúp số dư luôn phản ánh đúng thực tế và tự phục hồi ngay cả khi có thao tác xóa hoặc điều chỉnh giao dịch cũ.
-    \item \textbf{Cơ chế bảo vệ hũ hệ thống (System Jars):} 6 hũ mặc định (được đánh dấu bằng cỹ hiệu \texttt{isSystem = true}) không thể đổi tên, thay mô tả, hoặc bị xóa -- chỉ có thể thay đổi biểu tượng (icon) và màu sắc. Điều này đảm bảo cấu trúc 6 lọ chuẩn theo mô hình T. Harv Eker luôn được bảo tồn, ngăn chặn người dùng vô tình xóa mất cấu trúc tài chính cốt lõi.
-    \item \textbf{Cơ chế khởi tạo lười (Lazy Initialization):} Khi sinh viên lần đầu gọi bất kỳ API liên quan đến hũ tài chính, hệ thống kiểm tra và tự động tạo đủ 6 hũ mặc định (\texttt{createDefaultSystemJarCategories}) nếu chưa có. Người dùng không cần thực hiện bước “Thiết lập ban đầu” riêng, hệ thống tự chuẩn bị cấu trúc trong lần truy cập đầu tiên mà không làm gian đoạn trải nghiệm.
-    \item \textbf{Hành vi khi xóa hũ tài chính:} Khi người dùng muốn xóa một hũ tài chính tùy chỉnh, hệ thống không chỉ đơn giản là xóa dòng dữ liệu trong DB. Nếu hũ đó có số dư khác 0, hệ thống bắt buộc người dùng chọn một hũ đích để nhận lại tiền. Sau đó, hệ thống tạo đồng thời một cặp giao dịch bù trừ: trừ tiền ở hũ nguồn (Giao dịch \texttt{expense}) và cộng tiền vào hũ đích (Giao dịch \texttt{income}) để đảm bảo tổng tài sản của người dùng không đổi, rồi tính lại số dư của cả hai hũ liên quan.
-\end{itemize}
-=======
 \subsection{Luồng xét duyệt học bổng và thông báo kết quả}
 Nhà tài trợ cập nhật trạng thái một hồ sơ ứng tuyển trên Web Admin Portal. Yêu cầu được gửi tới Backend qua HTTP REST; Backend cập nhật trạng thái hồ sơ trong PostgreSQL, sau đó đẩy một tác vụ gửi thông báo vào hàng đợi Redis thay vì gửi ngay trong cùng yêu cầu; một worker chạy nền lấy tác vụ ra khỏi hàng đợi và gọi Firebase Cloud Messaging để gửi thông báo đẩy tới thiết bị của sinh viên.
->>>>>>> origin/main
 
 \section{Đánh giá kiến trúc hệ thống}
 
@@ -244,189 +196,8 @@ Kiến trúc phân tán nhiều tầng, đa-repository giúp tách trách nhiệ
 \subsection{Khả năng mở rộng và bảo trì}
 Kiến trúc phân lớp và module hóa theo miền nghiệp vụ cho phép bổ sung dịch vụ hoặc miền nghiệp vụ mới mà không phá vỡ cấu trúc hiện có. Tầng trừu tượng hóa nhà cung cấp mô hình ngôn ngữ lớn tại AI Service cho phép đổi hoặc bổ sung nhà cung cấp mới mà không cần sửa đổi logic nghiệp vụ ở các tầng phía trên. Việc tổ chức đa-repository, mỗi dịch vụ một repository riêng, giúp giảm xung đột mã nguồn giữa các nhóm nhỏ và cho phép mỗi dịch vụ được triển khai, phiên bản hóa độc lập với các dịch vụ còn lại.
 
-<<<<<<< HEAD
-\subsection{Thuật toán phân loại giao dịch tự động bằng LLM (AI Transaction Classifier)}
-Khi người dùng nhập mô tả giao dịch (ví dụ: "mua sach 150k" hoặc "di cho 80k"), hệ thống gọi endpoint \texttt{/api/ai/6jars/classify}.
-\begin{itemize}
-    \item Hệ thống gửi văn bản mô tả và số tiền tới LLM Classifier.
-    \item Mô hình sử dụng Few-shot Prompting kết hợp cơ chế gán nhãn để phân tích ngữ nghĩa, tự động suy luận ra:
-        \begin{itemize}
-            \item "mua sach" $\rightarrow$ Lọ đề xuất: \texttt{education} (Học tập), Danh mục: \texttt{Sách vở/Học cụ}.
-            \item "di cho" $\rightarrow$ Lọ đề xuất: \texttt{necessity} (Nhu cầu thiết yếu), Danh mục: \texttt{Thực phẩm/Ăn uống}.
-        \end{itemize}
-    \item \textbf{Cơ chế Resolve Tag khi tạo giao dịch:} Khi sinh viên tạo giao dịch và có cung cấp \texttt{budget\_id} (mã nhãn) do LLM gợi ý, Backend kiểm tra nhãn đó có thuộc đúng hũ được chọn không trước khi gán vào giao dịch. Nếu sinh viên không cung cấp nhãn, hệ thống tự động dùng tag mặc định \texttt{'khac'} của hũ, đảm bảo mọi giao dịch đều được phân loại mà không yêu cầu bắt buộc người dùng chọn nhãn.
-    \item \textbf{Cơ chế Override (Học hành vi người dùng):} Nếu AI phân loại sai hũ (ví dụ đề xuất lọ Hưởng thụ nhưng người dùng sửa thủ công thành lọ Cho đi trước khi lưu), hệ thống gọi API \texttt{/ai/6jars/classify/override} để lưu cặp \texttt{(text mô tả, hũ đã sửa)} vào bảng \texttt{ai\_user\_preferences\_6jars}. Lần sau khi gặp từ khóa tương tự, AI ưu tiên lựa chọn sửa đổi của người dùng, tạo ra một bộ nhớ học tập riêng per-user theo thời gian.
-\end{itemize}
-
-\subsection{Cơ chế gợi ý học bổng thông minh dựa trên hồ sơ sinh viên}
-Cơ chế gợi ý học bổng được triển khai trong hàm \texttt{\_score\_profile\_match} tại AI Service, sử dụng tổ hợp có trọng số của ba độ đo tương đồng văn bản. Thuật toán hoạt động hoàn toàn trên bộ nhớ RAM của Python AI Service, không phụ thuộc vào cơ sở dữ liệu vector.
-
-\textbf{Bước 1: Chuẩn hóa và gộp hồ sơ sinh viên.}
-Hệ thống gộp toàn bộ các trường dữ liệu có giá trị (ngành học, trường, kỹ năng, hoạt động ngoại khóa) của sinh viên thành một chuỗi văn bản phẳng dùng hàm \texttt{\_build\_profile\_text}, sau đó áp dụng hàm \texttt{\_normalize\_text} thực hiện \textit{Unicode NFKD normalization} kết hợp loại bỏ dấu tiếng Việt (accent-stripping) để văn bản trở thành dạng không dấu, giúp tăng độ chịu lỗi khi người dùng nhập liệu tiếng Việt không dấu (ví dụ: "nganh cntt" khớp với "ngành CNTT").
-
-\textbf{Bước 2: Tính độ tương đồng Jaccard trên tập token từ vựng (trọng số 0.5).}
-Chỉ số Jaccard \cite{jaccard1901} được tính giữa tập hợp token từ vựng của hồ sơ $A$ và mô tả học bổng $B$:
-\begin{equation}
-\label{eq:jaccard}
-J(A, B) = \frac{|A \cap B|}{|A \cup B|}
-\end{equation}
-Trong đó $A$ là tập các token thu được sau khi tokenize văn bản hồ sơ sinh viên, $B$ là tập token từ tiêu đề và mô tả học bổng.
-
-\textbf{Bước 3: Tính độ tương đồng Jaccard trên Bigram ký tự (trọng số 0.3).}
-Tập hợp n-gram ký tự độ dài $n=2$ (Bigrams) được định nghĩa theo \cite{cavnar1994-ngram}:
-\begin{equation}
-\label{eq:bigram}
-N(S, 2) = \{s_i s_{i+1} \mid i = 1, 2, ..., |S|-1\}
-\end{equation}
-Ví dụ với chuỗi $S = \text{``cntt''} \rightarrow N(S,2) = \{\text{``cn''}, \text{``nt''}, \text{``tt''}\}$. Đối với hồ sơ sinh viên, Bigram được tính trên chuỗi \texttt{profile\_match\_text} -- là chuỗi được nối từ các token đã qua lọc stopword và được sắp xếp theo thứ tự bảng chữ cái trước khi ghép lại. Cách sắp xếp này giúp ổn định kết quả so khớp bất kể thứ tự xuất hiện của từ trong hồ sơ. Độ tương đồng Bigram giúp hệ thống nhận diện các từ viết tắt hoặc sai chính tả.
-
-\textbf{Bước 4: Tính tỷ lệ khớp chuỗi SequenceMatcher (trọng số 0.2).}
-Sử dụng mô-đun \texttt{difflib.SequenceMatcher} của Python để đo độ tương đồng của dãy ký tự. Đầu vào là chuỗi token đã lọc và sắp xếp của hồ sơ sinh viên (\texttt{profile\_match\_text}) so với tên học bổng đã chuẩn hóa không dấu (\texttt{\_normalize\_text(name)}). Việc sử dụng chuỗi rút gọn thay vì toàn bộ văn bản hồ sơ giúp điểm số phản ánh đúng mức độ liên quan giữa từ khóa hồ sơ và tên chương trình học bổng.
-
-\textbf{Bước 5: Kết hợp có trọng số.}
-Điểm số khớp tổng hợp cuối cùng được tính theo công thức:
-\begin{equation}
-\label{eq:match-score}
-\text{score} = 0.5 \times J_{token}(A, B) + 0.3 \times J_{bigram}(A, B) + 0.2 \times \text{Seq}(A, B)
-\end{equation}
-
-Giải thuật được mô tả chính thức như sau:
-
-\begin{algorithm}
-\caption{Cơ chế gợi ý học bổng dựa trên hồ sơ sinh viên}
-\label{alg:schol-match}
-\begin{algorithmic}[1]
-\Procedure{ScoreProfileMatch}{$Profile, Scholarship$}
-    \State $profileText \gets \textsc{BuildProfileText}(Profile)$
-    \State $profileText \gets \textsc{NfkdNormalize}(profileText)$ \Comment{Unicode NFKD + loại dấu}
-    \State $scholText \gets Scholarship.name + \text{ } + Scholarship.eligibility\_criteria$
-    \State $profileTokens \gets \textsc{Tokenize\_FilterStopwords}(profileText)$
-    \State $scholTokens \gets \textsc{Tokenize}(scholText)$
-    \If{$profileTokens = \emptyset$ \textbf{or} $scholTokens = \emptyset$}
-        \State \Return $0.0$
-    \EndIf
-    \State $tokenScore \gets J(profileTokens, scholTokens)$\Comment{Công thức~(\ref{eq:jaccard})}
-    \State $profileMatchText \gets \textsc{Join}(\textsc{Sort}(profileTokens))$ \Comment{sắp xếp để ổn định}
-    \State $profileBigrams \gets N(profileMatchText, 2)$\Comment{Công thức~(\ref{eq:bigram})}
-    \State $scholBigrams \gets N(scholText, 2)$
-    \State $bigramScore \gets J(profileBigrams, scholBigrams)$
-    \State $scholName \gets \textsc{NfkdNormalize}(Scholarship.name)$
-    \State $seqScore \gets \textsc{SequenceMatcher}(profileMatchText,\, scholName)$
-    \State $score \gets 0.5 \times tokenScore + 0.3 \times bigramScore + 0.2 \times seqScore$
-    \State \Return $\textsc{Round}(score, 6)$
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
-
-\subsection{Cơ chế lưu trữ snapshot nhận định tài chính (AI Insights) tối ưu năng lực đáp ứng}
-Để giảm thiểu số lượng cuộc gọi trực tiếp đến Mô hình ngôn ngữ lớn (LLM) và tối ưu hóa thời gian phản hồi, hệ thống không dùng bộ nhớ đệm tạm thời (cache) cho kết quả phân tích AI Insights mà lưu trực tiếp thành snapshot bền vững trong PostgreSQL.
-\begin{itemize}
-    \item \textbf{Mục đích sử dụng:} Khi người dùng truy cập màn hình báo cáo, hệ thống cần cung cấp các nhận định tài chính tức thời. Do việc gọi API LLM tốn thời gian và chi phí tài nguyên, dữ liệu nhận định sau khi sinh ra lần đầu trong một chu kỳ báo cáo sẽ được lưu lại thay vì phải sinh lại từ đầu.
-    \item \textbf{Cơ chế hoạt động:} Kết quả được ghi vào bảng \texttt{ai\_finance\_insight\_snapshots} với khóa xác định duy nhất theo \texttt{user\_id + tháng + năm + ngày phân tích} (ràng buộc Unique Index trên bốn cột này). Các yêu cầu truy cập tiếp theo trong cùng chu kỳ sẽ được đáp ứng trực tiếp từ bản ghi snapshot này mà không cần kích hoạt lại quy trình phân tích của LLM, giúp giảm thiểu độ trễ và tiết kiệm chi phí vận hành API. Để tránh trường hợp một job sinh insight bị kẹt ở trạng thái \texttt{GENERATING} do lỗi giữa chừng, hệ thống tính toán động ngưỡng thời gian hết hạn 5 phút (\texttt{staleAt}) dựa trên cột \texttt{updated\_at} của bản ghi hiện tại. Nếu job đang ở trạng thái \texttt{GENERATING} nhưng \texttt{updated\_at} đã cũ hơn 5 phút so với thời điểm hiện tại, hệ thống coi job đó là bị kẹt và cho phép job mới giành quyền xử lý thông qua một câu lệnh UPDATE có điều kiện kiểm tra trực tiếp trên cột \texttt{updated\_at}, đảm bảo chỉ một job thực sự ghi được thay đổi trạng thái.
-\end{itemize}
-
-\section{Cơ chế thông báo di động đa kênh (Notification System)}
-Hệ thống thông báo đẩy được thiết kế để hoạt động ổn định dưới tải trọng cao và đảm bảo tính thời gian thực.
-
-\subsection{Mô hình xử lý hàng đợi bất đồng bộ với Redis và BullMQ}
-Luồng xử lý thông báo được tổ chức như sau:
-\begin{enumerate}
-    \item Khi một sự kiện cần gửi thông báo xảy ra (ví dụ: Học bổng mới được duyệt hoặc phát hiện chi tiêu bất thường).
-    \item NestJS Service đóng vai trò Producer tạo ra một Job chứa thông tin tiêu đề, nội dung và danh sách các token thiết bị di động của người nhận, sau đó đẩy Job này vào hàng đợi Redis thông qua BullMQ.
-    \item Một cụm các tiến trình Worker chạy ngầm sẽ liên tục lấy các Job ra khỏi hàng đợi Redis để xử lý. Việc xử lý bất đồng bộ giúp máy chủ API chính không bị block kết nối mạng khi phải thực thi các tác vụ gửi tin nhắn IO-intensive ra bên ngoài.
-\end{enumerate}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\linewidth,height=0.45\textheight,keepaspectratio]{fig3_5_redis_bullmq.png}
-    \caption{Mô hình xử lý hàng đợi bất đồng bộ với Redis và BullMQ}
-    \label{fig:notif-queue}
-\end{figure}
-
-\subsection{Giải pháp đẩy thông báo thời gian thực qua Firebase Cloud Messaging (FCM)}
-Các Worker sử dụng thư viện \texttt{firebase-admin} của Firebase SDK để kết nối tới máy chủ Google FCM:
-\begin{itemize}
-    \item Hệ thống xây dựng cấu trúc tải tin (Payload) tối ưu cho từng nền tảng hệ điều hành.
-    \item Đối với Android: Đặt độ ưu tiên cao (\texttt{high}), thời gian sống của tin nhắn (TTL) là 24 giờ, sử dụng kênh thông báo chuyên biệt \texttt{student360\_notifications} để kích hoạt âm thanh mặc định và chế độ rung trên thiết bị.
-    \item Đối với iOS (APNs): Đính kèm tiêu đề và nội dung tin nhắn trong cấu trúc APNs headers với độ ưu tiên cao (\texttt{apns-priority: 10}) để đánh thức thiết bị ở chế độ nền.
-\end{itemize}
-
-\subsection{Cơ chế Idempotency và khử trùng lặp cảnh báo bất thường}
-\begin{sloppypar}
-Khi chạy công việc (job) quét phát hiện chi tiêu bất thường định kỳ vào cuối ngày (Cron Job chạy lúc 23:00 hằng ngày tại Backend NestJS), hệ thống sử dụng logic phát hiện dựa trên ngưỡng: mỗi giao dịch chi tiêu trong ngày được so sánh với mức trung bình giao dịch 30 ngày trước. Nếu giá trị giao dịch vượt 250\% trung bình đó, giao dịch được đánh dấu là bất thường. Để tránh gửi lặp cảnh báo cho cùng một giao dịch qua các lần chạy job:
-\begin{itemize}
-    \item Hệ thống áp dụng cơ chế loại bỏ trùng lặp (Deduplication) dựa trên tổ hợp khóa \texttt{user\_id + target\_id}, trong đó \texttt{target\_id} là mã định danh UUID của giao dịch tài chính đang được đánh giá.
-    \item Trước khi tạo cảnh báo mới vào bảng \texttt{ai\_anomaly\allowbreak\_alerts} và gửi Push Notification qua Firebase FCM, hệ thống truy vấn kiểm tra xem đã tồn tại một bản ghi cảnh báo nào có cùng \texttt{user\_id} và \texttt{target\_id} chưa. Nếu đã có, hệ thống bỏ qua việc tạo mới và không gửi thêm thông báo đẩy, đảm bảo mỗi giao dịch bất thường chỉ sinh ra đúng một cảnh báo duy nhất.
-\end{itemize}
-\end{sloppypar}
-
-\section{Thiết kế phân hệ Webadmin quản trị Master Data và Học bổng}
-Phân hệ Webadmin được xây dựng trên nền tảng React JS, phục vụ công tác quản lý của Ban giám hiệu trường học và các Nhà tài trợ học bổng.
-
-\subsection{Quy trình quản lý dữ liệu học thuật và bảng điểm}
-Quy trình được thiết kế theo hai nhóm người dùng chính: quản trị viên và sinh viên.
-
-\begin{enumerate}
-    \item \textbf{Quản trị viên quản lý trường:} Webadmin lấy danh sách trường qua \texttt{GET /admin/universities}, tạo mới qua \texttt{POST /admin/universities}, cập nhật qua \texttt{PUT /admin/universities/\{id\}} và xóa qua \texttt{DELETE /admin/universities/\{id\}}.
-    \item \textbf{Quản trị viên quản lý khoa/chương trình đào tạo:} Với từng trường, Webadmin lấy danh sách khoa/chương trình đào tạo qua \texttt{GET /admin/universities/\{university\_id\}/training-programs}, thêm mới qua \texttt{POST /admin/universities/\{university\_id\}/training-programs}, cập nhật qua \texttt{PUT /admin/training-programs/\{id\}}, xóa qua \texttt{DELETE /admin/training-programs/\{id\}} và import hàng loạt qua \texttt{POST /admin/universities/\{university\_id\}/training-programs/bulk}.
-    \item \textbf{Quản trị viên quản lý môn học:} Với từng trường, Webadmin lấy danh sách môn qua \texttt{GET /admin/universities/\{university\_id\}/subjects}, thêm mới qua \texttt{POST /admin/universities/\{university\_id\}/subjects}, cập nhật qua \texttt{PUT /admin/subjects/\{subject\_id\}}, xóa qua \texttt{DELETE /admin/subjects/\{subject\_id\}} và import hàng loạt qua \texttt{POST /admin/universities/\{university\_id\}/subjects/bulk}.
-    \item \textbf{Sinh viên chọn thông tin học thuật:} Mobile App lấy danh sách trường qua \texttt{GET /universities/dropdown} và danh sách khoa/chương trình đào tạo theo trường qua \texttt{GET /universities/\{universityId\}/training-programs/dropdown}. Thông tin này được dùng trong hồ sơ đăng ký và hồ sơ cá nhân.
-    \item \textbf{Sinh viên xem danh mục môn học:} Mobile App lấy danh mục môn của trường qua \texttt{GET /student/university-subjects/dropdown}. Mỗi môn có mã môn, mã học phần, số tín chỉ và thang điểm để phục vụ nhập điểm.
-    \item \textbf{Sinh viên nhập hoặc import điểm:} Sinh viên thêm hoặc cập nhật điểm qua \texttt{POST /student/grades}. File TXT/CSV được parse ở Mobile App, map môn theo \texttt{subject\_id}, \texttt{subject\_code} hoặc \texttt{course\_code}, cho phép chỉnh sửa trước khi lưu.
-    \item \textbf{Sinh viên quản lý bảng điểm:} Sinh viên xem danh sách điểm qua \texttt{GET /student/grades}, xóa điểm qua \texttt{DELETE /student/grades/\{gradeId\}}, xem dashboard qua \texttt{GET /student/dashboard} và cập nhật mục tiêu tín chỉ qua \texttt{PATCH /student/gradebook-target}.
-\end{enumerate}
-
-\begin{figure}[htbp]
-    \centering
-    \IfFileExists{images/chapter3/academic/academic-admin-flow.png}{%
-        \includegraphics[width=0.9\textwidth]{images/chapter3/academic/academic-admin-flow.png}%
-    }{%
-        \rectbox{Sơ đồ Admin Flow cho quản lý trường, khoa/chương trình đào tạo và môn học}
-    }
-    \caption{Sơ đồ luồng quản trị dữ liệu học thuật trên Webadmin}
-    \label{fig:academic-admin-flow}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \IfFileExists{images/chapter3/academic/student-gradebook-flow.png}{%
-        \includegraphics[width=0.9\textwidth]{images/chapter3/academic/student-gradebook-flow.png}%
-    }{%
-        \rectbox{Sơ đồ Student Flow cho luồng bảng điểm sinh viên}
-    }
-    \caption{Sơ đồ luồng thao tác bảng điểm của sinh viên}
-    \label{fig:student-gradebook-flow}
-\end{figure}
-
-\subsection{Quy trình tạo, nộp và xét duyệt hồ sơ học bổng}
-Quy trình học bổng được thiết kế theo hai vai trò chính: nhà tài trợ và sinh viên. Quy trình tổng quan gồm các bước:
-\begin{enumerate}
-    \item Nhà tài trợ đăng bài $\rightarrow$ Ban quản trị duyệt xuất bản $\rightarrow$ Sinh viên ứng tuyển trực tuyến.
-    \item Webadmin cung cấp bảng điều khiển xét duyệt tập trung (Applications Review Portal) hiển thị chi tiết hồ sơ học thuật, file đính kèm của từng ứng viên.
-    \item Admin có thể đối chiếu hồ sơ nộp vào với dữ liệu học thuật chuẩn trong Master Data (ngành học, điểm số môn học) qua giao diện trực quan, giúp phát hiện chênh lệch dữ liệu mà không cần phải chạy thuật toán AI riêng.
-\end{enumerate}
-
-Chi tiết các bước thực hiện ở mức hệ thống và API được mô tả như sau:
-\begin{enumerate}
-    \item \textbf{Nhà tài trợ tạo học bổng:} Nhà tài trợ đăng nhập Webadmin, nhập thông tin chương trình học bổng và gửi yêu cầu \texttt{POST /scholarships}. Backend lưu bản ghi vào bảng \texttt{scholarships}, trong đó \texttt{provider\_id} liên kết học bổng với tổ chức tài trợ trong bảng \texttt{organizations}.
-    \item \textbf{Cấu hình điều kiện và tài liệu:} Sau khi tạo học bổng, nhà tài trợ cấu hình các điều kiện xét tuyển qua \texttt{POST /scholarships/\{id\}/requirements} và danh sách tài liệu yêu cầu qua \texttt{POST /scholarships/\{id\}/documents}.
-    \item \textbf{Sinh viên xem và chuẩn bị hồ sơ:} Ứng dụng di động lấy danh sách học bổng qua \texttt{GET /scholarships} và chi tiết từng học bổng qua \texttt{GET /scholarships/\{id\}}. Sinh viên nhập CCCD, GPA, ghi chú và upload các tài liệu minh chứng theo danh sách yêu cầu.
-    \item \textbf{Lưu nháp hoặc nộp hồ sơ:} Sinh viên gửi hồ sơ qua \texttt{POST /scholarships/register}. Nếu chọn lưu nháp, hệ thống tạo hồ sơ ở trạng thái \texttt{draft}; nếu nộp chính thức, hồ sơ chuyển sang \texttt{submitted}.
-    \item \textbf{Kiểm tra hợp lệ ở Backend:} Backend kiểm tra hạn nộp, tình trạng hồ sơ cá nhân, GPA tối thiểu, định dạng CCCD và ràng buộc không nộp trùng. Việc tạo hoặc cập nhật hồ sơ, lưu tài liệu và ghi lịch sử trạng thái được thực hiện trong cùng một database transaction.
-    \item \textbf{Nhà tài trợ xét duyệt:} Webadmin lấy danh sách hồ sơ theo tổ chức qua \texttt{GET /student-scholarships/organization/\{organization\_id\}}. Nhà tài trợ xem chi tiết hồ sơ, tài liệu đính kèm, GPA, thông tin học thuật và cập nhật trạng thái qua \texttt{PUT /student-scholarships/\{id\}/status}.
-    \item \textbf{Sinh viên theo dõi kết quả:} Sinh viên xem các hồ sơ đã nộp qua \texttt{GET /scholarships/my-scholarships}, xem chi tiết từng hồ sơ qua \texttt{GET /scholarships/my-scholarships/\{id\}}, và có thể hủy hồ sơ khi còn ở trạng thái cho phép qua \texttt{DELETE /scholarships/my-scholarships/\{id\}}.
-\end{enumerate}
-
-\begin{figure}[htbp]
-    \centering
-    \rectbox{Giao diện tổng quan quản trị hệ thống và duyệt hồ sơ (Web Admin)}
-    \caption{Giao diện tổng quan quản trị hệ thống và duyệt hồ sơ (Web Admin)}
-    \label{fig:webadmin-dashboard}
-\end{figure}
-=======
 \subsection{Hướng mở rộng kiến trúc trong tương lai}
 Mã nguồn của AI Service hiện đã chuẩn bị sẵn một khung điều phối đa-agent (multi-agent orchestration), cho phép định tuyến yêu cầu tới nhiều tác nhân AI chuyên biệt theo từng miền nghiệp vụ khác nhau; tuy nhiên khung này chưa được kích hoạt trong luồng xử lý thực tế ở phiên bản hiện tại, mà chỉ mới sử dụng một tác nhân duy nhất với cơ chế phân loại ý định như đã mô tả ở Mục 3.4. Đây là nền tảng sẵn có để hệ thống có thể mở rộng thành kiến trúc đa-agent thực thụ khi bổ sung thêm các nghiệp vụ AI phức tạp hơn trong tương lai.
 
 \subsection{Giới hạn hiện tại}
 Nhìn từ góc độ kiến trúc, hệ thống còn một số giới hạn: một số thao tác tài chính tổng hợp (như phân bổ thu nhập vào nhiều hũ cùng lúc) chưa được bọc trong một transaction cơ sở dữ liệu tường minh, tiềm ẩn rủi ro không nhất quán nếu xảy ra lỗi giữa chừng (chi tiết tại Chương 4); hệ thống chưa có bộ benchmark định lượng chính thức, có thể tái lập cho các thành phần AI (chi tiết tại Chương 6); và hệ thống phụ thuộc vào các dịch vụ bên thứ ba nằm ngoài tầm kiểm soát trực tiếp (Firebase Cloud Messaging, nhà cung cấp mô hình ngôn ngữ lớn).
->>>>>>> origin/main
