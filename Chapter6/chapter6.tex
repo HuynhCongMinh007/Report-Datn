@@ -4,7 +4,6 @@
 Hệ thống Student360 được hiện thực hóa và kiểm thử trên môi trường cục bộ và nền tảng điện toán đám mây với các thông số cấu hình cụ thể như sau:
 \begin{sloppypar}
 \begin{itemize}
-    \item \textbf{Hệ điều hành thử nghiệm:} macOS Sequoia v15.5 / Ubuntu 22.04 LTS.
     \item \textbf{Môi trường máy chủ Backend:} Node.js v20+ (ảnh Docker triển khai dùng \texttt{node:24-alpine}), NestJS v10.4.20 \cite{nestjs-docs}, TypeORM v0.3.26 \cite{typeorm-docs}.
     \item \textbf{Môi trường máy chủ AI:} Python v3.12, FastAPI v0.115.0 \cite{fastapi-docs}, \texttt{langchain-core} v0.3.0+ \cite{langchain-docs} (không phụ thuộc gói \texttt{langchain} gốc), Uvicorn v0.30.0.
     \item \textbf{Công nghệ cơ sở dữ liệu:} PostgreSQL 15.x \cite{postgresql-docs}, Redis 7.x \cite{redis-docs} (làm cache và message broker cho BullMQ \cite{bullmq-docs}).
