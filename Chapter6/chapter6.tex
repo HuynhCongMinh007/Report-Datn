@@ -253,7 +253,11 @@ Nơi nhà tài trợ hoặc quản trị viên quản lý danh sách các học 
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \rectbox{Màn hình danh sách Học bổng trên Webadmin}
+    \IfFileExists{Images/chapter4/webadmin/scholarships-list.png}{%
+        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/scholarships-list.png}%
+    }{%
+        \rectbox{Màn hình danh sách Học bổng trên Webadmin}
+    }
     \caption{Giao diện quản lý danh sách Học bổng}
     \label{fig:webadmin-scholarships-list}
 \end{figure}
@@ -266,12 +270,21 @@ Giao diện cho phép nhà tài trợ thiết lập thông tin chi tiết cho ch
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \IfFileExists{Images/chapter4/webadmin/sponsor-create-scholarship.png}{%
-        \includegraphics[width=0.6\textwidth]{Images/chapter4/webadmin/sponsor-create-scholarship.png}%
+    \IfFileExists{Images/chapter4/webadmin/sponsor-create-scholarship-1.png}{%
+        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/sponsor-create-scholarship-1.png}%
     }{%
-        \rectbox{Màn hình tạo và cấu hình học bổng dành cho nhà tài trợ}
+        \rectbox{Màn hình tạo học bổng - phần thông tin chung}
     }
-    \caption{Giao diện tạo học bổng dành cho nhà tài trợ}
+
+    \vspace{0.4cm}
+
+    \IfFileExists{Images/chapter4/webadmin/sponsor-create-scholarship-2.png}{%
+        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/sponsor-create-scholarship-2.png}%
+    }{%
+        \rectbox{Màn hình tạo học bổng - phần điều kiện xét tuyển}
+    }
+
+    \caption{Giao diện tạo và cấu hình học bổng dành cho nhà tài trợ}
     \label{fig:sponsor-create-scholarship}
 \end{figure}
 
@@ -284,21 +297,12 @@ Giao diện chính phục vụ quy trình đánh giá và phê duyệt hồ sơ 
 \begin{figure}[H]
     \centering
     \IfFileExists{Images/chapter4/webadmin/sponsor-application-review.png}{%
-        \includegraphics[width=0.6\textwidth]{Images/chapter4/webadmin/sponsor-application-review.png}%
+        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/sponsor-application-review.png}%
     }{%
         \rectbox{Màn hình xét duyệt hồ sơ ứng tuyển học bổng trên Webadmin}
     }
     \caption{Giao diện xét duyệt hồ sơ ứng tuyển học bổng}
     \label{fig:sponsor-application-review}
-\end{figure}
-
-\subsubsection{Giao diện mẫu Cảnh báo gian lận học bổng (AI Fraud Detection -- Prototype UI)}
-Trong quá trình thiết kế, nhóm đã dựng trước một giao diện mẫu cho chức năng cảnh báo gian lận hồ sơ học bổng, dự kiến phân loại theo mức độ nghiêm trọng (High, Medium, Low) và các loại gian lận như trùng số định danh CCCD giữa các tài khoản, nộp quá nhiều hồ sơ cùng lúc, hoặc GPA không nhất quán giữa hồ sơ nộp và Master Data. Tuy nhiên, đây hiện chỉ là giao diện tĩnh minh họa (dữ liệu mẫu \texttt{mockFraudCases} khai báo cứng trong code), \textbf{chưa có API backend hay logic phát hiện gian lận thực sự đứng sau} -- không có endpoint, service hay bảng dữ liệu nào phục vụ chức năng này ở cả Backend NestJS lẫn AI Service. Chức năng này được xếp vào Hướng phát triển tiếp theo (Chương 7) thay vì kết quả đã đạt được.
-\begin{figure}[H]
-    \centering
-    \rectbox{Giao diện mẫu (mock UI) cảnh báo gian lận trên Webadmin -- chưa có logic phát hiện thật}
-    \caption{Giao diện mẫu cảnh báo gian lận học bổng (prototype, chưa kết nối dữ liệu thật)}
-    \label{fig:webadmin-fraud-detection}
 \end{figure}
 
 \subsection{Cơ chế đồng bộ trạng thái giao diện tức thời (Query Invalidation)}

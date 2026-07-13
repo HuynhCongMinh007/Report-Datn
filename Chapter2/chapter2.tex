@@ -71,7 +71,7 @@ Hệ thống thông báo đẩy (Push Notification) đóng vai trò quan trọng
     \item \textbf{BullMQ và Redis Queue \cite{bullmq-docs}:} Để xử lý gửi thông báo đến hàng nghìn thiết bị mà không làm nghẽn tiến trình chính của máy chủ, các hệ thống áp dụng kiến trúc hàng đợi thông điệp (Message Queue). BullMQ kết hợp với Redis \cite{redis-docs} giúp quản lý thứ tự gửi, xử lý lỗi tự động (Automatic retries) và phân bổ tài nguyên gửi tin một cách tối ưu. Điểm khác biệt cốt lõi của hệ thống so với các ứng dụng tài chính thụ động là việc triển khai một kiến trúc thông báo \textbf{chủ động đa lớp} với nhiều loại thông báo Cron tự động chạy ngầm:
     \begin{enumerate}
         \item \textbf{Cảnh báo ngưỡng số dư hũ} (theo số tiền tuyệt đối hoặc phần trăm ngân sách): được kích hoạt ngay sau mỗi giao dịch chi tiêu theo kiểu fire-and-forget không chặn tiến trình API chính.
-        \item \textbf{Cảnh báo ngân sách hũ sắp hết hoặc đã cạn}: gửi khi số dư ngân sách còn lại ≤ 10\% hoặc đã âm, được kích hoạt ngay sau giao dịch chi tiêu.
+        \item \textbf{Cảnh báo ngân sách hũ sắp hết hoặc đã cạn}: gửi khi số dư ngân sách còn lại $\leq 10\%$ hoặc đã âm, được kích hoạt ngay sau giao dịch chi tiêu.
         \item \textbf{Nhắc lịch chuyển tiền tự động sắp đến}: gửi 24 giờ trước ngày thực hiện lịch để người dùng chuẩn bị trước, kèm xác nhận sau khi chuyển thành công hoặc thất bại.
         \item \textbf{Tóm tắt chi tiêu tuần} (Cron thứ Hai 8:00): gửi cho tất cả người dùng có giao dịch trong tuần, tổng hợp tổng thu, tổng chi và hũ chi nhiều nhất trong tuần.
         \item \textbf{Báo cáo tài chính cuối tháng} (Cron ngày 1 hàng tháng 8:00): gửi cho người dùng có hoạt động giao dịch trong tháng trước, nhắc xem phân tích AI 6 lọ.
