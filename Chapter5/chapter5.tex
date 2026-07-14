@@ -2,19 +2,48 @@
 \label{ch:phat-trien-trien-khai}
 
 \section{Phương pháp thực hiện}
-Nhóm áp dụng mô hình phát triển phần mềm linh hoạt \textbf{Agile/Scrum} xuyên suốt quá trình thực hiện đồ án thay vì phát triển tuần tự theo kiểu Waterfall truyền thống. Công việc được chia thành các chu kỳ lặp (sprint) ngắn, mỗi sprint tập trung hoàn thiện một nhóm chức năng cụ thể thay vì dàn trải toàn bộ hệ thống cùng lúc. Sau mỗi sprint, nhóm tổ chức họp đánh giá lại kết quả, ghi nhận các vướng mắc kỹ thuật phát sinh và điều chỉnh kế hoạch cho chu kỳ tiếp theo. Cách tiếp cận lặp và tăng trưởng dần (iterative \& incremental) này giúp nhóm sớm phát hiện rủi ro kỹ thuật -- điển hình là các lỗi tích hợp AI được ghi nhận và khắc phục qua ba giai đoạn thử nghiệm liên tiếp (xem Chương 6) -- thay vì chỉ phát hiện ở giai đoạn kiểm thử cuối cùng.
+Nhóm áp dụng mô hình phát triển phần mềm linh hoạt \textbf{Agile/Scrum} xuyên suốt quá trình thực hiện đồ án thay vì phát triển tuần tự theo kiểu Waterfall truyền thống. Công việc được chia thành các chu kỳ lặp (sprint) ngắn kéo dài \textbf{1 tuần}, mỗi sprint tập trung hoàn thiện một nhóm chức năng cụ thể thay vì dàn trải toàn bộ hệ thống cùng lúc.
 
-\section{Công cụ hỗ trợ phát triển}
-Để phối hợp làm việc nhóm và quản lý mã nguồn hiệu quả trong suốt quá trình phát triển, nhóm sử dụng các công cụ hỗ trợ sau:
+Để đảm bảo quy chuẩn và tiến độ, nhóm thiết lập bảng vận hành Scrum với các yếu tố cốt lõi:
 \begin{itemize}
-    \item \textbf{Git/GitHub:} Mỗi dịch vụ (Backend, AI Service, Mobile App, Web Admin Portal) có một repository riêng, quản lý phiên bản độc lập theo từng repo. Trong mỗi repo, mỗi tính năng được phát triển trên một nhánh (branch) riêng và được xem xét qua cơ chế Pull Request trước khi hợp nhất vào nhánh chính, giúp hạn chế xung đột mã nguồn khi nhiều thành viên cùng chỉnh sửa song song.
-    \item \textbf{Jira:} Quản lý backlog, phân chia công việc theo từng sprint và theo dõi tiến độ hoàn thành của từng thành viên trong nhóm.
-    \item \textbf{Slack/Zalo:} Kênh trao đổi chính của nhóm, dùng để họp trực tuyến định kỳ, thông báo tiến độ, thảo luận và xử lý nhanh các vướng mắc kỹ thuật phát sinh trong quá trình phát triển.
-    \item \textbf{Google Drive:} Lưu trữ và chia sẻ tài liệu chung của nhóm như đề cương, tài liệu đặc tả, hình ảnh thiết kế và các bản nháp báo cáo.
+    \item \textbf{Vai trò (Actor):} Phân định rõ Product Owner (đại diện nghiệp vụ), Scrum Master (điều phối tiến trình) và Development Team.
+    \item \textbf{Sự kiện (Ceremony):} Tổ chức Sprint Planning đầu tuần, Daily Standup hàng ngày, và Sprint Review / Retrospective cuối mỗi tuần để đánh giá kết quả và cải tiến.
+    \item \textbf{Tạo tác (Artifact):} Quản lý Product Backlog, Sprint Backlog và các Increment (sản phẩm tăng trưởng) có giá trị sau mỗi sprint.
+    \item \textbf{Tiêu chuẩn (DoR/DoD \& Acceptance Criteria):} 
+    \begin{itemize}
+        \item \textit{Definition of Ready (DoR):} Yêu cầu/user story phải có mô tả rõ ràng, đầy đủ Acceptance Criteria và được thiết kế UI/UX hoàn chỉnh trước khi đưa vào Sprint.
+        \item \textit{Definition of Done (DoD):} Code phải vượt qua các bài kiểm tra tự động (unit test), không có lỗi linter, được review chéo bởi ít nhất một thành viên khác và tích hợp thành công không gây lỗi trên môi trường staging.
+    \end{itemize}
+\end{itemize}
+
+Thông qua việc theo dõi biểu đồ tiến độ (milestone thực tế so với kế hoạch), \textit{velocity} (tốc độ hoàn thành story points) và \textit{defect leakage} (tỷ lệ lỗi lọt ra ngoài sprint), nhóm có thể kiểm soát và sớm phát hiện rủi ro kỹ thuật. Điển hình, 3 sự cố lớn liên quan đến AI (phân loại sai giao dịch, Prompt Injection, timeout khi xử lý dữ liệu) đã được liên kết trực tiếp vào backlog và giải quyết dứt điểm trong các sprint ở giai đoạn 3 và 4, thay vì để tồn đọng đến cuối dự án.
+
+\section{Công cụ hỗ trợ và Quy trình CI/CD}
+\subsection{Công cụ hỗ trợ phát triển}
+Để phối hợp làm việc nhóm và quản lý mã nguồn hiệu quả trong suốt quá trình phát triển, nhóm sử dụng các công cụ:
+\begin{itemize}
+    \item \textbf{Git/GitHub:} Mỗi dịch vụ (Backend, AI Service, Mobile App, Web Admin Portal) có một repository riêng, quản lý phiên bản độc lập. Trong mỗi repo, mỗi tính năng được phát triển trên một nhánh (feature branch) riêng và được xem xét qua cơ chế Pull Request.
+    \item \textbf{Jira:} Quản lý backlog, phân chia công việc theo từng sprint 1 tuần và theo dõi tiến độ hoàn thành của từng thành viên.
+    \item \textbf{Slack/Zalo:} Kênh trao đổi chính, dùng để họp trực tuyến định kỳ, thông báo tiến độ và xử lý vướng mắc.
+    \item \textbf{Google Drive:} Lưu trữ tài liệu chung như đề cương, tài liệu đặc tả, hình ảnh thiết kế.
+\end{itemize}
+
+\subsection{Quy trình Tích hợp và Triển khai liên tục (CI/CD)}
+Dựa trên cấu hình Jenkins thực tế của hệ thống, quy trình CI/CD được thiết lập tự động hóa nhằm giảm thiểu sai sót:
+\begin{itemize}
+    \item \textbf{CI Pipeline (Kiểm tra và Build):} Khi có Pull Request mới, Jenkins tự động \textit{checkout} mã nguồn, cài đặt thư viện (\texttt{npm install}), chạy quá trình build (\texttt{npm run build}) để phát hiện lỗi biên dịch. Sau đó, mã nguồn được đóng gói thành \textbf{Docker Image} với tag tương ứng. (Theo cấu trúc chuẩn, quy trình bao gồm cả các bước \textit{lint}, \textit{unit test}, \textit{build} và \textit{security scan}).
+    \item \textbf{CD Pipeline (Triển khai - Deploy):} Khi mã nguồn được merge vào nhánh chính (\texttt{staging} hoặc \texttt{main}), pipeline CD sẽ đồng bộ mã nguồn, yêu cầu xác nhận thủ công (Manual Approval) từ người quản lý trước khi triển khai. Sau khi xác nhận, hệ thống nạp các biến môi trường (\texttt{.env.docker}), tắt các container hiện tại và khởi tạo container mới thông qua \texttt{docker compose build} và \texttt{docker compose up -d}. Quá trình deploy staging thành công sẽ là bước đệm trước khi đưa lên production.
+\end{itemize}
+
+\textbf{Tiêu chí Rollback (Phục hồi phiên bản):} Để đảm bảo tính sẵn sàng, hệ thống quy định các tiêu chí kích hoạt rollback như sau:
+\begin{itemize}
+    \item \textit{Smoke test thất bại:} Ứng dụng không phản hồi hoặc container bị crash liên tục sau khi khởi động.
+    \item \textit{Lỗi hệ thống tăng đột biến:} Tỷ lệ lỗi (error rate) giám sát được trên production tăng bất thường ngay sau khi triển khai phiên bản mới.
+    \item Khi thỏa mãn tiêu chí, quản trị viên sẽ từ chối release (hoặc kích hoạt job rollback) để hệ thống tự động kéo lại tag Docker Image của phiên bản ổn định trước đó và khởi động lại dịch vụ.
 \end{itemize}
 
 \section{Tổ chức nhóm và phân công chuyên môn}
-Nhóm gồm 6 thành viên, được chia thành 3 cặp phụ trách song song 3 mảng chức năng chính của hệ thống, mỗi cặp đảm nhận trọn vẹn cả phần giao diện (Frontend) lẫn xử lý nghiệp vụ phía máy chủ (Backend) cho mảng của mình nhằm đảm bảo tính liền mạch khi tích hợp. Việc phân công cụ thể được trình bày trong Bảng~\ref{tab:phan-cong}:
+Nhóm gồm 6 thành viên, được chia thành 3 cặp phụ trách song song 3 mảng chức năng chính của hệ thống, mỗi cặp đảm nhận trọn vẹn cả phần giao diện (Frontend) lẫn xử lý nghiệp vụ phía máy chủ (Backend) cho mảng của mình nhằm đảm bảo tính liền mạch khi tích hợp. 
 
 \begin{table}[H]
     \centering
@@ -26,13 +55,17 @@ Nhóm gồm 6 thành viên, được chia thành 3 cặp phụ trách song song 
         \hline
         Võ Hoàng Nguyên, Nguyễn Duy Lâm & Mô-đun Tài chính 6 lọ (6 Jars) -- Frontend Mobile và Backend API. \\ \hline
         Nguyễn Thành Nhật, Huỳnh Công Minh & Hệ thống thông báo (Notification) và các luồng thông tin người dùng cơ bản -- Frontend Mobile và Backend API. \\ \hline
-        Nguyễn Vĩnh Lương, Huỳnh Tấn Lộc & Quản lý học bổng và trang quản trị Webadmin học bổng -- Frontend (Mobile/Webadmin) và Backend API. \\ \hline
-        Huỳnh Tấn Lộc & Phụ trách thêm việc cấu hình build và triển khai (deploy) ứng dụng. \\
+        Nguyễn Vĩnh Lương, Huỳnh Tấn Lộc & Quản lý học bổng và trang quản trị Webadmin học bổng -- Frontend (Mobile/Webadmin) và Backend API. Huỳnh Tấn Lộc phụ trách thêm DevOps. \\
         \hline
     \end{tabular}
 \end{table}
 
-Bên cạnh phần việc theo mảng chức năng riêng, các hạng mục xuyên suốt như tích hợp trợ lý AI, kiểm thử tổng thể và hoàn thiện báo cáo được cả nhóm cùng phối hợp thực hiện ở giai đoạn sau của đồ án.
+Nhằm khắc phục tình trạng \textit{knowledge silo} (chia cắt kiến thức) do phân công theo cặp và giảm thiểu rủi ro khi có thành viên vắng mặt, nhóm áp dụng:
+\begin{itemize}
+    \item \textbf{Ma trận RACI \& Code Ownership:} Định nghĩa rõ ràng ai chịu trách nhiệm chính (Responsible) và ai phê duyệt (Accountable) cho từng tính năng, không để chồng chéo quyền hạn.
+    \item \textbf{Review chéo (Cross-review):} Các Pull Request của một cặp bắt buộc phải được review và approve bởi ít nhất một thành viên từ cặp khác. Quá trình này giúp phát hiện lỗi khách quan và phân tán hiểu biết về code.
+    \item \textbf{Knowledge Sharing Sessions (Phiên chia sẻ kiến thức):} Được tổ chức định kỳ sau mỗi sprint để chia sẻ về kiến trúc hệ thống, các luồng tích hợp API phức tạp và đặc biệt là kinh nghiệm xử lý AI, đảm bảo mọi người đều có khả năng \textit{backup} lẫn nhau khi cần thiết.
+\end{itemize}
 
 \section{Các giai đoạn phát triển}
 Đồ án được thực hiện trong khoảng thời gian từ ngày 24/08/2025 đến ngày 21/07/2026, chia thành 5 giai đoạn chính như sau:
