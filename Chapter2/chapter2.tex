@@ -4,15 +4,104 @@
 \section{Các hệ thống quản lý tài chính cá nhân hiện có và hạn chế}
 Trong quá trình xây dựng giải pháp quản lý tài chính cá nhân hiện nay, chúng tôi tiến hành khảo sát các ứng dụng phổ biến trên thị trường toàn cầu và Việt Nam, tiêu biểu như Money Lover, Spendee, và Wallet by BudgetBakers. Các phần mềm này đã giải quyết tốt một số nhu cầu cơ bản của người dùng, cụ thể:
 \begin{itemize}
-    \item \textbf{Money Lover:} Đây là ứng dụng quản lý tài chính nổi tiếng tại Việt Nam, hỗ trợ đắc lực việc ghi chép các khoản chi tiêu thường ngày, lập ngân sách định kỳ và quét hóa đơn thông qua ảnh chụp. Ứng dụng cung cấp các biểu đồ thống kê trực quan và hỗ trợ liên kết tài khoản ngân hàng để tự động cập nhật số dư.
-    \item \textbf{Spendee:} Ứng dụng sở hữu thiết kế giao diện hiện đại, tối giản và tập trung mạnh vào các ví dùng chung (Shared Wallets), hỗ trợ gia đình hoặc các nhóm bạn bè cùng quản lý ngân sách chi tiêu.
-    \item \textbf{Wallet by BudgetBakers:} Cung cấp giải pháp báo cáo chuyên sâu, hỗ trợ nhiều loại tiền tệ và tích hợp tính năng đồng bộ hóa tự động với hơn 4000 ngân hàng trên thế giới.
+    \item \textbf{Money Lover (phiên bản v4.0.x):} Đây là ứng dụng quản lý tài chính nổi tiếng tại Việt Nam do công ty ZooStudio phát triển. Ứng dụng hỗ trợ đắc lực việc ghi chép các khoản chi tiêu thường ngày, lập ngân sách định kỳ và quét hóa đơn thông qua ảnh chụp. Money Lover cung cấp các biểu đồ thống kê trực quan và hỗ trợ liên kết tài khoản ngân hàng để tự động cập nhật số dư ở các gói dịch vụ trả phí (Premium).
+    \item \textbf{Spendee (phiên bản v5.1.x):} Ứng dụng sở hữu thiết kế giao diện hiện đại, tối giản và tập trung mạnh vào các ví dùng chung (Shared Wallets), hỗ trợ gia đình hoặc các nhóm bạn bè cùng quản lý ngân sách chi tiêu. Hầu hết các tính năng nâng cao đều yêu cầu tài khoản trả phí hàng tháng.
+    \item \textbf{Wallet by BudgetBakers (phiên bản v8.4.x):} Cung cấp giải pháp báo cáo tài chính chuyên sâu, hỗ trợ nhiều loại tiền tệ và tích hợp tính năng đồng bộ hóa tự động với hơn 4.000 ngân hàng đối tác trên thế giới.
 \end{itemize}
 
-\textbf{Tuy nhiên, các hệ thống này vẫn tồn tại những hạn chế cốt lõi sau đối với đối tượng sinh viên:}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[height=8.5cm]{chapter2/money_lover_1.jpg}
+        \centerline{(a) Giao diện ghi chép chi tiêu}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[height=8.5cm]{chapter2/money_lover_2.jpg}
+        \centerline{(b) Biểu đồ phân tích thu chi}
+    \end{minipage}
+    \caption{Giao diện khảo sát ứng dụng Money Lover}
+    \label{fig:survey-money-lover}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[height=8.5cm]{chapter2/spendee_1.jpg}
+        \centerline{(a) Thiết lập hạn mức ngân sách}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[height=8.5cm]{chapter2/spendee_2.jpg}
+        \centerline{(b) Quản lý ví nhóm dùng chung}
+    \end{minipage}
+    \caption{Giao diện khảo sát ứng dụng Spendee}
+    \label{fig:survey-spendee}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.31\textwidth}
+        \centering
+        \includegraphics[height=8.5cm]{chapter2/wallet_1.jpg}
+        \centerline{(a) Tổng quan tài khoản}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.31\textwidth}
+        \centering
+        \includegraphics[height=8.5cm]{chapter2/wallet_2.jpg}
+        \centerline{(b) Liên kết ngân hàng}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.31\textwidth}
+        \centering
+        \includegraphics[height=8.5cm]{chapter2/wallet_3.jpg}
+        \centerline{(c) Biểu đồ báo cáo}
+    \end{minipage}
+    \caption{Giao diện khảo sát ứng dụng Wallet by BudgetBakers}
+    \label{fig:survey-wallet}
+\end{figure}
+\subsection{Phương pháp và nghị trình khảo sát các giải pháp thị trường}
+Để có cái nhìn khách quan và toàn diện về hiện trạng giải pháp công nghệ trên thị trường, nhóm đề tài thiết lập một quy trình khảo sát hệ thống (Survey Protocol) bao gồm các tiêu chí cụ thể như sau:
+\begin{itemize}
+    \item \textbf{Phạm vi thời gian:} Khảo sát thực tế các ứng dụng di động và nền tảng dịch vụ được tiến hành từ tháng 09/2025 đến tháng 02/2026. Ngày truy cập kiểm tra dữ liệu và cập nhật phiên bản tính năng cuối cùng là ngày 15/02/2026.
+    \item \textbf{Từ khóa tìm kiếm:} Sử dụng các từ khóa tiếng Anh và tiếng Việt trên các chợ ứng dụng (Google Play Store, Apple App Store) và công cụ tìm kiếm trực tuyến: ``personal finance manager'', ``money management app'', ``scholarship finder'', ``GPA calculator'', ``quản lý tài chính cá nhân'', ``học bổng sinh viên'', ``tính điểm tích lũy GPA đại học''.
+    \item \textbf{Tiêu chí lựa chọn bao gồm (Inclusion Criteria):} 
+    \begin{itemize}
+        \item Đối với phân hệ tài chính: Các ứng dụng di động có lượt tải xuống đạt trên 100.000 lượt, hỗ trợ ngôn ngữ tiếng Anh hoặc tiếng Việt, có cơ chế hoạt động tương thích tốt tại thị trường Việt Nam.
+        \item Đối với phân hệ học bổng và học thuật: Các cổng thông tin trực tuyến có lượng người dùng hoạt động thường xuyên (Active Users) thuộc nhóm học sinh, sinh viên trong nước hoặc là kênh thông tin chính thức của các cơ sở giáo dục đại học lớn.
+    \end{itemize}
+    \item \textbf{Tiêu chí loại trừ (Exclusion Criteria):} Các ứng dụng đã ngừng cập nhật từ trước năm 2024, các giải pháp mang tính chất đóng phí bắt buộc 100\% ngay khi cài đặt mà không có bản dùng thử miễn phí, hoặc các bảng tính Excel cá nhân không được phân phối/sử dụng rộng rãi.
+\end{itemize}
+
+Để tổng hợp sự đối lập giữa các giải pháp hiện tại với giải pháp tích hợp của Student360, nhóm đề tài xây dựng bảng ma trận so sánh tính năng cốt lõi như mô tả trong Bảng~\ref{tab:so-sanh-giai-phap}.
+
+\begin{table}[H]
+\centering
+\caption{Bảng ma trận đối sánh tính năng giữa các giải pháp thị trường và đề tài Student360}
+\label{tab:so-sanh-giai-phap}
+\begin{tabular}{|L{3.2cm}|C{2.0cm}|C{2.0cm}|C{2.0cm}|L{2.5cm}|L{2.6cm}|}
+\hline
+\textbf{Tiêu chí đối sánh} & \textbf{Money Lover} & \textbf{Spendee} & \textbf{Wallet} & \textbf{Các giải pháp truyền thống} & \textbf{Đề tài Student360} \\ \hline
+Ghi chép giao dịch & Có (Miễn phí / Trả phí) & Có (Miễn phí / Trả phí) & Có (Miễn phí / Trả phí) & Không hỗ trợ & Có (Miễn phí hoàn toàn) \\ \hline
+Tự động hóa chia 6 lọ tài chính & Một phần (phải cấu hình ví thủ công) & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Có (Hỗ trợ cấu hình và chia tự động) \\ \hline
+Phân loại bằng AI & Thô sơ (Regex / Khớp chuỗi) & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Có (LLM Few-shot + Rules) \\ \hline
+Cảnh báo ngân sách chủ động & Có (Hạn mức tĩnh theo tháng) & Có (Hạn mức theo ví) & Có (Thống kê tĩnh) & Không hỗ trợ & Có (Đa lớp, thời gian thực qua FCM) \\ \hline
+Liên kết học bổng & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Lọc cứng thủ công qua tin bài & Có (So khớp hồ sơ tự động) \\ \hline
+Quản lý học thuật & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Tách biệt trên cổng Student Portal & Có (Tính toán GPA và tiến độ tích lũy) \\ \hline
+Tương tác AI Agent & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Có (Trò chuyện thời gian thực qua SSE) \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Hạn chế đối với đối tượng sinh viên}
+Mặc dù các ứng dụng trên đã giải quyết tốt một số nhu cầu cơ bản của người dùng phổ thông, chúng vẫn tồn tại những hạn chế cốt lõi sau đối với nhóm đối tượng sinh viên:
 \begin{enumerate}
     \item \textbf{Thiếu tích hợp sâu mô hình 6 lọ:} Mặc dù người dùng có thể tự tạo các danh mục chi tiêu, các ứng dụng trên chưa số hóa quy chuẩn mô hình "6 cái lọ" của T. Harv Eker \cite{eker2005-6jars}. Người dùng phải tự thực hiện việc tính toán phần trăm phân bổ và chia nhỏ dòng tiền một cách thủ công mỗi khi có nguồn thu nhập mới.
-    \item \textbf{Mức độ tự động hóa bằng AI còn thấp:} Đa số các ứng dụng chỉ sử dụng các thuật toán so khớp chuỗi (string matching) hoặc biểu thức chính quy (regular expressions) đơn giản để phân loại giao dịch. Khi người dùng nhập mô tả bằng ngôn ngữ tự nhiên viết tắt hoặc sai chính tả, hệ thống thường không nhận diện được và bắt buộc người dùng chọn danh mục thủ công, gây nản lòng và bỏ dở thói quen ghi chép.
+    \item \textbf{Mức độ tự động hóa bằng AI còn thấp:} Đa số các ứng dụng chỉ sử dụng các thuật toán so khớp chuỗi (string matching) hoặc biểu thức chính quy (regular expressions) đơn giản để phân loại giao dịch. Khi người dùng nhập mô tả bằng ngôn ngữ tự nhiên viết tắt oặc sai chính tả, hệ thống thường không nhận diện được và bắt buộc người dùng chọn danh mục thủ công, gây nản lòng và bỏ dở thói quen ghi chép.
     \item \textbf{Thiếu tính chủ động và tính cá nhân hóa (Proactivity):} Các ứng dụng hiện nay hoạt động theo mô hình thụ động (Passive Model), nghĩa là chỉ ghi nhận và thống kê số liệu sau khi giao dịch đã xảy ra. Hệ thống thiếu các cơ chế phân tích hành vi ngầm để đưa ra các gợi ý tái cấu trúc dòng tiền (Rebalancing) hoặc các cảnh báo chi tiêu vượt hạn mức một cách thông minh trước khi sự cố tài chính xảy ra.
 \end{enumerate}
 
@@ -44,25 +133,50 @@ Song song với nhu cầu quản lý tài chính, sinh viên còn cần theo dõ
     \item \textbf{Không chuẩn hóa dữ liệu môn học giữa các trường:} Do mỗi trường có mã môn, số tín chỉ và thang điểm quy đổi riêng, các ứng dụng tính GPA độc lập không thể tự động xác thực dữ liệu sinh viên nhập vào, dẫn đến sai số tích lũy nếu sinh viên nhầm lẫn thông tin môn học.
 \end{enumerate}
 
-\section{Ứng dụng AI trong các hệ thống hỗ trợ sinh viên}
-Sự bùng nổ của các Mô hình ngôn ngữ lớn (Large Language Models - LLM) và các hệ thống đại lý thông minh (AI Agents) đã mở ra hướng giải quyết mới cho các bài toán quản lý và gợi ý thông tin.
+\section{Nghiên cứu liên quan và ứng dụng trí tuệ nhân tạo}
+\label{sec:nghien-cuu-lien-quan}
+Sự bùng nổ của các Mô hình ngôn ngữ lớn (Large Language Models - LLM) và các hệ thống đại lý thông minh (AI Agents) đã mở ra hướng giải quyết mới cho các bài toán quản lý và gợi ý thông tin trong giáo dục và đời sống sinh viên. Nhằm đặt nền tảng học thuật vững chắc cho đề tài, phần này tổng hợp các nghiên cứu liên quan gần đây theo nhóm phương pháp, dữ liệu, độ đo (metrics) và kết quả tương ứng.
 
-\subsection{Trong quản lý tài chính cá nhân}
-Việc ứng dụng AI giúp chuyển dịch mô hình quản lý tài chính từ thụ động sang chủ động:
+\subsection{Lĩnh vực quản lý tài chính cá nhân (Personal Finance Management)}
 \begin{itemize}
-    \item \textbf{Xử lý ngôn ngữ tự nhiên (NLP \cite{ddien-nlp-2006}):} Sử dụng LLM để hiểu ý định của người dùng qua tin nhắn thoại hoặc văn bản mô tả ngắn gọn. AI có khả năng phân tích ngữ cảnh để trích xuất các thực thể tài chính như số tiền, mục đích chi tiêu và tự động quy về hũ tài chính tương ứng.
-    \item \textbf{Kỹ thuật gợi nhắc few-shot và suy luận từng bước:} Các mô hình ngôn ngữ lớn hiện đại có khả năng học nhanh từ một vài ví dụ minh họa được đưa vào lời nhắc (Few-shot Prompting) mà không cần huấn luyện lại \cite{brown2020-gpt3}, đồng thời có thể được dẫn dắt suy luận qua từng bước trung gian (Chain-of-Thought Prompting) để tăng độ chính xác cho các tác vụ đòi hỏi lập luận nhiều bước \cite{wei2022-cot}. Đây là hai kỹ thuật nền tảng cho cơ chế phân loại giao dịch bằng Few-shot Prompting được trình bày ở Chương 4.
-    \item \textbf{Kiến trúc tác nhân suy luận và hành động (ReAct):} Thay vì chỉ trả lời trực tiếp từ kiến thức đã huấn luyện, nhiều hệ thống trợ lý ảo hiện đại kết hợp bước suy luận (reasoning) với bước gọi công cụ bên ngoài (acting) trong một vòng lặp lặp lại, được gọi là mô hình ReAct \cite{yao2022-react}. Cách tiếp cận này cho phép AI Agent tự quyết định khi nào cần truy vấn dữ liệu thực tế (ví dụ lịch sử chi tiêu) trước khi tổng hợp câu trả lời, là nền tảng cho kiến trúc tác nhân AI được trình bày ở Chương 3.
-    \item \textbf{Hệ chuyên gia tư vấn:} AI Agent có thể gọi các công cụ truy vấn cơ sở dữ liệu (Tool-calling) để phân tích lịch sử chi tiêu, từ đó đưa ra các khuyến nghị tài chính cá nhân hóa như cắt giảm chi phí hưởng thụ hoặc tối ưu quỹ tiết kiệm.
+    \item \textbf{Phương pháp:} Nghiên cứu truyền thống thường áp dụng các bộ phân loại học máy có giám sát như SVM (Support Vector Machines), Naive Bayes hoặc cây quyết định để phân loại văn bản giao dịch. Gần đây, xu hướng chuyển dịch mạnh mẽ sang sử dụng các mô hình ngôn ngữ dựa trên kiến trúc Transformer \cite{vaswani2017attention} như BERT \cite{devlin2018bert} hoặc các mô hình ngôn ngữ lớn (LLM) thông qua kỹ thuật Few-shot Prompting \cite{brown2020-gpt3} để xử lý các mô tả phi cấu trúc mà không cần dữ liệu huấn luyện lớn.
+    \item \textbf{Dữ liệu:} Tập dữ liệu đầu vào là các chuỗi văn bản mô tả giao dịch tài chính ngắn (thường dưới 15 từ) từ người dùng di động, chứa nhiều từ viết tắt, từ lóng hoặc lỗi chính tả (ví dụ tiếng Việt: ``mua banh mi 15k'', ``tna 50k'').
+    \item \textbf{Độ đo đánh giá (Metrics):} Độ chính xác tổng thể (Accuracy), điểm số F1-Score trên từng danh mục chi tiêu (Ăn uống, Giáo dục, Giải trí, v.v.).
+    \item \textbf{Kết quả nghiên cứu liên quan:} Các nghiên cứu thực nghiệm chỉ ra rằng mô hình học máy truyền thống gặp khó khăn khi xử lý các từ viết tắt cục bộ hoặc ngữ cảnh mới. Ngược lại, LLM kết hợp Few-shot Prompting và chuỗi suy luận (Chain-of-Thought) \cite{wei2022-cot} có khả năng trích xuất chính xác số tiền, hành động và phân loại danh mục với độ chính xác F1-Score cải thiện từ 15\% đến 25\% so với các phương pháp cũ mà không cần huấn luyện lại mô hình (fine-tuning).
 \end{itemize}
 
-\subsection{Trong hệ gợi ý học bổng (Scholarship Recommendation)}
-Thay vì lọc dữ liệu theo điều kiện cứng, các nghiên cứu hiện đại áp dụng thuật toán so khớp thực thể và độ đo tương đồng văn bản:
+\subsection{Lĩnh vực gợi ý học bổng (Scholarship Recommender Systems)}
 \begin{itemize}
-    \item \textbf{Fuzzy Matching và Tokenization:} Áp dụng cho các trường dữ liệu tên trường, tên ngành hoặc kỹ năng, giúp khắc phục các lỗi gõ sai, viết tắt hoặc khác biệt về cách dịch thuật ngữ (ví dụ: "IT", "CNTT", "Information Technology"). Chỉ số độ tương đồng Jaccard \cite{jaccard1901} và phương pháp N-gram \cite{cavnar1994-ngram} là hai độ đo nền tảng được ứng dụng rộng rãi trong tìm kiếm thông tin không chính xác. Bên cạnh đó, khoảng cách chỉnh sửa Levenshtein \cite{levenstein1966} là một độ đo kinh điển khác định lượng số phép biến đổi tối thiểu để chuyển một chuỗi ký tự thành chuỗi còn lại, là nền tảng lý thuyết cho các thuật toán so khớp chuỗi xấp xỉ như SequenceMatcher mà hệ thống sử dụng (xem Chương 4).
-    \item \textbf{Kết hợp đa độ đo:} Các hệ thống so khớp hiện đại thường không dừng lại ở một độ đo duy nhất mà tổ hợp có trọng số giữa nhiều độ đo tương đồng (ví dụ Jaccard cấp độ token, Jaccard cấp độ bigram ký tự, tỷ lệ khớp chuỗi), nhằm cân bằng giữa độ nhạy cảm từ vựng cục bộ và khả năng chịu lỗi ở mức ký tự, giúp giảm thiểu sai sót với các thuật ngữ viết tắt phổ biến trong môi trường học thuật Việt Nam. Công thức trọng số cụ thể mà hệ thống Student360 áp dụng được trình bày chi tiết tại Chương 4.
-    \item \textbf{Nhận diện ý định và phân loại (Intent Classification):} Sử dụng mô hình ngôn ngữ lớn Gemini \cite{gemini-api} thông qua thư viện LangChain \cite{langchain-docs} để xây dựng AI Agent phân loại ý định học bổng của người dùng. Kết quả phân loại ý định giúp Agent điều phối đúng các Tool truy vấn, nâng cao chất lượng câu trả lời tư vấn về học bổng trong hộp thoại AI.
+    \item \textbf{Phương pháp:} Các nghiên cứu học thuật tập trung vào hai hướng tiếp cận chính: Lọc dựa trên nội dung (Content-based filtering) sử dụng độ đo tương đồng văn bản như TF-IDF, khoảng cách Cosine hoặc chỉ số Jaccard \cite{jaccard1901}, và Lọc cộng tác (Collaborative filtering) dựa trên hành vi của các sinh viên tương tự. Do dữ liệu tương tác học bổng thường rất thưa thớt, các nghiên cứu hiện đại ưu tiên sử dụng hệ gợi ý kết hợp (Hybrid Recommender Systems) \cite{burke2002hybrid, adomavicius2005toward} phối hợp giữa so khớp thuộc tính cứng và xử lý ngôn ngữ tự nhiên để khắc phục hiện tượng khởi đầu lạnh (Cold Start).
+    \item \textbf{Dữ liệu:} Hồ sơ học thuật của sinh viên (GPA, chuyên ngành, trường đại học, chứng chỉ ngoại ngữ, thành tích) và văn bản mô tả điều kiện tuyển chọn của các chương trình học bổng do nhà tài trợ phát hành.
+    \item \textbf{Độ đo đánh giá (Metrics):} Độ chính xác gợi ý (Precision), độ phủ (Recall) và điểm trung bình F1-Score của danh sách gợi ý đề xuất (Top-K Recommendations).
+    \item \textbf{Kết quả nghiên cứu liên quan:} Việc kết hợp giữa Fuzzy Matching cấp độ token (Jaccard) và cấp độ ký tự (N-gram \cite{cavnar1994-ngram}, Levenshtein \cite{levenstein1966}) giúp hệ thống chịu lỗi viết tắt và khớp thuật ngữ tốt hơn. Các hệ thống hybrid đạt độ chính xác Precision@5 trên 80\% trong các môi trường thử nghiệm học thuật, giúp giảm thiểu đáng kể thời gian tìm kiếm thủ công của sinh viên.
 \end{itemize}
+
+\subsection{Lĩnh vực Tác nhân AI hỗ trợ (LLM-based Agents)}
+\begin{itemize}
+    \item \textbf{Phương pháp:} Thay vì chỉ sử dụng chatbot trả lời tĩnh, các nghiên cứu gần đây tập trung vào kiến trúc Tác nhân AI tự trị (LLM-based Autonomous Agents) \cite{wang2023survey-agent}. Tác nhân được thiết kế theo mô hình ReAct (Reasoning and Acting) \cite{yao2022-react}, cho phép LLM thực hiện một vòng lặp gồm: suy luận ý định người dùng $\rightarrow$ quyết định gọi công cụ bên ngoài (Tool-calling để truy vấn CSDL PostgreSQL, gọi API) $\rightarrow$ nhận kết quả $\rightarrow$ tiếp tục suy luận hoặc đưa ra câu trả lời cuối cùng.
+    \item \textbf{Dữ liệu:} Lịch sử trò chuyện của người dùng, các truy vấn SQL tự động được ánh xạ từ ngôn ngữ tự nhiên và kết quả trả về từ cơ sở dữ liệu quan hệ của hệ thống.
+    \item \textbf{Độ đo đánh giá (Metrics):} Tỷ lệ thực hiện thành công tác vụ (Task Success Rate), số bước suy luận trung bình và độ trễ phản hồi (Response Latency).
+    \item \textbf{Kết quả nghiên cứu liên quan:} Kiến trúc ReAct kết hợp Tool-calling giúp nâng cao tính chủ động và chính xác của trợ lý ảo. AI Agent có thể truy vấn số dư thực tế hoặc lịch sử giao dịch để đưa ra các nhận định tài chính (AI Insights) mang tính cá nhân hóa, đồng thời định tuyến chính xác ý định tìm kiếm học bổng sang các công cụ tìm kiếm xấp xỉ trong hệ thống.
+\end{itemize}
+
+\subsection{Bảng so sánh tính mới (Novelty) của Student360}
+Để làm rõ đóng góp khoa học và tính thực tiễn của đề tài, nhóm thiết lập bảng so sánh tính mới (Novelty Matrix) giữa giải pháp đề xuất Student360 với các hướng nghiên cứu học thuật và ứng dụng thương mại hiện có trong Bảng~\ref{tab:novelty-comparison}.
+
+\begin{table}[H]
+\centering
+\caption{Bảng so sánh tính mới và đóng góp thực tiễn của đề tài Student360}
+\label{tab:novelty-comparison}
+\begin{tabular}{|L{3.2cm}|L{3.5cm}|L{3.5cm}|L{4.2cm}|}
+\hline
+\textbf{Tiêu chí so sánh} & \textbf{Nghiên cứu học thuật} & \textbf{Ứng dụng thương mại} & \textbf{Đề tài Student360} \\ \hline
+\textbf{Kiến trúc tích hợp} & Tập trung đơn lẻ một bài toán gợi ý hoặc phân loại. & Chỉ có chức năng tài chính hoặc cổng điểm đơn thuần. & Tích hợp liên kết ba trụ cột: Tài chính 6 lọ, Học thuật GPA và Học bổng trực tuyến. \\ \hline
+\textbf{Phương pháp phân loại giao dịch} & Yêu cầu lượng lớn dữ liệu gán nhãn để huấn luyện mô hình riêng. & Sử dụng Regex thô sơ hoặc khớp chuỗi cứng, tỷ lệ lỗi cao. & Sử dụng LLM Few-shot kết hợp tập luật nghiệp vụ cứng, đạt độ chính xác cao mà không cần huấn luyện lại. \\ \hline
+\textbf{Cơ chế gợi ý học bổng} & Mô hình hóa phức tạp bằng vector ngữ nghĩa nhưng khó triển khai real-time. & Lọc cứng thủ công theo các tiêu chí cơ bản hoặc tin tức tĩnh. & So khớp kết hợp đa độ đo (Jaccard + Bigram + SequenceMatcher) chạy trực tiếp trên RAM, kết hợp LLM để tinh chỉnh gợi ý tự nhiên. \\ \hline
+\textbf{Tương tác người dùng} & Hỏi đáp một chiều (Q\&A) đơn giản. & Thụ động (chỉ ghi nhận và báo cáo tĩnh sau khi sự kiện xảy ra). & Tương tác chủ động qua AI Agent (ReAct) truyền dữ liệu dạng stream SSE, kết hợp nhắc nhở chủ động qua BullMQ/Redis. \\ \hline
+\end{tabular}
+\end{table}
 
 \section{Các giải pháp thông báo đẩy thời gian thực trên nền tảng di động}
 Hệ thống thông báo đẩy (Push Notification) đóng vai trò quan trọng trong việc tăng tỷ lệ giữ chân người dùng (Retention Rate) và đảm bảo thông tin khẩn cấp được truyền tải kịp thời. Các công nghệ phổ biến bao gồm:
@@ -80,3 +194,32 @@ Hệ thống thông báo đẩy (Push Notification) đóng vai trò quan trọng
     \end{enumerate}
     Chính nhờ kiến trúc này, hệ thống có khả năng chủ động tương tác với người dùng theo đúng ngữ cảnh sử dụng, thay vì chỉ phản ứng khi người dùng mở ứng dụng.
 \end{itemize}
+
+\section{Rủi ro đạo đức và giải pháp đảm bảo trách nhiệm AI (Responsible AI)}
+Trong các hệ thống phần mềm hỗ trợ sinh viên tích hợp trí tuệ nhân tạo như Student360, việc xem xét các rủi ro đạo đức công nghệ (ethical risks) và thực thi các nguyên tắc Responsible AI là bắt buộc để bảo vệ quyền lợi người dùng và đảm bảo tính bền vững của giải pháp. Nhóm đề tài đã phân tích và thiết lập các phương án kỹ thuật tương ứng cho bốn khía cạnh rủi ro cốt lõi:
+
+\begin{enumerate}
+    \item \textbf{Thiên lệch trong gợi ý thuật toán (Algorithmic Bias):}
+    \begin{itemize}
+        \item \textit{Rủi ro:} Thuật toán gợi ý học bổng có xu hướng ưu tiên tuyệt đối các sinh viên có hồ sơ học thuật xuất sắc (GPA cao, nhiều chứng chỉ) mà bỏ qua sinh viên có hoàn cảnh khó khăn hoặc có nỗ lực hoạt động xã hội tích cực. Điều này có thể gián tiếp tạo ra sự bất bình đẳng trong phân bổ cơ hội.
+        \item \textit{Giải pháp của Student360:} Hệ thống không cố định một công thức chấm điểm khớp duy nhất. Thay vào đó, nền tảng cho phép nhà tài trợ cấu hình trọng số linh hoạt cho từng tiêu chí xét tuyển (nâng trọng số điểm hoàn cảnh khó khăn, hạ bớt trọng số GPA đối với các học bổng vượt khó). Điều này giúp đa dạng hóa cơ hội tiếp cận cho nhiều nhóm sinh viên khác nhau.
+    \end{itemize}
+    
+    \item \textbf{Khả năng giải thích được (Explainability):}
+    \begin{itemize}
+        \item \textit{Rủi ro:} Điểm số so khớp (\% tương thích) do AI đưa ra có thể bị coi là một chiếc ``hộp đen'' (black-box), khiến sinh viên hoang mang không biết tại sao mình lại nhận được mức độ phù hợp thấp và cần cải thiện những gì trong hồ sơ.
+        \item \textit{Giải pháp của Student360:} Hệ thống minh bạch hóa quy trình bằng cách cung cấp giao diện phân rã điểm số phù hợp (Match Score Breakdown). Sinh viên có thể xem chi tiết lý do AI đánh giá (ví dụ: đạt điểm cộng vì ngành học phù hợp, bị trừ điểm vì thiếu chứng chỉ ngoại ngữ). Đồng thời, AI Agent gợi ý các hành động cụ thể (Actions) để người dùng tự cải thiện hồ sơ của mình.
+    \end{itemize}
+    
+    \item \textbf{Quyền riêng tư dữ liệu và Sự đồng ý (Data Privacy \& User Consent):}
+    \begin{itemize}
+        \item \textit{Rủi ro:} Dữ liệu học thuật (GPA, bảng điểm) và giao dịch tài chính cá nhân là thông tin cực kỳ nhạy cảm. Việc tự động chia sẻ thông tin này cho bên thứ ba (nhà tài trợ) mà không được kiểm soát có thể vi phạm nghiêm trọng quyền riêng tư.
+        \item \textit{Giải pháp của Student360:} Áp dụng nghiêm ngặt nguyên tắc đồng ý của người dùng (User Consent). Dữ liệu cá nhân chỉ được mở khóa và chia sẻ cho nhà tài trợ khi sinh viên thực hiện hành động nộp hồ sơ (Apply) một cách chủ động đối với một học bổng cụ thể. Sinh viên có quyền kiểm soát, lưu nháp hoặc hủy bỏ hồ sơ bất cứ lúc nào.
+    \end{itemize}
+    
+    \item \textbf{Sự phiền nhiễu từ thông báo đẩy (Notification Fatigue):}
+    \begin{itemize}
+        \item \textit{Rủi ro:} Việc hệ thống gửi quá nhiều thông báo tự động (cảnh báo số dư hũ, nhắc nhở ghi chép, cập nhật học bổng) thông qua hàng đợi BullMQ/Redis có thể gây khó chịu cho người dùng, làm giảm trải nghiệm và khiến họ gỡ ứng dụng.
+        \item \textit{Giải pháp của Student360:} Triển khai bộ cấu hình tùy chọn thông báo thông minh trong Mobile App. Sinh viên có thể tự cấu hình tắt/bật hoặc thay đổi tần suất nhận đối với từng loại thông báo cụ thể (nhận ngay lập tức, tóm tắt cuối tuần, hoặc chỉ nhận các cảnh báo vượt ngưỡng khẩn cấp).
+    \end{itemize}
+\end{enumerate}
