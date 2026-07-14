@@ -1,6 +1,166 @@
 \chapter{Kiến trúc hệ thống}
 \label{ch:phuong-phap-de-xuat}
 
+\section{Sơ đồ Use Case}
+
+Sơ đồ Use Case được sử dụng để xác định các tác nhân và nhóm chức năng nghiệp vụ chính của Student360 trước khi trình bày kiến trúc triển khai. Để bảo đảm khả năng đọc, báo cáo sử dụng một sơ đồ tổng quan và ba sơ đồ chi tiết theo miền nghiệp vụ. Sơ đồ tổng quan thể hiện phạm vi toàn hệ thống; các sơ đồ chi tiết lần lượt mô tả quản lý dữ liệu học thuật và bảng điểm, quản lý học bổng, và quản lý tài chính theo phương pháp 6 lọ. Trường đại học, khoa/chương trình đào tạo và môn học được xem là các đối tượng dữ liệu do quản trị viên quản lý, không phải tác nhân độc lập của hệ thống. Các bảng trong mục này đóng vai trò danh mục tóm tắt; đặc tả đầy đủ về điều kiện trước, luồng chính, luồng ngoại lệ và kết quả của từng Use Case được trình bày tại Chương~4.
+
+\subsection{Sơ đồ Use Case tổng quan}
+
+Hình~\ref{fig:usecase-overview} thể hiện ba tác nhân nghiệp vụ chính gồm sinh viên, nhà tài trợ và quản trị viên. Dịch vụ AI và Firebase Cloud Messaging là các hệ thống bên ngoài hỗ trợ gợi ý, tư vấn và gửi thông báo; chúng không thay thế quyết định nghiệp vụ của người dùng.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{Images/chapter3/usecase/usecase-overview.png}{%
+        \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{Images/chapter3/usecase/usecase-overview.png}%
+    }{%
+        \rectbox{Sơ đồ Use Case tổng quan hệ thống Student360}
+    }
+    \caption{Sơ đồ Use Case tổng quan hệ thống Student360}
+    \label{fig:usecase-overview}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.15}
+    \caption{Các tác nhân trong hệ thống Student360}
+    \label{tab:usecase-actors}
+    \begin{tabular}{|C{2.8cm}|C{2.5cm}|L{8.2cm}|}
+        \hline
+        \textbf{Tác nhân} & \textbf{Phân loại} & \textbf{Vai trò trong hệ thống} \\
+        \hline
+        Sinh viên & Tác nhân chính & Sử dụng Mobile App để quản lý tài chính 6 lọ, bảng điểm cá nhân, hồ sơ học thuật, ứng tuyển học bổng, tương tác với AI và nhận thông báo. \\
+        \hline
+        Nhà tài trợ & Tác nhân chính & Sử dụng Webadmin để tạo và cấu hình chương trình học bổng, xem hồ sơ ứng tuyển và cập nhật trạng thái xét duyệt. \\
+        \hline
+        Quản trị viên & Tác nhân chính & Sử dụng Webadmin để quản lý danh mục trường đại học, khoa/chương trình đào tạo và môn học dùng chung trong hệ thống. \\
+        \hline
+        AI Service & Tác nhân hỗ trợ & Nhận yêu cầu thông qua Backend để phân loại giao dịch, hỗ trợ tư vấn tài chính, tạo nhận định và gợi ý học bổng phù hợp. AI không tự quyết định thay sinh viên hoặc nhà tài trợ. \\
+        \hline
+        Firebase Cloud Messaging & Hệ thống ngoài & Tiếp nhận yêu cầu gửi thông báo đẩy từ Backend, gồm thông báo thay đổi trạng thái học bổng và cảnh báo tài chính. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Ba tác nhân chính trực tiếp khởi tạo nghiệp vụ là sinh viên, nhà tài trợ và quản trị viên. AI Service và Firebase Cloud Messaging chỉ tham gia với vai trò hệ thống hỗ trợ; mọi dữ liệu nghiệp vụ đều được xác thực và điều phối qua Backend Student360.
+
+\subsection{Sơ đồ Use Case quản lý dữ liệu học thuật và bảng điểm}
+
+Trong Hình~\ref{fig:usecase-academic-gradebook}, quản trị viên chịu trách nhiệm chuẩn hóa danh mục trường, khoa/chương trình đào tạo và môn học. Sinh viên sử dụng các danh mục này để thiết lập thông tin học thuật, nhập hoặc import điểm, theo dõi GPA, tín chỉ tích lũy và mục tiêu tín chỉ. Quản trị viên không trực tiếp nhập hoặc chỉnh sửa bảng điểm cá nhân của sinh viên.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{Images/chapter3/usecase/usecase-academic-gradebook.png}{%
+        \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{Images/chapter3/usecase/usecase-academic-gradebook.png}%
+    }{%
+        \rectbox{Sơ đồ Use Case quản lý dữ liệu học thuật và bảng điểm}
+    }
+    \caption{Sơ đồ Use Case quản lý dữ liệu học thuật và bảng điểm}
+    \label{fig:usecase-academic-gradebook}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.15}
+    \caption{Danh mục Use Case quản lý dữ liệu học thuật và bảng điểm}
+    \label{tab:usecase-academic-gradebook}
+    \begin{tabular}{|C{2.2cm}|L{4.2cm}|C{2.5cm}|L{4.8cm}|}
+        \hline
+        \textbf{Mã UC} & \textbf{Tên Use Case} & \textbf{Tác nhân chính} & \textbf{Mô tả tóm tắt} \\
+        \hline
+        \texttt{ACA-UC01} & Quản lý dữ liệu học thuật & Quản trị viên & Thêm, cập nhật, xóa, tìm kiếm và import danh mục trường, khoa/chương trình đào tạo và môn học trên Webadmin. \\
+        \hline
+        \texttt{ACA-UC02} & Quản lý bảng điểm cá nhân & Sinh viên & Chọn thông tin học thuật, thêm/sửa/xóa điểm, xem GPA, tín chỉ tích lũy và thiết lập mục tiêu tín chỉ. \\
+        \hline
+        \texttt{ACA-UC03} & Import bảng điểm từ tệp & Sinh viên & Đọc dữ liệu TXT/CSV trên Mobile App, ánh xạ môn học, cho phép kiểm tra và chỉnh sửa trước khi lưu điểm. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Quan hệ giữa hai tác nhân được thực hiện gián tiếp thông qua dữ liệu chuẩn hóa: quản trị viên duy trì danh mục học thuật, còn sinh viên chỉ sử dụng danh mục này trong hồ sơ và bảng điểm cá nhân.
+
+\subsection{Sơ đồ Use Case quản lý và ứng tuyển học bổng}
+
+Hình~\ref{fig:usecase-scholarship} phân tách rõ trách nhiệm giữa sinh viên và nhà tài trợ. Sinh viên tìm kiếm, chuẩn bị, nộp và theo dõi hồ sơ; nhà tài trợ công bố chương trình, cấu hình điều kiện và xét duyệt hồ sơ. Chức năng AI gợi ý học bổng là phần hỗ trợ mở rộng, không thuộc luồng nghiệp vụ bắt buộc của quá trình tạo, nộp và xét duyệt học bổng.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{Images/chapter3/usecase/usecase-scholarship.png}{%
+        \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{Images/chapter3/usecase/usecase-scholarship.png}%
+    }{%
+        \rectbox{Sơ đồ Use Case quản lý và ứng tuyển học bổng}
+    }
+    \caption{Sơ đồ Use Case quản lý và ứng tuyển học bổng}
+    \label{fig:usecase-scholarship}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.15}
+    \caption{Danh mục Use Case quản lý và ứng tuyển học bổng}
+    \label{tab:usecase-scholarship}
+    \begin{tabular}{|C{2.2cm}|L{4.0cm}|C{2.5cm}|L{5.0cm}|}
+        \hline
+        \textbf{Mã UC} & \textbf{Tên Use Case} & \textbf{Tác nhân chính} & \textbf{Mô tả và tác nhân hỗ trợ} \\
+        \hline
+        \texttt{SCH-UC01} & Quản lý chương trình học bổng & Nhà tài trợ & Tạo, cập nhật và quản lý học bổng; cấu hình điều kiện ứng tuyển và danh sách tài liệu yêu cầu. \\
+        \hline
+        \texttt{SCH-UC02} & Ứng tuyển học bổng trực tuyến & Sinh viên & Tìm kiếm học bổng, chuẩn bị tài liệu, lưu nháp, nộp, theo dõi, bổ sung hoặc hủy hồ sơ. AI Service có thể hỗ trợ gợi ý học bổng nhưng không tham gia quyết định nộp hồ sơ. \\
+        \hline
+        \texttt{SCH-UC03} & Xét duyệt hồ sơ học bổng & Nhà tài trợ & Xem và đánh giá hồ sơ, cập nhật trạng thái xét duyệt; Backend sử dụng Firebase Cloud Messaging để thông báo kết quả tới sinh viên. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Luồng nghiệp vụ cốt lõi từ tạo học bổng tới xét duyệt không phụ thuộc AI. Chức năng gợi ý chỉ mở rộng bước sinh viên tìm kiếm học bổng, còn kết quả xét duyệt do nhà tài trợ cập nhật.
+
+\subsection{Sơ đồ Use Case quản lý tài chính theo phương pháp 6 lọ}
+
+Hình~\ref{fig:usecase-six-jars-finance} mô tả các chức năng tài chính do sinh viên trực tiếp sử dụng, gồm quản lý sáu lọ mặc định (Thiết yếu, Giáo dục, Đầu tư, Thiện tâm, Hưởng thụ và Tiết kiệm), thiết lập tỷ lệ phân bổ, ghi nhận giao dịch, chuyển tiền, lập lịch và theo dõi báo cáo. AI hỗ trợ đề xuất lọ phù hợp cho giao dịch, tạo nhận định tài chính và trả lời câu hỏi; sinh viên vẫn là người xác nhận hoặc điều chỉnh kết quả trước khi lưu dữ liệu nghiệp vụ.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{Images/chapter3/usecase/usecase-six-jars-finance.png}{%
+        \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{Images/chapter3/usecase/usecase-six-jars-finance.png}%
+    }{%
+        \rectbox{Sơ đồ Use Case quản lý tài chính theo phương pháp 6 lọ}
+    }
+    \caption{Sơ đồ Use Case quản lý tài chính theo phương pháp 6 lọ và AI hỗ trợ}
+    \label{fig:usecase-six-jars-finance}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.15}
+    \caption{Danh mục Use Case quản lý tài chính 6 lọ và AI hỗ trợ}
+    \label{tab:usecase-six-jars-finance}
+    \begin{tabular}{|C{2.2cm}|L{4.0cm}|C{2.3cm}|L{5.2cm}|}
+        \hline
+        \textbf{Mã UC} & \textbf{Tên Use Case} & \textbf{Tác nhân chính} & \textbf{Mô tả và tác nhân hỗ trợ} \\
+        \hline
+        \texttt{FIN-UC01} & Cấu hình tỷ lệ 6 lọ & Sinh viên & Xem các lọ tài chính, điều chỉnh tỷ lệ phân bổ và quản lý cấu hình lọ cá nhân. \\
+        \hline
+        \texttt{FIN-UC02} & Quản lý giao dịch thủ công & Sinh viên & Ghi nhận, cập nhật, xóa và xem lịch sử giao dịch thu/chi gắn với từng lọ tài chính. \\
+        \hline
+        \texttt{FIN-UC03} & Phân bổ thu nhập tự động & Sinh viên & Chia một khoản thu vào các lọ theo tỷ lệ mặc định hoặc theo cấu hình phân bổ do sinh viên lựa chọn. \\
+        \hline
+        \texttt{FIN-UC04} & Cảnh báo tài chính theo lọ & Sinh viên & Cấu hình ngưỡng ngân sách hoặc số dư; Firebase Cloud Messaging hỗ trợ chuyển cảnh báo tới thiết bị. \\
+        \hline
+        \texttt{FIN-UC05} & Lập lịch giao dịch định kỳ & Sinh viên & Tạo, cập nhật, kích hoạt, tạm dừng hoặc xóa lịch giao dịch tự động theo chu kỳ. \\
+        \hline
+        \texttt{AI-UC01} & Trợ lý AI tài chính & Sinh viên & Đặt câu hỏi và nhận phản hồi tài chính theo thời gian thực; AI Service xử lý ngôn ngữ tự nhiên và tạo nội dung tư vấn. \\
+        \hline
+        \texttt{AI-UC02} & AI phân loại giao dịch & Sinh viên & AI Service đề xuất lọ và danh mục từ mô tả giao dịch; sinh viên xác nhận hoặc điều chỉnh trước khi lưu. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Trong phân hệ này, AI chỉ hỗ trợ phân loại, nhận định và hỏi đáp. Các thao tác làm thay đổi số dư, tỷ lệ phân bổ hoặc lịch giao dịch chỉ được thực hiện sau yêu cầu hoặc xác nhận của sinh viên.
+
 \section{Tổng quan kiến trúc hệ thống}
 
 \subsection{Mục tiêu kiến trúc}
