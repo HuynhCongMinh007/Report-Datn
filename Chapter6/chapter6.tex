@@ -4,9 +4,9 @@
 Hệ thống Student360 được hiện thực hóa và kiểm thử trên môi trường cục bộ và nền tảng điện toán đám mây với các thông số cấu hình cụ thể như sau:
 \begin{sloppypar}
 \begin{itemize}
-    \item \textbf{Môi trường máy chủ Backend:} Node.js v20+ (ảnh Docker triển khai dùng \texttt{node:24-alpine}), NestJS v10.4.20 \cite{nestjs-docs}, TypeORM v0.3.26 \cite{typeorm-docs}.
-    \item \textbf{Môi trường máy chủ AI:} Python v3.12, FastAPI v0.115.0 \cite{fastapi-docs}, \texttt{langchain-core} v0.3.0+ \cite{langchain-docs} (không phụ thuộc gói \texttt{langchain} gốc), Uvicorn v0.30.0.
-    \item \textbf{Công nghệ cơ sở dữ liệu:} PostgreSQL 17 (image \texttt{pgvector/pgvector:pg17} khi phát triển cục bộ, \texttt{postgres:17-alpine} khi triển khai) \cite{postgresql-docs}, Redis 8 khi phát triển cục bộ (\texttt{redis:8-alpine}) và Redis 7 khi triển khai (\texttt{redis:7-alpine}) \cite{redis-docs} (làm cache và message broker cho BullMQ \cite{bullmq-docs}).
+    \item \textbf{Môi trường máy chủ Backend:} Node.js v20+, NestJS v10.4.20 \cite{nestjs-docs}, TypeORM v0.3.26 \cite{typeorm-docs}.
+    \item \textbf{Môi trường máy chủ AI:} Python v3.12, FastAPI v0.115.0 \cite{fastapi-docs}, \texttt{langchain-core} v0.3.0+ \cite{langchain-docs}, Uvicorn v0.30.0.
+    \item \textbf{Công nghệ cơ sở dữ liệu:} PostgreSQL 17, \cite{postgresql-docs}, Redis 8 \cite{redis-docs} (làm cache và message broker cho BullMQ \cite{bullmq-docs}).
     \item \textbf{Môi trường Mobile App:} Expo SDK v54 (React Native v0.81) \cite{reactnative-expo}, kết hợp Tamagui v1.135 cho hệ thống Design System.
     \item \textbf{Môi trường Webadmin:} React JS v19.2, Material UI (MUI) v7.3, Vite v7.2.
     \item \textbf{Mô hình AI:} Google Gemini 2.5 Flash / Pro (thông qua Vertex AI API) \cite{gemini-api}.
@@ -40,13 +40,13 @@ Màn hình Tổng quan ví cung cấp cái nhìn toàn cảnh về tình hình t
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \IfFileExists{Images/chapter4/mobile/ai-chat.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/ai-chat.png}%
+        \IfFileExists{Images/chapter4/mobile/wallet-overview-detail.png}{%
+            \includegraphics[width=\textwidth]{Images/chapter4/mobile/wallet-overview-detail.png}%
         }{%
-            \rectbox{Hình ảnh màn hình Chat AI Trợ lý}
+            \rectbox{Hình ảnh chi tiết xu hướng thu chi trên màn hình ví}
         }
-        \caption{Giao diện trò chuyện thời gian thực với trợ lý AI}
-        \label{fig:mobile-aichat}
+        \caption{Xu hướng thu chi và phân bổ theo lọ trên màn hình tổng quan ví}
+        \label{fig:mobile-wallet-detail}
     \end{minipage}
 \end{figure}
 
@@ -74,6 +74,30 @@ Giao diện kết nối trực tiếp sinh viên với trợ lý ảo hỗ trợ
     \item \textbf{Thành phần hiển thị:} Khung chat tương tác thời gian thực, hiển thị câu trả lời dạng stream (SSE) mượt mà và trực quan.
     \item \textbf{Tích hợp hành động:} Trợ lý AI có khả năng đề xuất trực tiếp các khối hành động đề xuất (Executable Actions) dưới dạng thẻ (card) tương tác để người dùng xác nhận nhanh (ví dụ: tạo giao dịch chi tiêu hoặc điều chỉnh tỷ lệ hũ).
 \end{itemize}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \IfFileExists{Images/chapter4/mobile/ai-chat.png}{%
+            \includegraphics[width=\textwidth]{Images/chapter4/mobile/ai-chat.png}%
+        }{%
+            \rectbox{Hình ảnh màn hình Chat AI Trợ lý}
+        }
+        \caption{Giao diện trò chuyện thời gian thực với trợ lý AI}
+        \label{fig:mobile-aichat}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \IfFileExists{Images/chapter4/mobile/ai-chat-sidebar.png}{%
+            \includegraphics[width=\textwidth]{Images/chapter4/mobile/ai-chat-sidebar.png}%
+        }{%
+            \rectbox{Hình ảnh bảng chọn chủ đề và mô hình AI}
+        }
+        \caption{Bảng chọn chủ đề, nền tảng AI và lịch sử trò chuyện gần đây}
+        \label{fig:mobile-aichat-sidebar}
+    \end{minipage}
+\end{figure}
 
 \subsubsection{Màn hình Cấu hình phân bổ lọ}
 Giao diện quản lý tỷ lệ phần trăm phân bổ thu nhập cho mô hình quản lý tài chính 6 lọ:
@@ -100,13 +124,27 @@ Biểu mẫu cho phép sinh viên nhanh chóng nhập thủ công các giao dị
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \IfFileExists{Images/chapter4/mobile/add-transaction.png}{%
-        \includegraphics[width=0.48\textwidth]{Images/chapter4/mobile/add-transaction.png}%
-    }{%
-        \rectbox{Hình ảnh màn hình thêm mới giao dịch trên Mobile}
-    }
-    \caption{Giao diện biểu mẫu thêm mới giao dịch tài chính}
-    \label{fig:mobile-add-transaction}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \IfFileExists{Images/chapter4/mobile/add-transaction.png}{%
+            \includegraphics[width=\textwidth]{Images/chapter4/mobile/add-transaction.png}%
+        }{%
+            \rectbox{Hình ảnh màn hình thêm mới giao dịch trên Mobile}
+        }
+        \caption{Giao diện biểu mẫu thêm mới giao dịch tài chính}
+        \label{fig:mobile-add-transaction}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \IfFileExists{Images/chapter4/mobile/add-transaction-allocation.png}{%
+            \includegraphics[width=\textwidth]{Images/chapter4/mobile/add-transaction-allocation.png}%
+        }{%
+            \rectbox{Hình ảnh modal thiết lập tỷ lệ phân bổ khi thêm thu nhập}
+        }
+        \caption{Modal thiết lập tỷ lệ phân bổ vào các hũ khi ghi nhận thu nhập}
+        \label{fig:mobile-add-transaction-allocation}
+    \end{minipage}
 \end{figure}
 
 \subsubsection{Màn hình Lịch sử giao dịch}
@@ -134,13 +172,27 @@ Quản lý các cài đặt chuyển tiền hoặc tiết kiệm tự động th
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \IfFileExists{Images/chapter4/mobile/auto-transfer.png}{%
-        \includegraphics[width=0.48\textwidth]{Images/chapter4/mobile/auto-transfer.png}%
-    }{%
-        \rectbox{Hình ảnh màn hình quản lý lịch chuyển tự động trên Mobile}
-    }
-    \caption{Giao diện quản lý lịch chuyển tiền tự động}
-    \label{fig:mobile-auto-transfer}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \IfFileExists{Images/chapter4/mobile/auto-transfer.png}{%
+            \includegraphics[width=\textwidth]{Images/chapter4/mobile/auto-transfer.png}%
+        }{%
+            \rectbox{Hình ảnh màn hình quản lý lịch chuyển tự động trên Mobile}
+        }
+        \caption{Giao diện quản lý lịch chuyển tiền tự động}
+        \label{fig:mobile-auto-transfer}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \IfFileExists{Images/chapter4/mobile/auto-transfer-edit.png}{%
+            \includegraphics[width=\textwidth]{Images/chapter4/mobile/auto-transfer-edit.png}%
+        }{%
+            \rectbox{Hình ảnh biểu mẫu chỉnh sửa lịch chuyển tiền tự động}
+        }
+        \caption{Biểu mẫu chỉnh sửa lịch chuyển tiền tự động}
+        \label{fig:mobile-auto-transfer-edit}
+    \end{minipage}
 \end{figure}
 
 \subsubsection{Màn hình Báo cáo tài chính}
@@ -151,13 +203,27 @@ Giao diện trực quan hóa dữ liệu dòng tiền giúp sinh viên theo dõi
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \IfFileExists{Images/chapter4/mobile/financial-report.png}{%
-        \includegraphics[width=0.48\textwidth]{Images/chapter4/mobile/financial-report.png}%
-    }{%
-        \rectbox{Hình ảnh màn hình báo cáo phân tích tài chính trên Mobile}
-    }
-    \caption{Giao diện báo cáo phân tích tài chính chi tiêu}
-    \label{fig:mobile-financial-report}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \IfFileExists{Images/chapter4/mobile/financial-report.png}{%
+            \includegraphics[width=\textwidth]{Images/chapter4/mobile/financial-report.png}%
+        }{%
+            \rectbox{Hình ảnh màn hình báo cáo phân tích tài chính trên Mobile}
+        }
+        \caption{Giao diện báo cáo phân tích tài chính chi tiêu}
+        \label{fig:mobile-financial-report}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \IfFileExists{Images/chapter4/mobile/financial-report-chart.png}{%
+            \includegraphics[width=\textwidth]{Images/chapter4/mobile/financial-report-chart.png}%
+        }{%
+            \rectbox{Hình ảnh biểu đồ thu chi theo tuần trên báo cáo tài chính}
+        }
+        \caption{Biểu đồ thu chi theo tuần trên màn hình báo cáo tài chính}
+        \label{fig:mobile-financial-report-chart}
+    \end{minipage}
 \end{figure}
 
 \subsubsection{Màn hình Gợi ý học bổng}
