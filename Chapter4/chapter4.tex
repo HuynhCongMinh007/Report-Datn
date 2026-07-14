@@ -77,3 +77,22 @@ Nhằm khắc phục tình trạng \textit{knowledge silo} (chia cắt kiến th
     \item \textbf{Giai đoạn 4 -- Hoàn thiện, tối ưu và triển khai (05/2026 -- 06/2026):} Tối ưu hiệu năng và bảo mật (chuẩn hóa Unicode tiếng Việt, chống Prompt Injection), kiểm thử toàn diện hệ thống, cấu hình build và deploy ứng dụng lên môi trường thật.
     \item \textbf{Giai đoạn 5 -- Hoàn thiện báo cáo và bảo vệ (07/2026 -- 21/07/2026):} Tổng hợp kết quả đạt được, hoàn chỉnh báo cáo khóa luận, chuẩn bị slide và demo phục vụ báo cáo trước Hội đồng.
 \end{itemize}
+
+\section{Các thách thức kỹ thuật và giải pháp thực hiện}
+Trong suốt quá trình phát triển và tích hợp hệ thống Student360, nhóm phát triển đã đối mặt với bốn thách thức kỹ thuật cốt lõi và đề xuất các giải pháp xử lý tương ứng như sau:
+
+\subsection{Thách thức ở tầng trình bày di động (Mobile App)}
+\begin{itemize}
+    \item \textbf{Thách thức 1 -- Truyền phản hồi AI theo thời gian thực:} Do cơ chế tải dữ liệu tuần tự trên nền di động không ổn định như trên trình duyệt, việc chờ nhận đủ toàn bộ phản hồi từ mô hình ngôn ngữ lớn (Gemini AI) trước khi hiển thị tạo ra độ trễ lớn, ảnh hưởng tiêu cực đến trải nghiệm người dùng (UX).
+    \item \textit{Giải pháp:} Ứng dụng cơ chế đọc dữ liệu tăng dần theo từng phần (Streaming / Server-Sent Events - SSE). Mobile App đọc dữ liệu dạng chunk và cập nhật giao diện tức thời ngay khi nhận được ký tự đầu tiên, giúp giảm cảm giác chờ đợi của sinh viên.
+    \item \textbf{Thách thức 2 -- Đồng bộ dữ liệu và tính nhất quán giữa các màn hình:} Một giao dịch chi tiêu mới của sinh viên ảnh hưởng đồng thời đến nhiều giao diện độc lập (số dư các hũ 6 lọ, lịch sử giao dịch gần đây, biểu đồ báo cáo tài chính và các cảnh báo chi tiêu). Việc tự cộng trừ số liệu thủ công ở các màn hình khác nhau dễ dẫn đến sai lệch dữ liệu.
+    \item \textit{Giải pháp:} Sử dụng cơ chế Query Invalidation của thư viện React Query. Frontend tự động đánh dấu toàn bộ các nhóm dữ liệu tài chính liên quan là đã lỗi thời ngay sau khi Backend ghi nhận giao dịch thành công, buộc hệ thống tự động tải lại dữ liệu ngầm và cập nhật UI đồng bộ mà không cần tải lại toàn bộ ứng dụng.
+\end{itemize}
+
+\subsection{Thách thức ở tầng AI và Bảo mật (AI Service \& Backend)}
+\begin{itemize}
+    \item \textbf{Thách thức 3 -- Độ trễ lớn khi gọi LLM và xử lý tiếng Việt:} Thời gian phản hồi trung bình của chatbot AI khoảng 4 giây, có thể lên tới hơn 10 giây đối với câu hỏi phức tạp. Đồng thời, việc sinh viên nhập từ viết tắt, tiếng lóng tiếng Việt hoặc lỗi Unicode không đồng nhất (NFC/NFD) làm giảm độ chính xác của bộ phân loại giao dịch.
+    \item \textit{Giải pháp:} Áp dụng bộ lọc chuẩn hóa Unicode NFC ở Backend trước khi gửi yêu cầu sang AI Service. Đồng thời, thiết lập cơ chế phân loại hỗn hợp (Hybrid Classification Pipeline): kiểm tra danh mục từ khóa cá nhân hóa trong cơ sở dữ liệu trước với độ trễ 0ms; chỉ khi không khớp mới gọi LLM để suy luận ngữ nghĩa.
+    \item \textbf{Thách thức 4 -- Ngăn chặn tấn công Prompt Injection và rò rỉ dữ liệu:} Người dùng có thể cố tình nhập câu lệnh tiêm nhiễm để phá vỡ ngữ cảnh an toàn của trợ lý AI, hoặc giả mạo ID người dùng (\texttt{user\_id}) trong request API để truy cập thông tin tài chính của sinh viên khác.
+    \item \textit{Giải pháp:} Xây dựng chính sách bảo mật hai tầng (Policy Filter) trên AI Service để phát hiện và chặn đứng các câu lệnh tiêm nhiễm độc hại. Ở phía Backend, hệ thống tự động ghi đè tham số \texttt{user\_id} của mọi yêu cầu bằng thông tin lấy từ token JWT đã được xác thực, ngăn chặn hoàn toàn nguy cơ client tự truyền ID tự do.
+\end{itemize}
