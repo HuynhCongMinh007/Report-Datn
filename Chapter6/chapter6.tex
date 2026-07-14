@@ -401,7 +401,25 @@ Giao diện chính phục vụ quy trình đánh giá và phê duyệt hồ sơ 
 
 \section{Kiểm thử hệ thống}
 \subsection{Kiểm thử chức năng}
-Nhóm phát triển đã tiến hành kiểm thử hộp đen (Black-box testing) đối với các giao diện người dùng trên phân hệ Mobile App và Webadmin. Các ca kiểm thử bao gồm các nghiệp vụ cơ bản như đăng ký/đăng nhập, ghi nhận thu chi, thiết lập cấu hình tỷ lệ 6 lọ tài chính, đăng ký học bổng, upload file tài liệu minh chứng, và xét duyệt hồ sơ ứng tuyển. 100\% các ca kiểm thử chức năng nghiệp vụ cơ bản trên giao diện đều hoạt động ổn định, đạt yêu cầu đề ra của bài toán.
+\label{sec:kiem-thu-chuc-nang}
+Nhóm phát triển đã tiến hành kiểm thử hộp đen (Black-box testing) đối với các giao diện người dùng trên phân hệ Mobile App và Webadmin. Để tiện truy vết với bảng RTM ở Chương 4 (Bảng~\ref{tab:rtm}), mỗi nhóm ca kiểm thử được gán một mã dạng FUNC-TCxx và ánh xạ về mã use case tương ứng như trong Bảng~\ref{tab:func-test-results}. 100\% các ca kiểm thử chức năng nghiệp vụ cơ bản trên giao diện đều hoạt động ổn định, đạt yêu cầu đề ra của bài toán.
+
+\begin{table}[H]
+    \centering
+    \caption{Các nhóm ca kiểm thử chức năng hộp đen và use case tương ứng}
+    \label{tab:func-test-results}
+    \begin{tabular}{|L{2.2cm}|L{5.6cm}|L{2.8cm}|C{2.2cm}|}
+        \hline
+        \textbf{Mã kiểm thử} & \textbf{Nhóm nghiệp vụ kiểm thử} & \textbf{Use case liên quan} & \textbf{Kết quả} \\
+        \hline
+        FUNC-TC01 & Đăng ký / đăng nhập tài khoản & --- (nghiệp vụ nền) & Đạt \\ \hline
+        FUNC-TC02 & Ghi nhận thu chi và phân bổ thu nhập & FIN-UC02, FIN-UC03 & Đạt \\ \hline
+        FUNC-TC03 & Thiết lập cấu hình tỷ lệ 6 lọ tài chính & FIN-UC01 & Đạt \\ \hline
+        FUNC-TC04 & Đăng ký học bổng trực tuyến & SCH-UC02 & Đạt \\ \hline
+        FUNC-TC05 & Upload file tài liệu minh chứng & SCH-UC02 & Đạt \\ \hline
+        FUNC-TC06 & Xét duyệt hồ sơ ứng tuyển & SCH-UC03 & Đạt \\ \hline
+    \end{tabular}
+\end{table}
 
 \subsection{Kiểm thử API}
 Để đảm bảo tất cả các endpoint API hoạt động đồng bộ và trả về mã trạng thái HTTP chính xác, nhóm đã xây dựng một bộ kiểm thử end-to-end tự động bằng Jest + Supertest (\texttt{backend/test/ai-gateway.e2e-spec.ts}), chạy trực tiếp trên hệ thống thật (Backend + AI Service + PostgreSQL + Redis đang hoạt động), thay cho việc kiểm thử tay qua Postman trước đây. Bộ test này có thể chạy lại bất cứ lúc nào bằng lệnh \texttt{npm run test:e2e -- ai-gateway}. Kết quả cuối cùng (6/6 PASS) được trình bày trong Bảng~\ref{tab:api-integration-results}:
@@ -411,9 +429,9 @@ Nhóm phát triển đã tiến hành kiểm thử hộp đen (Black-box testing
     \footnotesize
     \caption{Kết quả kiểm thử tích hợp API tự động (Jest + Supertest, chạy thật)}
     \label{tab:api-integration-results}
-    \begin{tabular}{|L{3.5cm}|L{4.5cm}|C{2cm}|L{3.5cm}|}
+    \begin{tabular}{|L{1.7cm}|L{3.1cm}|L{4.1cm}|C{1.9cm}|L{3cm}|}
         \hline
-        \textbf{Nhóm chức năng} & \textbf{Endpoint kiểm thử} & \textbf{Trạng thái} & \textbf{Ghi chú xác minh} \\
+        \textbf{Mã kiểm thử} & \textbf{Nhóm chức năng (UC)} & \textbf{Endpoint kiểm thử} & \textbf{Trạng thái} & \textbf{Ghi chú xác minh} \\
         \hline
         Authentication & \texttt{POST /api/}\allowbreak\texttt{auth/}\allowbreak\texttt{login} & \textbf{PASS~\checkmark} & Lấy Bearer token thành công. \\ \hline
         Chat Intent Routing & \texttt{POST /api/}\allowbreak\texttt{ai/}\allowbreak\texttt{chat} & \textbf{PASS~\checkmark} & Định tuyến và trả lời đúng cấu trúc dữ liệu cho câu hỏi lai giữa học bổng và tài chính cá nhân. \\ \hline
