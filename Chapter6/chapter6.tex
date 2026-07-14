@@ -320,7 +320,7 @@ Màn hình quản trị dành cho Ban quản trị để quản lý danh mục c
 \begin{figure}[H]
     \centering
     \IfFileExists{Images/chapter4/webadmin/universities.png}{%
-        \includegraphics[width=0.6\textwidth]{Images/chapter4/webadmin/universities.png}%
+        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/universities.png}%
     }{%
         \rectbox{Màn hình danh sách trường đại học trên Webadmin}
     }
@@ -337,9 +337,17 @@ Giao diện đồng bộ Master Data môn học và chương trình đào tạo 
 \begin{figure}[H]
     \centering
     \IfFileExists{Images/chapter4/webadmin/subjects-programs.png}{%
-        \includegraphics[width=0.6\textwidth]{Images/chapter4/webadmin/subjects-programs.png}%
+        \includegraphics[width=\textwidth,height=0.4\textheight,keepaspectratio]{Images/chapter4/webadmin/subjects-programs.png}%
     }{%
-        \rectbox{Màn hình quản lý môn học và khoa/chương trình đào tạo theo trường}
+        \rectbox{Màn hình quản lý môn học theo trường}
+    }
+
+    \vspace{0.5cm}
+
+    \IfFileExists{Images/chapter4/webadmin/training-programs.png}{%
+        \includegraphics[width=\textwidth,height=0.4\textheight,keepaspectratio]{Images/chapter4/webadmin/training-programs.png}%
+    }{%
+        \rectbox{Màn hình quản lý khoa/chương trình đào tạo theo trường}
     }
     \caption{Giao diện quản lý môn học và khoa/chương trình đào tạo}
     \label{fig:webadmin-subjects-programs}
