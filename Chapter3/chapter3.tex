@@ -1,13 +1,40 @@
-\chapter{Kiến trúc hệ thống}
-\label{ch:phuong-phap-de-xuat}
+\chapter{Phân tích và thiết kế}
+\label{ch:phan-tich-thiet-ke}
 
-\section{Sơ đồ Use Case}
+Chương này trình bày quá trình phân tích yêu cầu và thiết kế hệ thống Student360. Mục~3.1 xác định tác nhân và các nhóm Use Case chính. Mục~3.2 trình bày kiến trúc tổng quan bốn tầng. Mục~3.3 đến 3.6 thiết kế chi tiết từng tầng: Frontend, Backend, AI và dữ liệu. Mục~3.7 đặc tả chi tiết các chức năng nghiệp vụ theo từng phân hệ.
 
-Sơ đồ Use Case được sử dụng để xác định các tác nhân và nhóm chức năng nghiệp vụ chính của Student360 trước khi trình bày kiến trúc triển khai. Để bảo đảm khả năng đọc, báo cáo sử dụng một sơ đồ tổng quan và ba sơ đồ chi tiết theo miền nghiệp vụ. Sơ đồ tổng quan thể hiện phạm vi toàn hệ thống; các sơ đồ chi tiết lần lượt mô tả quản lý dữ liệu học thuật và bảng điểm, quản lý học bổng, và quản lý tài chính theo phương pháp 6 lọ. Trường đại học, khoa/chương trình đào tạo và môn học được xem là các đối tượng dữ liệu do quản trị viên quản lý, không phải tác nhân độc lập của hệ thống. Các bảng trong mục này đóng vai trò danh mục tóm tắt; đặc tả đầy đủ về điều kiện trước, luồng chính, luồng ngoại lệ và kết quả của từng Use Case được trình bày tại Chương~4.
+\section{Phân tích yêu cầu hệ thống}
+\label{sec:phan-tich-yeu-cau}
+Như đã giới thiệu tại Chương 1, hệ thống Student360 gồm 4 phân hệ chức năng cốt lõi: Quản lý tài chính cá nhân, Trợ lý tài chính ảo AI, Quản lý học bổng trực tuyến và Quản lý học thuật/Bảng điểm. Mục này xác định tác nhân tham gia và sơ đồ Use Case của từng phân hệ; đặc tả chi tiết từng chức năng được trình bày tại Mục~3.7.
 
-\subsection{Sơ đồ Use Case tổng quan}
+\subsection{Tác nhân}
+Hệ thống Student360 có ba tác nhân chính, tương ứng với ba nhóm người dùng trực tiếp thao tác trên giao diện. Bảng~\ref{tab:usecase-actors} tổng hợp vai trò của từng tác nhân.
 
-Hình~\ref{fig:usecase-overview} thể hiện ba tác nhân nghiệp vụ chính gồm sinh viên, nhà tài trợ và quản trị viên. Dịch vụ AI và Firebase Cloud Messaging là các hệ thống bên ngoài hỗ trợ gợi ý, tư vấn và gửi thông báo; chúng không thay thế quyết định nghiệp vụ của người dùng.
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|C{3cm}|L{9.5cm}|}
+        \hline
+        \textbf{Tác nhân} & \textbf{Vai trò trong hệ thống} \\
+        \hline
+        Sinh viên & Sử dụng Mobile App để quản lý tài chính 6 lọ, bảng điểm cá nhân, hồ sơ học thuật, ứng tuyển học bổng, trò chuyện với AI và nhận thông báo. \\
+        \hline
+        Nhà tài trợ & Sử dụng Webadmin để tạo và cấu hình chương trình học bổng, xem hồ sơ ứng tuyển và cập nhật kết quả xét duyệt. \\
+        \hline
+        Quản trị viên & Sử dụng Webadmin để quản lý danh mục trường, khoa/chương trình đào tạo và môn học dùng chung trong hệ thống. \\
+        \hline
+    \end{tabular}
+
+    \caption{Các tác nhân chính trong hệ thống Student360}
+    \label{tab:usecase-actors}
+\end{table}
+
+\subsection{Sơ đồ Use Case}
+Các Use Case của Student360 được tách thành một sơ đồ tổng quan và ba sơ đồ chi tiết theo từng miền nghiệp vụ: quản lý dữ liệu học thuật và bảng điểm, quản lý học bổng, và quản lý tài chính theo phương pháp 6 lọ.
+
+\noindent\textbf{Sơ đồ Use Case tổng quan}\\[2pt]
+Hình~\ref{fig:usecase-overview} thể hiện ba tác nhân chính và phạm vi tổng thể của hệ thống. AI Service và Firebase Cloud Messaging xuất hiện trong sơ đồ với vai trò hệ thống hỗ trợ (gợi ý, tư vấn, gửi thông báo), không thay thế quyết định nghiệp vụ của người dùng.
 
 \begin{figure}[H]
     \centering
@@ -20,34 +47,8 @@ Hình~\ref{fig:usecase-overview} thể hiện ba tác nhân nghiệp vụ chính
     \label{fig:usecase-overview}
 \end{figure}
 
-\begin{table}[H]
-    \centering
-    \small
-    \renewcommand{\arraystretch}{1.15}
-    \caption{Các tác nhân trong hệ thống Student360}
-    \label{tab:usecase-actors}
-    \begin{tabular}{|C{2.8cm}|C{2.5cm}|L{8.2cm}|}
-        \hline
-        \textbf{Tác nhân} & \textbf{Phân loại} & \textbf{Vai trò trong hệ thống} \\
-        \hline
-        Sinh viên & Tác nhân chính & Sử dụng Mobile App để quản lý tài chính 6 lọ, bảng điểm cá nhân, hồ sơ học thuật, ứng tuyển học bổng, tương tác với AI và nhận thông báo. \\
-        \hline
-        Nhà tài trợ & Tác nhân chính & Sử dụng Webadmin để tạo và cấu hình chương trình học bổng, xem hồ sơ ứng tuyển và cập nhật trạng thái xét duyệt. \\
-        \hline
-        Quản trị viên & Tác nhân chính & Sử dụng Webadmin để quản lý danh mục trường đại học, khoa/chương trình đào tạo và môn học dùng chung trong hệ thống. \\
-        \hline
-        AI Service & Tác nhân hỗ trợ & Nhận yêu cầu thông qua Backend để phân loại giao dịch, hỗ trợ tư vấn tài chính, tạo nhận định và gợi ý học bổng phù hợp. AI không tự quyết định thay sinh viên hoặc nhà tài trợ. \\
-        \hline
-        Firebase Cloud Messaging & Hệ thống ngoài & Tiếp nhận yêu cầu gửi thông báo đẩy từ Backend, gồm thông báo thay đổi trạng thái học bổng và cảnh báo tài chính. \\
-        \hline
-    \end{tabular}
-\end{table}
-
-Ba tác nhân chính trực tiếp khởi tạo nghiệp vụ là sinh viên, nhà tài trợ và quản trị viên. AI Service và Firebase Cloud Messaging chỉ tham gia với vai trò hệ thống hỗ trợ; mọi dữ liệu nghiệp vụ đều được xác thực và điều phối qua Backend Student360.
-
-\subsection{Sơ đồ Use Case quản lý dữ liệu học thuật và bảng điểm}
-
-Trong Hình~\ref{fig:usecase-academic-gradebook}, quản trị viên chịu trách nhiệm chuẩn hóa danh mục trường, khoa/chương trình đào tạo và môn học. Sinh viên sử dụng các danh mục này để thiết lập thông tin học thuật, nhập hoặc import điểm, theo dõi GPA, tín chỉ tích lũy và mục tiêu tín chỉ. Quản trị viên không trực tiếp nhập hoặc chỉnh sửa bảng điểm cá nhân của sinh viên.
+\noindent\textbf{Sơ đồ Use Case quản lý dữ liệu học thuật và bảng điểm}\\[2pt]
+Hình~\ref{fig:usecase-academic-gradebook} mô tả hai nhóm chức năng: quản trị viên chuẩn hóa danh mục trường, khoa/chương trình đào tạo, môn học; sinh viên dùng danh mục đó để thiết lập hồ sơ học thuật, nhập điểm và theo dõi GPA, tín chỉ tích lũy.
 
 \begin{figure}[H]
     \centering
@@ -60,30 +61,8 @@ Trong Hình~\ref{fig:usecase-academic-gradebook}, quản trị viên chịu trá
     \label{fig:usecase-academic-gradebook}
 \end{figure}
 
-\begin{table}[H]
-    \centering
-    \small
-    \renewcommand{\arraystretch}{1.15}
-    \caption{Danh mục Use Case quản lý dữ liệu học thuật và bảng điểm}
-    \label{tab:usecase-academic-gradebook}
-    \begin{tabular}{|C{2.2cm}|L{4.2cm}|C{2.5cm}|L{4.8cm}|}
-        \hline
-        \textbf{Mã UC} & \textbf{Tên Use Case} & \textbf{Tác nhân chính} & \textbf{Mô tả tóm tắt} \\
-        \hline
-        \texttt{ACA-UC01} & Quản lý dữ liệu học thuật & Quản trị viên & Thêm, cập nhật, xóa, tìm kiếm và import danh mục trường, khoa/chương trình đào tạo và môn học trên Webadmin. \\
-        \hline
-        \texttt{ACA-UC02} & Quản lý bảng điểm cá nhân & Sinh viên & Chọn thông tin học thuật, thêm/sửa/xóa điểm, xem GPA, tín chỉ tích lũy và thiết lập mục tiêu tín chỉ. \\
-        \hline
-        \texttt{ACA-UC03} & Import bảng điểm từ tệp & Sinh viên & Đọc dữ liệu TXT/CSV trên Mobile App, ánh xạ môn học, cho phép kiểm tra và chỉnh sửa trước khi lưu điểm. \\
-        \hline
-    \end{tabular}
-\end{table}
-
-Quan hệ giữa hai tác nhân được thực hiện gián tiếp thông qua dữ liệu chuẩn hóa: quản trị viên duy trì danh mục học thuật, còn sinh viên chỉ sử dụng danh mục này trong hồ sơ và bảng điểm cá nhân.
-
-\subsection{Sơ đồ Use Case quản lý và ứng tuyển học bổng}
-
-Hình~\ref{fig:usecase-scholarship} phân tách rõ trách nhiệm giữa sinh viên và nhà tài trợ. Sinh viên tìm kiếm, chuẩn bị, nộp và theo dõi hồ sơ; nhà tài trợ công bố chương trình, cấu hình điều kiện và xét duyệt hồ sơ. Chức năng AI gợi ý học bổng là phần hỗ trợ mở rộng, không thuộc luồng nghiệp vụ bắt buộc của quá trình tạo, nộp và xét duyệt học bổng.
+\noindent\textbf{Sơ đồ Use Case quản lý và ứng tuyển học bổng}\\[2pt]
+Hình~\ref{fig:usecase-scholarship} tách rõ trách nhiệm giữa hai tác nhân: sinh viên tìm kiếm, chuẩn bị, nộp và theo dõi hồ sơ; nhà tài trợ công bố chương trình, cấu hình điều kiện và xét duyệt hồ sơ. AI gợi ý học bổng chỉ là chức năng hỗ trợ thêm, không nằm trong luồng bắt buộc.
 
 \begin{figure}[H]
     \centering
@@ -96,30 +75,8 @@ Hình~\ref{fig:usecase-scholarship} phân tách rõ trách nhiệm giữa sinh v
     \label{fig:usecase-scholarship}
 \end{figure}
 
-\begin{table}[H]
-    \centering
-    \small
-    \renewcommand{\arraystretch}{1.15}
-    \caption{Danh mục Use Case quản lý và ứng tuyển học bổng}
-    \label{tab:usecase-scholarship}
-    \begin{tabular}{|C{2.2cm}|L{4.0cm}|C{2.5cm}|L{5.0cm}|}
-        \hline
-        \textbf{Mã UC} & \textbf{Tên Use Case} & \textbf{Tác nhân chính} & \textbf{Mô tả và tác nhân hỗ trợ} \\
-        \hline
-        \texttt{SCH-UC01} & Quản lý chương trình học bổng & Nhà tài trợ & Tạo, cập nhật và quản lý học bổng; cấu hình điều kiện ứng tuyển và danh sách tài liệu yêu cầu. \\
-        \hline
-        \texttt{SCH-UC02} & Ứng tuyển học bổng trực tuyến & Sinh viên & Tìm kiếm học bổng, chuẩn bị tài liệu, lưu nháp, nộp, theo dõi, bổ sung hoặc hủy hồ sơ. AI Service có thể hỗ trợ gợi ý học bổng nhưng không tham gia quyết định nộp hồ sơ. \\
-        \hline
-        \texttt{SCH-UC03} & Xét duyệt hồ sơ học bổng & Nhà tài trợ & Xem và đánh giá hồ sơ, cập nhật trạng thái xét duyệt; Backend sử dụng Firebase Cloud Messaging để thông báo kết quả tới sinh viên. \\
-        \hline
-    \end{tabular}
-\end{table}
-
-Luồng nghiệp vụ cốt lõi từ tạo học bổng tới xét duyệt không phụ thuộc AI. Chức năng gợi ý chỉ mở rộng bước sinh viên tìm kiếm học bổng, còn kết quả xét duyệt do nhà tài trợ cập nhật.
-
-\subsection{Sơ đồ Use Case quản lý tài chính theo phương pháp 6 lọ}
-
-Hình~\ref{fig:usecase-six-jars-finance} mô tả các chức năng tài chính do sinh viên trực tiếp sử dụng, gồm quản lý sáu lọ mặc định (Thiết yếu, Giáo dục, Đầu tư, Thiện tâm, Hưởng thụ và Tiết kiệm), thiết lập tỷ lệ phân bổ, ghi nhận giao dịch, chuyển tiền, lập lịch và theo dõi báo cáo. AI hỗ trợ đề xuất lọ phù hợp cho giao dịch, tạo nhận định tài chính và trả lời câu hỏi; sinh viên vẫn là người xác nhận hoặc điều chỉnh kết quả trước khi lưu dữ liệu nghiệp vụ.
+\noindent\textbf{Sơ đồ Use Case quản lý tài chính theo phương pháp 6 lọ}\\[2pt]
+Hình~\ref{fig:usecase-six-jars-finance} mô tả các chức năng tài chính do sinh viên trực tiếp dùng: quản lý sáu lọ mặc định (Thiết yếu, Giáo dục, Đầu tư, Thiện tâm, Hưởng thụ, Tiết kiệm), thiết lập tỷ lệ phân bổ, ghi nhận giao dịch, chuyển tiền, lập lịch và theo dõi báo cáo. AI chỉ hỗ trợ đề xuất lọ phù hợp, tạo nhận định và trả lời câu hỏi; sinh viên luôn là người xác nhận trước khi dữ liệu được lưu.
 
 \begin{figure}[H]
     \centering
@@ -132,53 +89,46 @@ Hình~\ref{fig:usecase-six-jars-finance} mô tả các chức năng tài chính 
     \label{fig:usecase-six-jars-finance}
 \end{figure}
 
-\begin{table}[H]
-    \centering
-    \small
-    \renewcommand{\arraystretch}{1.15}
-    \caption{Danh mục Use Case quản lý tài chính 6 lọ và AI hỗ trợ}
-    \label{tab:usecase-six-jars-finance}
-    \begin{tabular}{|C{2.2cm}|L{4.0cm}|C{2.3cm}|L{5.2cm}|}
-        \hline
-        \textbf{Mã UC} & \textbf{Tên Use Case} & \textbf{Tác nhân chính} & \textbf{Mô tả và tác nhân hỗ trợ} \\
-        \hline
-        \texttt{FIN-UC01} & Cấu hình tỷ lệ 6 lọ & Sinh viên & Xem các lọ tài chính, điều chỉnh tỷ lệ phân bổ và quản lý cấu hình lọ cá nhân. \\
-        \hline
-        \texttt{FIN-UC02} & Quản lý giao dịch thủ công & Sinh viên & Ghi nhận, cập nhật, xóa và xem lịch sử giao dịch thu/chi gắn với từng lọ tài chính. \\
-        \hline
-        \texttt{FIN-UC03} & Phân bổ thu nhập tự động & Sinh viên & Chia một khoản thu vào các lọ theo tỷ lệ mặc định hoặc theo cấu hình phân bổ do sinh viên lựa chọn. \\
-        \hline
-        \texttt{FIN-UC04} & Cảnh báo tài chính theo lọ & Sinh viên & Cấu hình ngưỡng ngân sách hoặc số dư; Firebase Cloud Messaging hỗ trợ chuyển cảnh báo tới thiết bị. \\
-        \hline
-        \texttt{FIN-UC05} & Lập lịch giao dịch định kỳ & Sinh viên & Tạo, cập nhật, kích hoạt, tạm dừng hoặc xóa lịch giao dịch tự động theo chu kỳ. \\
-        \hline
-        \texttt{AI-UC01} & Trợ lý AI tài chính & Sinh viên & Đặt câu hỏi và nhận phản hồi tài chính theo thời gian thực; AI Service xử lý ngôn ngữ tự nhiên và tạo nội dung tư vấn. \\
-        \hline
-        \texttt{AI-UC02} & AI phân loại giao dịch & Sinh viên & AI Service đề xuất lọ và danh mục từ mô tả giao dịch; sinh viên xác nhận hoặc điều chỉnh trước khi lưu. \\
-        \hline
-    \end{tabular}
-\end{table}
+\section{Kiến trúc tổng quan}
 
-Trong phân hệ này, AI chỉ hỗ trợ phân loại, nhận định và hỏi đáp. Các thao tác làm thay đổi số dư, tỷ lệ phân bổ hoặc lịch giao dịch chỉ được thực hiện sau yêu cầu hoặc xác nhận của sinh viên.
+\subsection{Kiến trúc bốn tầng và nguyên lý thiết kế}
+Kiến trúc Student360 hướng tới bốn mục tiêu: (1) tách rõ trách nhiệm giữa các thành phần; (2) cho phép phát triển, kiểm thử, vận hành độc lập; (3) cho phép nhiều thành viên làm việc song song mà ít xung đột mã nguồn, phù hợp cách phân công theo cặp tại Chương 4; (4) cô lập rủi ro và chi phí vận hành của AI khỏi luồng nghiệp vụ lõi.
 
-\section{Tổng quan kiến trúc hệ thống}
+Hệ thống theo mô hình \textbf{Client--Server phân tán bốn tầng}: tầng trình bày, tầng ứng dụng (Backend), tầng AI (AI Service) và tầng dữ liệu. Tầng AI tách riêng khỏi tầng ứng dụng vì đặc tính vận hành khác hẳn nghiệp vụ thông thường của Backend (độ trễ gọi mô hình ngôn ngữ lớn, phụ thuộc nhà cung cấp bên thứ ba, chi phí theo token). Mỗi thành phần nằm trong một repository Git riêng (đa-repository) và chỉ giao tiếp qua mạng (HTTP REST, SSE, hàng đợi thông điệp), phù hợp cách làm việc theo cặp của nhóm 6 thành viên.
 
-\subsection{Mục tiêu kiến trúc}
-Kiến trúc của hệ thống Student360 được thiết kế nhằm đạt được bốn mục tiêu chính: (1) phân tách rõ ràng trách nhiệm giữa các thành phần (Separation of Concerns), giúp mỗi phần chỉ tập trung xử lý đúng vai trò của mình; (2) cho phép các thành phần được phát triển, kiểm thử và vận hành độc lập với nhau; (3) hỗ trợ nhiều thành viên trong nhóm phát triển song song trên các phần khác nhau của hệ thống mà không xung đột mã nguồn với nhau, phù hợp với cách phân công theo cặp đã trình bày ở Chương 5; (4) cô lập được rủi ro và chi phí vận hành của thành phần Trí tuệ nhân tạo (độ trễ, chi phí gọi mô hình ngôn ngữ lớn) khỏi luồng nghiệp vụ lõi của hệ thống.
-
-\subsection{Mô hình kiến trúc tổng thể}
-Hệ thống được tổ chức theo mô hình \textbf{Kiến trúc Client--Server phân tán nhiều tầng}, gồm ba tầng logic: tầng trình bày (Presentation Tier), tầng ứng dụng/xử lý nghiệp vụ (Application Tier) và tầng dữ liệu (Data Tier). Về mặt triển khai mã nguồn, mỗi thành phần thuộc tầng trình bày và tầng ứng dụng được hiện thực trong một repository Git độc lập (đa-repository), không dùng chung một repository duy nhất. Các thành phần giao tiếp với nhau hoàn toàn qua mạng, thông qua các giao thức kết nối tiêu chuẩn như HTTP REST, Server-Sent Events (SSE) và hàng đợi thông điệp (Message Queue), chứ không chia sẻ trực tiếp mã nguồn hay tiến trình với nhau. Cách tổ chức này cho phép mỗi dịch vụ được phát triển, triển khai và mở rộng độc lập, đồng thời phù hợp với quy mô một nhóm nhỏ (6 thành viên) khi mỗi cặp thành viên có thể làm việc trọn vẹn trên repository của mình mà ít va chạm với phần việc của cặp khác.
-
-\subsection{Các thành phần chính và vai trò}
 \begin{itemize}
-    \item \textbf{Mobile App:} Kênh tương tác chính của sinh viên với hệ thống, thuộc tầng trình bày.
-    \item \textbf{Web Admin Portal:} Công cụ quản trị dành cho nhà tài trợ và quản trị viên, thuộc tầng trình bày.
-    \item \textbf{Backend:} Trung tâm xử lý nghiệp vụ, xác thực, phân quyền và điều phối truy cập dữ liệu, thuộc tầng ứng dụng.
-    \item \textbf{AI Service:} Dịch vụ chuyên trách xử lý ngôn ngữ tự nhiên và các tác vụ liên quan tới Trí tuệ nhân tạo, thuộc tầng ứng dụng.
-    \item \textbf{Tầng lưu trữ (PostgreSQL và Redis):} Nơi lưu trữ dữ liệu nghiệp vụ và quản lý hàng đợi xử lý bất đồng bộ, thuộc tầng dữ liệu.
+    \item \textbf{Tầng trình bày:} Mobile App và Web Admin Portal.
+    \item \textbf{Tầng ứng dụng:} Backend -- xác thực, phân quyền, xử lý nghiệp vụ, điều phối dữ liệu.
+    \item \textbf{Tầng AI:} AI Service -- xử lý ngôn ngữ tự nhiên và các tác vụ AI.
+    \item \textbf{Tầng dữ liệu:} PostgreSQL và Redis -- lưu trữ nghiệp vụ và hàng đợi bất đồng bộ.
 \end{itemize}
 
-Hình~\ref{fig:context-diagram} mô tả sơ đồ ngữ cảnh hệ thống (System Context Diagram), thể hiện các tác nhân tương tác với hệ thống và các hệ thống bên ngoài mà Student360 phụ thuộc vào.
+\begin{figure}[H]
+    \centering
+    \resizebox{0.92\textwidth}{!}{%
+    \begin{tikzpicture}[
+        tier/.style={draw, thick, rounded corners, minimum width=6.4cm, minimum height=1.15cm, align=center, font=\small},
+        aitier/.style={draw, thick, rounded corners, minimum width=4cm, minimum height=1.9cm, align=center, font=\small, fill=orange!20},
+        node distance=0.6cm and 0.7cm
+    ]
+        \node[tier, fill=blue!10] (presentation) {\textbf{Tầng trình bày}\\Mobile App -- Web Admin Portal};
+        \node[tier, fill=blue!20, below=of presentation] (application) {\textbf{Tầng ứng dụng}\\Backend: xác thực, phân quyền, nghiệp vụ};
+        \node[tier, fill=blue!35, below=of application] (data) {\textbf{Tầng dữ liệu}\\PostgreSQL -- Redis};
+        \node[aitier, right=of application] (ai) {\textbf{Tầng AI}\\AI Service:\\tư vấn, phân loại,\\gợi ý học bổng};
+
+        \draw[<->, thick] (presentation) -- (application);
+        \draw[<->, thick] (application) -- (data);
+        \draw[<->, thick] (application) -- (ai);
+    \end{tikzpicture}%
+    }
+    \caption{Kiến trúc bốn tầng của hệ thống Student360}
+    \label{fig:four-tier-architecture}
+\end{figure}
+
+Kiến trúc bốn tầng, đa-repository giúp tách trách nhiệm rõ theo cả chiều tầng lẫn chiều dịch vụ, hạn chế xung đột mã nguồn khi làm việc song song, đồng thời cho phép bổ sung dịch vụ hoặc miền nghiệp vụ mới mà không phá vỡ cấu trúc hiện có.
+
+\subsection{Luồng dữ liệu và cơ chế giao tiếp}
+Hình~\ref{fig:context-diagram} và Hình~\ref{fig:container-diagram} lần lượt thể hiện sơ đồ ngữ cảnh (các tác nhân và hệ thống ngoài mà Student360 phụ thuộc) và sơ đồ Container (các thành phần triển khai cụ thể cùng giao thức giao tiếp).
 
 \begin{figure}[H]
     \centering
@@ -209,8 +159,6 @@ Hình~\ref{fig:context-diagram} mô tả sơ đồ ngữ cảnh hệ thống (Sy
     \label{fig:context-diagram}
 \end{figure}
 
-Ở mức chi tiết hơn, Hình~\ref{fig:container-diagram} trình bày sơ đồ kiến trúc Container, thể hiện các thành phần triển khai cụ thể (Mobile App, Web Admin Portal, Backend, AI Service, hàng đợi và tầng lưu trữ) cùng giao thức giao tiếp giữa chúng.
-
 \begin{figure}[H]
     \centering
     \IfFileExists{Images/chapter3/architecture/system-container.png}{%
@@ -222,21 +170,16 @@ Hình~\ref{fig:context-diagram} mô tả sơ đồ ngữ cảnh hệ thống (Sy
     \label{fig:container-diagram}
 \end{figure}
 
-\subsection{Luồng hoạt động tổng quát}
-Người dùng thao tác trên Mobile App hoặc Web Admin Portal, gửi yêu cầu tới Backend qua giao thức HTTP REST thông thường, hoặc qua kênh SSE riêng đối với chức năng trò chuyện AI cần phản hồi theo thời gian thực. Backend xác thực danh tính và phân quyền truy cập, sau đó xử lý nghiệp vụ và đọc/ghi dữ liệu trực tiếp trên PostgreSQL. Đối với các yêu cầu cần năng lực xử lý ngôn ngữ tự nhiên (tư vấn tài chính, phân loại giao dịch, gợi ý học bổng), Backend đóng vai trò cổng trung gian, chuyển tiếp yêu cầu sang AI Service; AI Service không truy cập trực tiếp vào cơ sở dữ liệu mà luôn gọi ngược lại Backend để lấy dữ liệu thật khi cần suy luận. Kết quả xử lý cuối cùng được trả ngược qua Backend về lại giao diện người dùng. Đối với các tác vụ không cần phản hồi tức thời (gửi thông báo hàng loạt, xử lý nền định kỳ), Backend đẩy tác vụ vào hàng đợi Redis để xử lý bất đồng bộ, tránh làm chậm các yêu cầu API chính.
+Người dùng thao tác trên Mobile App hoặc Web Admin Portal, gửi yêu cầu tới Backend qua HTTP REST (riêng trò chuyện AI dùng kênh SSE để phản hồi theo thời gian thực). Backend xác thực, phân quyền, xử lý nghiệp vụ và đọc/ghi PostgreSQL; với yêu cầu cần xử lý ngôn ngữ tự nhiên, Backend chuyển tiếp sang AI Service -- AI Service không truy cập trực tiếp cơ sở dữ liệu mà luôn gọi ngược lại Backend khi cần dữ liệu thật.
 
-\section{Kiến trúc Frontend}
+Với tác vụ không cần phản hồi tức thời (gửi thông báo, xử lý nền định kỳ), Backend tách theo mô hình producer--consumer dùng hàng đợi: một tiến trình tạo tác vụ và đẩy vào hàng đợi, một worker nền lấy tác vụ và gọi dịch vụ đích. Nhờ vậy API nghiệp vụ chính trả về ngay sau khi tạo tác vụ, không phải chờ dịch vụ bên thứ ba vốn có thể chậm hoặc lỗi tạm thời.
 
-\subsection{Ứng dụng Mobile}
-Ứng dụng Mobile (Expo/React Native) là kênh tương tác chính của sinh viên với hệ thống, đảm nhận việc ghi nhận thu chi tài chính, trò chuyện với trợ lý AI, ứng tuyển học bổng, quản lý bảng điểm cá nhân và nhận thông báo đẩy.
+\section{Thiết kế Frontend}
 
-Về mặt tổ chức, ứng dụng được chia thành ba tầng logic tách biệt: tầng giao diện và định tuyến, tổ chức theo mô hình định tuyến dựa trên tệp tin (file-based routing) giúp cấu trúc màn hình phản ánh trực tiếp cấu trúc điều hướng của ứng dụng; tầng trạng thái, tách biệt rõ giữa trạng thái phiên đăng nhập/giao diện cục bộ và trạng thái dữ liệu nghiệp vụ được đồng bộ từ máy chủ; và tầng giao tiếp API, tập trung toàn bộ việc gọi Backend qua một lớp client duy nhất.
+\subsection{Nền tảng di động}
+Ứng dụng Mobile (Expo/React Native) là kênh tương tác chính của sinh viên: ghi nhận thu chi, trò chuyện với AI, ứng tuyển học bổng, quản lý bảng điểm và nhận thông báo đẩy. Nền tảng này được chọn vì cho phép phát triển đồng thời iOS và Android từ một mã nguồn, phù hợp quy mô và thời gian của đồ án; thư viện giao diện Tamagui giữ phong cách hiển thị đồng bộ trên thiết bị di động.
 
-Về xử lý dữ liệu, trạng thái phiên đăng nhập và các trạng thái giao diện cục bộ (như phiên trò chuyện AI, bộ lọc hiển thị) được quản lý độc lập với trạng thái dữ liệu nghiệp vụ lấy từ Backend. Dữ liệu nghiệp vụ được đồng bộ hai chiều với Backend thông qua cơ chế làm mới bộ đệm tự động mỗi khi có thay đổi (đã trình bày cơ chế cụ thể ở Chương 6, mục Cơ chế đồng bộ trạng thái giao diện tức thời), giúp số dư và lịch sử giao dịch trên màn hình luôn phản ánh đúng dữ liệu mới nhất mà không cần người dùng tải lại thủ công. Lớp giao tiếp API tự động đính kèm token xác thực vào mỗi yêu cầu và tự động làm mới token khi hết hạn, giúp phiên đăng nhập của người dùng được duy trì liền mạch.
-
-Việc lựa chọn nền tảng Expo/React Native cho phép phát triển đồng thời cho cả iOS và Android từ một mã nguồn duy nhất, phù hợp với quy mô và thời gian phát triển hạn chế của một đồ án tốt nghiệp. Thư viện thiết kế giao diện Tamagui được sử dụng nhất quán trong toàn bộ ứng dụng, đảm bảo giao diện đồng bộ về phong cách và tối ưu về hiệu năng hiển thị trên thiết bị di động.
-
-Hình~\ref{fig:mobile-architecture} mô tả cách ứng dụng Mobile phân tách lớp định tuyến và giao diện, trạng thái cục bộ, dữ liệu máy chủ và lớp giao tiếp API. Expo Router đảm nhận điều hướng dựa trên cấu trúc tệp; Zustand quản lý trạng thái cục bộ; React Query quản lý dữ liệu lấy từ Backend và cơ chế làm mới cache; Axios client tập trung xử lý token và các yêu cầu HTTP.
+Ứng dụng chia thành ba tầng: tầng giao diện và định tuyến (theo cấu trúc tệp tin, phản ánh trực tiếp cấu trúc điều hướng), tầng trạng thái (tách trạng thái phiên/giao diện cục bộ khỏi trạng thái dữ liệu nghiệp vụ từ máy chủ), và tầng giao tiếp API (gom việc gọi Backend vào một lớp client duy nhất, tự đính kèm và làm mới token xác thực). Dữ liệu nghiệp vụ đồng bộ hai chiều với Backend qua cơ chế làm mới bộ đệm tự động mỗi khi có thay đổi, giúp số dư và lịch sử giao dịch luôn đúng với dữ liệu mới nhất mà không cần người dùng tải lại thủ công.
 
 \begin{figure}[H]
     \centering
@@ -249,16 +192,13 @@ Hình~\ref{fig:mobile-architecture} mô tả cách ứng dụng Mobile phân tá
     \label{fig:mobile-architecture}
 \end{figure}
 
-\subsection{Web Admin}
-Web Admin Portal (React JS/Vite) là công cụ dành cho quản trị viên và nhà tài trợ, phục vụ việc quản lý dữ liệu học thuật chuẩn hóa (trường, chương trình đào tạo, môn học) và toàn bộ vòng đời của một chương trình học bổng, từ khởi tạo, cấu hình điều kiện cho tới xét duyệt hồ sơ ứng tuyển của sinh viên.
+\noindent\textbf{Thách thức kỹ thuật và giải pháp}\\[2pt]
+Hai vấn đề nổi bật nhất ở tầng này là truyền phản hồi AI theo thời gian thực, và giữ dữ liệu nhất quán trên nhiều màn hình dùng chung sau một thao tác ghi. Với luồng trò chuyện AI, do cơ chế tải dữ liệu tuần tự trên nền tảng di động không ổn định như trên trình duyệt, ứng dụng đọc dữ liệu tăng dần theo từng phần thay vì chờ nhận đủ toàn bộ phản hồi mới hiển thị, giúp giảm cảm giác chờ. Với tính nhất quán dữ liệu, một giao dịch mới có thể ảnh hưởng tới nhiều màn hình cùng lúc (lịch sử giao dịch, số dư, báo cáo, cảnh báo); ứng dụng dùng thư viện quản lý dữ liệu server để tự động đánh dấu và tải lại ngầm các nhóm dữ liệu liên quan ngay sau mỗi thao tác ghi, thay vì tự cộng trừ số liệu ở nhiều nơi.
 
-Về mặt tổ chức, Web Admin Portal được chia theo miền nghiệp vụ, mỗi miền là một khối chức năng độc lập có luồng dữ liệu và giao diện riêng. Việc kiểm soát truy cập theo vai trò (quản trị viên hay nhà tài trợ) được thực hiện ngay ở tầng định tuyến, đảm bảo mỗi vai trò chỉ nhìn thấy và thao tác được trên đúng phần giao diện được phép truy cập.
+\subsection{Nền tảng Web}
+Web Admin Portal (React JS/Vite) là công cụ dành cho quản trị viên và nhà tài trợ: quản lý danh mục học thuật chuẩn hóa và toàn bộ vòng đời một chương trình học bổng, từ khởi tạo đến xét duyệt hồ sơ. React JS kết hợp Vite giúp tăng tốc độ phát triển; thư viện giao diện dạng bảng giúp dựng nhanh các màn hình quản trị dữ liệu khối lượng lớn.
 
-Trạng thái đăng nhập và thông tin phân quyền của người dùng được quản lý tập trung trong toàn ứng dụng, trong khi dữ liệu nghiệp vụ của từng miền chức năng (danh sách trường, danh sách học bổng, hồ sơ ứng tuyển...) được đồng bộ riêng theo từng khu vực giao diện tương ứng. Giống như ứng dụng Mobile, Web Admin Portal giao tiếp với Backend qua một lớp client tập trung, tự động đính kèm token xác thực vào mỗi yêu cầu.
-
-Việc lựa chọn React JS kết hợp Vite giúp tối ưu tốc độ phát triển và build ứng dụng, trong khi thư viện Material UI cho phép dựng nhanh các giao diện quản trị dữ liệu dạng bảng với khối lượng bản ghi lớn, vốn là nhu cầu chính của một cổng quản trị.
-
-Hình~\ref{fig:webadmin-architecture} thể hiện cấu trúc Web Admin Portal. React Router và lớp kiểm tra vai trò kiểm soát truy cập; các trang được tổ chức theo miền quản trị hoặc nhà tài trợ; React Query và Zustand quản lý dữ liệu máy chủ và trạng thái cục bộ; lớp service sử dụng Axios client để giao tiếp tập trung với Backend.
+Web Admin Portal chia theo miền nghiệp vụ, mỗi miền là một khối chức năng độc lập. Kiểm soát truy cập theo vai trò (quản trị viên hay nhà tài trợ) đặt ngay ở tầng định tuyến, để mỗi vai trò chỉ thấy và thao tác đúng phần giao diện được phép. Giống ứng dụng Mobile, Web Admin Portal giao tiếp với Backend qua một lớp client tập trung, tự động đính kèm token xác thực vào mỗi yêu cầu.
 
 \begin{figure}[H]
     \centering
@@ -271,25 +211,19 @@ Hình~\ref{fig:webadmin-architecture} thể hiện cấu trúc Web Admin Portal.
     \label{fig:webadmin-architecture}
 \end{figure}
 
-\section{Kiến trúc Backend}
+\section{Thiết kế Backend}
 
-\subsection{Vai trò}
-Backend, hiện thực trên nền tảng NestJS \cite{nestjs-docs}, là trung tâm điều phối của toàn hệ thống: xác thực người dùng, phân quyền truy cập, xử lý toàn bộ logic nghiệp vụ, là điểm truy cập duy nhất tới cơ sở dữ liệu quan hệ, đồng thời đóng vai trò cổng trung gian (gateway) an toàn cho các yêu cầu cần tới năng lực xử lý của AI Service. Việc lựa chọn NestJS xuất phát từ kiến trúc module hóa sẵn có của framework (hỗ trợ tách rời Controller, Service và Guard một cách tường minh, phù hợp trực tiếp với mô hình phân lớp trình bày ở Mục 3.3.2) và hệ sinh thái TypeScript giúp giảm thiểu lỗi thời gian chạy khi nhiều thành viên cùng phát triển song song trên các module khác nhau.
+\subsection{Kiến trúc hệ thống Backend}
+Backend là trung tâm điều phối của hệ thống: xác thực, phân quyền, xử lý nghiệp vụ, là điểm truy cập duy nhất tới cơ sở dữ liệu, và là cổng trung gian cho các yêu cầu cần AI Service. Backend theo \textbf{kiến trúc phân lớp}: một dịch vụ duy nhất, module hóa theo miền nghiệp vụ, không tách thành nhiều dịch vụ độc lập kiểu Microservices. Lựa chọn này phù hợp quy mô nhóm 6 thành viên và thời gian đồ án có hạn: module hóa trong một dịch vụ đã đủ tách biệt trách nhiệm, mà không phải gánh chi phí vận hành nhiều dịch vụ độc lập.
 
-\subsection{Mô hình kiến trúc}
-Backend được tổ chức theo \textbf{Kiến trúc phân lớp (Layered Architecture)}: một dịch vụ duy nhất, được module hóa rõ ràng theo từng miền nghiệp vụ, chứ không tách thành nhiều dịch vụ vận hành độc lập theo đúng nghĩa Microservices, cũng không áp dụng các mô hình như CQRS (tách biệt luồng xử lý lệnh ghi và truy vấn đọc) hay kiến trúc hướng sự kiện (Event-driven Architecture) với cơ chế phát/nhận sự kiện nghiệp vụ. Lựa chọn này xuất phát từ quy mô của nhóm phát triển (6 thành viên) và thời gian thực hiện đồ án có giới hạn: việc module hóa theo miền nghiệp vụ trong một dịch vụ duy nhất đã đủ để tách biệt rõ trách nhiệm giữa các phần chức năng, trong khi tránh được chi phí vận hành và điều phối phát sinh khi phải triển khai, giám sát và đồng bộ dữ liệu giữa nhiều dịch vụ độc lập như kiến trúc Microservices thực thụ đòi hỏi.
-
-\subsection{Các tầng nội bộ}
-Một yêu cầu đi qua Backend lần lượt qua các tầng sau:
+Một yêu cầu đi qua Backend lần lượt qua các tầng:
 \begin{itemize}
-    \item \textbf{Tầng tiếp nhận và xác thực yêu cầu:} tiếp nhận yêu cầu từ client, xác thực danh tính người dùng qua JSON Web Token (JWT) và kiểm tra quyền truy cập theo vai trò trước khi cho phép yêu cầu đi tiếp.
-    \item \textbf{Tầng chuẩn hóa và giám sát:} chuẩn hóa cấu trúc phản hồi trả về và ghi log của mỗi yêu cầu, phục vụ việc theo dõi và gỡ lỗi hệ thống.
-    \item \textbf{Tầng xử lý nghiệp vụ:} nơi hiện thực toàn bộ logic nghiệp vụ cốt lõi của hệ thống, độc lập với cách yêu cầu được tiếp nhận hay dữ liệu được lưu trữ.
-    \item \textbf{Tầng truy xuất dữ liệu:} chịu trách nhiệm đọc/ghi dữ liệu trên PostgreSQL, cô lập tầng xử lý nghiệp vụ khỏi chi tiết truy vấn cơ sở dữ liệu.
-    \item \textbf{Tầng đẩy tác vụ nền:} đối với các tác vụ không cần phản hồi tức thời (gửi thông báo hàng loạt, lên lịch giao dịch định kỳ), Backend đẩy tác vụ vào hàng đợi Redis/BullMQ thay vì xử lý đồng bộ trong cùng một yêu cầu, giúp không làm chậm tiến trình xử lý API chính.
+    \item \textbf{Tiếp nhận và xác thực:} xác thực danh tính, kiểm tra quyền truy cập theo vai trò.
+    \item \textbf{Chuẩn hóa và giám sát:} chuẩn hóa phản hồi, ghi log phục vụ theo dõi và gỡ lỗi.
+    \item \textbf{Xử lý nghiệp vụ:} hiện thực logic nghiệp vụ, độc lập với cách tiếp nhận yêu cầu hay lưu trữ dữ liệu.
+    \item \textbf{Truy xuất dữ liệu:} đọc/ghi cơ sở dữ liệu, cô lập tầng nghiệp vụ khỏi chi tiết truy vấn.
+    \item \textbf{Đẩy tác vụ nền:} với tác vụ không cần phản hồi tức thời, đẩy vào hàng đợi thay vì xử lý đồng bộ.
 \end{itemize}
-
-Hình~\ref{fig:backend-layered-architecture} minh họa đường đi của một yêu cầu qua các lớp nội bộ của Backend. Tùy từng miền nghiệp vụ, service có thể truy cập dữ liệu thông qua TypeORM Repository hoặc DataSource; các nhánh xử lý AI và tác vụ nền được tách khỏi luồng truy xuất dữ liệu thông thường.
 
 \begin{figure}[H]
     \centering
@@ -302,28 +236,36 @@ Hình~\ref{fig:backend-layered-architecture} minh họa đường đi của mộ
     \label{fig:backend-layered-architecture}
 \end{figure}
 
-\subsection{Tổ chức theo miền nghiệp vụ}
-Trong phạm vi đề tài này, Backend được tổ chức thành các miền nghiệp vụ chính: Xác thực và phân quyền, Tài chính 6 lọ, Học bổng, Học thuật/Bảng điểm và Thông báo. Cần lưu ý rằng Backend là nền tảng dùng chung cho toàn bộ hệ sinh thái Student360, phục vụ cả các phân hệ khác ngoài phạm vi đồ án này; nội dung trình bày trong báo cáo chỉ tập trung vào các miền nghiệp vụ liên quan trực tiếp tới tài chính, học bổng và học thuật.
+Trong phạm vi đề tài, Backend chia thành các miền nghiệp vụ: Xác thực và phân quyền, Tài chính 6 lọ, Học bổng, Học thuật/Bảng điểm, Thông báo. Backend thực tế là nền tảng dùng chung cho toàn hệ sinh thái Student360; báo cáo chỉ trình bày các miền liên quan trực tiếp tới tài chính, học bổng và học thuật.
 
-\section{Kiến trúc hệ thống AI}
+\subsection{Framework và công nghệ}
+Backend dùng NestJS \cite{nestjs-docs} vì framework có sẵn cơ chế module hóa rõ ràng, khớp với mô hình phân lớp ở trên; hệ sinh thái TypeScript cũng giảm lỗi khi nhiều thành viên phát triển song song. Truy xuất dữ liệu quan hệ dùng ORM có sẵn của framework; tác vụ nền và bất đồng bộ dùng cơ chế hàng đợi trên nền Redis.
 
-\subsection{Vai trò và vị trí trong kiến trúc tổng thể}
-AI Service, hiện thực bằng FastAPI \cite{fastapi-docs} kết hợp thư viện LangChain \cite{langchain-docs} để xây dựng tác nhân AI và kết nối tới mô hình ngôn ngữ lớn Gemini \cite{gemini-api} của Google, cung cấp năng lực xử lý ngôn ngữ tự nhiên cho hệ thống: tư vấn tài chính qua hội thoại, phân loại giao dịch từ mô tả viết tay của người dùng, và gợi ý học bổng phù hợp với hồ sơ sinh viên. Dịch vụ này được tách thành một thành phần độc lập trong kiến trúc tổng thể nhằm cô lập độ trễ và chi phí gọi mô hình ngôn ngữ lớn khỏi luồng xử lý nghiệp vụ lõi của Backend. Client không gọi trực tiếp AI Service; với luồng trò chuyện trực tuyến, Backend tạo JWT có thời hạn ngắn, ký bằng bí mật \texttt{AI\_SERVICE\_SECRET} và gửi token này trong header \texttt{Authorization} khi chuyển tiếp yêu cầu. Việc lựa chọn Python/FastAPI thay vì cùng nền tảng NestJS với Backend xuất phát từ hệ sinh thái thư viện AI/LLM phong phú của Python, trong khi LangChain cung cấp sẵn các thành phần trừu tượng hóa cho tác nhân tool-calling và khả năng tích hợp đa nhà cung cấp mô hình ngôn ngữ, phù hợp trực tiếp với tầng trừu tượng hóa LLM mô tả ở Mục 3.4.3.
+\subsection{Các cơ chế bảo vệ nghiệp vụ}
+Ngoài xác thực/phân quyền và chuẩn hóa dữ liệu đầu vào đã nói ở Mục~3.4.1, Backend dùng thêm ba cơ chế cho các thao tác nhạy cảm với tính nhất quán dữ liệu:
 
-\subsection{Luồng xử lý tổng quát}
-Khi sinh viên đặt một câu hỏi hoặc nhập một mô tả giao dịch trên Mobile App, yêu cầu được Backend xác thực rồi chuyển tiếp sang AI Service. Tại đây, hệ thống trước tiên phân loại ý định của câu hỏi để xác định ngữ cảnh và phạm vi xử lý phù hợp, sau đó một tác nhân AI (Agent) tiến hành suy luận theo mô hình lặp truy vấn--hành động (ReAct: reasoning + acting) \cite{yao2022-react}, gọi tới các công cụ nghiệp vụ tương ứng khi cần dữ liệu thực tế (thông qua việc gọi ngược lại Backend). Kết quả sau khi được tổng hợp từ mô hình ngôn ngữ lớn được trả về dưới dạng luồng token liên tục cho Backend, và Backend tiếp tục đẩy luồng này về ứng dụng di động để hiển thị theo thời gian thực, tương tự trải nghiệm của các trợ lý ảo thương mại.
-
-\subsection{Các thành phần chính}
 \begin{itemize}
-    \item \textbf{Tầng tiếp nhận yêu cầu:} nhận yêu cầu từ Backend, xác thực token nội bộ trước khi chuyển tiếp cho tầng xử lý.
-    \item \textbf{Tầng phân loại ý định:} xác định loại câu hỏi (truy vấn tài chính, phân loại giao dịch, tư vấn học bổng...) để giới hạn đúng phạm vi ngữ cảnh và tập công cụ được phép sử dụng cho từng loại câu hỏi, thay vì luôn cho phép toàn bộ công cụ có sẵn -- giúp giảm chi phí gọi mô hình và tăng độ chính xác của kết quả.
-    \item \textbf{Tầng suy luận và gọi công cụ:} một tác nhân AI duy nhất theo mô hình tool-calling (ReAct), được "thu hẹp phạm vi" linh hoạt theo kết quả phân loại ý định ở bước trước, thay vì cần nhiều tác nhân chuyên biệt tách rời phối hợp với nhau.
-    \item \textbf{Tầng công cụ nghiệp vụ:} tập hợp các hàm truy vấn và tính toán cụ thể mà tác nhân AI có thể gọi khi cần dữ liệu thực tế, ví dụ truy vấn số dư hũ tài chính, lịch sử giao dịch, hoặc tính điểm phù hợp giữa hồ sơ sinh viên và một chương trình học bổng.
-    \item \textbf{Tầng trừu tượng hóa nhà cung cấp mô hình ngôn ngữ lớn:} cho phép hệ thống chuyển đổi hoặc dự phòng linh hoạt giữa nhiều nhà cung cấp mô hình ngôn ngữ khi gặp lỗi hạn mức hoặc gián đoạn kết nối, mà không ảnh hưởng tới logic nghiệp vụ ở các tầng phía trên.
-    \item \textbf{Tầng xử lý nền:} một tiến trình hoàn toàn tách biệt khỏi tiến trình xử lý yêu cầu chính, đảm nhận các tác vụ định kỳ không cần phản hồi tức thời, như tổng hợp nhận định tài chính theo chu kỳ hoặc dọn dẹp các phiên hội thoại không còn hoạt động.
+    \item \textbf{Tính nhất quán khi thao tác nhiều lọ tài chính:} một lần chuyển tiền giữa hai lọ tạo đồng thời hai bản ghi (chi ở lọ nguồn, thu ở lọ đích) trong cùng một giao dịch cơ sở dữ liệu; nếu một bước lỗi, toàn bộ được hoàn tác. Số dư mỗi lọ được tính lại từ lịch sử giao dịch sau khi ghi thành công, thay vì chỉ tin vào giá trị tạm trên giao diện (Mục~3.7.1, FIN-UC03). Riêng luồng phân bổ một khoản thu vào nhiều lọ và luồng xóa lọ kèm giao dịch bù trừ hiện vẫn ghi các bản ghi song song, chưa gộp trong một giao dịch chung -- đây là giới hạn còn tồn tại, cần khắc phục để loại bỏ rủi ro không nhất quán nếu lỗi giữa chừng.
+    \item \textbf{Không phát sinh hồ sơ học bổng trùng:} hồ sơ ứng tuyển được ràng buộc duy nhất theo từng cặp sinh viên -- học bổng; việc cập nhật hồ sơ cá nhân, tài liệu và lịch sử trạng thái được gộp trong cùng một giao dịch để tránh dữ liệu dở dang nếu lỗi giữa chừng.
+    \item \textbf{Idempotency cho tác vụ có thể chạy lại:} các tác vụ nền có thể chạy lại (ví dụ quét cảnh báo bất thường định kỳ) dùng một khóa định danh duy nhất để loại bỏ trùng lặp, đảm bảo không tạo ra bản ghi hay thông báo trùng cho người dùng.
 \end{itemize}
 
-Hình~\ref{fig:ai-flow} minh họa luồng xử lý và truyền phản hồi theo thời gian thực nói trên.
+\section{Thiết kế AI}
+
+\subsection{AI Agent tư vấn}
+AI Service dùng FastAPI \cite{fastapi-docs} kết hợp LangChain \cite{langchain-docs} để xây dựng tác nhân AI, kết nối tới mô hình ngôn ngữ lớn Gemini \cite{gemini-api}. Dịch vụ này cung cấp ba năng lực: tư vấn tài chính qua hội thoại, phân loại giao dịch từ mô tả tự nhiên, và gợi ý học bổng phù hợp hồ sơ sinh viên. AI Service được tách thành thành phần độc lập để cô lập độ trễ và chi phí gọi mô hình ngôn ngữ lớn khỏi luồng nghiệp vụ lõi của Backend; client không gọi trực tiếp AI Service mà luôn đi qua Backend với một token nội bộ thời hạn ngắn. AI Service dùng Python/FastAPI thay vì NestJS như Backend vì hệ sinh thái thư viện AI/LLM của Python phong phú hơn, và LangChain có sẵn các thành phần cho tác nhân tool-calling cũng như tích hợp đa nhà cung cấp mô hình ngôn ngữ.
+
+Khi sinh viên đặt câu hỏi hoặc nhập mô tả giao dịch, yêu cầu được Backend xác thực rồi chuyển sang AI Service. Hệ thống trước tiên phân loại ý định câu hỏi để xác định phạm vi xử lý, sau đó một tác nhân AI suy luận theo mô hình lặp truy vấn--hành động (ReAct) \cite{yao2022-react}, gọi các công cụ nghiệp vụ khi cần dữ liệu thực tế bằng cách gọi ngược lại Backend. Kết quả được trả về dưới dạng luồng liên tục, hiển thị dần trên ứng dụng theo thời gian thực, tương tự trải nghiệm của các trợ lý ảo thương mại (đặc tả nghiệp vụ tại Mục~3.7.2, AI-UC01).
+
+Các thành phần chính của AI Agent:
+\begin{itemize}
+    \item \textbf{Tiếp nhận yêu cầu:} xác thực token nội bộ trước khi chuyển tiếp cho tầng xử lý.
+    \item \textbf{Phân loại ý định:} xác định loại câu hỏi để giới hạn đúng phạm vi ngữ cảnh và tập công cụ được phép dùng, thay vì luôn cho phép toàn bộ công cụ -- giúp giảm chi phí gọi mô hình và tăng độ chính xác.
+    \item \textbf{Suy luận và gọi công cụ:} một tác nhân AI duy nhất theo mô hình tool-calling, được thu hẹp phạm vi linh hoạt theo kết quả phân loại ý định, thay vì cần nhiều tác nhân chuyên biệt phối hợp.
+    \item \textbf{Công cụ nghiệp vụ:} các hàm truy vấn và tính toán cụ thể mà tác nhân AI có thể gọi khi cần dữ liệu thực tế.
+    \item \textbf{Trừu tượng hóa nhà cung cấp mô hình:} cho phép chuyển đổi hoặc dự phòng linh hoạt giữa nhiều nhà cung cấp mô hình ngôn ngữ khi gặp lỗi hạn mức hoặc gián đoạn kết nối.
+    \item \textbf{Xử lý nền:} tiến trình tách biệt khỏi luồng xử lý yêu cầu chính, đảm nhận tác vụ định kỳ như tổng hợp nhận định tài chính hoặc dọn dẹp phiên hội thoại không hoạt động.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -336,21 +278,35 @@ Hình~\ref{fig:ai-flow} minh họa luồng xử lý và truyền phản hồi th
     \label{fig:ai-flow}
 \end{figure}
 
-\section{Kiến trúc cơ sở dữ liệu}
-Hệ thống sử dụng cơ sở dữ liệu quan hệ \textbf{PostgreSQL 15} \cite{postgresql-docs} làm nguồn dữ liệu tin cậy duy nhất (single source of truth) cho toàn bộ dữ liệu nghiệp vụ, được chuẩn hóa theo mô hình quan hệ với các ràng buộc khóa ngoại chặt chẽ để đảm bảo tính toàn vẹn dữ liệu. Bên cạnh đó, \textbf{Redis 7} \cite{redis-docs} đóng vai trò message broker phục vụ hàng đợi xử lý bất đồng bộ, không lưu trữ dữ liệu nghiệp vụ lâu dài.
+Mã nguồn AI Service đã có sẵn một khung điều phối đa-agent, cho phép định tuyến yêu cầu tới nhiều tác nhân AI chuyên biệt theo miền nghiệp vụ, nhưng chưa được kích hoạt ở phiên bản hiện tại -- hệ thống chỉ dùng một tác nhân duy nhất với cơ chế phân loại ý định như trên. Đây là nền tảng để mở rộng thành kiến trúc đa-agent thực sự khi hệ thống cần thêm nghiệp vụ AI phức tạp hơn.
 
-Dữ liệu của hệ thống được tổ chức thành ba nhóm chính, thể hiện trong sơ đồ ERD ở Hình~\ref{fig:erd-finance}, Hình~\ref{fig:erd-academic} và Hình~\ref{fig:erd-scholarship}:
+\subsection{AI Matching: Đối sánh hồ sơ sinh viên với học bổng}
+Bên cạnh AI Agent tư vấn, AI Service còn giải bài toán đối sánh mức độ phù hợp giữa hồ sơ sinh viên và từng chương trình học bổng, phục vụ tính năng gợi ý khi sinh viên duyệt danh sách (Mục~3.7.3, SCH-UC02).
+
+Điểm số so khớp được tính trực tiếp tại thời điểm truy vấn, không dùng cơ sở dữ liệu vector. Các trường thông tin có giá trị trong hồ sơ sinh viên (ngành học, trường, kỹ năng, hoạt động ngoại khóa) được gộp thành một đoạn văn bản, chuẩn hóa để tiếng Việt hiển thị nhất quán, rồi so sánh với nội dung học bổng bằng ba độ đo tương đồng văn bản:
 \begin{itemize}
-    \item \textbf{Nhóm Tài chính:} quản lý các hũ tài chính, lịch sử giao dịch thu chi, lịch trình chuyển tiền tự động và cấu hình ngưỡng cảnh báo chi tiêu theo từng hũ.
-    \item \textbf{Nhóm Học thuật:} quản lý danh mục trường đại học, chương trình đào tạo, môn học, hồ sơ học thuật và bảng điểm cá nhân của sinh viên.
-    \item \textbf{Nhóm Học bổng:} quản lý danh mục và thông tin chương trình học bổng, điều kiện xét tuyển, tài liệu yêu cầu, hồ sơ ứng tuyển của sinh viên, lịch sử chuyển trạng thái và quá trình đánh giá hồ sơ.
+    \item \textbf{Độ tương đồng theo từ vựng} \cite{jaccard1901} (trọng số 0.5): điểm càng cao khi hai văn bản dùng chung nhiều từ khóa.
+    \item \textbf{Độ tương đồng theo cặp ký tự liền kề} \cite{cavnar1994-ngram} (trọng số 0.3): giúp nhận diện các trường hợp viết tắt hoặc sai chính tả mà so khớp theo từ không phát hiện được.
+    \item \textbf{Tỷ lệ khớp chuỗi tổng thể} (trọng số 0.2): đo mức độ giống nhau tổng thể giữa hai chuỗi văn bản.
+\end{itemize}
+Ba độ đo được kết hợp theo trọng số cố định thành một điểm số duy nhất, hiển thị cho sinh viên dưới dạng phần trăm khớp. Cách này chi phí tính toán thấp, không cần huấn luyện mô hình riêng, phù hợp quy mô dữ liệu của đồ án; nhược điểm là chưa nắm được ngữ nghĩa sâu -- hồ sơ và học bổng dùng từ khác nhau nhưng cùng nghĩa (ví dụ "kỹ thuật phần mềm" và "công nghệ thông tin") có thể không được nhận ra là tương đương. Giới hạn này được bàn thêm ở Chương~\ref{ch:ket-luan}.
+
+\section{Thiết kế dữ liệu}
+
+\subsection{Lựa chọn hệ quản trị cơ sở dữ liệu}
+Hệ thống dùng \textbf{PostgreSQL 15} \cite{postgresql-docs} làm nguồn dữ liệu duy nhất cho toàn bộ dữ liệu nghiệp vụ, chuẩn hóa theo mô hình quan hệ với ràng buộc khóa ngoại chặt để giữ toàn vẹn dữ liệu. \textbf{Redis 7} \cite{redis-docs} chỉ đóng vai trò message broker cho hàng đợi xử lý bất đồng bộ (Mục~3.2.2, 3.4.3), không lưu dữ liệu nghiệp vụ lâu dài.
+
+\subsection{Thiết kế mô hình dữ liệu}
+Dữ liệu được tổ chức thành ba nhóm chính, thể hiện trong sơ đồ ERD ở Hình~\ref{fig:erd-finance}, \ref{fig:erd-academic} và \ref{fig:erd-scholarship}:
+\begin{itemize}
+    \item \textbf{Nhóm Tài chính:} các hũ tài chính, lịch sử giao dịch, lịch chuyển tiền tự động, cấu hình ngưỡng cảnh báo.
+    \item \textbf{Nhóm Học thuật:} danh mục trường, chương trình đào tạo, môn học, hồ sơ học thuật và bảng điểm cá nhân.
+    \item \textbf{Nhóm Học bổng:} chương trình học bổng, điều kiện xét tuyển, tài liệu yêu cầu, hồ sơ ứng tuyển, lịch sử trạng thái và kết quả đánh giá.
 \end{itemize}
 
-Về quan hệ giữa các nhóm, nhóm Học bổng tham chiếu tới nhóm Học thuật để đối chiếu điều kiện xét duyệt (ví dụ điểm GPA tối thiểu, ngành học phù hợp) với hồ sơ học thuật thực tế của sinh viên. Nhóm Tài chính được thiết kế độc lập hoàn toàn với hai nhóm còn lại, đúng theo ranh giới nghiệp vụ giữa quản lý dòng tiền cá nhân và quản lý học tập/học bổng.
+Nhóm Học bổng tham chiếu tới nhóm Học thuật để đối chiếu điều kiện xét duyệt (GPA tối thiểu, ngành học phù hợp...) với hồ sơ thực tế của sinh viên. Nhóm Tài chính độc lập hoàn toàn với hai nhóm còn lại, đúng ranh giới nghiệp vụ giữa quản lý dòng tiền cá nhân và quản lý học tập/học bổng. Mục tiêu tín chỉ được lưu trực tiếp trong hồ sơ học thuật của sinh viên, không tách bảng riêng; mỗi lượt chuyển trạng thái hồ sơ học bổng đều ghi lại trạng thái cũ và trạng thái mới, kết quả đánh giá của người xét duyệt được lưu riêng để phục vụ tra cứu.
 
-Trong nhóm Học thuật, mục tiêu tín chỉ không được tách thành bảng riêng. Hai trường \texttt{target\_credits} và \texttt{target\_note} nằm trong \texttt{student\_academic\_profiles}; bảng \texttt{student\_grades} liên kết sinh viên với môn học qua \texttt{student\_id}, \texttt{subject\_id} và lưu điểm tại trường \texttt{grade}. Trong nhóm Học bổng, \texttt{student\_scholarship\_history} ghi nhận \texttt{from\_status} và \texttt{to\_status}, còn \texttt{scholarship\_reviews} lưu kết quả đánh giá của người xét duyệt.
-
-Về mặt thiết kế tài chính, số dư hiện tại được lưu tại trường \texttt{current\_balance} của bảng \texttt{money\_jars} để phục vụ truy vấn và hiển thị nhanh. Sau các thao tác tạo, cập nhật hoặc xóa giao dịch, Backend tính lại tổng thu và tổng chi từ lịch sử giao dịch rồi cập nhật số dư và các giá trị thu, chi lũy kế. Cách làm này kết hợp hiệu năng đọc với khả năng khôi phục tính nhất quán từ dữ liệu giao dịch gốc. Cơ chế xử lý các trường hợp đặc biệt, như xóa một hũ đang có số dư, được trình bày chi tiết cùng đặc tả chức năng liên quan ở Chương 4.
+Số dư hiện tại của mỗi hũ tài chính được lưu sẵn để truy vấn và hiển thị nhanh. Sau khi tạo, sửa hoặc xóa giao dịch, Backend tính lại tổng thu và tổng chi từ lịch sử giao dịch rồi cập nhật số dư và các giá trị lũy kế -- cách này vừa đọc nhanh vừa có thể khôi phục đúng số liệu từ dữ liệu gốc nếu có sai lệch. Trường hợp đặc biệt như xóa một hũ đang có số dư được nói rõ hơn tại Mục~3.7.1 (FIN-UC03).
 
 \begin{figure}[H]
     \centering
@@ -385,11 +341,77 @@ Về mặt thiết kế tài chính, số dư hiện tại được lưu tại t
     \label{fig:erd-scholarship}
 \end{figure}
 
-\section{Luồng tương tác giữa các thành phần}
-Phần này mô tả bốn luồng tương tác tiêu biểu giữa các thành phần kiến trúc, ở góc nhìn thành phần nào tham gia và giao tiếp qua kênh nào; đặc tả chi tiết từng bước nghiệp vụ và endpoint cụ thể của các luồng này được trình bày tại Chương 4.
+\section{Luồng nghiệp vụ chính}
+Mục này đặc tả chi tiết từng chức năng nghiệp vụ theo bốn phân hệ: tài chính cá nhân (Mục~3.7.1), trợ lý AI tài chính (Mục~3.7.2), học bổng (Mục~3.7.3) và học thuật/bảng điểm (Mục~3.7.4). Mỗi chức năng được gán một mã Use Case theo quy ước tiền tố phân hệ (FIN, AI, SCH, ACA) cộng số thứ tự, ví dụ FIN-UC01 hay SCH-UC03.
 
-\subsection{Luồng ghi nhận và phân loại giao dịch bằng AI}
-Sinh viên nhập một mô tả giao dịch bằng ngôn ngữ tự nhiên trên Mobile App. Yêu cầu được gửi tới Backend qua HTTP REST; Backend chuyển tiếp sang AI Service để phân loại; AI Service trả về hũ tài chính và danh mục chi tiêu được đề xuất; Backend chuyển kết quả này về Mobile App để sinh viên xác nhận trước khi lưu giao dịch vào PostgreSQL.
+\subsection{Luồng nghiệp vụ quản lý tài chính cá nhân}
+
+\noindent\textbf{FIN-UC01 -- Cấu hình tỷ lệ 6 lọ tài chính}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Sinh viên tùy chỉnh tỷ lệ phân bổ giữa các hũ tài chính (6 hũ mặc định hoặc hũ tự thêm), làm cơ sở cho chức năng phân bổ thu nhập tự động (FIN-UC03).
+    \item \textbf{Luồng chính:} Mở màn hình cấu hình hũ, xem tỷ lệ hiện tại $\rightarrow$ điều chỉnh tỷ lệ từng hũ, có thể thêm hoặc gỡ hũ tùy chỉnh $\rightarrow$ lưu; hệ thống kiểm tra tổng tỷ lệ đúng 100\% rồi cập nhật cấu hình.
+    \item \textbf{Ngoại lệ:} Tổng tỷ lệ khác 100\% hoặc chỉnh sửa hũ không thuộc sở hữu đều bị từ chối.
+    \item \textbf{Kết quả:} Cấu hình mới áp dụng ngay cho lần phân bổ thu nhập tiếp theo.
+\end{itemize}
+
+\noindent\textbf{FIN-UC02 -- Ghi nhận giao dịch thủ công}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Sinh viên tự nhập một giao dịch Thu, Chi hoặc Chuyển khoản giữa các hũ, không qua bước phân tích của AI -- khác với chức năng phân loại tự động (AI-UC02).
+    \item \textbf{Luồng chính:} Chọn loại giao dịch, nhập số tiền, hũ liên quan, nhãn và ghi chú $\rightarrow$ lưu; hệ thống xác thực dữ liệu và cập nhật lịch sử giao dịch cùng số dư hũ liên quan.
+    \item \textbf{Ngoại lệ:} Số tiền không hợp lệ (bằng 0 hoặc âm) hoặc hũ không thuộc sở hữu đều bị từ chối.
+    \item \textbf{Kết quả:} Giao dịch được lưu, số dư cập nhật ngay lập tức. Thao tác sửa/xóa giao dịch được đánh giá riêng tại Chương~\ref{ch:hien-thuc-kiem-thu-danh-gia}.
+\end{itemize}
+
+\noindent\textbf{FIN-UC03 -- Phân bổ thu nhập tự động}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Ghi nhận một khoản thu mới và tự động chia vào các hũ theo tỷ lệ đã cấu hình (FIN-UC01).
+    \item \textbf{Luồng chính:} Nhập số tiền, nguồn thu, bật tùy chọn tự động phân bổ $\rightarrow$ xác nhận; hệ thống tính số tiền cho từng hũ theo tỷ lệ, kiểm tra tổng khớp với số tiền gốc, rồi ghi nhận đồng loạt các giao dịch thu tương ứng và cập nhật số dư từng hũ.
+    \item \textbf{Ngoại lệ:} Số tiền không hợp lệ hoặc tổng phân bổ không khớp số tiền gốc đều bị từ chối.
+    \item \textbf{Kết quả:} Số dư từng hũ tăng tương ứng; toàn bộ giao dịch được lưu và đồng bộ lên màn hình tổng quan.
+    \item \textbf{Toàn vẹn số dư:} Số dư mỗi hũ được tính lại từ lịch sử giao dịch mỗi khi có thay đổi, giúp tự phục hồi nếu giá trị lưu sẵn bị sai lệch. Khi xóa một hũ tùy chỉnh còn số dư, hệ thống bắt buộc chọn hũ nhận lại tiền và tạo một cặp giao dịch bù trừ để tổng tài sản của sinh viên không đổi. Cơ chế giao dịch/idempotency liên quan trình bày tại Mục~3.4.3.
+\end{itemize}
+
+\noindent\textbf{FIN-UC04 -- Thiết lập ngưỡng cảnh báo chi tiêu theo hũ}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Cấu hình ngưỡng cảnh báo cho từng hũ theo số dư tối thiểu hoặc phần trăm đã chi, áp dụng liên tục tới khi sinh viên thay đổi lại.
+    \item \textbf{Luồng chính:} Mở chi tiết hũ $\rightarrow$ bật một hoặc cả hai loại cảnh báo, nhập giá trị $\rightarrow$ lưu; hệ thống xác thực và lưu cấu hình.
+    \item \textbf{Ngoại lệ:} Giá trị nhập ngoài khoảng hợp lệ bị từ chối.
+    \item \textbf{Kết quả:} Từ giao dịch chi tiêu tiếp theo, hệ thống kiểm tra ngưỡng ngay khi tạo giao dịch và gửi cảnh báo đẩy nếu vượt.
+    \item \textbf{Cảnh báo tự động:} Ngoài ngưỡng do sinh viên tự đặt, hệ thống còn một tác vụ định kỳ hằng ngày tự phát hiện giao dịch bất thường; một khóa định danh duy nhất đảm bảo không gửi trùng cảnh báo nếu tác vụ chạy lại.
+\end{itemize}
+
+\noindent\textbf{FIN-UC05 -- Lên lịch giao dịch định kỳ}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Thiết lập một giao dịch lặp lại tự động (hằng ngày, hằng tuần hoặc hằng tháng), hệ thống tự tạo giao dịch đúng thời điểm mà không cần thao tác thủ công mỗi lần.
+    \item \textbf{Luồng chính:} Tạo lịch mới (tên, số tiền, loại giao dịch, tần suất, cách phân bổ, tùy chọn nhắc) $\rightarrow$ lưu; hệ thống lên lịch tác vụ nền, tới đúng thời điểm tự tạo giao dịch tương ứng và đặt lại chu kỳ kế tiếp.
+    \item \textbf{Ngoại lệ:} Lịch bị xóa trong lúc tác vụ đang chờ thì bị bỏ qua; cấu hình phân bổ tùy chỉnh không hợp lệ bị từ chối khi tạo.
+    \item \textbf{Kết quả:} Hệ thống tự tạo giao dịch đúng chu kỳ đã cấu hình; sinh viên có thể bật/tắt, sửa, xóa hoặc kích hoạt thủ công bất kỳ lúc nào.
+\end{itemize}
+
+\subsection{Luồng nghiệp vụ trợ lý AI tài chính}
+
+\noindent\textbf{AI-UC01 -- Trò chuyện cùng Trợ lý AI}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Sinh viên đặt câu hỏi tự nhiên về tài chính cá nhân hoặc học bổng, nhận phản hồi theo thời gian thực.
+    \item \textbf{Luồng chính:} Gửi câu hỏi qua kênh trò chuyện $\rightarrow$ hệ thống xác định ý định câu hỏi, tác nhân AI truy vấn dữ liệu thực tế nếu cần, rồi trả lời dần theo thời gian thực (kiến trúc chi tiết tại Mục~3.5.1, minh họa ở Hình~\ref{fig:ai-flow}).
+    \item \textbf{Ngoại lệ:} Nếu mô hình ngôn ngữ lớn lỗi hoặc quá tải, hệ thống trả lời mặc định xin lỗi và kết thúc phiên.
+    \item \textbf{Kết quả:} Câu trả lời hiển thị đầy đủ trên màn hình trò chuyện.
+\end{itemize}
+
+\noindent\textbf{AI-UC02 -- Phân loại giao dịch bằng AI}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Sinh viên gõ một mô tả ngắn về khoản thu chi bằng ngôn ngữ tự nhiên; AI trích số tiền, đề xuất hũ và danh mục phù hợp để sinh viên xác nhận lưu nhanh.
+    \item \textbf{Luồng chính:} Nhập mô tả, yêu cầu phân tích bằng AI $\rightarrow$ hệ thống trích xuất số tiền, loại giao dịch, hũ và danh mục đề xuất, điền sẵn vào biểu mẫu $\rightarrow$ sinh viên kiểm tra và xác nhận lưu.
+    \item \textbf{Ngoại lệ:} Nếu AI gợi ý sai, sinh viên tự chọn lại; lựa chọn sửa được ghi nhớ riêng cho tài khoản đó để cá nhân hóa gợi ý về sau (không làm thay đổi mô hình dùng chung cho các tài khoản khác).
+    \item \textbf{Kết quả:} Giao dịch được tạo với thông tin chính xác trong cơ sở dữ liệu.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -398,15 +420,29 @@ Sinh viên nhập một mô tả giao dịch bằng ngôn ngữ tự nhiên trê
     }{%
         \rectbox{Luồng ghi nhận và phân loại giao dịch bằng AI}
     }
-    \caption{Luồng phân loại và xác nhận giao dịch tài chính bằng AI}
+    \caption{Luồng phân loại và xác nhận giao dịch tài chính bằng AI (AI-UC02)}
     \label{fig:ai-transaction-classification-flow}
 \end{figure}
 
-\subsection{Luồng trò chuyện AI thời gian thực}
-Sinh viên đặt câu hỏi trong màn hình trò chuyện AI. Mobile App mở một kết nối SSE tới Backend; Backend xác thực rồi chuyển tiếp yêu cầu sang AI Service; AI Service suy luận và truy vấn dữ liệu thật qua Backend khi cần, sau đó truyền câu trả lời về dưới dạng luồng token liên tục; Backend chuyển tiếp luồng này về Mobile App để hiển thị theo thời gian thực (Hình~\ref{fig:ai-flow}).
+\subsection{Luồng nghiệp vụ học bổng}
 
-\subsection{Luồng sinh viên nộp hồ sơ học bổng}
-Sinh viên mở chi tiết học bổng trên Mobile App, nhập thông tin ứng tuyển và upload tài liệu minh chứng. Mobile App gửi hồ sơ qua \texttt{POST /scholarships/register}; Backend kiểm tra hạn nộp, hồ sơ học thuật, GPA và ràng buộc không nộp trùng, sau đó lưu hồ sơ, tài liệu và lịch sử trạng thái trong cùng một transaction. Hình~\ref{fig:scholarship-student-application-flow} thể hiện luồng tương tác giữa sinh viên, Mobile App, dịch vụ upload, Backend và PostgreSQL.
+\noindent\textbf{SCH-UC01 -- Nhà tài trợ quản lý chương trình học bổng}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Nhà tài trợ.
+    \item \textbf{Mô tả:} Tạo, chỉnh sửa hoặc gỡ một chương trình học bổng: thông tin chung, giá trị, tiêu chí xét duyệt, thời hạn nộp và danh sách tài liệu yêu cầu.
+    \item \textbf{Luồng chính:} Tạo học bổng mới với đầy đủ thông tin $\rightarrow$ thêm tài liệu yêu cầu và điều kiện xét duyệt $\rightarrow$ kích hoạt công khai để sinh viên xem và ứng tuyển (SCH-UC02); có thể sửa hoặc gỡ học bổng đã tạo.
+    \item \textbf{Ngoại lệ:} Thiếu thông tin bắt buộc bị từ chối; tài khoản không đúng vai trò không truy cập được màn hình quản lý.
+    \item \textbf{Kết quả:} Học bổng được tạo, sửa hoặc xóa tương ứng; nếu kích hoạt, hiển thị cho sinh viên.
+\end{itemize}
+
+\noindent\textbf{SCH-UC02 -- Ứng tuyển học bổng trực tuyến}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Sinh viên duyệt danh sách học bổng kèm điểm khớp do AI gợi ý (Mục~3.5.2), điền hồ sơ và nộp tài liệu minh chứng.
+    \item \textbf{Luồng chính:} Xem danh sách học bổng kèm điểm khớp $\rightarrow$ chọn học bổng, xem tiêu chí và tài liệu yêu cầu $\rightarrow$ điền thông tin, tải tài liệu minh chứng $\rightarrow$ nộp hồ sơ; hệ thống xác thực và lưu hồ sơ cùng tài liệu và lịch sử trạng thái.
+    \item \textbf{Ngoại lệ:} Có thể lưu nháp nếu chưa đủ tài liệu; nộp trùng cho học bổng đã có hồ sơ hợp lệ bị từ chối; tài liệu vượt dung lượng cho phép bị chặn ngay khi tải lên thiết bị.
+    \item \textbf{Kết quả:} Một hồ sơ mới được tạo ở trạng thái đã nộp.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -415,83 +451,123 @@ Sinh viên mở chi tiết học bổng trên Mobile App, nhập thông tin ứn
     }{%
         \rectbox{Luồng sinh viên nộp hồ sơ học bổng}
     }
-    \caption{Luồng sinh viên chuẩn bị và nộp hồ sơ học bổng}
+    \caption{Luồng sinh viên chuẩn bị và nộp hồ sơ học bổng (SCH-UC02)}
     \label{fig:scholarship-student-application-flow}
 \end{figure}
 
-\subsection{Luồng xét duyệt học bổng và thông báo kết quả}
-Nhà tài trợ cập nhật trạng thái một hồ sơ ứng tuyển trên Web Admin Portal qua \texttt{PUT /student-scholarships/\{id\}/status}. Backend cập nhật trạng thái và lịch sử hồ sơ trong PostgreSQL; với các trạng thái kết quả \texttt{approved}, \texttt{rejected} hoặc \texttt{awarded}, hệ thống đồng thời ghi nhận ngày ra quyết định. Sau mỗi lần cập nhật trạng thái thành công, Backend tạo notification job, lọc người nhận theo tùy chọn thông báo và đẩy tác vụ vào BullMQ/Redis. Worker lấy tác vụ, gọi Firebase Cloud Messaging và cập nhật trạng thái job thành \texttt{SENT} hoặc \texttt{FAILED}.
+\noindent\textbf{SCH-UC03 -- Xét duyệt hồ sơ học bổng}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Nhà tài trợ.
+    \item \textbf{Mô tả:} Xem, đối chiếu và quyết định kết quả từng hồ sơ ứng tuyển gửi tới chương trình của tổ chức mình.
+    \item \textbf{Luồng chính:} Xem danh sách hồ sơ chờ duyệt $\rightarrow$ mở chi tiết, đối chiếu thông tin học thuật và tài liệu $\rightarrow$ chọn kết quả (chấp nhận, yêu cầu chỉnh sửa hoặc từ chối), kèm ghi chú nếu cần $\rightarrow$ cập nhật; hệ thống lưu lịch sử và gửi thông báo kết quả cho sinh viên.
+    \item \textbf{Ngoại lệ:} Nhà tài trợ không thuộc đúng tổ chức sở hữu chương trình bị từ chối thao tác.
+    \item \textbf{Kết quả:} Trạng thái hồ sơ cập nhật, sinh viên nhận được thông báo.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
     \IfFileExists{Images/chapter3/scholarship/scholarship-review-notification-flow.png}{%
         \includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{Images/chapter3/scholarship/scholarship-review-notification-flow.png}%
     }{%
-        \rectbox{Luồng xét duyệt học bổng và gửi thông báo qua BullMQ/FCM}
+        \rectbox{Luồng xét duyệt học bổng và gửi thông báo}
     }
-    \caption{Luồng xét duyệt hồ sơ học bổng và thông báo kết quả}
+    \caption{Luồng xét duyệt hồ sơ học bổng và thông báo kết quả (SCH-UC03)}
     \label{fig:scholarship-review-notification-flow}
 \end{figure}
 
-\section{Các vấn đề kỹ thuật khó và giải pháp}
-\label{sec:cac-van-de-ky-thuat}
+\noindent\textbf{Mô hình trạng thái hồ sơ ứng tuyển.} Ba chức năng ứng tuyển, lưu nháp và xét duyệt (SCH-UC02, SCH-UC03) cùng thao tác trên một hồ sơ, nên trạng thái hồ sơ được quản lý bằng một mô hình trạng thái thống nhất thay vì rải rác ở từng luồng. Bảng~\ref{tab:scholarship-state} liệt kê các bước chuyển hợp lệ, tác nhân được phép thực hiện, điều kiện ràng buộc và trạng thái đích; mọi bước chuyển ngoài bảng đều bị từ chối.
 
-Student360 là đồ án được hợp nhất từ ba nhóm phát triển tương ứng với ba phân hệ chính: E-learning, Career và Finance. Vì vậy, bên cạnh các vấn đề thuần túy về lập trình, nhóm còn phải giải quyết khó khăn trong giao tiếp, phân chia phạm vi và tích hợp các thành phần được phát triển song song. Các vấn đề kỹ thuật tiếp theo liên quan tới truyền dữ liệu thời gian thực, tính nhất quán của dữ liệu tài chính và học bổng, xử lý tác vụ bất đồng bộ, import dữ liệu học thuật và đồng bộ trạng thái trên giao diện. Các giải pháp dưới đây được lựa chọn dựa trên kiến trúc hiện tại và giới hạn thời gian của đồ án; đối với những vấn đề chưa được xử lý triệt để, nhóm đồng thời ghi nhận giới hạn còn lại để làm cơ sở cải tiến.
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \renewcommand{\arraystretch}{1.3}
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{1.5cm}|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{2.4cm}|}
+        \hline
+        \textbf{Trạng thái nguồn} & \textbf{Sự kiện} & \textbf{Tác nhân} & \textbf{Điều kiện} & \textbf{Trạng thái đích} \\
+        \hline
+        Chưa có hồ sơ & Lưu nháp & Sinh viên & Chưa có hồ sơ cho học bổng này & Nháp \\
+        \hline
+        Chưa có, Nháp, Cần chỉnh sửa, Đã hủy & Nộp hồ sơ & Sinh viên & Học bổng còn hạn nộp; không có hồ sơ khác đang hiệu lực & Đã nộp \\
+        \hline
+        Đã nộp & Mở xét duyệt & Nhà tài trợ & Đúng tổ chức sở hữu học bổng & Đang xét duyệt \\
+        \hline
+        Đã nộp, Đang xét duyệt & Chấp nhận & Nhà tài trợ & Đúng tổ chức sở hữu học bổng & Đã chấp nhận \\
+        \hline
+        Đã nộp, Đang xét duyệt & Yêu cầu chỉnh sửa & Nhà tài trợ & Kèm ghi chú yêu cầu & Cần chỉnh sửa \\
+        \hline
+        Đã nộp, Đang xét duyệt & Từ chối & Nhà tài trợ & Kèm lý do từ chối & Từ chối \\
+        \hline
+        Đã chấp nhận & Hoàn tất cấp học bổng & Nhà tài trợ & Đã xác nhận trao suất & Đã trao \\
+        \hline
+        Nháp & Hủy hồ sơ & Sinh viên & Hồ sơ chưa nộp & Đã hủy \\
+        \hline
+    \end{tabular}
 
-\begin{enumerate}
-    \item \textbf{Phối hợp và tích hợp kết quả phát triển của ba nhóm E-learning, Career và Finance.}
+    \caption{Bảng chuyển trạng thái hồ sơ ứng tuyển học bổng}
+    \label{tab:scholarship-state}
+\end{table}
 
-    \textit{Vấn đề:} Ba nhóm phát triển song song các phân hệ khác nhau nhưng cùng sử dụng tài khoản sinh viên, hồ sơ cá nhân, dữ liệu học thuật, Backend và cơ sở dữ liệu của Student360. Sự khác biệt về cách đặt tên trường dữ liệu, trạng thái nghiệp vụ, cấu trúc phản hồi API và thời điểm cập nhật chức năng có thể làm cho một phân hệ hoạt động độc lập nhưng phát sinh lỗi khi ghép vào hệ thống chung. Việc trao đổi qua nhiều kênh cũng dễ dẫn tới bỏ sót thay đổi, triển khai sai phiên bản hoặc không xác định rõ nhóm chịu trách nhiệm khi lỗi đi qua ranh giới giữa các phân hệ.
+Mô hình trạng thái có hai ràng buộc chính: (1) \textit{tính duy nhất khi nộp} -- nếu hồ sơ đã ở trạng thái từ Đã nộp trở đi (Đã nộp, Đang xét duyệt, Đã chấp nhận, Từ chối, Đã trao) thì mọi lần nộp lại đều bị chặn; (2) \textit{quyền theo tổ chức} -- chỉ nhà tài trợ thuộc đúng tổ chức sở hữu chương trình mới được đổi trạng thái hồ sơ. Đã chấp nhận, Từ chối và Đã trao là các trạng thái kết thúc; Cần chỉnh sửa và Đã hủy cho phép sinh viên quay lại sửa rồi nộp lại.
 
-    \textit{Giải pháp:} Nhóm phân chia ranh giới trách nhiệm theo từng miền nghiệp vụ, đồng thời xác định rõ các thành phần dùng chung và người phụ trách đầu mối tích hợp. Hợp đồng API được thống nhất trước khi hiện thực, bao gồm endpoint, cấu trúc request/response, kiểu dữ liệu, mã lỗi và tập trạng thái nghiệp vụ; mọi thay đổi ảnh hưởng tới nhóm khác phải được thông báo và xem xét qua Pull Request. Công việc được đồng bộ theo sprint một tuần, các vướng mắc liên phân hệ được đưa vào backlog và trao đổi trên kênh chung thay vì xử lý riêng lẻ. Trước khi hợp nhất một chức năng, nhóm kiểm thử luồng xuyên suốt giữa Mobile App hoặc Web Admin, Backend và cơ sở dữ liệu trên cùng môi trường tích hợp. Cách tổ chức đa-repository giúp các nhóm phát triển độc lập, trong khi quy ước API và kiểm thử liên phân hệ giúp hạn chế sai lệch khi ghép ba phần thành một hệ thống thống nhất.
+\begin{figure}[H]
+    \centering
+    \IfFileExists{Images/chapter4/scholarship-state-machine.png}{%
+        \includegraphics[width=0.85\textwidth]{Images/chapter4/scholarship-state-machine.png}%
+    }{%
+        \rectbox{Sơ đồ chuyển trạng thái vòng đời hồ sơ ứng tuyển học bổng}
+    }
+    \caption{Sơ đồ chuyển trạng thái vòng đời hồ sơ ứng tuyển học bổng}
+    \label{fig:scholarship-state-machine}
+\end{figure}
 
-    \item \textbf{Truyền phản hồi AI theo thời gian thực trên React Native.}
+\subsection{Luồng nghiệp vụ học thuật và bảng điểm}
 
-    \textit{Vấn đề:} Luồng trò chuyện AI phải đi qua hai chặng Mobile App--Backend và Backend--AI Service. Trên React Native native, cơ chế \texttt{fetch} không cung cấp \texttt{ReadableStream} ổn định như trên trình duyệt; nếu chờ toàn bộ phản hồi hoàn tất mới hiển thị thì thời gian chờ cảm nhận của người dùng tăng cao. Ngoài ra, kết nối cần được đóng đúng cách khi người dùng rời màn hình để tránh tiếp tục tiêu thụ tài nguyên.
+\noindent\textbf{ACA-UC01 -- Quản trị danh mục học thuật}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Quản trị viên.
+    \item \textbf{Mô tả:} Quản lý danh mục trường, khoa/chương trình đào tạo và môn học -- nguồn dữ liệu chuẩn dùng chung cho cả Webadmin và Mobile App.
+    \item \textbf{Luồng chính:} Xem, thêm, sửa, xóa từng danh mục; có thể import hàng loạt từ file cho khoa/chương trình và môn học. Dữ liệu cập nhật khả dụng ngay cho Mobile App.
+    \item \textbf{Ngoại lệ:} File import có dòng dữ liệu lỗi được báo rõ từng dòng thay vì từ chối cả file.
+    \item \textbf{Kết quả:} Danh mục cập nhật và đồng bộ ngay trên cả hai nền tảng.
+\end{itemize}
 
-    \textit{Giải pháp:} Mobile App sử dụng cơ chế XHR với kiểu phản hồi dạng văn bản, xử lý dữ liệu tăng dần qua \texttt{onprogress} và bổ sung \texttt{readyState=3} làm cơ chế dự phòng trên các phiên bản React Native mà \texttt{onprogress} hoạt động không ổn định. Backend chuẩn hóa luồng thành các sự kiện SSE gồm \texttt{status}, \texttt{token}, \texttt{done} và \texttt{error}; đồng thời cấu hình không lưu cache, duy trì kết nối và tắt buffering tại proxy. Khi client đóng kết nối, Backend hủy subscription tới luồng xử lý hiện tại. Nhờ đó, nội dung được hiển thị từng phần và người dùng có thể chủ động hủy yêu cầu đang chạy.
+\begin{figure}[H]
+    \centering
+    \IfFileExists{Images/chapter3/academic/academic-admin-flow.png}{%
+        \includegraphics[width=0.9\textwidth]{Images/chapter3/academic/academic-admin-flow.png}%
+    }{%
+        \rectbox{Sơ đồ luồng quản trị dữ liệu học thuật}
+    }
+    \caption{Sơ đồ luồng quản trị dữ liệu học thuật trên Webadmin (ACA-UC01)}
+    \label{fig:academic-admin-flow}
+\end{figure}
 
-    \item \textbf{Bảo đảm tính nhất quán khi thao tác với nhiều lọ tài chính.}
+\noindent\textbf{ACA-UC02 -- Quản lý bảng điểm cá nhân}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Sinh viên tự nhập điểm các môn đã học; hệ thống tự tính GPA tích lũy theo tín chỉ.
+    \item \textbf{Luồng chính:} Chọn môn từ danh mục chuẩn, nhập điểm, lưu; hệ thống kiểm tra điểm hợp lệ theo thang điểm của môn rồi lưu. GPA được tính lại theo thời gian thực mỗi khi sinh viên mở bảng điểm, không lưu cứng vào hồ sơ.
+    \item \textbf{Ngoại lệ:} Điểm ngoài thang cho phép bị từ chối ngay tại giao diện nhập.
+    \item \textbf{Kết quả:} Bảng điểm và GPA cập nhật tức thời trên màn hình Dashboard.
+\end{itemize}
 
-    \textit{Vấn đề:} Một lần chuyển tiền giữa hai lọ phải tạo đồng thời một giao dịch chi ở lọ nguồn và một giao dịch thu ở lọ đích. Nếu chỉ một bản ghi được tạo thành công, số dư và báo cáo tài chính sẽ sai lệch. Bên cạnh đó, các giao dịch chuyển lọ không được tính như thu nhập hoặc chi tiêu thực tế khi tổng hợp báo cáo.
+\begin{figure}[H]
+    \centering
+    \IfFileExists{Images/chapter3/academic/student-gradebook-flow.png}{%
+        \includegraphics[width=0.9\textwidth]{Images/chapter3/academic/student-gradebook-flow.png}%
+    }{%
+        \rectbox{Sơ đồ luồng thao tác bảng điểm của sinh viên}
+    }
+    \caption{Sơ đồ luồng thao tác bảng điểm của sinh viên (ACA-UC02)}
+    \label{fig:student-gradebook-flow}
+\end{figure}
 
-    \textit{Giải pháp:} Backend sử dụng \texttt{QueryRunner} của TypeORM để tạo hai bản ghi giao dịch trong cùng một database transaction; nếu một thao tác thất bại, toàn bộ transaction được rollback. Hai giao dịch được liên kết qua \texttt{counterpart\_jar\_id}, và truy vấn tổng hợp loại các giao dịch chuyển lọ để tránh tính trùng thu/chi. Số dư lọ được tính lại từ lịch sử giao dịch sau khi ghi thành công thay vì chỉ tin vào giá trị tạm trên giao diện. Đối với phân bổ một khoản thu vào nhiều lọ, hệ thống kiểm tra quyền sở hữu từng lọ, tổng số tiền phân bổ và xử lý phần dư do làm tròn. Tuy nhiên, các bản ghi của luồng phân bổ thu nhập hiện vẫn được tạo song song mà chưa nằm trong một transaction chung; đây là rủi ro còn lại cần khắc phục.
-
-    \item \textbf{Lưu hồ sơ học bổng gồm nhiều loại dữ liệu nhưng không phát sinh hồ sơ trùng.}
-
-    \textit{Vấn đề:} Một lần lưu hoặc nộp hồ sơ có thể đồng thời cập nhật CCCD, GPA, hồ sơ ứng tuyển, danh sách tài liệu và lịch sử trạng thái. Nếu lỗi xảy ra giữa chừng, dữ liệu có thể ở trạng thái không hoàn chỉnh. Hệ thống cũng phải hỗ trợ lưu nháp, nộp lại hồ sơ cần bổ sung và ngăn sinh viên tạo nhiều hồ sơ cho cùng một học bổng.
-
-    \textit{Giải pháp:} Bảng \texttt{student\_scholarships} đặt ràng buộc duy nhất trên cặp \texttt{user\_id} và \texttt{scholarship\_id}. Backend thực hiện cập nhật hồ sơ cá nhân, tạo hoặc cập nhật đơn, thay thế tài liệu và ghi \texttt{student\_scholarship\_history} trong cùng một transaction của TypeORM. Trước khi nộp chính thức, hệ thống kiểm tra hạn nộp, mức độ hoàn chỉnh của hồ sơ và GPA tối thiểu; các trạng thái được phép chỉnh sửa được xác định rõ để phục vụ lưu nháp hoặc yêu cầu bổ sung. Giới hạn hiện tại là kiểm tra ngành học và trường mục tiêu vẫn mới ở mức TODO trong Backend, còn kiểm tra đủ tài liệu bắt buộc chủ yếu được thực hiện trên Mobile App.
-
-    \item \textbf{Gửi thông báo mà không làm tăng thời gian phản hồi của API nghiệp vụ.}
-
-    \textit{Vấn đề:} Việc gọi Firebase Cloud Messaging phụ thuộc mạng và có thể mất nhiều thời gian hoặc thất bại tạm thời. Nếu gửi thông báo đồng bộ ngay trong API cập nhật trạng thái học bổng hoặc cảnh báo tài chính, thời gian phản hồi của nghiệp vụ chính sẽ bị phụ thuộc vào dịch vụ bên thứ ba.
-
-    \textit{Giải pháp:} Backend tách quá trình gửi thành mô hình producer--consumer sử dụng BullMQ và Redis. Producer kiểm tra tài khoản nhận, tùy chọn thông báo, tạo bản ghi job và đẩy payload vào queue \texttt{notification}; worker nền lấy job, gọi dịch vụ gửi thông báo và cập nhật trạng thái \texttt{PROCESSING}, \texttt{SENT} hoặc \texttt{FAILED}. Queue hỗ trợ thời điểm gửi và giữ lại job lỗi để phục vụ theo dõi. Nhờ đó, API nghiệp vụ chỉ cần hoàn tất cập nhật dữ liệu và tạo job, không phải chờ Firebase phản hồi.
-
-    \item \textbf{Import bảng điểm từ tệp không đồng nhất.}
-
-    \textit{Vấn đề:} File TXT/CSV của sinh viên có thể dùng các loại mã môn khác nhau, thứ tự cột khác nhau hoặc chứa dữ liệu sai định dạng. Nếu gửi trực tiếp toàn bộ nội dung lên Backend, sinh viên khó phát hiện bản ghi ánh xạ sai trước khi lưu.
-
-    \textit{Giải pháp:} Mobile App đọc và phân tách file tại client, yêu cầu có cột điểm và ít nhất một trong các khóa \texttt{subject\_id}, \texttt{subject\_code} hoặc \texttt{course\_code}. Dữ liệu được ánh xạ với danh mục môn của trường, hiển thị trong bước xem trước và cho phép sửa hoặc xóa từng dòng trước khi tạo payload có cấu trúc gửi tới Backend. Sau khi lưu, các truy vấn bảng điểm, dashboard và mục tiêu tín chỉ được làm mới. Cách xử lý này giảm dữ liệu lỗi đi vào hệ thống, nhưng Backend vẫn cần được tăng cường kiểm tra thang điểm và tính đồng nhất khi dữ liệu có cả thang 4 và thang 10.
-
-    \item \textbf{Đồng bộ nhiều màn hình sử dụng chung dữ liệu sau thao tác ghi.}
-
-    \textit{Vấn đề:} Một giao dịch tài chính mới đồng thời ảnh hưởng tới lịch sử giao dịch, số dư lọ, biểu đồ tổng hợp, báo cáo và cảnh báo. Tương tự, một điểm số mới ảnh hưởng tới danh sách điểm, GPA và tiến độ tín chỉ. Nếu chỉ cập nhật màn hình hiện tại, các màn hình khác có thể tiếp tục hiển thị cache cũ.
-
-    \textit{Giải pháp:} Mobile App quản lý dữ liệu server bằng React Query và định nghĩa query key theo từng miền. Sau mutation, ứng dụng chủ động invalidate các nhóm dữ liệu liên quan như giao dịch, lọ tài chính, tổng hợp, báo cáo, thông báo hoặc bảng điểm/dashboard; dữ liệu được lấy lại từ Backend thay vì tự cộng trừ tại nhiều màn hình. Cơ chế này ưu tiên tính nhất quán và giảm việc nhân bản logic tính toán ở tầng giao diện.
-\end{enumerate}
-
-\section{Đánh giá kiến trúc hệ thống}
-
-\subsection{Ưu điểm}
-Kiến trúc phân tán nhiều tầng, đa-repository giúp tách trách nhiệm rõ ràng theo cả chiều tầng (trình bày/ứng dụng/dữ liệu) lẫn chiều dịch vụ (Mobile, Web Admin, Backend, AI Service). Mỗi cặp thành viên trong nhóm có thể phát triển độc lập trên repository riêng của mình, hạn chế xung đột mã nguồn khi làm việc song song (liên kết với cách phân công tại Chương 5). Việc tách AI Service thành một dịch vụ riêng giúp cô lập hoàn toàn rủi ro về độ trễ, lỗi hoặc chi phí gọi mô hình ngôn ngữ lớn khỏi các nghiệp vụ lõi (tài chính, học bổng), đảm bảo các chức năng cốt lõi vẫn hoạt động ổn định ngay cả khi thành phần AI gặp sự cố. Việc xử lý bất đồng bộ qua hàng đợi giúp hệ thống chịu tải tốt khi cần gửi thông báo tới số lượng lớn người dùng cùng lúc mà không làm chậm các yêu cầu API chính.
-
-\subsection{Khả năng mở rộng và bảo trì}
-Kiến trúc phân lớp và module hóa theo miền nghiệp vụ cho phép bổ sung dịch vụ hoặc miền nghiệp vụ mới mà không phá vỡ cấu trúc hiện có. Tầng trừu tượng hóa nhà cung cấp mô hình ngôn ngữ lớn tại AI Service cho phép đổi hoặc bổ sung nhà cung cấp mới mà không cần sửa đổi logic nghiệp vụ ở các tầng phía trên. Việc tổ chức đa-repository, mỗi dịch vụ một repository riêng, giúp giảm xung đột mã nguồn giữa các nhóm nhỏ và cho phép mỗi dịch vụ được triển khai, phiên bản hóa độc lập với các dịch vụ còn lại.
-
-\subsection{Hướng mở rộng kiến trúc trong tương lai}
-Mã nguồn của AI Service hiện đã chuẩn bị sẵn một khung điều phối đa-agent (multi-agent orchestration), cho phép định tuyến yêu cầu tới nhiều tác nhân AI chuyên biệt theo từng miền nghiệp vụ khác nhau; tuy nhiên khung này chưa được kích hoạt trong luồng xử lý thực tế ở phiên bản hiện tại, mà chỉ mới sử dụng một tác nhân duy nhất với cơ chế phân loại ý định như đã mô tả ở Mục 3.4. Đây là nền tảng sẵn có để hệ thống có thể mở rộng thành kiến trúc đa-agent thực thụ khi bổ sung thêm các nghiệp vụ AI phức tạp hơn trong tương lai.
-
-\subsection{Giới hạn hiện tại}
-Nhìn từ góc độ kiến trúc, hệ thống còn một số giới hạn: một số thao tác tài chính tổng hợp (như phân bổ thu nhập vào nhiều hũ cùng lúc) chưa được bọc trong một transaction cơ sở dữ liệu tường minh, tiềm ẩn rủi ro không nhất quán nếu xảy ra lỗi giữa chừng (chi tiết tại Chương 4); hệ thống chưa có bộ benchmark định lượng chính thức, có thể tái lập cho các thành phần AI (chi tiết tại Chương 6); và hệ thống phụ thuộc vào các dịch vụ bên thứ ba nằm ngoài tầm kiểm soát trực tiếp (Firebase Cloud Messaging, nhà cung cấp mô hình ngôn ngữ lớn).
+\noindent\textbf{ACA-UC03 -- Nhập điểm hàng loạt từ file}
+\begin{itemize}
+    \item \textbf{Tác nhân:} Sinh viên.
+    \item \textbf{Mô tả:} Tải lên một file điểm (CSV/TXT) xuất từ trang đào tạo của trường để nhập nhanh nhiều môn cùng lúc.
+    \item \textbf{Luồng chính:} Chọn file $\rightarrow$ hệ thống đọc và trích xuất danh sách môn/điểm, hiển thị để sinh viên rà soát $\rightarrow$ xác nhận lưu tất cả; hệ thống đối chiếu với danh mục môn chuẩn và ghi nhận hàng loạt, dùng lại cùng cơ chế lưu điểm của ACA-UC02.
+    \item \textbf{Ngoại lệ:} File sai định dạng bị từ chối ngay khi đọc; mã môn không tồn tại trong danh mục chuẩn được báo riêng để sinh viên kiểm tra lại.
+    \item \textbf{Kết quả:} Các môn hợp lệ được ghi nhận hàng loạt, GPA tích lũy cập nhật lại.
+\end{itemize}

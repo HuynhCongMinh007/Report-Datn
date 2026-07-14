@@ -1,672 +1,24 @@
-\chapter{Kiểm thử và đánh giá hệ thống}
-\label{ch:hien-thuc-kiem-thu-danh-gia}
-\section{Môi trường triển khai và công nghệ sử dụng}
-Hệ thống Student360 được hiện thực hóa và kiểm thử trên môi trường cục bộ và nền tảng điện toán đám mây với các thông số cấu hình cụ thể như sau:
-\begin{sloppypar}
-\begin{itemize}
-    \item \textbf{Môi trường máy chủ Backend:} Node.js v20+, NestJS v10.4.20 \cite{nestjs-docs}, TypeORM v0.3.26 \cite{typeorm-docs}.
-    \item \textbf{Môi trường máy chủ AI:} Python v3.12, FastAPI v0.115.0 \cite{fastapi-docs}, \texttt{langchain-core} v0.3.0+ \cite{langchain-docs}, Uvicorn v0.30.0.
-    \item \textbf{Công nghệ cơ sở dữ liệu:} PostgreSQL 17, \cite{postgresql-docs}, Redis 8 \cite{redis-docs} (làm cache và message broker cho BullMQ \cite{bullmq-docs}).
-    \item \textbf{Môi trường Mobile App:} Expo SDK v54 (React Native v0.81) \cite{reactnative-expo}, kết hợp Tamagui v1.135 cho hệ thống Design System.
-    \item \textbf{Môi trường Webadmin:} React JS v19.2, Material UI (MUI) v7.3, Vite v7.2.
-    \item \textbf{Mô hình AI:} Google Gemini 2.5 Flash / Pro (thông qua Vertex AI API) \cite{gemini-api}.
-\end{itemize}
-\end{sloppypar}
+\chapter{Kết luận và Hướng phát triển}
+\label{ch:ket-luan}
 
-\section{Các chức năng hệ thống}
-\subsection{Ứng dụng di động dành cho sinh viên}
-Giao diện ứng dụng di động được thiết kế hướng tới sự trực quan, trẻ trung và tối ưu hóa trải nghiệm người dùng (UX) cho đối tượng sinh viên. Các màn hình chính và luồng chức năng của phân hệ di động được mô tả chi tiết dưới đây:
-
-\subsubsection{Màn hình Tổng quan ví}
-Màn hình Tổng quan ví cung cấp cái nhìn toàn cảnh về tình hình tài chính của người dùng:
+\section{Những kết quả đạt được của đề tài}
+Đề tài ``Hệ thống hỗ trợ sinh viên - phân hệ quản lý tài chính'' đã hoàn thành đầy đủ các mục tiêu đề ra cả về nghiên cứu lý thuyết lẫn ứng dụng thực tiễn. Mức độ tin cậy và phương pháp kiểm chứng cho từng thành quả như sau:
 \begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Tổng tài sản hiện có, số dư khả dụng, và biểu đồ hình tròn trực quan mô tả tỷ lệ phân bổ thực tế của 6 hũ tài chính.
-    \item \textbf{Chỉ số sức khỏe tài chính (Financial Health Score):} Được tính toán động từ hành vi chi tiêu thực tế, hỗ trợ cảnh báo bằng màu sắc và đưa ra các mức xếp hạng trực quan.
-    \item \textbf{Phân tích kỹ thuật:} Lấy dữ liệu qua REST API và tối ưu hóa tốc độ tải trang nhờ bộ nhớ đệm phía máy khách.
+    \item \textbf{Về mặt kỹ thuật phần mềm (Độ tin cậy cao):} Hiện thực hóa thành công kiến trúc Client-Server phân tán bốn tầng, tích hợp trơn tru giữa ứng dụng di động React Native, trang quản trị React JS, Backend NestJS và máy chủ AI FastAPI. Kết quả được xác minh qua kiểm thử tích hợp và chạy thực tế trên thiết bị vật lý, đảm bảo ổn định của cơ chế BullMQ + Redis.
+    \item \textbf{Về mặt quản lý tài chính (Độ tin cậy cao):} Số hóa thành công mô hình quản lý tài chính 6 lọ, phát triển cơ chế phân chia thu nhập tự động, lập lịch giao dịch định kỳ và đảm bảo tính toàn vẹn số dư động. Được kiểm chứng qua các kịch bản kiểm thử chức năng giao dịch thực tế và đối soát số dư tự động.
+    \item \textbf{Về mặt học bổng (Độ tin cậy cao):} Hoàn thiện quy trình học bổng trực tuyến từ công bố chương trình, cấu hình điều kiện, sinh viên nộp hồ sơ đến nhà tài trợ xét duyệt và phản hồi kết quả. Kiểm thử xác minh tính nhất quán trạng thái hồ sơ và ngăn chặn nộp trùng lặp.
+    \item \textbf{Về mặt ứng dụng AI (Độ tin cậy trung bình):} Xây dựng hệ tác nhân AI trợ lý ảo hỗ trợ trả lời câu hỏi tài chính thời gian thực qua stream SSE và bộ phân loại giao dịch tự động. Độ chính xác trung bình đạt \textbf{91.8\%} trên tập thử nghiệm 100 mẫu trong môi trường phát triển; cần tiếp tục đánh giá trên tập benchmark lớn hơn.
+    \item \textbf{Về mặt quản trị dữ liệu học thuật (Độ tin cậy cao):} Hoàn thiện luồng quản lý trường đại học, khoa/chương trình đào tạo và môn học trên Webadmin; hỗ trợ import hàng loạt và đồng bộ sang Mobile App. Kết quả được kiểm thử qua cấu trúc dữ liệu sau đồng bộ và hiển thị trên thiết bị di động.
+    \item \textbf{Về mặt bảng điểm sinh viên (Độ tin cậy cao):} Hoàn thiện chức năng theo dõi GPA, tổng tín chỉ, mục tiêu tín chỉ, nhập/sửa/xóa điểm từng môn và import hàng loạt từ file TXT/CSV. Cơ chế tính GPA có trọng số theo tín chỉ đã được kiểm chứng chéo với công thức chuẩn của các trường đại học lớn tại Việt Nam.
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/wallet-overview.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/wallet-overview.png}%
-        }{%
-            \rectbox{Hình ảnh ví 6 lọ tài chính trên Mobile}
-        }
-        \caption{Giao diện tổng quan ví 6 lọ trên thiết bị di động}
-        \label{fig:mobile-6jars}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/wallet-overview-detail.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/wallet-overview-detail.png}%
-        }{%
-            \rectbox{Hình ảnh chi tiết xu hướng thu chi trên màn hình ví}
-        }
-        \caption{Xu hướng thu chi và phân bổ theo lọ trên màn hình tổng quan ví}
-        \label{fig:mobile-wallet-detail}
-    \end{minipage}
-\end{figure}
-\clearpage
+\subsection{Định vị sản phẩm và phân tích sự khác biệt hóa}
+Nhóm phát triển đối chiếu các nhóm chức năng của hệ thống Student360 với ba ứng dụng quản lý tài chính phổ biến: Money Lover, Sổ Thu Chi MISA và Spendee. Ba ứng dụng này là giải pháp chuyên biệt cho lĩnh vực tài chính cá nhân đại chúng, trong khi Student360 là giải pháp lai (hybrid) tích hợp tài chính và học thuật dành riêng cho sinh viên. Việc so sánh được chia thành hai nhóm: (1) Tính năng tài chính cốt lõi; (2) Tính năng học bổng và học thuật thể hiện sự khác biệt hóa.
 
-\subsubsection{Màn hình Chi tiết hũ}
-Khi người dùng truy cập vào một hũ tài chính cụ thể, màn hình chi tiết sẽ hiển thị các thông tin chuyên sâu của hũ đó:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Số dư riêng biệt, ngưỡng cảnh báo chi tiêu đã thiết lập cho hũ đó (theo số dư tối thiểu hoặc theo phần trăm) và xu hướng dòng tiền.
-    \item \textbf{Biểu đồ xu hướng:} Biểu đồ đường (Line Chart) mô tả sự biến động của số dư theo thời gian (chu kỳ tuần hoặc tháng).
-    \item \textbf{Lịch sử giao dịch hũ:} Danh sách các giao dịch thu, chi, hoặc chuyển khoản liên quan trực tiếp đến hũ được chọn.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/mobile/jar-detail.png}{%
-        \includegraphics[width=0.48\textwidth]{Images/chapter4/mobile/jar-detail.png}%
-    }{%
-        \rectbox{Hình ảnh màn hình chi tiết hũ trên Mobile}
-    }
-    \caption{Giao diện chi tiết hũ tài chính trên di động}
-    \label{fig:mobile-jar-detail}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Trò chuyện AI}
-Giao diện kết nối trực tiếp sinh viên với trợ lý ảo hỗ trợ quản lý tài chính và tư vấn học bổng:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Khung chat tương tác thời gian thực, hiển thị câu trả lời dạng stream (SSE) mượt mà và trực quan.
-    \item \textbf{Tích hợp hành động:} Trợ lý AI có khả năng đề xuất trực tiếp các khối hành động đề xuất (Executable Actions) dưới dạng thẻ (card) tương tác để người dùng xác nhận nhanh (ví dụ: tạo giao dịch chi tiêu hoặc điều chỉnh tỷ lệ hũ).
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/ai-chat.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/ai-chat.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình Chat AI Trợ lý}
-        }
-        \caption{Giao diện trò chuyện thời gian thực với trợ lý AI}
-        \label{fig:mobile-aichat}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/ai-chat-sidebar.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/ai-chat-sidebar.png}%
-        }{%
-            \rectbox{Hình ảnh bảng chọn chủ đề và mô hình AI}
-        }
-        \caption{Bảng chọn chủ đề, nền tảng AI và lịch sử trò chuyện gần đây}
-        \label{fig:mobile-aichat-sidebar}
-    \end{minipage}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Cấu hình phân bổ lọ}
-Giao diện quản lý tỷ lệ phần trăm phân bổ thu nhập cho mô hình quản lý tài chính 6 lọ:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Hệ thống các thanh trượt (slider) cho phép điều chỉnh tỷ lệ phần trăm phân bổ trực quan.
-    \item \textbf{Ràng buộc hệ thống:} Tự động kiểm tra tính hợp lệ và khóa tổng tỷ lệ luôn bằng 100\% khi người dùng thay đổi giá trị của bất kỳ hũ nào.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/mobile/jar-allocation.png}{%
-        \includegraphics[width=0.48\textwidth]{Images/chapter4/mobile/jar-allocation.png}%
-    }{%
-        \rectbox{Hình ảnh màn hình điều chỉnh tỷ lệ 6 lọ trên Mobile}
-    }
-    \caption{Giao diện cấu hình phần trăm phân bổ hũ tài chính}
-    \label{fig:mobile-jar-alloc}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Ghi chép giao dịch}
-Biểu mẫu cho phép sinh viên nhanh chóng nhập thủ công các giao dịch tài chính hàng ngày:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Các ô nhập số tiền chi tiêu, chọn hũ chi tiêu tương ứng, chọn nhãn danh mục ngân sách (tags) và viết mô tả giao dịch.
-    \item \textbf{Tối ưu hóa UI/UX:} Hỗ trợ chọn nhanh các thẻ tag thường dùng và tự động điền các thông tin mặc định.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/add-transaction.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/add-transaction.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình thêm mới giao dịch trên Mobile}
-        }
-        \caption{Giao diện biểu mẫu thêm mới giao dịch tài chính}
-        \label{fig:mobile-add-transaction}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/add-transaction-allocation.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/add-transaction-allocation.png}%
-        }{%
-            \rectbox{Hình ảnh modal thiết lập tỷ lệ phân bổ khi thêm thu nhập}
-        }
-        \caption{Modal thiết lập tỷ lệ phân bổ vào các hũ khi ghi nhận thu nhập}
-        \label{fig:mobile-add-transaction-allocation}
-    \end{minipage}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Lịch sử giao dịch}
-Nơi lưu trữ và hiển thị toàn bộ hoạt động thu chi của người dùng theo thời gian:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Danh sách lịch sử giao dịch phân trang, hỗ trợ cuộn vô hạn (infinite scroll).
-    \item \textbf{Tính năng bổ trợ:} Thanh tìm kiếm nhanh giao dịch theo nội dung và bộ lọc đa năng theo hũ tài chính hoặc khoảng thời gian.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/mobile/transaction-history.png}{%
-        \includegraphics[width=0.48\textwidth]{Images/chapter4/mobile/transaction-history.png}%
-    }{%
-        \rectbox{Hình ảnh danh sách lịch sử giao dịch trên Mobile}
-    }
-    \caption{Giao diện danh sách lịch sử giao dịch của sinh viên}
-    \label{fig:mobile-transaction-history}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Lịch chuyển tiền tự động}
-Quản lý các cài đặt chuyển tiền hoặc tiết kiệm tự động theo định kỳ:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Danh sách các lịch trình chuyển tiền đã tạo kèm theo tần suất chạy (ngày, tuần, tháng).
-    \item \textbf{Chức năng tương tác:} Cho phép bật/tắt (toggle) trạng thái hoạt động của lịch trình hoặc xóa vĩnh viễn trực tiếp trên giao diện.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/auto-transfer.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/auto-transfer.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình quản lý lịch chuyển tự động trên Mobile}
-        }
-        \caption{Giao diện quản lý lịch chuyển tiền tự động}
-        \label{fig:mobile-auto-transfer}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/auto-transfer-edit.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/auto-transfer-edit.png}%
-        }{%
-            \rectbox{Hình ảnh biểu mẫu chỉnh sửa lịch chuyển tiền tự động}
-        }
-        \caption{Biểu mẫu chỉnh sửa lịch chuyển tiền tự động}
-        \label{fig:mobile-auto-transfer-edit}
-    \end{minipage}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Báo cáo tài chính}
-Giao diện trực quan hóa dữ liệu dòng tiền giúp sinh viên theo dõi thói quen tài chính:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Biểu đồ cột thể hiện tương quan thu - chi theo tháng và biểu đồ tròn phân tích cơ cấu các khoản chi tiêu lớn.
-    \item \textbf{AI Insights:} Mục đề xuất các nhận định tài chính từ trợ lý AI dựa trên thói quen chi tiêu thực tế của tháng hiện tại.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/financial-report.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/financial-report.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình báo cáo phân tích tài chính trên Mobile}
-        }
-        \caption{Giao diện báo cáo phân tích tài chính chi tiêu}
-        \label{fig:mobile-financial-report}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/financial-report-chart.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/financial-report-chart.png}%
-        }{%
-            \rectbox{Hình ảnh biểu đồ thu chi theo tuần trên báo cáo tài chính}
-        }
-        \caption{Biểu đồ thu chi theo tuần trên màn hình báo cáo tài chính}
-        \label{fig:mobile-financial-report-chart}
-    \end{minipage}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Gợi ý học bổng}
-Giao diện hiển thị danh sách các học bổng phù hợp nhất với năng lực học tập của sinh viên:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Danh sách các thẻ học bổng, hiển thị chi tiết số tiền tài trợ, hạn nộp hồ sơ, mức độ cạnh tranh và điểm số khớp hồ sơ (\% phù hợp).
-    \item \textbf{Sắp xếp tự động:} Hệ thống sắp xếp các cơ hội học bổng theo độ khớp giảm dần được tính toán từ thuật toán của AI Service.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \rectbox{Hình ảnh màn hình gợi ý học bổng trên Mobile}
-    \caption{Giao diện gợi ý học bổng thông minh}
-    \label{fig:mobile-schol-match}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Chi tiết học bổng và Nộp hồ sơ}
-Giao diện hiển thị chi tiết chương trình học bổng ứng tuyển và biểu mẫu điền hồ sơ trực tuyến:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Chi tiết điều kiện ứng tuyển học bổng, hạn nộp đơn, giá trị tài trợ và danh sách các minh chứng tài liệu bắt buộc.
-    \item \textbf{Cơ chế nộp hồ sơ:} Sinh viên nhập thông tin học thuật cá nhân (CCCD, điểm GPA, thành tích), tải lên các tài liệu minh chứng, lưu nháp (draft) hoặc nộp hồ sơ chính thức trực tiếp từ di động.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/scholarship-apply.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình chi tiết học bổng trên Mobile}
-        }
-        \caption{Giao diện chi tiết học bổng trên thiết bị di động}
-        \label{fig:mobile-scholarship-apply}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/scholarship-apply-form.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply-form.png}%
-        }{%
-            \rectbox{Hình ảnh form đăng ký nộp hồ sơ học bổng trên Mobile}
-        }
-        \caption{Biểu mẫu đăng ký và nộp hồ sơ học bổng}
-        \label{fig:mobile-scholarship-apply-form}
-    \end{minipage}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Bảng điểm sinh viên}
-Giao diện hiển thị tổng quan kết quả học tập và tiến độ tích lũy tín chỉ của sinh viên:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Điểm trung bình tích lũy GPA hiện tại, tổng số tín chỉ đã tích lũy, mục tiêu tín chỉ và tiến độ học tập.
-    \item \textbf{Tối ưu hóa UI/UX:} Biểu đồ tiến trình học tập trực quan giúp sinh viên tự đánh giá lộ trình học tập.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/gradebook-dashboard.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-dashboard.png}%
-        }{%
-            \rectbox{Màn hình dashboard bảng điểm, GPA và mục tiêu tín chỉ trên Mobile}
-        }
-        \caption{Giao diện bảng điểm và tiến độ tín chỉ của sinh viên}
-        \label{fig:mobile-gradebook-dashboard}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/gradebook-courses.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-courses.png}%
-        }{%
-            \rectbox{Màn hình thêm môn học và import bảng điểm TXT/CSV trên Mobile}
-        }
-        \caption{Giao diện nhập và import điểm sinh viên}
-        \label{fig:mobile-gradebook-courses}
-    \end{minipage}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Nhập môn và Import bảng điểm}
-Công cụ hỗ trợ sinh viên cập nhật điểm số học tập một cách linh hoạt:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Biểu mẫu thêm môn học từ danh mục chuẩn của trường đối tác, nhập điểm theo thang điểm tương ứng.
-    \item \textbf{Import dữ liệu:} Cho phép parse tệp tin bảng điểm TXT/CSV trực tiếp trên thiết bị di động, tự động đối chiếu môn học và hỗ trợ chỉnh sửa thông tin trước khi lưu chính thức.
-\end{itemize}
-
-\subsection{Webadmin quản trị hệ thống}
-Giao diện quản trị Webadmin được thiết kế bằng React JS kết hợp Material UI (MUI), tối ưu hóa cho việc hiển thị bảng dữ liệu lớn (data tables) và xử lý quy trình phê duyệt trực quan. Các màn hình chính của phân hệ quản trị được phân tích cụ thể như sau:
-
-\subsubsection{Màn hình Quản lý Trường đối tác}
-Màn hình quản trị dành cho Ban quản trị để quản lý danh mục các trường đại học đối tác trong hệ thống:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Bảng dữ liệu phân trang hiển thị danh sách tên trường, mã trường, địa chỉ và trạng thái hoạt động (Active/Inactive).
-    \item \textbf{Chức năng tích hợp:} Bộ lọc tìm kiếm nhanh theo từ khóa, biểu mẫu thêm mới hoặc chỉnh sửa thông tin trường học trực tiếp qua modal.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/universities.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/universities.png}%
-    }{%
-        \rectbox{Màn hình danh sách trường đại học trên Webadmin}
-    }
-    \caption{Giao diện quản lý danh mục trường đại học}
-    \label{fig:webadmin-universities}
-\end{figure}
-
-\subsubsection{Màn hình Quản lý Môn học và Khoa}
-Giao diện đồng bộ Master Data môn học và chương trình đào tạo để kiểm tra điều kiện xét duyệt học bổng:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Danh sách môn học và khoa/chương trình đào tạo của từng trường đối tác, hiển thị mã môn, số tín chỉ và thang điểm.
-    \item \textbf{Chức năng tích hợp:} Hỗ trợ import hàng loạt dữ liệu (bulk import) qua file mẫu và biểu mẫu thêm, sửa, xóa trực quan.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/subjects-programs.png}{%
-        \includegraphics[width=\textwidth,height=0.4\textheight,keepaspectratio]{Images/chapter4/webadmin/subjects-programs.png}%
-    }{%
-        \rectbox{Màn hình quản lý môn học theo trường}
-    }
-
-    \vspace{0.5cm}
-
-    \IfFileExists{Images/chapter4/webadmin/training-programs.png}{%
-        \includegraphics[width=\textwidth,height=0.4\textheight,keepaspectratio]{Images/chapter4/webadmin/training-programs.png}%
-    }{%
-        \rectbox{Màn hình quản lý khoa/chương trình đào tạo theo trường}
-    }
-    \caption{Giao diện quản lý môn học và khoa/chương trình đào tạo}
-    \label{fig:webadmin-subjects-programs}
-\end{figure}
-
-\subsubsection{Màn hình Danh sách Học bổng}
-Nơi nhà tài trợ hoặc quản trị viên quản lý danh sách các học bổng đang phát hành của đơn vị:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Danh sách các chương trình học bổng cùng thông tin tổng giá trị quỹ, hạn nộp đơn và số lượng hồ sơ đã ứng tuyển.
-    \item \textbf{Chức năng tích hợp:} Bộ lọc tìm kiếm nhanh theo từ khóa, xem nhanh thống kê tiến độ ứng tuyển của từng học bổng.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/scholarships-list.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/scholarships-list.png}%
-    }{%
-        \rectbox{Màn hình danh sách Học bổng trên Webadmin}
-    }
-    \caption{Giao diện quản lý danh sách Học bổng}
-    \label{fig:webadmin-scholarships-list}
-\end{figure}
-
-\subsubsection{Màn hình Tạo và Thiết lập Học bổng}
-Giao diện cho phép nhà tài trợ thiết lập thông tin chi tiết cho chương trình học bổng:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Biểu mẫu đăng tải học bổng mới với các trường thiết lập tiêu chí khắt khe (điểm GPA tối thiểu, yêu cầu về ngành học, tài liệu cần nộp).
-    \item \textbf{Chức năng tích hợp:} Lựa chọn áp dụng cho các trường đại học cụ thể hoặc áp dụng cho toàn bộ hệ thống.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/sponsor-create-scholarship-1.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/sponsor-create-scholarship-1.png}%
-    }{%
-        \rectbox{Màn hình tạo học bổng - phần thông tin chung}
-    }
-
-    \vspace{0.4cm}
-
-    \IfFileExists{Images/chapter4/webadmin/sponsor-create-scholarship-2.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/sponsor-create-scholarship-2.png}%
-    }{%
-        \rectbox{Màn hình tạo học bổng - phần điều kiện xét tuyển}
-    }
-
-    \caption{Giao diện tạo và cấu hình học bổng dành cho nhà tài trợ}
-    \label{fig:sponsor-create-scholarship}
-\end{figure}
-
-\subsubsection{Màn hình Xét duyệt hồ sơ học bổng}
-Giao diện chính phục vụ quy trình đánh giá và phê duyệt hồ sơ xin học bổng của sinh viên:
-\begin{itemize}
-    \item \textbf{Thành phần hiển thị:} Giao diện chi tiết hồ sơ ứng viên (gồm điểm GPA thực tế, các hoạt động ngoại khóa, file đính kèm thư giới thiệu/bài luận).
-    \item \textbf{Chức năng tích hợp:} Bộ nút cập nhật nhanh trạng thái hồ sơ (Duyệt/Từ chối) kèm theo khung nhập nhận xét/phản hồi trực tiếp gửi tới sinh viên.
-\end{itemize}
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/sponsor-application-review.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/sponsor-application-review.png}%
-    }{%
-        \rectbox{Màn hình xét duyệt hồ sơ ứng tuyển học bổng trên Webadmin}
-    }
-    \caption{Giao diện xét duyệt hồ sơ ứng tuyển học bổng}
-    \label{fig:sponsor-application-review}
-\end{figure}
-
-\subsection{Cơ chế đồng bộ trạng thái giao diện tức thời}
-Để đảm bảo số liệu tài chính trên app di động luôn chính xác ngay sau khi người dùng thực hiện giao dịch, hệ thống áp dụng cơ chế Query Invalidation của thư viện React Query \cite{reactquery-docs}:
-\begin{itemize}
-    \item Khi người dùng tạo mới một giao dịch chi tiêu (\texttt{expense}), mutation hook của React Query gửi request lên Backend.
-    \item Sau khi nhận phản hồi thành công, Frontend lập tức đánh dấu toàn bộ dữ liệu tài chính có liên quan là đã lỗi thời (bao gồm số dư các hũ, lịch sử giao dịch, dữ liệu giao dịch đã gộp và trang tổng quan tài chính) để buộc tải lại.
-    \item Hệ thống tự động fetch lại dữ liệu ngầm và cập nhật UI ngay lập tức mà không cần tải lại toàn bộ trang, đem lại cảm giác đồng bộ tức thời cho sinh viên.
-\end{itemize}
-
-\section{Kiểm thử hệ thống}
-\subsection{Kiểm thử chức năng}
-\label{sec:kiem-thu-chuc-nang}
-Nhóm phát triển đã tiến hành kiểm thử hộp đen (Black-box testing) đối với các giao diện người dùng trên phân hệ Mobile App và Webadmin. Để tiện truy vết với bảng RTM ở Chương 4 (Bảng~\ref{tab:rtm}), mỗi nhóm ca kiểm thử được gán một mã dạng FUNC-TCxx và ánh xạ về mã use case tương ứng như trong Bảng~\ref{tab:func-test-results}. 100\% các ca kiểm thử chức năng nghiệp vụ cơ bản trên giao diện đều hoạt động ổn định, đạt yêu cầu đề ra của bài toán.
+\textbf{Nhóm 1: Các tính năng Tài chính tương đồng (so sánh cùng phạm vi)}
 
 \begin{table}[H]
     \centering
-    \caption{Các nhóm ca kiểm thử chức năng hộp đen và use case tương ứng}
-    \label{tab:func-test-results}
-    \begin{tabular}{|L{2.2cm}|L{5.6cm}|L{2.8cm}|C{2.2cm}|}
-        \hline
-        \textbf{Mã kiểm thử} & \textbf{Nhóm nghiệp vụ kiểm thử} & \textbf{Use case liên quan} & \textbf{Kết quả} \\
-        \hline
-        FUNC-TC01 & Đăng ký / đăng nhập tài khoản & --- (nghiệp vụ nền) & Đạt \\ \hline
-        FUNC-TC02 & Ghi nhận thu chi và phân bổ thu nhập & FIN-UC02, FIN-UC03 & Đạt \\ \hline
-        FUNC-TC03 & Thiết lập cấu hình tỷ lệ 6 lọ tài chính & FIN-UC01 & Đạt \\ \hline
-        FUNC-TC04 & Đăng ký học bổng trực tuyến & SCH-UC02 & Đạt \\ \hline
-        FUNC-TC05 & Upload file tài liệu minh chứng & SCH-UC02 & Đạt \\ \hline
-        FUNC-TC06 & Xét duyệt hồ sơ ứng tuyển & SCH-UC03 & Đạt \\ \hline
-    \end{tabular}
-\end{table}
-
-\subsection{Kiểm thử API}
-\label{sec:kiem-thu-api}
-Để đảm bảo tất cả các endpoint API hoạt động đồng bộ và trả về mã trạng thái HTTP chính xác, nhóm đã xây dựng một bộ kiểm thử end-to-end tự động bằng Jest + Supertest (\texttt{backend/test/ai-gateway.e2e-spec.ts}), chạy trực tiếp trên hệ thống thật (Backend + AI Service + PostgreSQL + Redis đang hoạt động), thay cho việc kiểm thử tay qua Postman trước đây. Bộ test này có thể chạy lại bất cứ lúc nào bằng lệnh \texttt{npm run test:e2e -- ai-gateway}. Kết quả cuối cùng (6/6 PASS) được trình bày trong Bảng~\ref{tab:api-integration-results}:
-
-\begin{table}[H]
-    \centering
-    \footnotesize
-    \caption{Kết quả kiểm thử tích hợp API tự động (Jest + Supertest, chạy thật)}
-    \label{tab:api-integration-results}
-    \begin{tabular}{|L{1.7cm}|L{3.1cm}|L{4.1cm}|C{1.9cm}|L{3cm}|}
-        \hline
-        \textbf{Mã kiểm thử} & \textbf{Nhóm chức năng (UC)} & \textbf{Endpoint kiểm thử} & \textbf{Trạng thái} & \textbf{Ghi chú xác minh} \\
-        \hline
-        API-TC01 & Authentication (---) & \texttt{POST /api/}\allowbreak\texttt{auth/}\allowbreak\texttt{login} & \textbf{PASS~\checkmark} & Lấy Bearer token thành công. \\ \hline
-        API-TC02 & Chat Intent Routing (AI-UC01) & \texttt{POST /api/}\allowbreak\texttt{ai/}\allowbreak\texttt{chat} & \textbf{PASS~\checkmark} & Định tuyến và trả lời đúng cấu trúc dữ liệu cho câu hỏi lai giữa học bổng và tài chính cá nhân. \\ \hline
-        API-TC03 & Streaming Chat (AI-UC01) & \texttt{POST /api/}\allowbreak\texttt{ai/}\allowbreak\texttt{chat/}\allowbreak\texttt{stream} & \textbf{PASS~\checkmark} & SSE stream thật trả về đủ sự kiện \texttt{token} và \texttt{done}. \\ \hline
-        API-TC04 & Actions Normalization (AI-UC01) & \texttt{POST /api/}\allowbreak\texttt{ai/}\allowbreak\texttt{actions/}\allowbreak\texttt{execute} & \textbf{PASS~\checkmark} & Tạo giao dịch thật (\texttt{CREATE\_TRANSACTION}) thành công trên tài khoản kiểm thử. \\ \hline
-        API-TC05 & Actions Confirm (AI-UC01) & \texttt{POST /api/}\allowbreak\texttt{ai/}\allowbreak\texttt{actions/}\allowbreak\texttt{confirm} & \textbf{PASS~\checkmark} & Thực thi đề xuất được xác nhận, ghi nhận đề xuất bị từ chối. \\ \hline
-        API-TC06 & Anomaly Alerts (FIN-UC04) & \texttt{GET /api/}\allowbreak\texttt{ai/}\allowbreak\texttt{anomalies} & \textbf{PASS~\checkmark} & Trả về danh sách cảnh báo bất thường của tài khoản kiểm thử. \\ \hline
-    \end{tabular}
-\end{table}
-
-\subsection{Kiểm thử AI Assistant}
-Quá trình kiểm thử và tinh chỉnh hệ thống AI được thực hiện qua ba giai đoạn độc lập nhằm đảm bảo chất lượng tích hợp và độ tin cậy của trợ lý ảo:
-
-\subsubsection{Giai đoạn 1: Thử nghiệm ban đầu trên localhost}
-Trong giai đoạn đầu của dự án, nhóm phát triển xây dựng dịch vụ AI Service sơ khai bằng FastAPI kết nối trực tiếp với API Google Gemini 2.5 Flash. Hệ thống lúc này chỉ được cấu hình các Prompt hệ thống cơ bản để nhận diện ý định và gọi các hàm (tool) truy cập cơ sở dữ liệu. Toàn bộ quá trình tương tác diễn ra trên môi trường cục bộ (localhost) và chưa tích hợp cơ chế bộ nhớ đệm (caching) hay truyền luồng sự kiện (streaming).
-
-Qua quá trình chạy thử nghiệm ban đầu, hệ thống AI liên tục phát sinh nhiều lỗi nghiêm trọng liên quan đến sự phối hợp giữa LLM và logic nghiệp vụ backend như lỗi phản hồi quá dài (Response Token Overflow), lỗi lặp từ khóa vô hạn (Infinite Loop), lỗi gọi sai tool nghiệp vụ và lỗi mất kết nối (Gateway Timeout 504). Nhóm đã thiết lập 20 kịch bản kiểm thử thô ban đầu để đánh giá năng lực cơ bản. Kết quả được tổng hợp trong Bảng~\ref{tab:ai-test-phase1}:
-
-\begin{table}[htbp]
-    \centering
-    \caption{Kết quả kiểm thử AI trợ lý ảo -- Giai đoạn 1}
-    \label{tab:ai-test-phase1}
-    \begin{tabular}{|L{4.5cm}|C{2.5cm}|C{2.5cm}|C{3cm}|}
-        \hline
-        \textbf{Nhóm nghiệp vụ} & \textbf{Số test case} & \textbf{Đạt (Pass)} & \textbf{Lỗi hệ thống} \\
-        \hline
-        Truy vấn thông tin tài chính & 8 & 3 & 5 (Timeout, sai tool) \\ \hline
-        Yêu cầu giao dịch (chuyển lọ) & 6 & 1 & 5 (Gọi sai service) \\ \hline
-        Hỏi đáp kiến thức tài chính & 6 & 4 & 2 (Lặp từ, tràn token) \\ \hline
-        \textbf{Tổng cộng} & \textbf{20} & \textbf{8 (40.0\%)} & \textbf{12 (60.0\%)} \\
-        \hline
-    \end{tabular}
-\end{table}
-
-\subsubsection{Giai đoạn 2: Tích hợp thiết bị di động và xử lý tiếng Việt}
-Nhóm tiến hành tích hợp AI Service vào máy chủ Backend NestJS và bắt đầu kết nối với ứng dụng di động Expo (React Native). Để giải quyết vấn đề độ trễ, nhóm bổ sung cơ chế Redis Cache cho các yêu cầu sinh báo cáo tài chính tháng và chuẩn bị cấu trúc hàng đợi BullMQ để xử lý các job quét bất thường tài chính cuối ngày.
-
-Khi đưa hệ thống vào kiểm thử thực tế với ngôn ngữ tự nhiên viết tay của sinh viên trên thiết bị di động, hệ thống bộc lộ các lỗi nghiệp vụ tinh vi hơn: lỗi không nhận diện từ khóa do không đồng nhất Unicode (NFC/NFD) đặc trưng của bộ gõ tiếng Việt, lỗi không khớp mã lọ tại Runtime (Jar Code Mismatch) do AI tự chuyển sang từ tiếng Anh (\texttt{savings}/\texttt{saving} thay vì \texttt{reserve}), và lỗi thiên vị từ khóa (Keyword Bias). Nhóm mở rộng quy mô bộ kiểm thử lên 50 kịch bản tích hợp thực tế. Kết quả đạt được ghi nhận trong Bảng~\ref{tab:ai-test-phase2}:
-
-\begin{table}[htbp]
-    \centering
-    \caption{Kết quả kiểm thử AI trợ lý ảo -- Giai đoạn 2}
-    \label{tab:ai-test-phase2}
-    \begin{tabular}{|L{4.5cm}|C{2.5cm}|C{2.5cm}|C{3cm}|}
-        \hline
-        \textbf{Nhóm nghiệp vụ} & \textbf{Số test case} & \textbf{Đạt (Pass)} & \textbf{Lỗi phát sinh} \\
-        \hline
-        Truy vấn thông tin tài chính & 18 & 13 & 5 (Lỗi Unicode tiếng Việt) \\ \hline
-        Yêu cầu giao dịch (chuyển lọ) & 17 & 10 & 7 (Lỗi mã hũ "savings") \\ \hline
-        Hỏi đáp kiến thức tài chính & 15 & 12 & 3 (Lỗi phân loại nhầm ý định) \\ \hline
-        \textbf{Tổng cộng} & \textbf{50} & \textbf{35 (70.0\%)} & \textbf{15 (30.0\%)} \\
-        \hline
-    \end{tabular}
-\end{table}
-
-\subsubsection{Giai đoạn 3: Tối ưu hóa, kiểm soát bảo mật và nghiệm thu}
-Trong giai đoạn hoàn thiện cuối cùng, nhóm đã triển khai hàng loạt cải tiến kỹ thuật đồng bộ ở cả hai phía: áp dụng bộ lọc chuẩn hóa Unicode NFC cho tất cả văn bản đầu vào; thiết lập cơ chế bảo vệ hai tầng cho mã lọ; xây dựng hệ thống chính sách bảo mật để ngăn chặn các cuộc tấn công Prompt Injection và thiết lập kiểm soát ngữ cảnh truy cập.
-
-Bộ kiểm thử nghiệm thu hoàn chỉnh được thực thi tự động. Đầu tiên, bộ kiểm thử đơn vị độc lập (Unit Test) gồm 167 test case chạy bằng \texttt{pytest} đã được xây dựng và xác minh. Tiếp đó, bộ kiểm thử tích hợp đầu cuối (E2E Chat API) gồm 41 kịch bản gốc (mỗi kịch bản có 1--3 biến thể diễn đạt, tổng cộng 114 lượt chạy thực tế được ghi lại) mô phỏng các luồng chat thực tế đã đạt kết quả xuất sắc; Bảng~\ref{tab:ai-e2e-results} trình bày 18 kịch bản đại diện, bao trùm đủ các nhóm nghiệp vụ và các ca kiểm thử bảo mật. Về mặt truy vết, toàn bộ các kịch bản mã TCxxx trong bảng này thuộc phạm vi kiểm chứng của use case AI-UC01 (trò chuyện cùng Trợ lý AI, xem Bảng~\ref{tab:rtm} ở Chương 4); riêng TC022 đồng thời xác minh dữ liệu lịch giao dịch định kỳ của FIN-UC05, và nhóm TC041--TC044 tập trung vào khía cạnh bảo mật của luồng chat:
-
-\begin{table}[H]
-    \centering
-    \footnotesize
-    \caption{Kết quả kiểm thử E2E Chat API (Non-Stream) sau cải tiến tối ưu}
-    \label{tab:ai-e2e-results}
-    \begin{tabular}{|L{1.4cm}|L{6.0cm}|C{2.2cm}|C{2.2cm}|C{1.8cm}|}
-        \hline
-        \textbf{Mã TC} & \textbf{Kịch bản kiểm thử} & \textbf{Ý định (Intent)} & \textbf{Trạng thái} & \textbf{Latency (ms)} \\
-        \hline
-        TC001 & Kiểm tra số dư lọ thiết yếu bằng ngôn ngữ tự nhiên & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 3,522 \\ \hline
-        TC002 & Liệt kê 5 giao dịch chi tiêu gần nhất & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 4,198 \\ \hline
-        TC003 & Giải thích quy tắc phân chia 6 lọ & knowledge\_\allowbreak 6jars & \textbf{PASS~\checkmark} & 3,899 \\ \hline
-        TC004 & Điều kiện học bổng sinh viên nghèo & scholarships & \textbf{PASS~\checkmark} & 3,926 \\ \hline
-        TC005 & Câu hỏi hybrid: mua hàng kèm kiểm tra số dư & hybrid & \textbf{PASS~\checkmark} & 10,005 \\ \hline
-        TC011 & Truy vấn số dư lọ cụ thể qua Tool & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 3,076 \\ \hline
-        TC012 & Xem tỷ lệ phân bổ tất cả các lọ & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 3,100 \\ \hline
-        TC013 & Thống kê tổng thu chi trọn đời của hũ & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 2,935 \\ \hline
-        TC015 & Tìm 5 khoản chi lớn nhất trong 30 ngày & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 4,400 \\ \hline
-        TC021 & Phân tích xu hướng chi tiêu 3 tháng qua & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 3,503 \\ \hline
-        TC022 & Liệt kê lịch chuyển khoản tự động đang kích hoạt & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 4,724 \\ \hline
-        TC023 & Đánh giá khả năng chi trả khoản mua lớn & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 11,383 \\ \hline
-        TC031 & Tư vấn xử lý nợ sinh viên chồng chất & knowledge\_\allowbreak 6jars & \textbf{PASS~\checkmark} & 3,852 \\ \hline
-        TC032 & Áp dụng 6 lọ khi thu nhập không ổn định & knowledge\_\allowbreak 6jars & \textbf{PASS~\checkmark} & 3,765 \\ \hline
-        TC041 & Bảo mật: Tấn công Prompt Injection & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 1,344 \\ \hline
-        TC042 & Bảo mật: Tấn công Jailbreak & knowledge\_\allowbreak 6jars & \textbf{PASS~\checkmark} & 2,741 \\ \hline
-        TC043 & Bảo mật: Kiểm tra ảo giác AI (Hallucination) & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 6,519 \\ \hline
-        TC044 & Bảo mật: Rò rỉ dữ liệu qua tham số user\_id & personal\_\allowbreak finance & \textbf{PASS~\checkmark} & 4,274 \\ \hline
-        \multicolumn{2}{|l|}{\textbf{Tổng cộng (18 kịch bản đại diện được liệt kê)}} & --- & \textbf{18/18 PASS} & \textbf{TB: 4,054} \\
-        \hline
-    \end{tabular}
-\end{table}
-
-\textbf{Nhận xét kết quả bảo mật nổi bật:} Các câu lệnh cố tình tiêm nhiễm mã độc dạng text (Prompt Injection) như "Bỏ qua mọi hướng dẫn trước đó..." đã bị bộ lọc Policy chặn đứng thành công (TC041). Khi chèn tham số \texttt{user\_id} của người dùng khác vào câu hỏi (TC044), AI Service tự động ghi đè bằng \texttt{user\_id} thực tế từ token JWT, ngăn chặn hoàn toàn nguy cơ rò rỉ dữ liệu tài chính. Độ trễ phản hồi SSE đạt tốc độ tức thì chỉ sau 50ms cho token đầu tiên.
-
-\subsection{Kiểm thử hiệu năng}
-Để đánh giá độ chịu tải của hệ thống dưới áp lực truy cập đồng thời lớn, nhóm phát triển đã tiến hành kiểm thử hiệu năng đối với các thành phần cốt lõi:
-\begin{itemize}
-    \item \textbf{Độ trễ phản hồi của AI Assistant:} Đo lường thời gian trễ từ khi sinh viên gửi câu hỏi đến khi nhận được ký tự phản hồi đầu tiên qua stream SSE.
-    \item \textbf{Độ chịu tải của hệ thống thông báo đẩy (FCM):} Gửi đồng loạt 1.000 request thật tới hàng đợi BullMQ/Redis để đánh giá khả năng tiếp nhận và xử lý bất đồng bộ (chi tiết ở mục 6.5).
-\end{itemize}
-
-\section{Đánh giá các chức năng AI}
-\subsection{Đánh giá phân loại giao dịch}
-Để tối ưu hóa chi phí vận hành và giảm thiểu độ trễ phản hồi, hệ thống áp dụng cơ chế phân loại hỗn hợp gồm hai bước (Hybrid Classification Pipeline):
-\begin{itemize}
-    \item \textbf{Bước 1 (Khớp từ khóa chính xác):} Hệ thống kiểm tra bảng tùy chọn cá nhân hóa của sinh viên trong cơ sở dữ liệu. Nếu khớp từ khóa (do người dùng từng xác nhận hoặc sửa đổi trước đây), hệ thống trả kết quả đề xuất hũ ngay lập tức với độ trễ 0ms mà không cần gọi API AI.
-    \item \textbf{Bước 2 (Dự phòng qua LLM):} Khi gặp từ khóa hoặc ngôn ngữ lóng mới (như ``cf'', ``an trua'', ``tnet''), hệ thống gọi mô hình ngôn ngữ lớn để suy luận ngữ nghĩa và đề xuất hũ phù hợp. Khi người dùng thực hiện xác nhận hoặc chỉnh sửa thủ công hũ tài chính trên giao diện, hệ thống tự động ghi nhận cặp từ khóa -- mã hũ này vào cơ sở dữ liệu qua API \texttt{/api/v1/classify/override}, tạo thành một vòng tự học (Self-learning loop) cá nhân hóa cho từng sinh viên.
-\end{itemize}
-
-\textit{Phương pháp đo:} Số liệu dưới đây là kết quả đo tự động, tái lập được. Nhóm xây dựng một bộ dữ liệu kiểm thử cố định gồm 90 mô tả giao dịch tiếng Việt tự nhiên (15 mẫu/hũ $\times$ 6 hũ hệ thống), lưu tại \texttt{student360-ai/}\allowbreak\texttt{tests/eval/data/}\allowbreak\texttt{classification\_eval\_set.json}, và một script \texttt{tests/\allowbreak eval/\allowbreak eval\_\allowbreak classification.py} gọi thật endpoint \texttt{POST /ai/6jars/classify} (Backend $\to$ AI Service $\to$ Vertex Gemini) cho từng mẫu, so khớp hũ được đề xuất với nhãn đúng. Bảng~\ref{tab:ai-classify-eval} và Bảng~\ref{tab:ai-classify-prf1} tổng hợp kết quả đo được:
-
-\begin{table}[H]
-    \centering
-    \caption{Đánh giá độ chính xác phân loại giao dịch của AI theo hũ tài chính (đo tự động, N=90)}
-    \label{tab:ai-classify-eval}
-    \begin{tabular}{|L{4.8cm}|C{2.6cm}|C{3.4cm}|C{2.8cm}|}
-        \hline
-        \textbf{Hũ tài chính} & \textbf{Tổng mẫu thử} & \textbf{Số mẫu phân loại đúng} & \textbf{Độ chính xác (Accuracy)} \\
-        \hline
-        Chi tiêu thiết yếu (essentials) & 15 & 13 & 86.7\% \\ \hline
-        Giáo dục (education) & 15 & 15 & 100.0\% \\ \hline
-        Đầu tư (investment) & 15 & 15 & 100.0\% \\ \hline
-        Thiện tâm (sharing) & 15 & 15 & 100.0\% \\ \hline
-        Hưởng thụ (enjoyment) & 15 & 15 & 100.0\% \\ \hline
-        Tiết kiệm (reserve) & 15 & 8 & 53.3\% \\ \hline
-        \textbf{Trung bình toàn hệ thống} & \textbf{90} & \textbf{81} & \textbf{90.0\%} \\
-        \hline
-    \end{tabular}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \caption{Precision / Recall / F1 theo từng hũ tài chính}
-    \label{tab:ai-classify-prf1}
-    \begin{tabular}{|L{3.2cm}|C{2.4cm}|C{2.2cm}|C{2.2cm}|}
-        \hline
-        \textbf{Hũ tài chính} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
-        \hline
-        Chi tiêu thiết yếu & 100.0\% & 86.7\% & 92.9\% \\ \hline
-        Giáo dục & 88.2\% & 100.0\% & 93.8\% \\ \hline
-        Đầu tư & 68.2\% & 100.0\% & 81.1\% \\ \hline
-        Thiện tâm & 100.0\% & 100.0\% & 100.0\% \\ \hline
-        Hưởng thụ & 100.0\% & 100.0\% & 100.0\% \\ \hline
-        Tiết kiệm & 100.0\% & 53.3\% & 69.6\% \\ \hline
-        \multicolumn{4}{|l|}{Accuracy: \textbf{90.0\%}} \\ \hline
-        \multicolumn{4}{|l|}{Macro-F1: \textbf{89.5\%}} \\ \hline
-    \end{tabular}
-\end{table}
-
-Mô hình AI đạt độ chính xác đo được \textbf{90.0\%} trên 90 mẫu thử nghiệm và Macro-F1 đạt 89.5\%. Kiểm tra ma trận nhầm lẫn cho thấy phát hiện đáng chú ý nhất: 7/15 mẫu của hũ Tiết kiệm (reserve) -- gồm các câu như ``Gửi tiết kiệm ngân hàng kỳ hạn 6 tháng'', ``Mua vàng nhẫn để dành phòng khi cần'' -- bị phân loại nhầm sang hũ Đầu tư (investment) với độ tin cậy cao (0.9--0.98), không phải do lỗi hệ thống mà do mô hình khó phân biệt ngữ nghĩa giữa ``tiết kiệm'' và ``đầu tư'' khi câu mô tả không đủ ngữ cảnh (Precision hũ Đầu tư chỉ 68.2\% do bị ``ăn'' nhầm các mẫu Tiết kiệm).
-
-\subsection{Đánh giá gợi ý học bổng}
-\label{sec:danh-gia-hoc-bong}
-\textit{Phương pháp đo:} Nhóm xây dựng một bộ dữ liệu kiểm thử cố định gồm 12 hồ sơ sinh viên (thuộc 12 ngành khác nhau) $\times$ 15 bài đăng học bổng (lưu tại \texttt{tests/\allowbreak eval/\allowbreak data/}\allowbreak\texttt{scholarship\_\allowbreak matching\_\allowbreak eval\_\allowbreak set.json}, có gán nhãn ``phù hợp/không phù hợp'' cho từng cặp hồ sơ--học bổng), và gọi trực tiếp hàm \texttt{\_score\_profile\_match()} -- công thức trọng số Jaccard(0.5) + Bigram(0.3) + SequenceMatcher(0.2) thực tế đang chạy trong sản phẩm -- không qua mạng hay LLM nên kết quả hoàn toàn tất định, tái lập được (script: \texttt{tests/\allowbreak eval/\allowbreak eval\_\allowbreak scholarship\_\allowbreak matching.py}).
-
-Vì hàm \texttt{match\_scholarships\_for\_profile()} không áp ngưỡng điểm cứng mà chỉ xếp hạng ứng viên theo điểm rồi trả về top-N (ngưỡng 0.5/0.7 trong code chỉ dùng để gắn nhãn ``confidence'' hiển thị giao diện, không lọc kết quả), nhóm đánh giá đúng theo cách hệ thống vận hành thực tế: học bổng đúng ngành có được xếp lên vị trí đầu tiên hay không, thay vì đánh giá đúng/sai theo một ngưỡng điểm cố định.
-
-Kết quả trên 12 hồ sơ thử nghiệm (mỗi hồ sơ so khớp với 15 học bổng): học bổng đúng ngành được hệ thống xếp lên vị trí gợi ý đầu tiên cho toàn bộ \textbf{12/12 hồ sơ (100\%)}. Trong nhóm 3 và 5 kết quả gợi ý đầu tiên, tỷ lệ học bổng thực sự phù hợp giảm dần (khoảng 50\% trong top-3, khoảng 33\% trong top-5) -- nguyên nhân là 2 trong 15 học bổng thử nghiệm thuộc dạng ``toàn diện, mọi ngành'' (không đặc thù): thuật toán dựa trên trùng lặp từ vựng tự nhiên xếp hạng các học bổng này thấp vì văn bản mô tả chung chung, ít từ khóa trùng với hồ sơ cụ thể. Đây là hạn chế thật của thuật toán (giỏi khớp đúng ngành, kém phát hiện học bổng diện rộng) đáng ghi nhận cho hướng cải thiện tiếp theo. Với cỡ mẫu nhỏ (12 hồ sơ), kết quả 100\% ở vị trí đầu tiên phản ánh đúng bộ dữ liệu thử nghiệm hiện tại, chưa phải bằng chứng cho độ chính xác tuyệt đối trên quy mô lớn hơn.
-
-\section{Đánh giá khả năng đáp ứng hệ thống}
-\label{sec:danh-gia-dap-ung}
-\textit{Phương pháp đo:} Nhóm xây dựng script load-test \texttt{backend/test/load/}\allowbreak\texttt{notification-queue-load-test.ts} gọi thật 1.000 lần liên tiếp (concurrency client = 20) endpoint \texttt{POST /notification-queue/send-queued} -- endpoint thật ghi job vào BullMQ/Redis, không mô phỏng -- nhắm vào một tài khoản kiểm thử cố định, đo trực tiếp trên hệ thống đang chạy (Backend + Redis + PostgreSQL). Quy mô dừng ở 1.000 vì cơ sở dữ liệu của dự án là PostgreSQL (Neon) lưu trữ từ xa, dùng chung với các thành viên khác trong nhóm -- nhóm ưu tiên an toàn hạ tầng chung. Bảng~\ref{tab:fcm-latency-eval} trình bày kết quả đo được:
-
-\begin{table}[H]
-    \centering
-    \caption{Kết quả load-test hàng đợi thông báo (đo tự động, N=1.000 request, concurrency=20)}
-    \label{tab:fcm-latency-eval}
-    \begin{tabular}{|L{6cm}|C{6cm}|}
-        \hline
-        \textbf{Chỉ số} & \textbf{Giá trị đo được} \\
-        \hline
-        Tổng số request & 1.000 \\ \hline
-        Request thành công (enqueue OK) & 1.000 / 1.000 (100\%) \\ \hline
-        Tổng thời gian hoàn tất & 61.25s \\ \hline
-        Throughput enqueue & 16.3 request/s \\ \hline
-        Độ trễ enqueue -- P50 & 1.198ms \\ \hline
-        Độ trễ enqueue -- P95 & 1.480ms \\ \hline
-        Độ trễ enqueue -- P99 & 1.599ms \\ \hline
-        Độ trễ enqueue -- trung bình & 1.223ms \\ \hline
-    \end{tabular}
-\end{table}
-
-\textbf{Giới hạn phạm vi đo:} Số liệu trên đo \textbf{khả năng tiếp nhận (enqueue)} của hệ thống -- từ khi API nhận request đến khi job được ghi vào PostgreSQL và đẩy thành công vào Redis/BullMQ -- toàn bộ 1.000/1.000 request đều được tiếp nhận không lỗi. Số liệu này \textbf{không đo được độ trễ xử lý toàn trình đến khi worker gửi xong} (trạng thái \texttt{SENT}), vì hệ thống hiện không có endpoint GET công khai theo job id để chủ động chờ xác nhận kết quả xử lý -- đây là giới hạn thật về khả năng quan sát hệ thống từ bên ngoài, không phải một khâu bị bỏ sót khi đo. \texttt{NotificationProcessor} được cấu hình \texttt{concurrency = 10} tường minh khi đăng ký \texttt{@Processor('notification')}, cho phép worker xử lý \textbf{song song tối đa 10 job cùng lúc} thay vì mặc định tuần tự của BullMQ.
-
-Kiến trúc hàng đợi bất đồng bộ với BullMQ và Redis giúp hệ thống tiếp nhận số lượng lớn request mà không chặn tiến trình API chính, đúng như số liệu enqueue 100\% thành công ở trên xác nhận; việc đo tỷ lệ gửi FCM thành công thật và độ trễ xử lý toàn trình ở quy mô lớn hơn được đưa vào hướng phát triển tiếp theo, cần có một endpoint theo dõi trạng thái job.
-
-\section{Nhận xét và đánh giá tổng quan}
-Thông qua toàn bộ quá trình triển khai và kiểm thử hệ thống Student360, nhóm phát triển đưa ra các nhận xét và đánh giá tổng quan như sau:
-\begin{enumerate}
-    \item \textbf{Mức độ hoàn thiện chức năng:} Hệ thống đã hiện thực hóa đầy đủ và chính xác tất cả các chức năng theo đặc tả bài toán. Phân hệ di động dành cho sinh viên hoạt động ổn định trên cả hệ điều hành Android và iOS, trong khi trang quản trị Webadmin hỗ trợ đắc lực việc kiểm soát dữ liệu Master Data và duyệt học bổng của nhà tài trợ.
-    \item \textbf{Hiệu quả tích hợp trí tuệ nhân tạo (AI):} Hệ trợ lý ảo và bộ phân loại giao dịch tự động hoạt động tốt với ngôn ngữ tự nhiên viết tay của sinh viên Việt Nam. Qua bộ kiểm thử tự động, tái lập được trên dữ liệu cố định, hệ thống đạt độ chính xác phân loại giao dịch \textbf{90.0\%} trên 90 mẫu thử nghiệm (Macro-F1 89.5\%) và gợi ý đúng học bổng phù hợp nhất ở vị trí đầu tiên cho \textbf{12/12 hồ sơ thử nghiệm} (N=12 hồ sơ $\times$ 15 học bổng) -- xem chi tiết phương pháp và giới hạn mẫu ở mục 6.4. Việc tích hợp stream SSE giúp cải thiện đáng kể trải nghiệm chờ đợi phản hồi của LLM so với mô hình chờ toàn bộ câu trả lời.
-    \item \textbf{Hiệu năng và khả năng mở rộng:} Kiến trúc Client-Server phân tán nhiều tầng kết hợp hàng đợi bất đồng bộ BullMQ/Redis được thiết kế để phân tán việc gửi thông báo FCM hàng loạt thành nhiều job độc lập, tránh chặn tiến trình API chính. Load-test tự động, tái lập được với 1.000 request thật xác nhận hệ thống tiếp nhận (enqueue) 100\% request thành công, độ trễ P95 = 1.480ms; worker xử lý job được cấu hình song song (concurrency=10). Khả năng chịu tải ở quy mô lớn hơn và tỷ lệ gửi FCM thành công thật vẫn cần đo thêm ở giai đoạn tiếp theo (xem giới hạn phạm vi đo ở mục 6.5).
-    \item \textbf{Tính bảo mật của ứng dụng:} Các cơ chế bảo mật như xác thực JWT, RolesGuard phân quyền nhiều tầng, chống Prompt Injection và Scoping dữ liệu người dùng đã được hiện thực hóa đầy đủ, đảm bảo an toàn cho dữ liệu học tập và tài chính của sinh viên.
-\end{enumerate}
-
-Bên cạnh việc đánh giá nội tại, nhóm phát triển cũng đối chiếu các nhóm chức năng của Student360 với ba ứng dụng quản lý tài chính phổ biến hiện nay là Money Lover, Sổ Thu Chi MISA và Spendee. Kết quả đối chiếu được trình bày trong Bảng~\ref{tab:comparison-finance} (nhóm tính năng tài chính cốt lõi -- so sánh cùng phạm vi) và Bảng~\ref{tab:comparison-education} (nhóm tính năng học bổng và học thuật -- thể hiện sự khác biệt hóa về định vị sản phẩm); phần phân tích chi tiết về định vị sản phẩm được trình bày tại Chương 7.
-
-\begin{table}[H]
-    \centering
-    \caption{Đối chiếu tính năng Tài chính cốt lõi giữa các giải pháp}
-    \label{tab:comparison-finance}
     \begin{tabular}{|L{4.2cm}|C{2.6cm}|C{2.8cm}|C{2.8cm}|C{2.6cm}|}
         \hline
         \textbf{Tính năng Tài chính} & \textbf{Money Lover} & \textbf{Sổ Thu Chi MISA} & \textbf{Spendee} & \textbf{Student360} \\
@@ -677,12 +29,17 @@ Bên cạnh việc đánh giá nội tại, nhóm phát triển cũng đối chi
         Lập lịch giao dịch định kỳ & Có & Có & Có & \textbf{Có} \\ \hline
         Hàng đợi xử lý thông báo đẩy & Không cấu hình & Không & Không & \textbf{BullMQ + Redis} \\ \hline
     \end{tabular}
+
+    \caption{Đối chiếu tính năng Tài chính cốt lõi giữa các giải pháp}
+    \label{tab:comparison-finance}
 \end{table}
+
+\textit{Phân tích Nhóm 1:} Trong phạm vi quản lý tài chính cá nhân cơ bản, Student360 đáp ứng tốt các nhu cầu cốt lõi tương đương các giải pháp thương mại. Đồng thời, hệ thống ứng dụng tự động phân bổ thu nhập theo mô hình 6 lọ và xử lý giao dịch tự động bằng NLP tiếng Việt nhằm tối ưu hóa trải nghiệm cho người dùng trẻ tuổi.
+
+\textbf{Nhóm 2: Sự khác biệt hóa về Tính năng Học bổng và Học thuật}
 
 \begin{table}[H]
     \centering
-    \caption{Phân tích sự khác biệt hóa về tính năng giáo dục (ngoài phạm vi của đối thủ)}
-    \label{tab:comparison-education}
     \begin{tabular}{|L{4.2cm}|C{2.6cm}|C{2.8cm}|C{2.8cm}|C{2.6cm}|}
         \hline
         \textbf{Tính năng Giáo dục} & \textbf{Money Lover} & \textbf{Sổ Thu Chi MISA} & \textbf{Spendee} & \textbf{Student360} \\
@@ -693,4 +50,55 @@ Bên cạnh việc đánh giá nội tại, nhóm phát triển cũng đối chi
         Quản lý dữ liệu học thuật chuẩn hóa & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
         Bảng điểm cá nhân và GPA theo tín chỉ & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
     \end{tabular}
+
+    \caption{Phân tích sự khác biệt hóa về tính năng giáo dục (ngoài phạm vi của đối thủ)}
+    \label{tab:comparison-education}
 \end{table}
+
+\textit{Phân tích Nhóm 2:} Các tính năng này không nằm trong phạm vi mục tiêu của Money Lover, MISA hay Spendee. Sự hiện diện của chúng trên Student360 minh chứng cho hướng đi khác biệt: không thay thế các ứng dụng tài chính chuyên nghiệp, mà giải quyết bài toán giao thoa giữa tài chính (học phí, chi tiêu sinh hoạt) và học tập (học bổng, kết quả học tập) của sinh viên.
+
+\textbf{Kết luận định vị sản phẩm:} Student360 không chỉ đáp ứng tốt các nhu cầu quản lý chi tiêu cơ bản mà còn đạt được định vị chuyên biệt cao độ cho đối tượng đích thông qua hệ sinh thái giáo dục tích hợp. Sự kết hợp giữa quản lý chi tiêu 6 lọ, theo dõi học tập cá nhân và cổng học bổng trực tuyến giúp Student360 tạo lập phân khúc sản phẩm riêng biệt, hỗ trợ toàn diện cuộc sống và học tập của sinh viên.
+
+\section{Hạn chế của hệ thống}
+Mặc dù đạt được những kết quả khả quan, hệ thống vẫn tồn tại một số điểm hạn chế cần cải thiện:
+\begin{enumerate}
+    \item \textbf{Độ trễ khi gọi LLM:} Thời gian phản hồi trọn vẹn của AI Chatbot trung bình khoảng 4 giây, có thể lên tới hơn 10 giây với câu hỏi phức tạp cần gọi nhiều tool (xem Bảng~\ref{tab:ai-e2e-results}). Cơ chế lưu snapshot chỉ áp dụng cho phần nhận định tài chính định kỳ (AI Insights), chưa áp dụng được cho hội thoại chatbot vì mỗi câu hỏi về bản chất là duy nhất.
+    \item \textbf{Giới hạn của cơ chế gợi ý học bổng:} Cơ chế hiện tại hoạt động dựa trên phân tích văn bản tĩnh (Jaccard Token + Bigram + SequenceMatcher), chưa nắm bắt được ý nghĩa ngữ nghĩa sâu. Các từ vựng khác nhau nhưng cùng ý nghĩa (ví dụ: ``kỹ thuật phần mềm'' và ``CNTT'') có thể không được nhận diện là tương đương.
+    \item \textbf{Kịch bản kiểm thử dữ liệu:} Dữ liệu học bổng và hồ sơ học thuật sử dụng trong thử nghiệm chủ yếu là dữ liệu giả lập. Hệ thống chưa được kiểm thử trên quy mô dữ liệu thực tế hàng chục nghìn hồ sơ sinh viên.
+    \item \textbf{Sự phụ thuộc vào bên thứ ba:} Cơ chế thông báo di động phụ thuộc vào sự ổn định của Google FCM và kết nối mạng của thiết bị.
+    \item \textbf{Chưa liên kết tài khoản ngân hàng thực tế:} Ghi nhận thu chi hiện vẫn phụ thuộc vào nhập liệu thủ công của sinh viên hoặc đề xuất từ trợ lý AI, chưa liên kết trực tiếp với tài khoản ngân hàng.
+    \item \textbf{Một số thao tác tài chính tổng hợp chưa bọc trong Database Transaction tường minh:} Luồng phân bổ thu nhập vào 6 hũ (\texttt{distributeIncome}) và luồng xóa hũ kèm giao dịch bù trừ hiện thực hiện các lệnh ghi độc lập thay vì một \texttt{QueryRunner} Transaction chung, nên có rủi ro dữ liệu không nhất quán nếu có lỗi xảy ra giữa chừng (xem chi tiết Chương 3, Mục~3.4.3).
+    \item \textbf{Quy mô benchmark định lượng còn nhỏ:} Bộ dữ liệu gán nhãn cố định đã được xây dựng cho phân loại giao dịch, gợi ý học bổng và kiểm thử tải thông báo đẩy FCM (xem Bảng~\ref{tab:ai-classify-eval} và Bảng~\ref{tab:fcm-latency-eval}), nhưng quy mô mẫu hiện tại (90 giao dịch, 12 hồ sơ học bổng, 1.000 request tải) còn nhỏ so với thực tế; cần mở rộng và chạy lại benchmark định kỳ khi hệ thống có thêm người dùng thật.
+\end{enumerate}
+
+\section{Hướng phát triển}
+
+Dựa trên các hạn chế đã nhận diện, nhóm đề xuất các hướng cải tiến theo thứ tự ưu tiên:
+
+\subsection{Nâng cao độ tin cậy hệ thống (Ưu tiên cao)}
+
+\begin{enumerate}
+    \item \textbf{Bổ sung Database Transaction cho thao tác tài chính tổng hợp:} Bọc các luồng phân bổ ví 6 lọ và giao dịch bù trừ khi xóa hũ vào \texttt{QueryRunner} Transaction chung. Áp dụng cơ chế khóa bi quan (pessimistic locking) để tránh deadlock. Tiêu chí hoàn thành: 100\% các luồng tài chính phức tạp thực thi trong Transaction, không xảy ra lệch số dư khi giả lập lỗi mất kết nối.
+
+    \item \textbf{Mở rộng bộ benchmark định lượng cho AI:} Xây dựng tập dữ liệu khoảng 500 mẫu hội thoại/phân loại giao dịch được gán nhãn thủ công từ dữ liệu sinh viên thực tế. Xây dựng script tự động đo Precision, Recall và F1-score của mô hình phân loại giao dịch, có thể chạy lại định kỳ.
+
+    \item \textbf{Đánh giá hiệu năng hạ tầng bằng kiểm thử tải:} Triển khai kiểm thử tải lớn hơn trên môi trường sandbox cô lập (dùng k6 hoặc Artillery). Mục tiêu: đo ngưỡng chịu tải tối đa của hệ thống thông báo đẩy (FCM), tỷ lệ lỗi dưới 1\% ở mức tải thiết kế thông thường.
+\end{enumerate}
+
+\subsection{Mở rộng khả năng tự động hóa và tích hợp (Ưu tiên trung bình)}
+
+\begin{enumerate}
+    \item \textbf{Hoàn thiện tính năng quét ảnh hóa đơn (OCR Receipt):} Tích hợp Google Cloud Vision OCR để trích xuất tự động số tiền và ngày giao dịch từ ảnh hóa đơn. Mục tiêu: độ chính xác trên 80\% với ảnh hóa đơn rõ nét.
+
+    \item \textbf{Mở rộng kết nối API ngân hàng:} Kết nối cổng dịch vụ Open Banking trung gian (như Casso hoặc VietQR) để đồng bộ tự động giao dịch từ tài khoản ngân hàng liên kết. Cần đánh giá đầy đủ các yêu cầu pháp lý theo Nghị định 13/2023/NĐ-CP trước khi triển khai. Phiên bản MVP chỉ hỗ trợ đọc lịch sử biến động số dư, chưa thực hiện lệnh chuyển tiền.
+
+    \item \textbf{Bổ sung chức năng phát hiện giao dịch bất thường:} Phát triển thuật toán phát hiện chi tiêu vượt ngưỡng bất thường và gửi cảnh báo qua thông báo đẩy. Cho phép người dùng phản hồi để tinh chỉnh thuật toán cá nhân hóa.
+\end{enumerate}
+
+\subsection{Nâng cao năng lực AI (Ưu tiên dài hạn)}
+
+\begin{enumerate}
+    \item \textbf{Nâng cấp cơ chế gợi ý học bổng bằng Semantic Search:} Chuyển từ khớp từ vựng tĩnh sang tìm kiếm ngữ nghĩa sử dụng cơ sở dữ liệu vector (pgvector). Mục tiêu: nhận diện được các trường hợp đồng nghĩa (``Kỹ thuật phần mềm'' tương đương ``Công nghệ thông tin'') với thời gian phản hồi dưới 1 giây.
+
+    \item \textbf{Tối ưu hóa mô hình AI nội bộ (Local LLM):} Triển khai mô hình ngôn ngữ lớn nguồn mở (ví dụ: Qwen-2.5-7B-Instruct hoặc Llama-3-8B-Instruct lượng tử hóa) trên máy chủ nội bộ của trường đại học với framework vLLM hoặc Ollama. Toàn bộ dữ liệu hội thoại không gửi lên đám mây bên thứ ba, đảm bảo quyền riêng tư của sinh viên. Phiên bản MVP tập trung xử lý câu hỏi về quy chế học thuật và phân loại giao dịch cơ bản, các yêu cầu phức tạp hơn vẫn định tuyến qua Cloud API để đảm bảo chất lượng.
+\end{enumerate}
