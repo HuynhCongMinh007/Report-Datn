@@ -13,7 +13,7 @@ Hệ thống Student360 được hiện thực hóa và kiểm thử trên môi 
 \end{itemize}
 \end{sloppypar}
 
-\section{Hiện thực các chức năng hệ thống}
+\section{Các chức năng hệ thống}
 \subsection{Ứng dụng di động dành cho sinh viên}
 Giao diện ứng dụng di động được thiết kế hướng tới sự trực quan, trẻ trung và tối ưu hóa trải nghiệm người dùng (UX) cho đối tượng sinh viên. Các màn hình chính và luồng chức năng của phân hệ di động được mô tả chi tiết dưới đây:
 
@@ -660,3 +660,37 @@ Thông qua toàn bộ quá trình triển khai và kiểm thử hệ thống Stu
     \item \textbf{Hiệu năng và khả năng mở rộng:} Kiến trúc Client-Server phân tán nhiều tầng kết hợp hàng đợi bất đồng bộ BullMQ/Redis được thiết kế để phân tán việc gửi thông báo FCM hàng loạt thành nhiều job độc lập, tránh chặn tiến trình API chính. Load-test tự động, tái lập được với 1.000 request thật xác nhận hệ thống tiếp nhận (enqueue) 100\% request thành công, độ trễ P95 = 1.480ms; worker xử lý job được cấu hình song song (concurrency=10). Khả năng chịu tải ở quy mô lớn hơn và tỷ lệ gửi FCM thành công thật vẫn cần đo thêm ở giai đoạn tiếp theo (xem giới hạn phạm vi đo ở mục 6.5).
     \item \textbf{Tính bảo mật của ứng dụng:} Các cơ chế bảo mật như xác thực JWT, RolesGuard phân quyền nhiều tầng, chống Prompt Injection và Scoping dữ liệu người dùng đã được hiện thực hóa đầy đủ, đảm bảo an toàn cho dữ liệu học tập và tài chính của sinh viên.
 \end{enumerate}
+
+Bên cạnh việc đánh giá nội tại, nhóm phát triển cũng đối chiếu các nhóm chức năng của Student360 với ba ứng dụng quản lý tài chính phổ biến hiện nay là Money Lover, Sổ Thu Chi MISA và Spendee. Kết quả đối chiếu được trình bày trong Bảng~\ref{tab:comparison-finance} (nhóm tính năng tài chính cốt lõi -- so sánh cùng phạm vi) và Bảng~\ref{tab:comparison-education} (nhóm tính năng học bổng và học thuật -- thể hiện sự khác biệt hóa về định vị sản phẩm); phần phân tích chi tiết về định vị sản phẩm được trình bày tại Chương 7.
+
+\begin{table}[H]
+    \centering
+    \caption{Đối chiếu tính năng Tài chính cốt lõi giữa các giải pháp}
+    \label{tab:comparison-finance}
+    \begin{tabular}{|L{4.2cm}|C{2.6cm}|C{2.8cm}|C{2.8cm}|C{2.6cm}|}
+        \hline
+        \textbf{Tính năng Tài chính} & \textbf{Money Lover} & \textbf{Sổ Thu Chi MISA} & \textbf{Spendee} & \textbf{Student360} \\
+        \hline
+        Tự động phân bổ ví 6 lọ & Thủ công & Thủ công & Thủ công & \textbf{Tự động} \\ \hline
+        Nhận diện giao dịch AI bằng NLP & Tiếng Anh & Không áp dụng & Không áp dụng & \textbf{Tiếng Việt} \\ \hline
+        Trợ lý ảo tư vấn tài chính & Không & Không & Không & \textbf{Có} \\ \hline
+        Lập lịch giao dịch định kỳ & Có & Có & Có & \textbf{Có} \\ \hline
+        Hàng đợi xử lý thông báo đẩy & Không cấu hình & Không & Không & \textbf{BullMQ + Redis} \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Phân tích sự khác biệt hóa về tính năng giáo dục (ngoài phạm vi của đối thủ)}
+    \label{tab:comparison-education}
+    \begin{tabular}{|L{4.2cm}|C{2.6cm}|C{2.8cm}|C{2.8cm}|C{2.6cm}|}
+        \hline
+        \textbf{Tính năng Giáo dục} & \textbf{Money Lover} & \textbf{Sổ Thu Chi MISA} & \textbf{Spendee} & \textbf{Student360} \\
+        \hline
+        So khớp học bổng thông minh & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
+        Quy trình học bổng trực tuyến & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
+        Đồng bộ dữ liệu nền đào tạo & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
+        Quản lý dữ liệu học thuật chuẩn hóa & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
+        Bảng điểm cá nhân và GPA theo tín chỉ & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
+    \end{tabular}
+\end{table}

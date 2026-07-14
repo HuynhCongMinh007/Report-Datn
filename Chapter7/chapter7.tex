@@ -15,43 +15,11 @@
 \subsection{Định vị sản phẩm và phân tích sự khác biệt hóa}
 Để làm rõ giá trị cốt lõi và định vị thực tế của hệ thống Student360 trong hệ sinh thái ứng dụng hỗ trợ người dùng, nhóm phát triển tiến hành đối chiếu các nhóm chức năng của hệ thống với ba ứng dụng quản lý tài chính phổ biến hiện nay: Money Lover, Sổ Thu Chi MISA và Spendee. Cần lưu ý rằng, ba ứng dụng được lựa chọn đối chứng là các giải pháp chuyên biệt cho lĩnh vực quản lý tài chính cá nhân dành cho đại chúng, trong khi Student360 được định hình là một giải pháp lai (hybrid) tích hợp giữa tài chính và học thuật dành riêng cho sinh viên. Do đó, việc so sánh được chia thành hai nhóm nhằm phân tích rõ tính tương đồng và sự khác biệt: (1) Tính năng tài chính cốt lõi (so sánh cùng phạm vi để đánh giá mức độ đáp ứng nhu cầu tài chính); (2) Tính năng hỗ trợ học bổng và học thuật (thể hiện sự khác biệt hóa về định vị sản phẩm, vốn không nằm trong mục tiêu phát triển của các đối thủ cạnh tranh).
 
-\textbf{Nhóm 1: Các tính năng Tài chính tương đồng (so sánh cùng phạm vi)}
-
-\begin{table}[H]
-    \centering
-    \caption{Đối chiếu tính năng Tài chính cốt lõi giữa các giải pháp}
-    \label{tab:comparison-finance}
-    \begin{tabular}{|L{4.2cm}|C{2.6cm}|C{2.8cm}|C{2.8cm}|C{2.6cm}|}
-        \hline
-        \textbf{Tính năng Tài chính} & \textbf{Money Lover} & \textbf{Sổ Thu Chi MISA} & \textbf{Spendee} & \textbf{Student360} \\
-        \hline
-        Tự động phân bổ ví 6 lọ & Thủ công & Thủ công & Thủ công & \textbf{Tự động} \\ \hline
-        Nhận diện giao dịch AI bằng NLP & Tiếng Anh & Không áp dụng & Không áp dụng & \textbf{Tiếng Việt} \\ \hline
-        Trợ lý ảo tư vấn tài chính & Không & Không & Không & \textbf{Có} \\ \hline
-        Lập lịch giao dịch định kỳ & Có & Có & Có & \textbf{Có} \\ \hline
-        Hàng đợi xử lý thông báo đẩy & Không cấu hình & Không & Không & \textbf{BullMQ + Redis} \\ \hline
-    \end{tabular}
-\end{table}
+\textbf{Nhóm 1: Các tính năng Tài chính tương đồng (so sánh cùng phạm vi)} -- kết quả đối chiếu chi tiết được trình bày tại Bảng~\ref{tab:comparison-finance}, Chương 6.
 
 \textit{Phân tích Nhóm 1:} Trong phạm vi quản lý tài chính cá nhân cơ bản, Student360 đáp ứng tốt các nhu cầu cốt lõi tương đương các giải pháp thương mại như Money Lover, MISA, và Spendee. Đồng thời, hệ thống ứng dụng các kỹ thuật như tự động phân bổ thu nhập theo mô hình 6 lọ và xử lý giao dịch tự động bằng NLP tiếng Việt nhằm tối ưu hóa trải nghiệm riêng cho đối tượng người dùng trẻ tuổi.
 
-\textbf{Nhóm 2: Sự khác biệt hóa về Tính năng Học bổng và Học thuật}
-
-\begin{table}[H]
-    \centering
-    \caption{Phân tích sự khác biệt hóa về tính năng giáo dục (ngoài phạm vi của đối thủ)}
-    \label{tab:comparison-education}
-    \begin{tabular}{|L{4.2cm}|C{2.6cm}|C{2.8cm}|C{2.8cm}|C{2.6cm}|}
-        \hline
-        \textbf{Tính năng Giáo dục} & \textbf{Money Lover} & \textbf{Sổ Thu Chi MISA} & \textbf{Spendee} & \textbf{Student360} \\
-        \hline
-        So khớp học bổng thông minh & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
-        Quy trình học bổng trực tuyến & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
-        Đồng bộ dữ liệu nền đào tạo & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
-        Quản lý dữ liệu học thuật chuẩn hóa & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
-        Bảng điểm cá nhân và GPA theo tín chỉ & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
-    \end{tabular}
-\end{table}
+\textbf{Nhóm 2: Sự khác biệt hóa về Tính năng Học bổng và Học thuật} -- kết quả đối chiếu chi tiết được trình bày tại Bảng~\ref{tab:comparison-education}, Chương 6.
 
 \textit{Phân tích Nhóm 2:} Các tính năng thuộc nhóm này không nằm trong phạm vi mục tiêu sản phẩm của Money Lover, MISA hay Spendee. Sự hiện diện của các tính năng này trên Student360 nhằm minh chứng cho hướng đi khác biệt của đề tài: không cố gắng thay thế hoàn toàn các ứng dụng tài chính chuyên nghiệp trên thị trường đại chúng, mà tập trung giải quyết bài toán giao thoa giữa tài chính (học phí, chi tiêu sinh hoạt) và học tập (học bổng, kết quả học tập) của sinh viên.
 
