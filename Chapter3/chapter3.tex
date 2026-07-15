@@ -653,7 +653,7 @@ Ba độ đo được kết hợp theo trọng số cố định thành một đ
 \section{Thiết kế dữ liệu}
 
 \subsection{Lựa chọn hệ quản trị cơ sở dữ liệu}
-Hệ thống dùng \textbf{PostgreSQL 15} \cite{postgresql-docs} làm nguồn dữ liệu duy nhất cho toàn bộ dữ liệu nghiệp vụ, chuẩn hóa theo mô hình quan hệ với ràng buộc khóa ngoại chặt để giữ toàn vẹn dữ liệu. \textbf{Redis 7} \cite{redis-docs} chỉ đóng vai trò message broker cho hàng đợi xử lý bất đồng bộ (Mục~3.3.2, 3.5.3), không lưu dữ liệu nghiệp vụ lâu dài.
+Hệ thống dùng \textbf{PostgreSQL 15} \cite{postgresql-docs} làm nguồn dữ liệu duy nhất cho toàn bộ dữ liệu nghiệp vụ, chuẩn hóa theo mô hình quan hệ với ràng buộc khóa ngoại chặt để giữ toàn vẹn dữ liệu. \textbf{Redis 7} \cite{redis-docs} đóng vai trò làm message broker cho hàng đợi xử lý bất đồng bộ (Mục~3.3.2, 3.5.3), đồng thời được sử dụng để lưu trữ dữ liệu tạm thời (caching) nhằm hỗ trợ giảm tải cho cơ sở dữ liệu chính cũng như tối ưu hóa tốc độ phản hồi của hệ thống.
 
 \subsection{Thiết kế mô hình dữ liệu}
 Dữ liệu được tổ chức thành ba nhóm chính, thể hiện trong sơ đồ ERD ở Hình~\ref{fig:erd-finance}, \ref{fig:erd-academic} và \ref{fig:erd-scholarship}:
