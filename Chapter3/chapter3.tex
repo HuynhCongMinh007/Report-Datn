@@ -600,8 +600,8 @@ Backend dùng NestJS \cite{nestjs-docs} vì framework có sẵn cơ chế module
 Ngoài xác thực/phân quyền và chuẩn hóa dữ liệu đầu vào đã nói ở Mục~3.5.1, Backend dùng thêm ba cơ chế cho các thao tác nhạy cảm với tính nhất quán dữ liệu:
 
 \begin{itemize}
-    \item \textbf{Tính nhất quán khi thao tác nhiều lọ tài chính:} một lần chuyển tiền giữa hai lọ tạo đồng thời hai bản ghi (chi ở lọ nguồn, thu ở lọ đích) trong cùng một giao dịch cơ sở dữ liệu; nếu một bước lỗi, toàn bộ được hoàn tác. Số dư mỗi lọ được tính lại từ lịch sử giao dịch sau khi ghi thành công, thay vì chỉ tin vào giá trị tạm trên giao diện. Riêng luồng phân bổ một khoản thu vào nhiều lọ và luồng xóa lọ kèm giao dịch bù trừ hiện vẫn ghi các bản ghi song song, chưa gộp trong một giao dịch chung -- đây là giới hạn còn tồn tại, cần khắc phục để loại bỏ rủi ro không nhất quán nếu lỗi giữa chừng.
-    \item \textbf{Không phát sinh hồ sơ học bổng trùng:} hồ sơ ứng tuyển được ràng buộc duy nhất theo từng cặp sinh viên -- học bổng; việc cập nhật hồ sơ cá nhân, tài liệu và lịch sử trạng thái được gộp trong cùng một giao dịch để tránh dữ liệu dở dang nếu lỗi giữa chừng.
+    \item \textbf{Tính nhất quán khi thao tác nhiều lọ tài chính:} một lần chuyển tiền giữa hai lọ tạo đồng thời hai bản ghi (chi ở lọ nguồn, thu ở lọ đích); nếu một bước lỗi, toàn bộ được hoàn tác để không xảy ra trạng thái chỉ ghi được một phía. Số dư mỗi lọ được tính lại từ lịch sử giao dịch sau khi ghi thành công, thay vì chỉ tin vào giá trị tạm trên giao diện.
+    \item \textbf{Không phát sinh hồ sơ học bổng trùng:} hồ sơ ứng tuyển được ràng buộc duy nhất theo từng cặp sinh viên -- học bổng; việc cập nhật hồ sơ cá nhân, tài liệu và lịch sử trạng thái được xử lý như một thao tác trọn vẹn để tránh dữ liệu dở dang nếu lỗi giữa chừng.
     \item \textbf{Idempotency cho tác vụ có thể chạy lại:} các tác vụ nền có thể chạy lại (ví dụ quét cảnh báo bất thường định kỳ) dùng một khóa định danh duy nhất để loại bỏ trùng lặp, đảm bảo không tạo ra bản ghi hay thông báo trùng cho người dùng.
 \end{itemize}
 

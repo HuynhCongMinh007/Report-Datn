@@ -157,24 +157,6 @@ Sự bùng nổ của Mô hình ngôn ngữ lớn (LLM) và hệ thống đại 
     \item \textbf{Kết quả:} ReAct kết hợp Tool-calling giúp AI Agent truy vấn số dư thực tế, đưa ra nhận định tài chính cá nhân hóa và định tuyến chính xác ý định tìm kiếm học bổng.
 \end{itemize}
 
-\subsection{Bảng so sánh tính mới (Novelty) của Student360}
-Bảng~\ref{tab:novelty-comparison} so sánh tính mới của Student360 với các hướng nghiên cứu học thuật và ứng dụng thương mại hiện có.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|L{3.2cm}|L{3.5cm}|L{3.5cm}|L{4.2cm}|}
-\hline
-\textbf{Tiêu chí so sánh} & \textbf{Nghiên cứu học thuật} & \textbf{Ứng dụng thương mại} & \textbf{Đề tài Student360} \\ \hline
-\textbf{Kiến trúc tích hợp} & Tập trung đơn lẻ một bài toán gợi ý hoặc phân loại. & Chỉ có chức năng tài chính hoặc cổng điểm đơn thuần. & Tích hợp liên kết ba trụ cột: Tài chính 6 lọ, Học thuật GPA và Học bổng trực tuyến. \\ \hline
-\textbf{Phân loại giao dịch} & Yêu cầu lượng lớn dữ liệu gán nhãn để huấn luyện riêng. & Sử dụng Regex thô sơ, tỷ lệ lỗi cao. & LLM Few-shot kết hợp tập luật nghiệp vụ cứng, đạt độ chính xác cao không cần fine-tuning. \\ \hline
-\textbf{Cơ chế gợi ý học bổng} & Vector ngữ nghĩa phức tạp, khó triển khai real-time. & Lọc cứng thủ công theo tiêu chí cơ bản. & So khớp đa độ đo (Jaccard + Bigram + SequenceMatcher) chạy trực tiếp trên RAM, kết hợp LLM tinh chỉnh. \\ \hline
-\textbf{Tương tác người dùng} & Hỏi đáp một chiều (Q\&A) đơn giản. & Thụ động -- chỉ ghi nhận và báo cáo tĩnh. & Chủ động qua AI Agent (ReAct) truyền stream SSE, kết hợp nhắc nhở chủ động qua BullMQ/Redis. \\ \hline
-\end{tabular}
-
-\caption{Bảng so sánh tính mới và đóng góp thực tiễn của đề tài Student360}
-\label{tab:novelty-comparison}
-\end{table}
-
 \section{Các giải pháp thông báo đẩy thời gian thực trên nền tảng di động}
 Hệ thống thông báo đẩy (Push Notification) đóng vai trò quan trọng trong việc tăng tỷ lệ giữ chân người dùng. Các công nghệ được Student360 áp dụng:
 \begin{itemize}
