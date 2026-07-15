@@ -78,8 +78,8 @@ Nhằm khắc phục tình trạng \textit{knowledge silo} (chia cắt kiến th
     \item \textbf{Giai đoạn 5 -- Hoàn thiện báo cáo và bảo vệ (07/2026 -- 21/07/2026):} Tổng hợp kết quả đạt được, hoàn chỉnh báo cáo khóa luận, chuẩn bị slide và demo phục vụ báo cáo trước Hội đồng.
 \end{itemize}
 
-\section{Các thách thức kỹ thuật và giải pháp thực hiện}
-Trong suốt quá trình phát triển và tích hợp hệ thống Student360, nhóm phát triển đã đối mặt với bốn thách thức kỹ thuật cốt lõi và đề xuất các giải pháp xử lý tương ứng như sau:
+\section{Các thách thức và giải pháp thực hiện}
+Trong suốt quá trình phát triển và tích hợp hệ thống Student360, bên cạnh các vấn đề về mặt kỹ thuật, nhóm phát triển còn đối mặt với các khó khăn thách thức lớn liên quan đến yếu tố con người và sự phối hợp giữa các nhóm. Dưới đây là các thách thức cốt lõi và các giải pháp thực tế được áp dụng:
 
 \subsection{Thách thức ở tầng trình bày di động (Mobile App)}
 \begin{itemize}
@@ -95,4 +95,28 @@ Trong suốt quá trình phát triển và tích hợp hệ thống Student360, 
     \item \textit{Giải pháp:} Áp dụng bộ lọc chuẩn hóa Unicode NFC ở Backend trước khi gửi yêu cầu sang AI Service. Đồng thời, thiết lập cơ chế phân loại hỗn hợp (Hybrid Classification Pipeline): kiểm tra danh mục từ khóa cá nhân hóa trong cơ sở dữ liệu trước với độ trễ 0ms; chỉ khi không khớp mới gọi LLM để suy luận ngữ nghĩa.
     \item \textbf{Thách thức 4 -- Ngăn chặn tấn công Prompt Injection và rò rỉ dữ liệu:} Người dùng có thể cố tình nhập câu lệnh tiêm nhiễm để phá vỡ ngữ cảnh an toàn của trợ lý AI, hoặc giả mạo ID người dùng (\texttt{user\_id}) trong request API để truy cập thông tin tài chính của sinh viên khác.
     \item \textit{Giải pháp:} Xây dựng chính sách bảo mật hai tầng (Policy Filter) trên AI Service để phát hiện và chặn đứng các câu lệnh tiêm nhiễm độc hại. Ở phía Backend, hệ thống tự động ghi đè tham số \texttt{user\_id} của mọi yêu cầu bằng thông tin lấy từ token JWT đã được xác thực, ngăn chặn hoàn toàn nguy cơ client tự truyền ID tự do.
+\end{itemize}
+
+\subsection{Thách thức về yếu tố con người và phối hợp liên nhóm}
+\begin{itemize}
+    \item \textbf{Thách thức 5 -- Rào cản giao tiếp và nguy cơ đứt gãy thông tin trong tập thể lớn:} 
+    Với quy mô dự án lên tới 14 thành viên chia làm 3 nhóm độc lập, luồng thông tin giao tiếp phình to theo cấp số nhân. Nhóm phát triển phân hệ Tài chính (6 thành viên) liên tục đối mặt với việc "nhiễu" thông tin trên các kênh trao đổi chung. Các quyết định kỹ thuật hoặc thay đổi về mặt nghiệp vụ thường bị trôi hoặc hiểu sai lệch giữa các nhóm nếu không được truyền đạt rõ ràng, dẫn đến tình trạng không đồng nhất về hiểu biết hệ thống (Information Asymmetry).
+    
+    \item \textbf{Thách thức 6 -- Khó khăn trong việc thống nhất kiến trúc và các mô-đun dùng chung (Shared Services):} 
+    Do hệ thống chia làm 3 phân hệ hoạt động trên cùng một nền tảng cơ sở dữ liệu và hạ tầng, các chức năng dùng chung như xác thực người dùng (Authentication/Authorization), hệ thống thông báo đẩy (Notification), cài đặt ứng dụng (Setup), và cấu hình hệ thống (Configuration) trở thành các điểm thắt cổ chai (bottlenecks). Việc thống nhất kiểu dữ liệu, cấu trúc DB và đặc tả API của các phần chung này đòi hỏi sự thương thảo kéo dài giữa cả 3 nhóm. Bất kỳ sự tự ý điều chỉnh nào ở một nhóm cũng có thể trực tiếp làm đổ vỡ (break) chức năng của hai nhóm còn lại.
+    
+    \item \textbf{Thách thức 7 -- Sự phụ thuộc chéo giữa các tính năng (Feature Dependency) và trễ tiến độ dây chuyền:} 
+    Phân hệ Tài chính có sự phụ thuộc rất lớn vào các phân hệ khác (ví dụ: cần luồng đăng nhập thành công của phân hệ lõi để lấy thông tin sinh viên, và cần hệ thống thông báo để gửi cảnh báo chi tiêu). Khi các nhóm có tốc độ phát triển không đồng đều hoặc một nhóm gặp sự cố kỹ thuật dẫn đến chậm trễ tiến độ (delay), toàn bộ chuỗi tích hợp của phân hệ Tài chính cũng bị đình trệ theo. Việc quản lý sự phụ thuộc này trong mô hình phát triển song song cực kỳ phức tạp.
+    
+    \item \textbf{Thách thức 8 -- Xung đột mã nguồn và bất đồng bộ trong quy trình triển khai (Git Conflict \& Release Management):} 
+    Với 14 lập trình viên cùng đẩy mã nguồn lên các repository cốt lõi của hệ thống (như Backend NestJS và Frontend Mobile), tần suất xảy ra xung đột code (code conflict) rất cao. Việc thiếu thống nhất trong quy chuẩn viết code (coding convention), quy trình đặt tên nhánh (Git branch naming) hay thời điểm merge code lên các nhánh \texttt{staging}/\texttt{main} gây khó khăn lớn cho việc kiểm soát phiên bản và triển khai tự động (CI/CD).
+
+    \item \textit{Giải pháp thực hiện:} Để giải quyết triệt để các thách thức về mặt con người và quy trình phối hợp trên, các nhóm đã cùng thống nhất và áp dụng đồng bộ các giải pháp sau:
+    \begin{itemize}
+        \item \textit{Chuẩn hóa kênh và tần suất giao tiếp:} Thiết lập các kênh thảo luận chuyên biệt cho từng chủ đề nghiệp vụ trên Slack/Zalo. Định kỳ tổ chức các cuộc họp giao ban liên nhóm (Cross-team Sync Meeting) hàng tuần để đại diện các nhóm báo cáo tiến độ, chỉ ra các điểm phụ thuộc chéo và cùng đưa ra quyết định chung bằng văn bản.
+        \item \textit{Thiết kế và đóng băng đặc tả API trước khi lập trình:} Sử dụng công cụ Swagger/OpenAPI để định nghĩa chi tiết các API endpoints dùng chung. Bất kỳ sự thay đổi nào về cấu trúc request/response phải được đăng ký qua một biểu mẫu yêu cầu thay đổi (RFC - Request for Comments) và chỉ được áp dụng khi có sự đồng thuận từ đại diện của cả 3 nhóm.
+        \item \textit{Quy hoạch rõ ranh giới trách nhiệm (RACI Matrix):} Phân định rõ ràng nhóm nào chịu trách nhiệm phát triển chính và nhóm nào chịu trách nhiệm tích hợp đối với từng API hoặc màn hình dùng chung, tránh việc đùn đẩy trách nhiệm hoặc làm trùng lặp công việc.
+        \item \textit{Thống nhất quy trình Git Flow và rà soát mã nguồn liên nhóm (Cross-review):} Áp dụng quy chuẩn viết mã chung (Linter/Prettier) trên toàn bộ dự án. Các Pull Request liên quan đến các mô-đun dùng chung bắt buộc phải nhận được sự kiểm duyệt (approve) của ít nhất một thành viên đại diện cho mỗi nhóm trước khi được phép merge.
+        \item \textit{Tận dụng tối đa môi trường Staging chung:} Mọi phiên bản mã nguồn trước khi đưa lên production đều phải được tích hợp và kiểm thử tự động trên môi trường Staging độc lập. Điều này giúp cô lập các lỗi tích hợp sớm và đảm bảo sự cố ở một phân hệ không làm gián đoạn công việc của các phân hệ khác.
+    \end{itemize}
 \end{itemize}
