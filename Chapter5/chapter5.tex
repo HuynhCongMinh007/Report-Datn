@@ -58,7 +58,6 @@ Giao diện ứng dụng di động được thiết kế hướng tới sự tr
     \caption{Giao diện chi tiết hũ tài chính: số dư, ngưỡng cảnh báo và xu hướng dòng tiền}
     \label{fig:mobile-jar-detail}
 \end{figure}
-\clearpage
 
 \begin{figure}[H]
     \noindent\textbf{3.} \textbf{Trò chuyện AI:} Màn hình này cho phép sinh viên trò chuyện trực tiếp với trợ lý tài chính ảo để truy vấn số dư hoặc thực hiện giao dịch nhanh bằng ngôn ngữ tự nhiên thông qua stream SSE thời gian thực. Giao diện cũng cung cấp một thanh menu sidebar để chuyển đổi nhanh các chủ đề. Sau khi AI Agent thực thi thành công một hành động tài chính (ví dụ: ghi nhận giao dịch mới qua lệnh tự nhiên), hệ thống áp dụng cơ chế Query Invalidation của React Query \cite{reactquery-docs} để tự động đánh dấu toàn bộ dữ liệu tài chính có liên quan là lỗi thời -- bao gồm số dư các hũ, lịch sử giao dịch và trang tổng quan -- rồi fetch lại ngầm và cập nhật UI tức thì mà không cần tải lại toàn bộ trang.
