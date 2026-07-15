@@ -97,18 +97,46 @@ Trong suốt quá trình phát triển và tích hợp hệ thống Student360, 
     \item \textit{Giải pháp:} Xây dựng chính sách bảo mật hai tầng (Policy Filter) trên AI Service để phát hiện và chặn đứng các câu lệnh tiêm nhiễm độc hại. Ở phía Backend, hệ thống tự động ghi đè tham số \texttt{user\_id} của mọi yêu cầu bằng thông tin lấy từ token JWT đã được xác thực, ngăn chặn hoàn toàn nguy cơ client tự truyền ID tự do.
 \end{itemize}
 
+\subsection{Thách thức ở các nghiệp vụ học bổng và học thuật}
+\begin{itemize}
+    \item \textbf{Thách thức 5 -- Đảm bảo vòng đời hồ sơ học bổng nhất quán:} Hồ sơ học bổng có nhiều trạng thái như lưu nháp, đã nộp, đang xét duyệt, yêu cầu chỉnh sửa, phê duyệt hoặc từ chối. Nếu thao tác lưu hồ sơ, tài liệu minh chứng và lịch sử trạng thái không được xử lý đồng bộ, hệ thống có thể phát sinh hồ sơ trùng hoặc dữ liệu xét duyệt không đầy đủ.
+    \item \textit{Giải pháp:} Backend áp dụng ràng buộc duy nhất theo cặp sinh viên -- học bổng, kiểm tra hạn nộp và trạng thái hợp lệ trước khi cập nhật. Các thao tác tạo hồ sơ, lưu tài liệu và ghi lịch sử trạng thái được thực hiện trong cùng một transaction để đảm bảo dữ liệu nhất quán.
+    \item \textbf{Thách thức 6 -- Chuẩn hóa dữ liệu học thuật và tính GPA:} Dữ liệu trường, khoa/chương trình đào tạo, môn học và bảng điểm đến từ nhiều nguồn khác nhau nên dễ sai mã môn, sai thang điểm hoặc sai số tín chỉ khi sinh viên nhập hoặc import điểm.
+    \item \textit{Giải pháp:} Webadmin quản lý tập trung danh mục trường, khoa/chương trình đào tạo và môn học; Mobile App chỉ cho phép chọn môn từ danh mục chuẩn. Khi lưu điểm, hệ thống kiểm tra thang điểm của môn, dùng số tín chỉ để tính GPA có trọng số và cập nhật lại tiến độ học tập của sinh viên.
+\end{itemize}
+
+\subsection{Thách thức về trách nhiệm AI và đạo đức dữ liệu}
+Khi các chức năng AI được tích hợp vào luồng sử dụng thực tế, nhóm cần kiểm soát không chỉ độ chính xác kỹ thuật mà còn cả tác động của AI đến quyết định, quyền riêng tư và trải nghiệm của sinh viên. Các rủi ro dưới đây được xử lý theo nguyên tắc AI đóng vai trò hỗ trợ, người dùng và nhà tài trợ vẫn là chủ thể ra quyết định cuối cùng.
+
+\begin{itemize}
+    \item \textbf{Thiên lệch trong gợi ý học bổng:} Kết quả gợi ý có thể ưu tiên hồ sơ có GPA hoặc thông tin học thuật nổi bật, trong khi một số học bổng lại hướng đến hoàn cảnh khó khăn, hoạt động xã hội hoặc tiêu chí riêng của nhà tài trợ.
+    \item \textit{Giải pháp:} Tách AI gợi ý khỏi quy trình xét duyệt bắt buộc. Nhà tài trợ vẫn cấu hình điều kiện, tài liệu và trạng thái xét duyệt; AI chỉ hỗ trợ sinh viên tham khảo mức độ phù hợp ban đầu, không tự động phê duyệt hay loại hồ sơ.
+
+    \item \textbf{Khả năng giải thích của kết quả AI:} Nếu hệ thống chỉ hiển thị điểm phù hợp hoặc câu trả lời tổng quát, sinh viên có thể hiểu nhầm rằng AI là nguồn đánh giá tuyệt đối.
+    \item \textit{Giải pháp:} Trình bày kết quả AI theo hướng hỗ trợ quyết định: nêu tiêu chí phù hợp, điểm còn thiếu hoặc lý do gợi ý khi có dữ liệu; đồng thời cho phép sinh viên tự kiểm tra lại thông tin học bổng, điều kiện ứng tuyển và hồ sơ trước khi nộp.
+
+    \item \textbf{Quyền riêng tư dữ liệu cá nhân:} GPA, bảng điểm, CCCD, hồ sơ học bổng và giao dịch tài chính là dữ liệu nhạy cảm; nếu truyền sai phạm vi có thể gây rò rỉ thông tin cá nhân.
+    \item \textit{Giải pháp:} Backend luôn lấy danh tính người dùng từ JWT thay vì tin vào \texttt{user\_id} do client gửi. Dữ liệu học bổng chỉ được chia sẻ trong phạm vi hồ sơ do sinh viên chủ động lưu nháp hoặc nộp; dữ liệu tài chính cá nhân không được chuyển sang nhà tài trợ.
+
+    \item \textbf{Sự phụ thuộc quá mức vào phản hồi của trợ lý AI:} Sinh viên có thể xem tư vấn tài chính của AI như khuyến nghị chắc chắn, trong khi kết quả phụ thuộc dữ liệu đầu vào và giới hạn của mô hình ngôn ngữ.
+    \item \textit{Giải pháp:} AI Assistant chỉ cung cấp phân tích tham khảo dựa trên dữ liệu hiện có, các thao tác ghi dữ liệu như tạo giao dịch hoặc phân loại hũ vẫn cần sinh viên kiểm tra và xác nhận trước khi lưu chính thức.
+
+    \item \textbf{Quá tải thông báo tự động:} Các cảnh báo tài chính, nhắc lịch và thông báo học bổng nếu gửi quá dày có thể làm giảm trải nghiệm sử dụng.
+    \item \textit{Giải pháp:} Thiết kế thông báo theo ngữ cảnh nghiệp vụ rõ ràng, ưu tiên các sự kiện có giá trị hành động như cảnh báo ngân sách, lịch chuyển tiền hoặc hạn học bổng; các tác vụ gửi hàng loạt được đưa qua hàng đợi để kiểm soát tải và tránh ảnh hưởng luồng chính.
+\end{itemize}
+
 \subsection{Thách thức về yếu tố con người và phối hợp liên nhóm}
 \begin{itemize}
-    \item \textbf{Thách thức 5 -- Rào cản giao tiếp và nguy cơ đứt gãy thông tin trong tập thể lớn:} 
+    \item \textbf{Thách thức 7 -- Rào cản giao tiếp và nguy cơ đứt gãy thông tin trong tập thể lớn:} 
     Với quy mô dự án lên tới 14 thành viên chia làm 3 nhóm độc lập, luồng thông tin giao tiếp phình to theo cấp số nhân. Nhóm phát triển phân hệ Tài chính (6 thành viên) liên tục đối mặt với việc "nhiễu" thông tin trên các kênh trao đổi chung. Các quyết định kỹ thuật hoặc thay đổi về mặt nghiệp vụ thường bị trôi hoặc hiểu sai lệch giữa các nhóm nếu không được truyền đạt rõ ràng, dẫn đến tình trạng không đồng nhất về hiểu biết hệ thống (Information Asymmetry).
     
-    \item \textbf{Thách thức 6 -- Khó khăn trong việc thống nhất kiến trúc và các mô-đun dùng chung (Shared Services):} 
+    \item \textbf{Thách thức 8 -- Khó khăn trong việc thống nhất kiến trúc và các mô-đun dùng chung (Shared Services):} 
     Do hệ thống chia làm 3 phân hệ hoạt động trên cùng một nền tảng cơ sở dữ liệu và hạ tầng, các chức năng dùng chung như xác thực người dùng (Authentication/Authorization), hệ thống thông báo đẩy (Notification), cài đặt ứng dụng (Setup), và cấu hình hệ thống (Configuration) trở thành các điểm thắt cổ chai (bottlenecks). Việc thống nhất kiểu dữ liệu, cấu trúc DB và đặc tả API của các phần chung này đòi hỏi sự thương thảo kéo dài giữa cả 3 nhóm. Bất kỳ sự tự ý điều chỉnh nào ở một nhóm cũng có thể trực tiếp làm đổ vỡ (break) chức năng của hai nhóm còn lại.
     
-    \item \textbf{Thách thức 7 -- Sự phụ thuộc chéo giữa các tính năng (Feature Dependency) và trễ tiến độ dây chuyền:} 
+    \item \textbf{Thách thức 9 -- Sự phụ thuộc chéo giữa các tính năng (Feature Dependency) và trễ tiến độ dây chuyền:} 
     Phân hệ Tài chính có sự phụ thuộc rất lớn vào các phân hệ khác (ví dụ: cần luồng đăng nhập thành công của phân hệ lõi để lấy thông tin sinh viên, và cần hệ thống thông báo để gửi cảnh báo chi tiêu). Khi các nhóm có tốc độ phát triển không đồng đều hoặc một nhóm gặp sự cố kỹ thuật dẫn đến chậm trễ tiến độ (delay), toàn bộ chuỗi tích hợp của phân hệ Tài chính cũng bị đình trệ theo. Việc quản lý sự phụ thuộc này trong mô hình phát triển song song cực kỳ phức tạp.
     
-    \item \textbf{Thách thức 8 -- Xung đột mã nguồn và bất đồng bộ trong quy trình triển khai (Git Conflict \& Release Management):} 
+    \item \textbf{Thách thức 10 -- Xung đột mã nguồn và bất đồng bộ trong quy trình triển khai (Git Conflict \& Release Management):} 
     Với 14 lập trình viên cùng đẩy mã nguồn lên các repository cốt lõi của hệ thống (như Backend NestJS và Frontend Mobile), tần suất xảy ra xung đột code (code conflict) rất cao. Việc thiếu thống nhất trong quy chuẩn viết code (coding convention), quy trình đặt tên nhánh (Git branch naming) hay thời điểm merge code lên các nhánh \texttt{staging}/\texttt{main} gây khó khăn lớn cho việc kiểm soát phiên bản và triển khai tự động (CI/CD).
 
     \item \textit{Giải pháp thực hiện:} Để giải quyết triệt để các thách thức về mặt con người và quy trình phối hợp trên, các nhóm đã cùng thống nhất và áp dụng đồng bộ các giải pháp sau:

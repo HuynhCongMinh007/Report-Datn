@@ -78,23 +78,22 @@ Nhóm thiết lập một quy trình khảo sát hệ thống (Survey Protocol) 
     \item \textbf{Tiêu chí loại trừ (Exclusion):} Ứng dụng ngừng cập nhật trước năm 2024, giải pháp đóng phí bắt buộc 100\% ngay khi cài đặt, hoặc bảng tính Excel cá nhân không phân phối rộng rãi.
 \end{itemize}
 
-Để tổng hợp sự đối lập giữa các giải pháp hiện tại với Student360, nhóm xây dựng bảng ma trận so sánh tính năng cốt lõi trong Bảng~\ref{tab:so-sanh-giai-phap}.
+Để tổng hợp khoảng trống của các giải pháp tài chính cá nhân hiện có, nhóm xây dựng bảng ma trận so sánh trong Bảng~\ref{tab:so-sanh-giai-phap}. Cột ``Ghi chép thủ công / bảng tính cá nhân'' đại diện cho cách quản lý truyền thống bằng sổ tay, Excel hoặc Google Sheets.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|L{3.2cm}|C{2.0cm}|C{2.0cm}|C{2.0cm}|L{2.5cm}|L{2.6cm}|}
+\begin{tabular}{|L{3.6cm}|C{2.5cm}|C{2.5cm}|C{2.5cm}|L{3.1cm}|}
 \hline
-\textbf{Tiêu chí đối sánh} & \textbf{Money Lover} & \textbf{Spendee} & \textbf{Wallet} & \textbf{Các giải pháp truyền thống} & \textbf{Đề tài Student360} \\ \hline
-Ghi chép giao dịch & Có (Miễn phí / Trả phí) & Có (Miễn phí / Trả phí) & Có (Miễn phí / Trả phí) & Không hỗ trợ & Có (Miễn phí hoàn toàn) \\ \hline
-Tự động hóa chia 6 lọ tài chính & Một phần (phải cấu hình ví thủ công) & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Có (Hỗ trợ cấu hình và chia tự động) \\ \hline
-Phân loại bằng AI & Thô sơ (Regex / Khớp chuỗi) & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Có (LLM Few-shot + Rules) \\ \hline
-Cảnh báo ngân sách chủ động & Có (Hạn mức tĩnh theo tháng) & Có (Hạn mức theo ví) & Có (Thống kê tĩnh) & Không hỗ trợ & Có (Đa lớp, thời gian thực qua FCM) \\ \hline
-Liên kết học bổng & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Lọc cứng thủ công qua tin bài & Có (So khớp hồ sơ tự động) \\ \hline
-Quản lý học thuật & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Tách biệt trên cổng Student Portal & Có (Tính toán GPA và tiến độ tích lũy) \\ \hline
-Tương tác AI Agent & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Không hỗ trợ & Có (Trò chuyện thời gian thực qua SSE) \\ \hline
+\textbf{Tiêu chí đối sánh} & \textbf{Money Lover} & \textbf{Spendee} & \textbf{Wallet} & \textbf{Ghi chép thủ công / bảng tính cá nhân} \\ \hline
+Ghi chép giao dịch & Có (Miễn phí / Trả phí) & Có (Miễn phí / Trả phí) & Có (Miễn phí / Trả phí) & Có, nhưng nhập và tổng hợp thủ công \\ \hline
+Quản lý ngân sách & Có (hạn mức theo danh mục) & Có (hạn mức theo ví) & Có (ngân sách và báo cáo) & Tự đặt công thức, khó duy trì lâu dài \\ \hline
+Tự động hóa chia 6 lọ tài chính & Một phần, cần cấu hình ví thủ công & Không hỗ trợ chuyên biệt & Không hỗ trợ chuyên biệt & Phải tự tính tỷ lệ và chia khoản tiền \\ \hline
+Phân loại giao dịch bằng AI/NLP & Chủ yếu dựa trên luật hoặc gợi ý danh mục & Không nổi bật & Có hỗ trợ tự động hóa ở mức nhất định & Không hỗ trợ \\ \hline
+Cảnh báo ngân sách chủ động & Có, chủ yếu theo hạn mức tĩnh & Có, theo ví hoặc ngân sách & Có, thiên về báo cáo và thống kê & Phụ thuộc người dùng tự kiểm tra \\ \hline
+Báo cáo thu chi & Có biểu đồ thống kê & Có báo cáo trực quan & Có báo cáo chuyên sâu & Phải tự lập công thức và biểu đồ \\ \hline
 \end{tabular}
 
-\caption{Bảng ma trận đối sánh tính năng giữa các giải pháp thị trường và đề tài Student360}
+\caption{Bảng so sánh tính năng giữa các giải pháp tài chính cá nhân trên thị trường}
 \label{tab:so-sanh-giai-phap}
 \end{table}
 
@@ -158,10 +157,10 @@ Sự bùng nổ của Mô hình ngôn ngữ lớn (LLM) và hệ thống đại 
 \end{itemize}
 
 \section{Các giải pháp thông báo đẩy thời gian thực trên nền tảng di động}
-Hệ thống thông báo đẩy (Push Notification) đóng vai trò quan trọng trong việc tăng tỷ lệ giữ chân người dùng. Các công nghệ được Student360 áp dụng:
+Hệ thống thông báo đẩy (Push Notification) đóng vai trò quan trọng trong việc tăng tỷ lệ giữ chân người dùng. Các công nghệ phổ biến trong nhóm giải pháp này gồm:
 \begin{itemize}
-    \item \textbf{Firebase Cloud Messaging (FCM) \cite{fcm-docs}:} Dịch vụ đám mây của Google, gửi thông báo đến thiết bị Android và iOS kể cả khi ứng dụng đã bị đóng (Background/Killed state). FCM tối ưu hóa thời lượng pin bằng cách gom nhóm kết nối mạng ngầm. Đây là lựa chọn chính để gửi thông báo học bổng và cảnh báo tài chính.
-    \item \textbf{BullMQ và Redis Queue \cite{bullmq-docs}:} Để xử lý gửi thông báo đến hàng nghìn thiết bị mà không làm nghẽn tiến trình chính, hệ thống áp dụng kiến trúc hàng đợi thông điệp. BullMQ kết hợp Redis \cite{redis-docs} quản lý thứ tự gửi, xử lý lỗi tự động và phân bổ tài nguyên tối ưu. Điểm khác biệt cốt lõi là kiến trúc thông báo \textbf{chủ động đa lớp} với nhiều loại thông báo Cron tự động:
+    \item \textbf{Firebase Cloud Messaging (FCM) \cite{fcm-docs}:} Dịch vụ đám mây của Google, gửi thông báo đến thiết bị Android và iOS kể cả khi ứng dụng đã bị đóng (Background/Killed state). FCM tối ưu hóa thời lượng pin bằng cách gom nhóm kết nối mạng ngầm, phù hợp với các thông báo cần đến thiết bị di động theo thời gian thực.
+    \item \textbf{BullMQ và Redis Queue \cite{bullmq-docs}:} Để xử lý gửi thông báo đến hàng nghìn thiết bị mà không làm nghẽn tiến trình chính, nhiều hệ thống áp dụng kiến trúc hàng đợi thông điệp. BullMQ kết hợp Redis \cite{redis-docs} quản lý thứ tự gửi, xử lý lỗi tự động và phân bổ tài nguyên tối ưu. Các loại thông báo chủ động trong ứng dụng tài chính cá nhân có thể bao gồm:
     \begin{enumerate}
         \item \textbf{Cảnh báo ngưỡng số dư hũ} (theo số tiền tuyệt đối hoặc phần trăm ngân sách): kích hoạt ngay sau mỗi giao dịch chi tiêu theo kiểu fire-and-forget.
         \item \textbf{Cảnh báo ngân sách hũ sắp hết hoặc đã cạn}: gửi khi số dư còn lại $\leq 10\%$ hoặc đã âm.
@@ -171,60 +170,18 @@ Hệ thống thông báo đẩy (Push Notification) đóng vai trò quan trọng
         \item \textbf{Nhắc nhở cập nhật tài chính} (Cron thứ Hai 9:00): gửi cho người dùng không nhập giao dịch nào trong 7 ngày gần nhất.
         \item \textbf{Nhắc lịch chuyển tiền sắp kết thúc} (Cron thứ Hai 9:00): gửi cho các lịch chuyển tiền sắp hết hạn trong vòng 3 ngày tới.
     \end{enumerate}
-    Nhờ kiến trúc này, hệ thống chủ động tương tác với người dùng đúng ngữ cảnh, thay vì chỉ phản ứng khi người dùng mở ứng dụng.
+    Nhờ kiến trúc này, ứng dụng di động có thể chủ động tương tác với người dùng đúng ngữ cảnh, thay vì chỉ phản ứng khi người dùng mở ứng dụng.
 \end{itemize}
 
-\section{Rủi ro đạo đức và giải pháp đảm bảo trách nhiệm AI (Responsible AI)}
-Trong hệ thống phần mềm tích hợp AI như Student360, việc xem xét rủi ro đạo đức và thực thi nguyên tắc Responsible AI là bắt buộc. Nhóm phân tích bốn khía cạnh rủi ro cốt lõi:
-
+\section{Vấn đề cần giải quyết}
+Từ kết quả khảo sát các ứng dụng tài chính cá nhân, các mô hình quản lý tài chính, hệ thống thông báo và các nghiên cứu liên quan đến AI Agent, đề tài xác định các khoảng trống cần giải quyết ở mức yêu cầu bài toán như sau:
 \begin{enumerate}
-    \item \textbf{Thiên lệch trong gợi ý thuật toán (Algorithmic Bias):}
-    \begin{itemize}
-        \item \textit{Rủi ro:} Thuật toán có xu hướng ưu tiên sinh viên có hồ sơ học thuật xuất sắc, bỏ qua sinh viên hoàn cảnh khó khăn hoặc tích cực hoạt động xã hội.
-        \item \textit{Giải pháp:} Hệ thống không cố định công thức chấm điểm. Nhà tài trợ có thể cấu hình trọng số linh hoạt cho từng tiêu chí (nâng trọng số hoàn cảnh khó khăn, hạ trọng số GPA đối với học bổng vượt khó).
-    \end{itemize}
-
-    \item \textbf{Khả năng giải thích được (Explainability):}
-    \begin{itemize}
-        \item \textit{Rủi ro:} Điểm số so khớp (\% tương thích) do AI đưa ra có thể bị coi là ``hộp đen'', khiến sinh viên không hiểu lý do nhận được mức phù hợp thấp.
-        \item \textit{Giải pháp:} Hệ thống cung cấp giao diện phân rã điểm số (Match Score Breakdown). Sinh viên xem chi tiết lý do AI đánh giá và AI Agent gợi ý hành động cụ thể để tự cải thiện hồ sơ.
-    \end{itemize}
-
-    \item \textbf{Quyền riêng tư dữ liệu và Sự đồng ý (Data Privacy \& User Consent):}
-    \begin{itemize}
-        \item \textit{Rủi ro:} Dữ liệu học thuật (GPA, bảng điểm) và giao dịch tài chính cá nhân là thông tin cực kỳ nhạy cảm.
-        \item \textit{Giải pháp:} Áp dụng nghiêm ngặt nguyên tắc đồng ý của người dùng (User Consent). Dữ liệu cá nhân chỉ được chia sẻ cho nhà tài trợ khi sinh viên chủ động thực hiện hành động nộp hồ sơ (Apply). Sinh viên có quyền kiểm soát, lưu nháp hoặc hủy bỏ hồ sơ bất kỳ lúc nào.
-    \end{itemize}
-
-    \item \textbf{Sự phiền nhiễu từ thông báo đẩy (Notification Fatigue):}
-    \begin{itemize}
-        \item \textit{Rủi ro:} Hệ thống gửi quá nhiều thông báo tự động có thể gây khó chịu và khiến người dùng gỡ ứng dụng.
-        \item \textit{Giải pháp:} Triển khai bộ cấu hình tùy chọn thông báo trong Mobile App. Sinh viên có thể tắt/bật hoặc thay đổi tần suất nhận từng loại thông báo cụ thể.
-    \end{itemize}
+    \item \textbf{Khoảng trống trong quản lý tài chính sinh viên:} Các ứng dụng tài chính phổ biến hỗ trợ ghi chép giao dịch và báo cáo thu chi, nhưng chưa tập trung vào bối cảnh sinh viên, chưa gắn chặt với phương pháp 6 lọ tài chính và các nhu cầu như chia thu nhập, theo dõi số dư từng lọ, cảnh báo ngân sách và nhắc lịch chuyển tiền.
+    \item \textbf{Khoảng trống trong tự động hóa xử lý giao dịch tiếng Việt:} Sinh viên thường nhập mô tả chi tiêu bằng tiếng Việt tự nhiên, viết tắt hoặc không chuẩn hóa. Vì vậy, hệ thống cần hỗ trợ phân loại giao dịch linh hoạt hơn so với cách chọn danh mục thủ công hoặc khớp từ khóa đơn giản.
+    \item \textbf{Khoảng trống trong tư vấn tài chính cá nhân hóa:} Các báo cáo thống kê truyền thống chủ yếu dừng ở biểu đồ thu chi, chưa cung cấp phân tích theo ngữ cảnh cá nhân hoặc phản hồi hội thoại để giúp sinh viên hiểu nguyên nhân lệch ngân sách và điều chỉnh hành vi tài chính.
+    \item \textbf{Khoảng trống trong quy trình học bổng trực tuyến:} Thông tin học bổng thường phân tán, quy trình chuẩn bị hồ sơ và theo dõi trạng thái ứng tuyển chưa được số hóa thống nhất giữa sinh viên và nhà tài trợ. Hệ thống cần hỗ trợ công bố học bổng, cấu hình điều kiện, yêu cầu tài liệu, lưu nháp, nộp hồ sơ và theo dõi kết quả.
+    \item \textbf{Khoảng trống trong dữ liệu học thuật và bảng điểm cá nhân:} Dữ liệu trường, khoa/chương trình đào tạo và môn học cần được chuẩn hóa để sinh viên có thể nhập điểm theo danh mục chính xác, theo dõi GPA, tổng tín chỉ và mục tiêu học tập cá nhân.
+    \item \textbf{Yêu cầu về bảo mật và trách nhiệm dữ liệu:} Dữ liệu tài chính, học thuật và học bổng là dữ liệu nhạy cảm. Hệ thống cần phân tách quyền truy cập theo vai trò, giới hạn phạm vi chia sẻ dữ liệu và đảm bảo AI chỉ đóng vai trò hỗ trợ, không thay thế quyết định nghiệp vụ của người dùng hoặc nhà tài trợ.
 \end{enumerate}
 
-\section{Vấn đề cần giải quyết và định hướng giải pháp}
-\subsection{Phân tích các khó khăn vướng mắc}
-Trong quá trình xây dựng hệ thống, nhóm phát triển đối mặt với các khó khăn chính sau:
-\begin{enumerate}
-    \item \textbf{Độ trễ và chi phí tích hợp AI:} Việc gọi trực tiếp các API của mô hình ngôn ngữ lớn (như Gemini) có độ trễ phản hồi tương đối cao và tốn kém tài nguyên.
-    \item \textbf{Tính chính xác trong phân loại giao dịch:} Ngôn ngữ tự nhiên mà người dùng nhập vào khi ghi chép chi tiêu thường mang tính viết tắt, không chuẩn hóa ngữ pháp (ví dụ: "an trua 50k", "cf 30k").
-    \item \textbf{Đồng bộ trạng thái giao diện thời gian thực:} Giao diện điện thoại di động yêu cầu cập nhật tức thì số dư của các hũ và biểu đồ báo cáo ngay sau khi người dùng thực hiện giao dịch mà không làm chậm trải nghiệm ứng dụng.
-    \item \textbf{Bảo mật dữ liệu và phân quyền hệ thống:} Dữ liệu tài chính cá nhân và hồ sơ học thuật/học bổng của sinh viên là các thông tin nhạy cảm. Hệ thống cần đảm bảo an toàn truy cập dữ liệu, chỉ cho phép các đối tượng thích hợp tiếp cận các tập tài nguyên tương ứng (Sinh viên truy cập app cá nhân, Nhà tài trợ quản lý hồ sơ ứng tuyển, Admin quản trị hệ thống).
-    \item \textbf{Đảm bảo tính nhất quán và toàn vẹn của dữ liệu giao dịch tài chính:} Khi thực hiện các tác vụ phức tạp như phân bổ thu nhập (income distribution) vào 6 hũ hoặc thực hiện chuyển khoản nội bộ giữa các hũ, việc phát sinh lỗi giữa chừng có thể dẫn đến sai lệch số dư. Ngoài ra, các yêu cầu đầu vào từ người dùng cũng cần được kiểm tra chặt chẽ: ví dụ từ chối giao dịch có thời điểm trong tương lai, hoặc phân bổ thu nhập có tổng các khoản phân bổ lệch quá 0,01 VND so với tổng thu nhập cần chia.
-    \item \textbf{Đồng bộ dữ liệu học thuật và bảng điểm cá nhân:} Danh mục trường, khoa/chương trình đào tạo và môn học cần nhất quán giữa Webadmin và Mobile App. Đồng thời, điểm sinh viên nhập phải được kiểm tra theo thang điểm của từng môn, tránh sai lệch GPA và tổng tín chỉ.
-\end{enumerate}
-
-\subsection{Giải pháp đề xuất}
-Để vượt qua các khó khăn trên, hệ thống đề xuất các giải pháp kỹ thuật ở mức khái niệm sau đây; chi tiết thiết kế và cơ chế hiện thực cụ thể được trình bày đầy đủ tại Chương 3 và Chương 5:
-\begin{itemize}
-    \item \textbf{Kiến trúc AI Agent kết hợp lưu trữ nhận định tài chính:} FastAPI AI Service đóng vai trò điều phối (orchestration) độc lập, sử dụng các Tool-calling Agent của LangChain để tối ưu hóa việc gọi mô hình, đồng thời lưu bền vững kết quả nhận định tài chính (AI Insights) theo từng chu kỳ báo cáo để tránh phải gọi lại LLM không cần thiết.
-    \item \textbf{Phân loại giao dịch bằng LLM kết hợp Rule Engine:} Sử dụng các bộ quy tắc gán cứng (Rule-based) kết hợp kỹ thuật Few-shot Prompting để hướng dẫn mô hình Gemini phân loại các thuật ngữ viết tắt của người dùng một cách chính xác vào 6 lọ tài chính.
-    \item \textbf{Đồng bộ giao diện thời gian thực:} Áp dụng cơ chế Invalidation của thư viện quản lý state phía Frontend để tự động làm mới dữ liệu hiển thị ngay khi có thay đổi từ phía máy chủ, không cần tải lại toàn bộ ứng dụng.
-    \item \textbf{Xác thực và phân quyền nhiều tầng:} Sử dụng JSON Web Token (JWT) để xác thực người dùng trên các API, kết hợp cơ chế phân quyền theo vai trò (RBAC) để tách bạch phạm vi truy cập dữ liệu giữa sinh viên, nhà tài trợ và quản trị viên.
-    \item \textbf{Đảm bảo toàn vẹn dữ liệu giao dịch tài chính:} Áp dụng Database Transaction cho các thao tác chuyển khoản giữa các hũ để đảm bảo tính nguyên tử (Atomicity), đồng thời tính toán lại số dư từ tổng hợp lịch sử giao dịch thực tế thay vì lưu số dư tĩnh, giúp hạn chế sai lệch dữ liệu khi có thao tác điều chỉnh.
-    \item \textbf{Thiết kế cơ sở dữ liệu quan hệ chuẩn hóa cao:} Xây dựng cấu trúc dữ liệu với các ràng buộc khóa ngoại (Foreign Keys) chặt chẽ để đồng bộ dữ liệu học thuật phân cấp từ trường học tới sinh viên, đảm bảo tính nhất quán toàn vẹn dữ liệu.
-\end{itemize}
-
-\section{Các chức năng chính của hệ thống}
-Bốn nhóm chức năng cốt lõi đã nêu tại Mục tiêu và Yêu cầu chức năng ở Chương 1 được hiện thực hóa thành bốn phân hệ tương ứng của hệ thống: Quản lý tài chính cá nhân, Trợ lý tài chính ảo AI, Quản lý học bổng trực tuyến và Quản lý học thuật/Bảng điểm. Danh sách tác nhân tham gia, sơ đồ phân rã chức năng và đặc tả chi tiết từng nghiệp vụ của bốn phân hệ này được trình bày tại Chương 3.
+Các khoảng trống trên là cơ sở để xác định yêu cầu nghiệp vụ và yêu cầu kỹ thuật cho hệ thống ở các chương tiếp theo. Phần thiết kế kiến trúc, use case, luồng nghiệp vụ và mô hình dữ liệu được trình bày tại Chương 3; phần hiện thực, kiểm thử và các giải pháp xử lý thách thức trong quá trình triển khai được trình bày tại Chương 4 và Chương 5.

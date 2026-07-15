@@ -597,6 +597,8 @@ Trong phạm vi đề tài, Backend chia thành các miền nghiệp vụ: Xác 
 Backend dùng NestJS \cite{nestjs-docs} vì framework có sẵn cơ chế module hóa rõ ràng, khớp với mô hình phân lớp ở trên; hệ sinh thái TypeScript cũng giảm lỗi khi nhiều thành viên phát triển song song. Truy xuất dữ liệu quan hệ dùng ORM có sẵn của framework; tác vụ nền và bất đồng bộ dùng cơ chế hàng đợi trên nền Redis.
 
 \subsection{Các cơ chế bảo vệ nghiệp vụ}
+Backend thiết kế cơ chế bảo vệ nghiệp vụ theo hai lớp. Lớp thứ nhất là xác thực và phân quyền: mọi yêu cầu API đều đi qua JWT, Backend lấy danh tính người dùng từ token đã xác thực thay vì tin vào định danh do client truyền lên; phạm vi thao tác được giới hạn theo vai trò sinh viên, nhà tài trợ hoặc quản trị viên. Lớp thứ hai là bảo vệ toàn vẹn dữ liệu cho các nghiệp vụ có nhiều bước ghi dữ liệu.
+
 Ngoài xác thực/phân quyền và chuẩn hóa dữ liệu đầu vào đã nói ở Mục~3.5.1, Backend dùng thêm ba cơ chế cho các thao tác nhạy cảm với tính nhất quán dữ liệu:
 
 \begin{itemize}
@@ -611,6 +613,8 @@ Ngoài xác thực/phân quyền và chuẩn hóa dữ liệu đầu vào đã n
 AI Service dùng FastAPI \cite{fastapi-docs} kết hợp LangChain \cite{langchain-docs} để xây dựng tác nhân AI, kết nối tới mô hình ngôn ngữ lớn Gemini \cite{gemini-api}. Dịch vụ này cung cấp ba năng lực: tư vấn tài chính qua hội thoại, phân loại giao dịch từ mô tả tự nhiên, và gợi ý học bổng phù hợp hồ sơ sinh viên. AI Service được tách thành thành phần độc lập để cô lập độ trễ và chi phí gọi mô hình ngôn ngữ lớn khỏi luồng nghiệp vụ lõi của Backend; client không gọi trực tiếp AI Service mà luôn đi qua Backend với một token nội bộ thời hạn ngắn. AI Service dùng Python/FastAPI thay vì NestJS như Backend vì hệ sinh thái thư viện AI/LLM của Python phong phú hơn, và LangChain có sẵn các thành phần cho tác nhân tool-calling cũng như tích hợp đa nhà cung cấp mô hình ngôn ngữ.
 
 Khi sinh viên đặt câu hỏi hoặc nhập mô tả giao dịch, yêu cầu được Backend xác thực rồi chuyển sang AI Service. Hệ thống trước tiên phân loại ý định câu hỏi để xác định phạm vi xử lý, sau đó một tác nhân AI suy luận theo mô hình lặp truy vấn--hành động (ReAct) \cite{yao2022-react}, gọi các công cụ nghiệp vụ khi cần dữ liệu thực tế bằng cách gọi ngược lại Backend. Kết quả được trả về dưới dạng luồng liên tục, hiển thị dần trên ứng dụng theo thời gian thực, tương tự trải nghiệm của các trợ lý ảo thương mại (đặc tả nghiệp vụ tại Mục~3.2.2, AI-UC01).
+
+Đối với phân loại giao dịch từ tiếng Việt tự nhiên, AI Service được thiết kế theo hướng pipeline lai. Dữ liệu đầu vào được chuẩn hóa trước khi xử lý; hệ thống ưu tiên kiểm tra các quy tắc và từ khóa cá nhân hóa đã ghi nhận từ lựa chọn trước đó của sinh viên, sau đó mới gọi mô hình ngôn ngữ lớn khi cần suy luận ngữ nghĩa. Kết quả AI không được ghi thẳng vào cơ sở dữ liệu mà chỉ dùng để điền sẵn biểu mẫu giao dịch; sinh viên phải kiểm tra và xác nhận trước khi Backend lưu giao dịch chính thức.
 
 Các thành phần chính của AI Agent:
 \begin{itemize}
