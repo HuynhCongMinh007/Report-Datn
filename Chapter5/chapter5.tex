@@ -450,7 +450,7 @@ Hệ thống được vận hành trên môi trường triển khai thực tế 
         Phân loại giao dịch (LLM dự phòng) & 1--3s & 5s & \textbf{1.92s} & Gọi Gemini API (bước 2 của pipeline hỗn hợp) \\ \hline
         Gợi ý học bổng (Matching) & 1--2s & 3s & \textbf{293ms} (qua API)\newline\textbf{< 10ms} (on-RAM) & Xử lý so khớp đa độ đo trên RAM, không gọi LLM \\ \hline
         Tư vấn AI (Chatbot) & 2--5s & 10s & \textbf{4.05s} (TB)\newline\textbf{11.38s} (p95) & Phụ thuộc Gemini API latency, đo qua 114 lượt chạy \\ \hline
-        Hàng đợi thông báo (BullMQ) & < 10ms & < 20ms & \textbf{1.22ms} (TB)\newline\textbf{1.48ms} (p95) & Thời gian enqueue: 1.000 request, concurrency = 10 \\ \hline
+        Hàng đợi thông báo (BullMQ) & < 10ms & < 20ms & \textbf{1.22ms} (TB)\newline\textbf{1.48ms} (p95) & Kiểm thử tải: 1.000 request, concurrency = 10 \\ \hline
     \end{tabular}
     \caption{Mục tiêu và số liệu hiệu năng đo lường thực tế của các nhóm API}
     \label{tab:api-performance-slo}
@@ -558,6 +558,6 @@ Qua toàn bộ quá trình triển khai và kiểm thử thực tế, đồ án 
 \begin{enumerate}
     \item \textbf{Hoàn thiện chức năng nghiệp vụ:} Tất cả các chức năng theo đặc tả yêu cầu ở Chương 3 đều được hiện thực hóa đầy đủ và vận hành ổn định trên cả môi trường di động Android/iOS (Student App) lẫn môi trường Web (Admin/Sponsor Portal).
     \item \textbf{Hiệu quả trợ lực từ AI:} Phân hệ AI chứng minh được độ tin cậy thực tiễn với độ chính xác phân loại giao dịch tự động đạt 90.0\% (Macro-F1 đạt 89.5\%), thuật toán so khớp xếp học bổng phù hợp đúng ngành ở vị trí gợi ý đầu tiên cho 100\% (12/12) hồ sơ thử nghiệm, và trợ lý ảo vượt qua toàn bộ các kịch bản kiểm thử tích hợp E2E.
-    \item \textbf{Hiệu năng vận hành thực tế:} Hệ thống đáp ứng tốt các mục tiêu hiệu năng đề ra (SLO). Độ trễ xử lý các tác vụ cơ bản ở mức rất thấp (dưới 100ms đối với thao tác đọc dữ liệu), thời gian suy luận phân loại của LLM ổn định trong khoảng 1.92 giây, và hàng đợi BullMQ/Redis ghi nhận thời gian phản hồi P95 chỉ ở mức 1.48ms cho 1.000 tác vụ đồng thời.
+    \item \textbf{Hiệu năng vận hành thực tế:} Hệ thống đáp ứng tốt các mục tiêu hiệu năng đề ra (SLO). Độ trễ xử lý các tác vụ cơ bản ở mức rất thấp (dưới 100ms đối với thao tác đọc dữ liệu), thời gian suy luận phân loại của LLM ổn định trong khoảng 1.92 giây.
     \item \textbf{Bảo mật và an toàn dữ liệu:} Ứng dụng thực thi cơ chế xác thực JWT đa phân quyền (Admin, Nhà tài trợ, Sinh viên), bảo vệ an toàn ngữ cảnh dữ liệu người dùng (scoping user\_id) và thiết lập thành công các bộ lọc ngăn chặn tấn công Prompt Injection trực tiếp từ khung chat của sinh viên.
 \end{enumerate}
