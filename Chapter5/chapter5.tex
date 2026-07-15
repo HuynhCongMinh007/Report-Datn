@@ -17,359 +17,360 @@ Hệ thống Student360 được hiện thực hóa và kiểm thử trên môi 
 \subsection{Ứng dụng di động dành cho sinh viên}
 Giao diện ứng dụng di động được thiết kế hướng tới sự trực quan và tối ưu hóa trải nghiệm người dùng (UX) cho đối tượng sinh viên. Dưới đây là các màn hình chính của phân hệ di động:
 
-\subsubsection{Màn hình Tổng quan ví}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
+\begin{enumerate}
+    \item \textbf{Tổng quan ví:} Màn hình này cung cấp cái nhìn toàn cảnh về tình hình tài chính của sinh viên theo mô hình 6 hũ. Sinh viên có thể nhanh chóng nắm bắt số dư tổng, số dư của từng lọ và biểu đồ xu hướng chi tiêu để điều phối dòng tiền hợp lý.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/wallet-overview.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/wallet-overview.png}%
-        }{%
-            \rectbox{Hình ảnh ví 6 lọ tài chính trên Mobile}
-        }
-        \caption{Giao diện tổng quan ví 6 lọ trên thiết bị di động}
-        \label{fig:mobile-6jars}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/wallet-overview.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/wallet-overview.png}%
+            }{%
+                \rectbox{Hình ảnh ví 6 lọ tài chính trên Mobile}
+            }
+            \caption{Giao diện tổng quan ví 6 lọ trên thiết bị di động}
+            \label{fig:mobile-6jars}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/wallet-overview-detail.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/wallet-overview-detail.png}%
+            }{%
+                \rectbox{Hình ảnh chi tiết xu hướng thu chi trên màn hình ví}
+            }
+            \caption{Xu hướng thu chi và phân bổ theo lọ trên màn hình tổng quan ví}
+            \label{fig:mobile-wallet-detail}
+        \end{minipage}
+    \end{figure}
+
+    \item \textbf{Chi tiết hũ:} Màn hình này hiển thị chi tiết số dư, lịch sử giao dịch và cấu hình riêng biệt của từng hũ tài chính. Sinh viên có thể chủ động cài đặt các mức cảnh báo chi tiêu vượt ngưỡng tại đây để kiểm soát dòng tiền tốt hơn.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/wallet-overview-detail.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/wallet-overview-detail.png}%
+        \IfFileExists{Images/chapter4/mobile/jar-detail.png}{%
+            \includegraphics[width=0.4\textwidth]{Images/chapter4/mobile/jar-detail.png}%
         }{%
-            \rectbox{Hình ảnh chi tiết xu hướng thu chi trên màn hình ví}
+            \rectbox{Hình ảnh màn hình chi tiết hũ trên Mobile}
         }
-        \caption{Xu hướng thu chi và phân bổ theo lọ trên màn hình tổng quan ví}
-        \label{fig:mobile-wallet-detail}
-    \end{minipage}
-\end{figure}
-\clearpage
+        \caption{Giao diện chi tiết hũ tài chính: số dư, ngưỡng cảnh báo và xu hướng dòng tiền}
+        \label{fig:mobile-jar-detail}
+    \end{figure}
+    \clearpage
 
-\subsubsection{Màn hình Chi tiết hũ}
-
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/mobile/jar-detail.png}{%
-        \includegraphics[width=0.48\textwidth]{Images/chapter4/mobile/jar-detail.png}%
-    }{%
-        \rectbox{Hình ảnh màn hình chi tiết hũ trên Mobile}
-    }
-    \caption{Giao diện chi tiết hũ tài chính: số dư, ngưỡng cảnh báo và xu hướng dòng tiền}
-    \label{fig:mobile-jar-detail}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Trò chuyện AI}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
+    \item \textbf{Trò chuyện AI:} Màn hình này cho phép sinh viên trò chuyện trực tiếp với trợ lý tài chính ảo để truy vấn số dư hoặc thực hiện giao dịch nhanh bằng ngôn ngữ tự nhiên thông qua stream SSE thời gian thực. Giao diện cũng cung cấp một thanh menu sidebar để chuyển đổi nhanh các chủ đề.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/ai-chat.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/ai-chat.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình Chat AI Trợ lý}
-        }
-        \caption{Giao diện trò chuyện thời gian thực với trợ lý AI}
-        \label{fig:mobile-aichat}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/ai-chat.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/ai-chat.png}%
+            }{%
+                \rectbox{Hình ảnh màn hình Chat AI Trợ lý}
+            }
+            \caption{Giao diện trò chuyện thời gian thực với trợ lý AI}
+            \label{fig:mobile-aichat}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/ai-chat-sidebar.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/ai-chat-sidebar.png}%
+            }{%
+                \rectbox{Hình ảnh bảng chọn chủ đề và mô hình AI}
+            }
+            \caption{Bảng chọn chủ đề, nền tảng AI và lịch sử trò chuyện gần đây}
+            \label{fig:mobile-aichat-sidebar}
+        \end{minipage}
+    \end{figure}
+
+    \item \textbf{Cấu hình phân bổ lọ:} Màn hình này hỗ trợ sinh viên kéo thả thanh trượt để thay đổi phần trăm phân bổ thu nhập tự động vào 6 hũ tài chính. Hệ thống ràng buộc tổng tỷ lệ luôn đạt chính xác 100\% trước khi lưu cấu hình mới.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/ai-chat-sidebar.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/ai-chat-sidebar.png}%
+        \IfFileExists{Images/chapter4/mobile/jar-allocation.png}{%
+            \includegraphics[width=0.4\textwidth]{Images/chapter4/mobile/jar-allocation.png}%
         }{%
-            \rectbox{Hình ảnh bảng chọn chủ đề và mô hình AI}
+            \rectbox{Hình ảnh màn hình điều chỉnh tỷ lệ 6 lọ trên Mobile}
         }
-        \caption{Bảng chọn chủ đề, nền tảng AI và lịch sử trò chuyện gần đây}
-        \label{fig:mobile-aichat-sidebar}
-    \end{minipage}
-\end{figure}
-\clearpage
+        \caption{Giao diện cấu hình phần trăm phân bổ hũ tài chính (tổng luôn bằng 100\%)}
+        \label{fig:mobile-jar-alloc}
+    \end{figure}
+    \clearpage
 
-\subsubsection{Màn hình Cấu hình phân bổ lọ}
-
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/mobile/jar-allocation.png}{%
-        \includegraphics[width=0.48\textwidth]{Images/chapter4/mobile/jar-allocation.png}%
-    }{%
-        \rectbox{Hình ảnh màn hình điều chỉnh tỷ lệ 6 lọ trên Mobile}
-    }
-    \caption{Giao diện cấu hình phần trăm phân bổ hũ tài chính (tổng luôn bằng 100\%)}
-    \label{fig:mobile-jar-alloc}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Ghi chép giao dịch}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
+    \item \textbf{Ghi chép giao dịch:} Màn hình này cung cấp biểu mẫu nhập giao dịch thu chi mới. Đối với các giao dịch thu nhập, hệ thống tự động hiển thị modal phân bổ nhanh vào các hũ theo tỷ lệ định cấu hình trước đó để chia tiền tự động.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/add-transaction.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/add-transaction.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình thêm mới giao dịch trên Mobile}
-        }
-        \caption{Giao diện biểu mẫu thêm mới giao dịch tài chính}
-        \label{fig:mobile-add-transaction}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/add-transaction.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/add-transaction.png}%
+            }{%
+                \rectbox{Hình ảnh màn hình thêm mới giao dịch trên Mobile}
+            }
+            \caption{Giao diện biểu mẫu thêm mới giao dịch tài chính}
+            \label{fig:mobile-add-transaction}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/add-transaction-allocation.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/add-transaction-allocation.png}%
+            }{%
+                \rectbox{Hình ảnh modal thiết lập tỷ lệ phân bổ khi thêm thu nhập}
+            }
+            \caption{Modal thiết lập tỷ lệ phân bổ vào các hũ khi ghi nhận thu nhập}
+            \label{fig:mobile-add-transaction-allocation}
+        \end{minipage}
+    \end{figure}
+
+    \item \textbf{Lịch sử giao dịch:} Màn hình này liệt kê chi tiết các giao dịch thu chi đã được ghi nhận trong hệ thống. Sinh viên có thể tra cứu nhanh theo nội dung giao dịch hoặc lọc giao dịch theo hũ cụ thể và mốc thời gian.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/add-transaction-allocation.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/add-transaction-allocation.png}%
+        \IfFileExists{Images/chapter4/mobile/transaction-history.png}{%
+            \includegraphics[width=0.4\textwidth]{Images/chapter4/mobile/transaction-history.png}%
         }{%
-            \rectbox{Hình ảnh modal thiết lập tỷ lệ phân bổ khi thêm thu nhập}
+            \rectbox{Hình ảnh danh sách lịch sử giao dịch trên Mobile}
         }
-        \caption{Modal thiết lập tỷ lệ phân bổ vào các hũ khi ghi nhận thu nhập}
-        \label{fig:mobile-add-transaction-allocation}
-    \end{minipage}
-\end{figure}
-\clearpage
+        \caption{Giao diện danh sách lịch sử giao dịch, hỗ trợ tìm kiếm và lọc theo hũ/thời gian}
+        \label{fig:mobile-transaction-history}
+    \end{figure}
+    \clearpage
 
-\subsubsection{Màn hình Lịch sử giao dịch}
-
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/mobile/transaction-history.png}{%
-        \includegraphics[width=0.48\textwidth]{Images/chapter4/mobile/transaction-history.png}%
-    }{%
-        \rectbox{Hình ảnh danh sách lịch sử giao dịch trên Mobile}
-    }
-    \caption{Giao diện danh sách lịch sử giao dịch, hỗ trợ tìm kiếm và lọc theo hũ/thời gian}
-    \label{fig:mobile-transaction-history}
-\end{figure}
-\clearpage
-
-\subsubsection{Màn hình Lịch chuyển tiền tự động}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
+    \item \textbf{Lịch chuyển tiền tự động:} Màn hình này cho phép thiết lập và quản lý các giao dịch chuyển tiền tự động định kỳ giữa các hũ tài chính. Người dùng có thể chỉnh sửa số tiền, chu kỳ lặp lại và trạng thái kích hoạt của lịch chuyển.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/auto-transfer.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/auto-transfer.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình quản lý lịch chuyển tự động trên Mobile}
-        }
-        \caption{Giao diện quản lý lịch chuyển tiền tự động}
-        \label{fig:mobile-auto-transfer}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/auto-transfer-edit.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/auto-transfer-edit.png}%
-        }{%
-            \rectbox{Hình ảnh biểu mẫu chỉnh sửa lịch chuyển tiền tự động}
-        }
-        \caption{Biểu mẫu chỉnh sửa lịch chuyển tiền tự động}
-        \label{fig:mobile-auto-transfer-edit}
-    \end{minipage}
-\end{figure}
-\clearpage
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/auto-transfer.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/auto-transfer.png}%
+            }{%
+                \rectbox{Hình ảnh màn hình quản lý lịch chuyển tự động trên Mobile}
+            }
+            \caption{Giao diện quản lý lịch chuyển tiền tự động}
+            \label{fig:mobile-auto-transfer}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/auto-transfer-edit.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/auto-transfer-edit.png}%
+            }{%
+                \rectbox{Hình ảnh biểu mẫu chỉnh sửa lịch chuyển tiền tự động}
+            }
+            \caption{Biểu mẫu chỉnh sửa lịch chuyển tiền tự động}
+            \label{fig:mobile-auto-transfer-edit}
+        \end{minipage}
+    \end{figure}
 
-\subsubsection{Màn hình Báo cáo tài chính}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
+    \item \textbf{Báo cáo tài chính:} Màn hình này hiển thị biểu đồ thống kê các khoản thu chi định kỳ và phân bổ dòng tiền. Tại đây tích hợp mô-đun AI Insights tự động nhận định thói quen tiêu dùng của sinh viên và gửi các khuyến nghị tối ưu tài chính.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/financial-report.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/financial-report.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình báo cáo phân tích tài chính trên Mobile}
-        }
-        \caption{Giao diện báo cáo phân tích tài chính chi tiêu}
-        \label{fig:mobile-financial-report}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/financial-report-chart.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/financial-report-chart.png}%
-        }{%
-            \rectbox{Hình ảnh biểu đồ thu chi theo tuần trên báo cáo tài chính}
-        }
-        \caption{Biểu đồ thu chi theo tuần và AI Insights trên màn hình báo cáo}
-        \label{fig:mobile-financial-report-chart}
-    \end{minipage}
-\end{figure}
-\clearpage
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/financial-report.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/financial-report.png}%
+            }{%
+                \rectbox{Hình ảnh màn hình báo cáo phân tích tài chính trên Mobile}
+            }
+            \caption{Giao diện báo cáo phân tích tài chính chi tiêu}
+            \label{fig:mobile-financial-report}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/financial-report-chart.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/financial-report-chart.png}%
+            }{%
+                \rectbox{Hình ảnh biểu đồ thu chi theo tuần trên báo cáo tài chính}
+            }
+            \caption{Biểu đồ thu chi theo tuần và AI Insights trên màn hình báo cáo}
+            \label{fig:mobile-financial-report-chart}
+        \end{minipage}
+    \end{figure}
+    \clearpage
 
-\subsubsection{Màn hình Gợi ý học bổng}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
+    \item \textbf{Gợi ý học bổng:} Màn hình này hiển thị danh sách các học bổng trực tuyến phù hợp nhất với sinh viên, được sắp xếp tự động dựa trên điểm tương thích hồ sơ (GPA, ngành học) của từng sinh viên.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/H5.14-1.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/H5.14-1.png}%
-        }{%
-            \rectbox{Gợi ý học bổng 1}
-        }
-        \centerline{(a) Danh sách gợi ý học bổng}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/H5.14-2.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/H5.14-2.png}%
-        }{%
-            \rectbox{Gợi ý học bổng 2}
-        }
-        \centerline{(b) Chi tiết điểm khớp hồ sơ}
-    \end{minipage}
-    \caption{Giao diện gợi ý học bổng thông minh, xếp hạng theo điểm khớp hồ sơ}
-    \label{fig:mobile-schol-match}
-\end{figure}
-\clearpage
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/H5.14-1.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/H5.14-1.png}%
+            }{%
+                \rectbox{Gợi ý học bổng 1}
+            }
+            \centerline{(a) Danh sách gợi ý học bổng}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/H5.14-2.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/H5.14-2.png}%
+            }{%
+                \rectbox{Gợi ý học bổng 2}
+            }
+            \centerline{(b) Chi tiết điểm khớp hồ sơ}
+        \end{minipage}
+        \caption{Giao diện gợi ý học bổng thông minh, xếp hạng theo điểm khớp hồ sơ}
+        \label{fig:mobile-schol-match}
+    \end{figure}
 
-\subsubsection{Màn hình Chi tiết học bổng và Nộp hồ sơ}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
+    \item \textbf{Chi tiết học bổng và Nộp hồ sơ:} Màn hình này hiển thị các thông tin chi tiết về học bổng (tiêu chuẩn, số lượng, giá trị và hạn nộp) và biểu mẫu nộp hồ sơ đăng ký. Sinh viên có thể tải lên các file tài liệu minh chứng (PDF/hình ảnh) trực tiếp từ điện thoại.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/scholarship-apply.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply.png}%
-        }{%
-            \rectbox{Hình ảnh màn hình chi tiết học bổng trên Mobile}
-        }
-        \caption{Giao diện chi tiết học bổng trên thiết bị di động}
-        \label{fig:mobile-scholarship-apply}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/scholarship-apply-form.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply-form.png}%
-        }{%
-            \rectbox{Hình ảnh form đăng ký nộp hồ sơ học bổng trên Mobile}
-        }
-        \caption{Biểu mẫu đăng ký và nộp hồ sơ học bổng}
-        \label{fig:mobile-scholarship-apply-form}
-    \end{minipage}
-\end{figure}
-\clearpage
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/scholarship-apply.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply.png}%
+            }{%
+                \rectbox{Hình ảnh màn hình chi tiết học bổng trên Mobile}
+            }
+            \caption{Giao diện chi tiết học bổng trên thiết bị di động}
+            \label{fig:mobile-scholarship-apply}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/scholarship-apply-form.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply-form.png}%
+            }{%
+                \rectbox{Hình ảnh form đăng ký nộp hồ sơ học bổng trên Mobile}
+            }
+            \caption{Biểu mẫu đăng ký và nộp hồ sơ học bổng}
+            \label{fig:mobile-scholarship-apply-form}
+        \end{minipage}
+    \end{figure}
+    \clearpage
 
-\subsubsection{Màn hình Bảng điểm sinh viên}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
+    \item \textbf{Bảng điểm sinh viên:} Màn hình này hiển thị chi tiết kết quả học tập của sinh viên, bao gồm điểm trung bình tích lũy (GPA), tổng số tín chỉ đạt được và tiến độ đạt mục tiêu tốt nghiệp.
+    
+    \begin{figure}[H]
         \centering
-        \IfFileExists{Images/chapter4/mobile/gradebook-dashboard.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-dashboard.png}%
-        }{%
-            \rectbox{Màn hình dashboard bảng điểm, GPA và mục tiêu tín chỉ trên Mobile}
-        }
-        \caption{Giao diện bảng điểm và tiến độ tín chỉ của sinh viên}
-        \label{fig:mobile-gradebook-dashboard}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \IfFileExists{Images/chapter4/mobile/gradebook-courses.png}{%
-            \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-courses.png}%
-        }{%
-            \rectbox{Màn hình thêm môn học và import bảng điểm TXT/CSV trên Mobile}
-        }
-        \caption{Giao diện nhập và import điểm sinh viên}
-        \label{fig:mobile-gradebook-courses}
-    \end{minipage}
-\end{figure}
-\clearpage
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/gradebook-dashboard.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-dashboard.png}%
+            }{%
+                \rectbox{Màn hình dashboard bảng điểm, GPA và mục tiêu tín chỉ trên Mobile}
+            }
+            \caption{Giao diện bảng điểm và tiến độ tín chỉ của sinh viên}
+            \label{fig:mobile-gradebook-dashboard}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.44\textwidth}
+            \centering
+            \IfFileExists{Images/chapter4/mobile/gradebook-courses.png}{%
+                \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-courses.png}%
+            }{%
+                \rectbox{Màn hình thêm môn học và import bảng điểm TXT/CSV trên Mobile}
+            }
+            \caption{Giao diện nhập và import điểm sinh viên}
+            \label{fig:mobile-gradebook-courses}
+        \end{minipage}
+    \end{figure}
 
-\subsubsection{Màn hình Nhập môn và Import bảng điểm}
-Sinh viên có thể thêm môn học từ danh mục chuẩn của trường đối tác và nhập điểm theo thang điểm tương ứng, hoặc parse tệp TXT/CSV trực tiếp trên thiết bị, tự động đối chiếu môn học trước khi lưu.
+    \item \textbf{Nhập môn và Import bảng điểm:} Màn hình này cho phép sinh viên nhanh chóng cập nhật bảng điểm bằng cách chọn trực tiếp môn học từ danh mục đào tạo chuẩn của trường đối tác, hoặc tải lên tệp văn bản (TXT/CSV) kết quả học tập để hệ thống tự động trích xuất điểm và số tín chỉ.
+\end{enumerate}
 
 \subsection{Webadmin quản trị hệ thống}
 Giao diện quản trị Webadmin được xây dựng bằng React JS kết hợp Material UI (MUI), tối ưu cho việc hiển thị bảng dữ liệu lớn và xử lý quy trình phê duyệt.
 
-\subsubsection{Màn hình Quản lý Trường đối tác}
+\begin{enumerate}
+    \item \textbf{Quản lý Trường đối tác:} Màn hình này cho phép quản trị viên xem, thêm mới hoặc điều chỉnh danh sách các trường đại học liên kết trong hệ thống để quản trị danh mục đào tạo.
+    
+    \begin{figure}[H]
+        \centering
+        \IfFileExists{Images/chapter4/webadmin/universities.png}{%
+            \includegraphics[width=0.85\textwidth]{Images/chapter4/webadmin/universities.png}%
+        }{%
+            \rectbox{Màn hình danh sách trường đại học trên Webadmin}
+        }
+        \caption{Giao diện quản lý danh mục trường đại học (thêm/sửa qua modal, tìm kiếm theo từ khóa)}
+        \label{fig:webadmin-universities}
+    \end{figure}
+    \clearpage
 
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/universities.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/universities.png}%
-    }{%
-        \rectbox{Màn hình danh sách trường đại học trên Webadmin}
-    }
-    \caption{Giao diện quản lý danh mục trường đại học (thêm/sửa qua modal, tìm kiếm theo từ khóa)}
-    \label{fig:webadmin-universities}
-\end{figure}
+    \item \textbf{Quản lý Môn học và Khoa:} Màn hình này dùng để quản lý chi tiết danh mục khoa, chương trình đào tạo và môn học tương ứng của từng trường đại học đối tác nhằm phục vụ cho chức năng quản lý bảng điểm của sinh viên.
+    
+    \begin{figure}[H]
+        \centering
+        \IfFileExists{Images/chapter4/webadmin/subjects-programs.png}{%
+            \includegraphics[width=0.85\textwidth,height=0.35\textheight,keepaspectratio]{Images/chapter4/webadmin/subjects-programs.png}%
+        }{%
+            \rectbox{Màn hình quản lý môn học theo trường}
+        }
 
-\subsubsection{Màn hình Quản lý Môn học và Khoa}
+        \vspace{0.4cm}
 
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/subjects-programs.png}{%
-        \includegraphics[width=\textwidth,height=0.4\textheight,keepaspectratio]{Images/chapter4/webadmin/subjects-programs.png}%
-    }{%
-        \rectbox{Màn hình quản lý môn học theo trường}
-    }
+        \IfFileExists{Images/chapter4/webadmin/training-programs.png}{%
+            \includegraphics[width=0.85\textwidth,height=0.35\textheight,keepaspectratio]{Images/chapter4/webadmin/training-programs.png}%
+        }{%
+            \rectbox{Màn hình quản lý khoa/chương trình đào tạo theo trường}
+        }
+        \caption{Giao diện quản lý môn học và khoa/chương trình đào tạo (hỗ trợ bulk import)}
+        \label{fig:webadmin-subjects-programs}
+    \end{figure}
+    \clearpage
 
-    \vspace{0.5cm}
+    \item \textbf{Danh sách Học bổng:} Màn hình này giúp các nhà tài trợ theo dõi danh sách toàn bộ các chương trình học bổng do mình tài trợ, cũng như tổng hợp số lượng hồ sơ đã ứng tuyển để tiến hành chấm điểm phê duyệt.
+    
+    \begin{figure}[H]
+        \centering
+        \IfFileExists{Images/chapter4/webadmin/scholarships-list.png}{%
+            \includegraphics[width=0.85\textwidth]{Images/chapter4/webadmin/scholarships-list.png}%
+        }{%
+            \rectbox{Màn hình danh sách Học bổng trên Webadmin}
+        }
+        \caption{Giao diện quản lý danh sách Học bổng, kèm thống kê tiến độ ứng tuyển}
+        \label{fig:webadmin-scholarships-list}
+    \end{figure}
+    \clearpage
 
-    \IfFileExists{Images/chapter4/webadmin/training-programs.png}{%
-        \includegraphics[width=\textwidth,height=0.4\textheight,keepaspectratio]{Images/chapter4/webadmin/training-programs.png}%
-    }{%
-        \rectbox{Màn hình quản lý khoa/chương trình đào tạo theo trường}
-    }
-    \caption{Giao diện quản lý môn học và khoa/chương trình đào tạo (hỗ trợ bulk import)}
-    \label{fig:webadmin-subjects-programs}
-\end{figure}
+    \item \textbf{Tạo và Thiết lập Học bổng:} Màn hình này cung cấp biểu mẫu nhiều bước cho nhà tài trợ để xuất bản chương trình học bổng mới, thiết lập thông tin chung, giá trị giải thưởng và các tiêu chí lọc hồ sơ (như GPA tối thiểu, ngành học yêu cầu).
+    
+    \begin{figure}[H]
+        \centering
+        \IfFileExists{Images/chapter4/webadmin/sponsor-create-scholarship-1.png}{%
+            \includegraphics[width=0.85\textwidth]{Images/chapter4/webadmin/sponsor-create-scholarship-1.png}%
+        }{%
+            \rectbox{Màn hình tạo học bổng - phần thông tin chung}
+        }
 
-\subsubsection{Màn hình Danh sách Học bổng}
+        \vspace{0.4cm}
 
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/scholarships-list.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/scholarships-list.png}%
-    }{%
-        \rectbox{Màn hình danh sách Học bổng trên Webadmin}
-    }
-    \caption{Giao diện quản lý danh sách Học bổng, kèm thống kê tiến độ ứng tuyển}
-    \label{fig:webadmin-scholarships-list}
-\end{figure}
+        \IfFileExists{Images/chapter4/webadmin/sponsor-create-scholarship-2.png}{%
+            \includegraphics[width=0.85\textwidth]{Images/chapter4/webadmin/sponsor-create-scholarship-2.png}%
+        }{%
+            \rectbox{Màn hình tạo học bổng - phần điều kiện xét tuyển}
+        }
 
-\subsubsection{Màn hình Tạo và Thiết lập Học bổng}
+        \caption{Giao diện tạo và cấu hình học bổng dành cho nhà tài trợ}
+        \label{fig:sponsor-create-scholarship}
+    \end{figure}
+    \clearpage
 
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/sponsor-create-scholarship-1.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/sponsor-create-scholarship-1.png}%
-    }{%
-        \rectbox{Màn hình tạo học bổng - phần thông tin chung}
-    }
-
-    \vspace{0.4cm}
-
-    \IfFileExists{Images/chapter4/webadmin/sponsor-create-scholarship-2.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/sponsor-create-scholarship-2.png}%
-    }{%
-        \rectbox{Màn hình tạo học bổng - phần điều kiện xét tuyển}
-    }
-
-    \caption{Giao diện tạo và cấu hình học bổng dành cho nhà tài trợ}
-    \label{fig:sponsor-create-scholarship}
-\end{figure}
-
-\subsubsection{Màn hình Xét duyệt hồ sơ học bổng}
-
-\begin{figure}[H]
-    \centering
-    \IfFileExists{Images/chapter4/webadmin/sponsor-application-review.png}{%
-        \includegraphics[width=\textwidth]{Images/chapter4/webadmin/sponsor-application-review.png}%
-    }{%
-        \rectbox{Màn hình xét duyệt hồ sơ ứng tuyển học bổng trên Webadmin}
-    }
-    \caption{Giao diện xét duyệt hồ sơ ứng tuyển học bổng (Duyệt/Từ chối kèm nhận xét)}
-    \label{fig:sponsor-application-review}
-\end{figure}
+    \item \textbf{Xét duyệt hồ sơ học bổng:} Màn hình này cho phép nhà tài trợ xem chi tiết hồ sơ đăng ký của từng sinh viên (GPA, bảng điểm, tài liệu đính kèm) để phê duyệt hoặc từ chối đơn ứng tuyển kèm theo nhận xét phản hồi.
+    
+    \begin{figure}[H]
+        \centering
+        \IfFileExists{Images/chapter4/webadmin/sponsor-application-review.png}{%
+            \includegraphics[width=0.85\textwidth]{Images/chapter4/webadmin/sponsor-application-review.png}%
+        }{%
+            \rectbox{Màn hình xét duyệt hồ sơ ứng tuyển học bổng trên Webadmin}
+        }
+        \caption{Giao diện xét duyệt hồ sơ ứng tuyển học bổng (Duyệt/Từ chối kèm nhận xét)}
+        \label{fig:sponsor-application-review}
+    \end{figure}
+\end{enumerate}
 
 \subsection{Cơ chế đồng bộ trạng thái giao diện tức thời}
 Để đảm bảo số liệu tài chính trên app di động luôn chính xác ngay sau khi người dùng thực hiện giao dịch, hệ thống áp dụng cơ chế Query Invalidation của thư viện React Query \cite{reactquery-docs}:
