@@ -77,7 +77,9 @@ Dựa trên các hạn chế đã nhận diện, nhóm đề xuất các hướn
 \subsection{Nâng cao độ tin cậy hệ thống}
 
 \begin{enumerate}
-    \item \textbf{Bổ sung Database Transaction cho thao tác tài chính tổng hợp:} Bọc các luồng phân bổ ví 6 lọ và giao dịch bù trừ khi xóa hũ vào \texttt{QueryRunner} Transaction chung. Áp dụng cơ chế khóa bi quan (pessimistic locking) để tránh deadlock. Tiêu chí hoàn thành: 100\% các luồng tài chính phức tạp thực thi trong Transaction, không xảy ra lệch số dư khi giả lập lỗi mất kết nối.
+    \item \textbf{Bổ sung cơ chế Retry và Circuit Breaker cho các dịch vụ bên thứ ba:} Áp dụng chiến lược retry với exponential backoff và circuit breaker cho các lời gọi tới Gemini API và Firebase Cloud Messaging nhằm hạn chế ảnh hưởng khi dịch vụ bên ngoài gián đoạn tạm thời. Mục tiêu: hệ thống tự động phục hồi mà không cần can thiệp thủ công, giảm tỷ lệ request thất bại do lỗi mạng tạm thời xuống dưới 0.5\%.
+
+    \item \textbf{Thiết lập giám sát và cảnh báo lỗi tập trung:} Tích hợp công cụ theo dõi lỗi thời gian thực (ví dụ Sentry) và dashboard giám sát hiệu năng (Grafana/Prometheus) cho cả Backend và AI Service. Mục tiêu: phát hiện và cảnh báo sự cố trong vòng dưới 1 phút kể từ khi xảy ra, rút ngắn thời gian phản ứng sự cố (MTTR) trên môi trường vận hành thực tế.
 
     \item \textbf{Mở rộng bộ benchmark định lượng cho AI:} Xây dựng tập dữ liệu khoảng 500 mẫu hội thoại/phân loại giao dịch được gán nhãn thủ công từ dữ liệu sinh viên thực tế. Xây dựng script tự động đo Precision, Recall và F1-score của mô hình phân loại giao dịch, có thể chạy lại định kỳ.
 
