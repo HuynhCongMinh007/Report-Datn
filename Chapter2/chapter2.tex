@@ -220,3 +220,29 @@ Trong hệ thống phần mềm tích hợp AI như Student360, việc xem xét 
         \item \textit{Giải pháp:} Triển khai bộ cấu hình tùy chọn thông báo trong Mobile App. Sinh viên có thể tắt/bật hoặc thay đổi tần suất nhận từng loại thông báo cụ thể.
     \end{itemize}
 \end{enumerate}
+
+\section{Vấn đề cần giải quyết và định hướng giải pháp}
+\subsection{Phân tích các khó khăn vướng mắc}
+Trong quá trình xây dựng hệ thống, nhóm phát triển đối mặt với các khó khăn chính sau:
+\begin{enumerate}
+    \item \textbf{Độ trễ và chi phí tích hợp AI:} Việc gọi trực tiếp các API của mô hình ngôn ngữ lớn (như Gemini) có độ trễ phản hồi tương đối cao và tốn kém tài nguyên.
+    \item \textbf{Tính chính xác trong phân loại giao dịch:} Ngôn ngữ tự nhiên mà người dùng nhập vào khi ghi chép chi tiêu thường mang tính viết tắt, không chuẩn hóa ngữ pháp (ví dụ: "an trua 50k", "cf 30k").
+    \item \textbf{Đồng bộ trạng thái giao diện thời gian thực:} Giao diện điện thoại di động yêu cầu cập nhật tức thì số dư của các hũ và biểu đồ báo cáo ngay sau khi người dùng thực hiện giao dịch mà không làm chậm trải nghiệm ứng dụng.
+    \item \textbf{Bảo mật dữ liệu và phân quyền hệ thống:} Dữ liệu tài chính cá nhân và hồ sơ học thuật/học bổng của sinh viên là các thông tin nhạy cảm. Hệ thống cần đảm bảo an toàn truy cập dữ liệu, chỉ cho phép các đối tượng thích hợp tiếp cận các tập tài nguyên tương ứng (Sinh viên truy cập app cá nhân, Nhà tài trợ quản lý hồ sơ ứng tuyển, Admin quản trị hệ thống).
+    \item \textbf{Đảm bảo tính nhất quán và toàn vẹn của dữ liệu giao dịch tài chính:} Khi thực hiện các tác vụ phức tạp như phân bổ thu nhập (income distribution) vào 6 hũ hoặc thực hiện chuyển khoản nội bộ giữa các hũ, việc phát sinh lỗi giữa chừng có thể dẫn đến sai lệch số dư. Ngoài ra, các yêu cầu đầu vào từ người dùng cũng cần được kiểm tra chặt chẽ: ví dụ từ chối giao dịch có thời điểm trong tương lai, hoặc phân bổ thu nhập có tổng các khoản phân bổ lệch quá 0,01 VND so với tổng thu nhập cần chia.
+    \item \textbf{Đồng bộ dữ liệu học thuật và bảng điểm cá nhân:} Danh mục trường, khoa/chương trình đào tạo và môn học cần nhất quán giữa Webadmin và Mobile App. Đồng thời, điểm sinh viên nhập phải được kiểm tra theo thang điểm của từng môn, tránh sai lệch GPA và tổng tín chỉ.
+\end{enumerate}
+
+\subsection{Giải pháp đề xuất}
+Để vượt qua các khó khăn trên, hệ thống đề xuất các giải pháp kỹ thuật ở mức khái niệm sau đây; chi tiết thiết kế và cơ chế hiện thực cụ thể được trình bày đầy đủ tại Chương 3 và Chương 5:
+\begin{itemize}
+    \item \textbf{Kiến trúc AI Agent kết hợp lưu trữ nhận định tài chính:} FastAPI AI Service đóng vai trò điều phối (orchestration) độc lập, sử dụng các Tool-calling Agent của LangChain để tối ưu hóa việc gọi mô hình, đồng thời lưu bền vững kết quả nhận định tài chính (AI Insights) theo từng chu kỳ báo cáo để tránh phải gọi lại LLM không cần thiết.
+    \item \textbf{Phân loại giao dịch bằng LLM kết hợp Rule Engine:} Sử dụng các bộ quy tắc gán cứng (Rule-based) kết hợp kỹ thuật Few-shot Prompting để hướng dẫn mô hình Gemini phân loại các thuật ngữ viết tắt của người dùng một cách chính xác vào 6 lọ tài chính.
+    \item \textbf{Đồng bộ giao diện thời gian thực:} Áp dụng cơ chế Invalidation của thư viện quản lý state phía Frontend để tự động làm mới dữ liệu hiển thị ngay khi có thay đổi từ phía máy chủ, không cần tải lại toàn bộ ứng dụng.
+    \item \textbf{Xác thực và phân quyền nhiều tầng:} Sử dụng JSON Web Token (JWT) để xác thực người dùng trên các API, kết hợp cơ chế phân quyền theo vai trò (RBAC) để tách bạch phạm vi truy cập dữ liệu giữa sinh viên, nhà tài trợ và quản trị viên.
+    \item \textbf{Đảm bảo toàn vẹn dữ liệu giao dịch tài chính:} Áp dụng Database Transaction cho các thao tác chuyển khoản giữa các hũ để đảm bảo tính nguyên tử (Atomicity), đồng thời tính toán lại số dư từ tổng hợp lịch sử giao dịch thực tế thay vì lưu số dư tĩnh, giúp hạn chế sai lệch dữ liệu khi có thao tác điều chỉnh.
+    \item \textbf{Thiết kế cơ sở dữ liệu quan hệ chuẩn hóa cao:} Xây dựng cấu trúc dữ liệu với các ràng buộc khóa ngoại (Foreign Keys) chặt chẽ để đồng bộ dữ liệu học thuật phân cấp từ trường học tới sinh viên, đảm bảo tính nhất quán toàn vẹn dữ liệu.
+\end{itemize}
+
+\section{Các chức năng chính của hệ thống}
+Bốn nhóm chức năng cốt lõi đã nêu tại Mục tiêu và Yêu cầu chức năng ở Chương 1 được hiện thực hóa thành bốn phân hệ tương ứng của hệ thống: Quản lý tài chính cá nhân, Trợ lý tài chính ảo AI, Quản lý học bổng trực tuyến và Quản lý học thuật/Bảng điểm. Danh sách tác nhân tham gia, sơ đồ phân rã chức năng và đặc tả chi tiết từng nghiệp vụ của bốn phân hệ này được trình bày tại Chương 3.
