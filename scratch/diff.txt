@@ -1,0 +1,156 @@
+Created At: 2026-07-15T05:15:32Z
+Completed At: 2026-07-15T05:15:32Z
+
+				The command completed successfully.
+				Output:
+				<truncated 1 lines>
+-            \centering
+-            \IfFileExists{Images/chapter4/mobile/H5.14-2.png}{%
+-                \includegraphics[width=\textwidth]{Images/chapter4/mobile/H5.14-2.png}%
+-            }{%
+-                \rectbox{Gợi ý học bổng 2}
+-            }
+-            \centerline{(b) Chi tiết điểm khớp hồ sơ}
+-        \end{minipage}
+-        \caption{Giao diện gợi ý học bổng thông minh, xếp hạng theo điểm khớp hồ sơ}
+-        \label{fig:mobile-schol-match}
+-    \end{figure}
++        \IfFileExists{Images/chapter4/mobile/H5.14-1.png}{%
++            \includegraphics[width=\textwidth]{Images/chapter4/mobile/H5.14-1.png}%
++        }{%
++            \rectbox{Gợi ý học bổng 1}
++        }
++        \centerline{(a) Danh sách gợi ý học bổng}
++    \end{minipage}
++    \hfill
++    \begin{minipage}{0.44\textwidth}
++        \centering
++        \IfFileExists{Images/chapter4/mobile/H5.14-2.png}{%
++            \includegraphics[width=\textwidth]{Images/chapter4/mobile/H5.14-2.png}%
++        }{%
++            \rectbox{Gợi ý học bổng 2}
++        }
++        \centerline{(b) Chi tiết điểm khớp hồ sơ}
++    \end{minipage}
++    \caption{Giao diện gợi ý học bổng thông minh, xếp hạng theo điểm khớp hồ sơ}
++    \label{fig:mobile-schol-match}
++\end{figure}
+ 
+-    \item \textbf{Chi tiết học bổng và Nộp hồ sơ:} Màn hình này hiển thị các thông tin chi tiết về học bổng (tiêu chuẩn, số lượng, giá trị và hạn nộp) và biểu mẫu nộp hồ sơ đăng ký. Sinh viên có thể tải lên các file tài liệu minh chứng (PDF/hình ảnh) trực tiếp từ điện thoại.
++\begin{figure}[H]
++    \noindent\textbf{10.} \textbf{Chi tiết học bổng và Nộp hồ sơ:} Màn hình này hiển thị các thông tin chi tiết về học bổng (tiêu chuẩn, số lượng, giá trị và hạn nộp) và biểu mẫu nộp hồ sơ đăng ký. Sinh viên có thể tải lên các file tài liệu minh chứng (PDF/hình ảnh) trực tiếp từ điện thoại.
+     
+-    \begin{figure}[H]
++    \vspace{0.2cm}
++    \centering
++    \begin{minipage}{0.44\textwidth}
+         \centering
+-        \begin{minipage}{0.44\textwidth}
+-            \centering
+-            \IfFileExists{Images/chapter4/mobile/scholarship-apply.png}{%
+-                \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply.png}%
+-            }{%
+-                \rectbox{Hình ảnh màn hình chi tiết học bổng trên Mobile}
+-            }
+-            \caption{Giao diện chi tiết học bổng trên thiết bị di động}
+-            \label{fig:mobile-scholarship-apply}
+-        \end{minipage}
+-        \hfill
+-        \begin{minipage}{0.44\textwidth}
+-            \centering
+-            \IfFileExists{Images/chapter4/mobile/scholarship-apply-form.png}{%
+-                \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply-form.png}%
+-            }{%
+-                \rectbox{Hình ảnh form đăng ký nộp hồ sơ học bổng trên Mobile}
+-            }
+-            \caption{Biểu mẫu đăng ký và nộp hồ sơ học bổng}
+-            \label{fig:mobile-scholarship-apply-form}
+-        \end{minipage}
+-    \end{figure}
+-    \clearpage
++        \IfFileExists{Images/chapter4/mobile/scholarship-apply.png}{%
++            \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply.png}%
++        }{%
++            \rectbox{Hình ảnh màn hình chi tiết học bổng trên Mobile}
++        }
++        \caption{Giao diện chi tiết học bổng trên thiết bị di động}
++        \label{fig:mobile-scholarship-apply}
++    \end{minipage}
++    \hfill
++    \begin{minipage}{0.44\textwidth}
++        \centering
++        \IfFileExists{Images/chapter4/mobile/scholarship-apply-form.png}{%
++            \includegraphics[width=\textwidth]{Images/chapter4/mobile/scholarship-apply-form.png}%
++        }{%
++            \rectbox{Hình ảnh form đăng ký nộp hồ sơ học bổng trên Mobile}
++        }
++        \caption{Biểu mẫu đăng ký và nộp hồ sơ học bổng}
++        \label{fig:mobile-scholarship-apply-form}
++    \end{minipage}
++\end{figure}
++\clearpage
+ 
+-    \item \textbf{Bảng điểm sinh viên:} Màn hình này hiển thị chi tiết kết quả học tập của sinh viên, bao gồm điểm trung bình tích lũy (GPA), tổng số tín chỉ đạt được và tiến độ đạt mục tiêu tốt nghiệp.
++\begin{figure}[H]
++    \noindent\textbf{11.} \textbf{Bảng điểm sinh viên:} Màn hình này hiển thị chi tiết kết quả học tập của sinh viên, bao gồm điểm trung bình tích lũy (GPA), tổng số tín chỉ đạt được và tiến độ đạt mục tiêu tốt nghiệp.
+     
+-    \begin{figure}[H]
++    \vspace{0.2cm}
++    \centering
++    \begin{minipage}{0.44\textwidth}
+         \centering
+-        \begin{minipage}{0.44\textwidth}
+-            \centering
+-            \IfFileExists{Images/chapter4/mobile/gradebook-dashboard.png}{%
+-                \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-dashboard.png}%
+-            }{%
+-                \rectbox{Màn hình dashboard bảng điểm, GPA và mục tiêu tín chỉ trên Mobile}
+-            }
+-            \caption{Giao diện bảng điểm và tiến độ tín chỉ của sinh viên}
+-            \label{fig:mobile-gradebook-dashboard}
+-        \end{minipage}
+-        \hfill
+-        \begin{minipage}{0.44\textwidth}
+-            \centering
+-            \IfFileExists{Images/chapter4/mobile/gradebook-courses.png}{%
+-                \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-courses.png}%
+-            }{%
+-                \rectbox{Màn hình thêm môn học và import bảng điểm TXT/CSV trên Mobile}
+-            }
+-            \caption{Giao diện nhập và import điểm sinh viên}
+-            \label{fig:mobile-gradebook-courses}
+-        \end{minipage}
+-    \end{figure}
++        \IfFileExists{Images/chapter4/mobile/gradebook-dashboard.png}{%
++            \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-dashboard.png}%
++        }{%
++            \rectbox{Màn hình dashboard bảng điểm, GPA và mục tiêu tín chỉ trên Mobile}
++        }
++        \caption{Giao diện bảng điểm và tiến độ tín chỉ của sinh viên}
++        \label{fig:mobile-gradebook-dashboard}
++    \end{minipage}
++    \hfill
++    \begin{minipage}{0.44\textwidth}
++        \centering
++        \IfFileExists{Images/chapter4/mobile/gradebook-courses.png}{%
++            \includegraphics[width=\textwidth]{Images/chapter4/mobile/gradebook-courses.png}%
++        }{%
++            \rectbox{Màn hình thêm môn học và import bảng điểm TXT/CSV trên Mobile}
++        }
++        \caption{Giao diện nhập và import điểm sinh viên}
++        \label{fig:mobile-gradebook-courses}
++    \end{minipage}
++\end{figure}
+ 
+-    \item \textbf{Nhập môn và Import bảng điểm:} Màn hình này cho phép sinh viên nhanh chóng cập nhật bảng điểm bằng cách chọn trực tiếp môn học từ danh mục đào tạo chuẩn của trường đối tác, hoặc tải lên tệp văn bản (TXT/CSV) kết quả học tập để hệ thống tự động trích xuất điểm và số tín chỉ.
+-\end{enumerate}
++\begin{figure}[H]
++    \noindent\textbf{12.} \textbf{Nhập môn và Import bảng điểm:} Màn hình này cho phép sinh viên nhanh chóng cập nhật bảng điểm bằng cách chọn trực tiếp môn học từ danh mục đào tạo chuẩn của trường đối tác, hoặc tải lên tệp văn bản (TXT/CSV) kết quả học tập để hệ thống tự động trích xuất điểm và số tín chỉ.
++\end{figure}
++\clearpage
+ 
+ \subsection{Webadmin quản trị hệ thống}
+ Giao diện quản trị Webadmin được xây dựng bằng React JS kết hợp Material UI (MUI), tối ưu cho việc hiển thị bảng dữ liệu lớn và xử lý quy trình phê duyệt.
+ 
+ \begin{enumerate}
+
