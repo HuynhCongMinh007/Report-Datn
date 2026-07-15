@@ -18,7 +18,7 @@ Nhóm áp dụng mô hình phát triển phần mềm linh hoạt \textbf{Agile/
 
 Thông qua việc theo dõi biểu đồ tiến độ (milestone thực tế so với kế hoạch), \textit{velocity} (tốc độ hoàn thành story points) và \textit{defect leakage} (tỷ lệ lỗi lọt ra ngoài sprint), nhóm có thể kiểm soát và sớm phát hiện rủi ro kỹ thuật. Điển hình, 3 sự cố lớn liên quan đến AI (phân loại sai giao dịch, Prompt Injection, timeout khi xử lý dữ liệu) đã được liên kết trực tiếp vào backlog và giải quyết dứt điểm trong các sprint ở giai đoạn 3 và 4, thay vì để tồn đọng đến cuối dự án.
 
-\section{Công cụ hỗ trợ và Quy trình CI/CD}
+\section{Công cụ hỗ trợ và Quy trình}
 \subsection{Công cụ hỗ trợ phát triển}
 Để phối hợp làm việc nhóm và quản lý mã nguồn hiệu quả trong suốt quá trình phát triển, nhóm sử dụng các công cụ:
 \begin{itemize}
@@ -28,7 +28,7 @@ Thông qua việc theo dõi biểu đồ tiến độ (milestone thực tế so 
     \item \textbf{Google Drive:} Lưu trữ tài liệu chung như đề cương, tài liệu đặc tả, hình ảnh thiết kế.
 \end{itemize}
 
-\subsection{Quy trình Tích hợp và Triển khai liên tục (CI/CD)}
+\subsection{Quy trình Tích hợp và Triển khai}
 Dựa trên cấu hình Jenkins thực tế của hệ thống, quy trình CI/CD được thiết lập tự động hóa nhằm giảm thiểu sai sót:
 \begin{itemize}
     \item \textbf{CI Pipeline (Kiểm tra và Build):} Khi có Pull Request mới, Jenkins tự động \textit{checkout} mã nguồn, cài đặt thư viện (\texttt{npm install}), chạy quá trình build (\texttt{npm run build}) để phát hiện lỗi biên dịch. Sau đó, mã nguồn được đóng gói thành \textbf{Docker Image} với tag tương ứng. (Theo cấu trúc chuẩn, quy trình bao gồm cả các bước \textit{lint}, \textit{unit test}, \textit{build} và \textit{security scan}).
