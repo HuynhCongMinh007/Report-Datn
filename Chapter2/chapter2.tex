@@ -65,7 +65,7 @@ Trong quá trình xây dựng giải pháp, nhóm tiến hành khảo sát các 
     \caption{Giao diện khảo sát ứng dụng Wallet by BudgetBakers}
     \label{fig:survey-wallet}
 \end{figure}
-\subsection{Phương pháp và nghị trình khảo sát các giải pháp thị trường}
+\subsection{Tiêu chí và phạm vi khảo sát thị trường}
 Nhóm thiết lập một quy trình khảo sát hệ thống với các tiêu chí cụ thể:
 \begin{itemize}
     \item \textbf{Phạm vi thời gian:} Khảo sát tiến hành từ tháng 09/2025 đến 02/2026. Ngày truy cập kiểm tra cuối cùng là 15/02/2026.
@@ -133,27 +133,27 @@ Cả hai nhóm đều tồn tại hạn chế chung:
     \item \textbf{Không chuẩn hóa dữ liệu môn học giữa các trường:} Do mỗi trường có mã môn, số tín chỉ và thang điểm riêng, các ứng dụng tính GPA độc lập không thể tự động xác thực dữ liệu, dẫn đến sai số tích lũy.
 \end{enumerate}
 
-\section{Nghiên cứu liên quan và ứng dụng trí tuệ nhân tạo}
+\section{Cơ sở công nghệ AI được lựa chọn ứng dụng}
 \label{sec:nghien-cuu-lien-quan}
-Sự bùng nổ của Mô hình ngôn ngữ lớn (LLM) và hệ thống đại lý thông minh (AI Agents) đã mở ra hướng giải quyết mới cho bài toán quản lý và gợi ý thông tin trong giáo dục. Phần này tổng hợp các nghiên cứu liên quan gần đây theo nhóm phương pháp và kết quả.
+Sự phát triển của Mô hình ngôn ngữ lớn (LLM) và hệ thống tác nhân AI (AI Agents) mở ra các kỹ thuật thực tiễn có thể ứng dụng trực tiếp để giải quyết bài toán quản lý tài chính, gợi ý học bổng và hỗ trợ học thuật của Student360. Phần này trình bày các kỹ thuật AI đã được nhóm khảo sát, đối chiếu và lựa chọn đưa vào hệ thống, làm cơ sở cho việc thiết kế các mô-đun AI trình bày ở Chương 3 và Chương 4.
 
-\subsection{Lĩnh vực quản lý tài chính cá nhân (Personal Finance Management)}
+\subsection{Phân loại giao dịch tài chính}
 \begin{itemize}
-    \item \textbf{Phương pháp:} Nghiên cứu truyền thống áp dụng SVM, Naive Bayes hoặc cây quyết định để phân loại văn bản giao dịch. Xu hướng gần đây chuyển sang các mô hình Transformer \cite{vaswani2017attention} như BERT \cite{devlin2018bert} hoặc LLM thông qua kỹ thuật Few-shot Prompting \cite{brown2020-gpt3}.
-    \item \textbf{Dữ liệu:} Chuỗi văn bản mô tả giao dịch ngắn (dưới 15 từ) từ người dùng di động, chứa nhiều từ viết tắt hoặc lỗi chính tả (ví dụ: ``mua banh mi 15k'', ``tna 50k'').
-    \item \textbf{Kết quả:} LLM kết hợp Few-shot Prompting và Chain-of-Thought \cite{wei2022-cot} cải thiện F1-Score từ 15\% đến 25\% so với phương pháp cũ mà không cần fine-tuning lại mô hình.
+    \item \textbf{Kỹ thuật tham khảo:} Bên cạnh các phương pháp truyền thống như SVM, Naive Bayes hay cây quyết định, nhóm hướng tới ứng dụng LLM thông qua kỹ thuật Few-shot Prompting \cite{brown2020-gpt3} trên nền tảng Transformer \cite{vaswani2017attention, devlin2018bert} -- hướng đi phù hợp với một đồ án ứng dụng có quy mô dữ liệu huấn luyện hạn chế, không đòi hỏi hạ tầng fine-tuning riêng.
+    \item \textbf{Đặc thù bài toán thực tế:} Mô tả giao dịch của sinh viên Việt Nam thường ngắn (dưới 15 từ), chứa nhiều từ viết tắt hoặc lỗi chính tả (ví dụ: ``mua banh mi 15k'', ``tna 50k''), đòi hỏi cơ chế phân loại linh hoạt thay vì áp dụng luật cứng.
+    \item \textbf{Áp dụng vào Student360:} Nhóm lựa chọn kết hợp Few-shot Prompting với Chain-of-Thought \cite{wei2022-cot} để triển khai cơ chế phân loại hỗn hợp trình bày ở Mục~\ref{sec:kiem-thu-api} -- giải pháp cho khả năng thích nghi tốt với dữ liệu tiếng Việt đời thường, triển khai nhanh và không cần hạ tầng huấn luyện riêng, phù hợp nguồn lực thực hiện của một đồ án tốt nghiệp.
 \end{itemize}
 
-\subsection{Lĩnh vực gợi ý học bổng (Scholarship Recommender Systems)}
+\subsection{Gợi ý học bổng}
 \begin{itemize}
-    \item \textbf{Phương pháp:} Hai hướng chính: Lọc dựa trên nội dung (Content-based filtering) dùng TF-IDF, Cosine hoặc Jaccard \cite{jaccard1901}, và Lọc cộng tác (Collaborative filtering). Do dữ liệu tương tác thưa thớt, các nghiên cứu hiện đại ưu tiên hệ gợi ý kết hợp (Hybrid Recommender Systems) \cite{burke2002hybrid, adomavicius2005toward} để khắc phục Cold Start.
-    \item \textbf{Kết quả:} Kết hợp Fuzzy Matching cấp độ token (Jaccard) và ký tự (N-gram \cite{cavnar1994-ngram}, Levenshtein \cite{levenstein1966}) giúp hệ thống chịu lỗi viết tắt tốt hơn. Các hệ thống hybrid đạt Precision@5 trên 80\% trong môi trường thử nghiệm học thuật.
+    \item \textbf{Kỹ thuật tham khảo:} Hai hướng phổ biến gồm Lọc dựa trên nội dung (Content-based filtering) dùng TF-IDF, Cosine hoặc Jaccard \cite{jaccard1901}, và Lọc cộng tác (Collaborative filtering). Do dữ liệu tương tác của người dùng thực tế còn thưa thớt (cold start), nhóm ưu tiên hướng tiếp cận hệ gợi ý kết hợp (Hybrid Recommender Systems) \cite{burke2002hybrid, adomavicius2005toward}.
+    \item \textbf{Áp dụng vào Student360:} Nhóm hiện thực hóa cơ chế so khớp đa độ đo kết hợp Jaccard (cấp token) và các kỹ thuật khớp mờ cấp ký tự (N-gram \cite{cavnar1994-ngram}, Levenshtein \cite{levenstein1966}) để hệ thống chịu lỗi viết tắt hồ sơ tốt hơn, chạy trực tiếp trên RAM không phụ thuộc mạng hay LLM -- đáp ứng yêu cầu triển khai thực tế với chi phí vận hành thấp và thời gian phản hồi tức thời, như đã đo lường ở Mục~\ref{sec:danh-gia-hoc-bong}.
 \end{itemize}
 
-\subsection{Lĩnh vực Tác nhân AI hỗ trợ (LLM-based Agents)}
+\subsection{Tác nhân AI hỗ trợ}
 \begin{itemize}
-    \item \textbf{Phương pháp:} Kiến trúc Tác nhân AI tự trị (Autonomous Agents) \cite{wang2023survey-agent} theo mô hình ReAct (Reasoning and Acting) \cite{yao2022-react}: LLM thực hiện vòng lặp suy luận ý định $\rightarrow$ gọi công cụ bên ngoài (truy vấn CSDL, gọi API) $\rightarrow$ nhận kết quả $\rightarrow$ tiếp tục suy luận hoặc đưa ra câu trả lời.
-    \item \textbf{Kết quả:} ReAct kết hợp Tool-calling giúp AI Agent truy vấn số dư thực tế, đưa ra nhận định tài chính cá nhân hóa và định tuyến chính xác ý định tìm kiếm học bổng.
+    \item \textbf{Kỹ thuật tham khảo:} Kiến trúc Tác nhân AI tự trị (Autonomous Agents) \cite{wang2023survey-agent} theo mô hình ReAct (Reasoning and Acting) \cite{yao2022-react}: LLM thực hiện vòng lặp suy luận ý định $\rightarrow$ gọi công cụ bên ngoài (truy vấn CSDL, gọi API) $\rightarrow$ nhận kết quả $\rightarrow$ tiếp tục suy luận hoặc đưa ra câu trả lời.
+    \item \textbf{Áp dụng vào Student360:} Nhóm hiện thực hóa kiến trúc ReAct kết hợp Tool-calling để trợ lý AI truy vấn số dư thực tế, đưa ra nhận định tài chính cá nhân hóa và định tuyến chính xác ý định tìm kiếm học bổng của sinh viên ngay trong luồng trò chuyện, thay vì dừng lại ở việc trả lời câu hỏi thuần túy.
 \end{itemize}
 
 \section{Các giải pháp thông báo đẩy thời gian thực trên nền tảng di động}
