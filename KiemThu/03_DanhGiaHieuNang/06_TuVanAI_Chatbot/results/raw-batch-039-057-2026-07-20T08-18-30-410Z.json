@@ -1,0 +1,190 @@
+[
+  {
+    "iteration": 39,
+    "targetTool": "get_monthly_summary",
+    "question": "Cho tôi báo cáo tổng quan thu chi tháng này.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17303,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là báo cáo thu chi tháng 7/2026:\n\n**Thiết yếu:**\n*   Tổng thu: 8.200.000 VND\n*   Tổng chi: 5.339.000 VND\n*   Dòng tiền: +2.861.000 VND\n\n**Hưởng thụ:**\n*   Tổng thu: 3.900.000 VND\n*   Tổng chi"
+  },
+  {
+    "iteration": 40,
+    "targetTool": "get_monthly_summary",
+    "question": "Tóm tắt tài chính tháng 6 của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 18615,
+    "intent": "personal_finance",
+    "replyPreview": "Tháng 6 vừa qua, tài chính của bạn như sau:\n\n*   **Đầu tư**: Thu 800.000 VND, Chi 500.000 VND, Dòng tiền: 300.000 VND\n*   **Tiết kiệm**: Thu 800.000 VND, Chi 300.000 VND, Dòng tiền: 500.000 VND\n*   **"
+  },
+  {
+    "iteration": 41,
+    "targetTool": "compare_spending_between_two_months",
+    "question": "So sánh chi tiêu tháng này với tháng trước giúp tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4264,
+    "intent": "personal_finance",
+    "replyPreview": "**Tháng 7 (2026-07):**\n\n*   **Tổng thu:** 11.600.000 VND\n*   **Tổng chi:** 7.451.000 VND\n*   **Dòng tiền ròng:** 4.149.000 VND\n\n**Tháng 6 (2026-06):**\n\n*   **Tổng thu:** 8.600.000 VND\n*   **Tổng chi:*"
+  },
+  {
+    "iteration": 42,
+    "targetTool": "compare_spending_between_two_months",
+    "question": "Tháng 4 và tháng 5 tôi chi tiêu khác nhau thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16200,
+    "intent": "personal_finance",
+    "replyPreview": "Trong tháng 4, tổng chi tiêu của bạn là 0 VND và tổng thu nhập là 0 VND.\nTrong tháng 5, tổng chi tiêu của bạn là 0 VND và tổng thu nhập là 0 VND.\n\nDường như bạn chưa có giao dịch nào trong hai tháng n"
+  },
+  {
+    "iteration": 43,
+    "targetTool": "compare_spending_between_two_months",
+    "question": "Chi tiêu của tôi tháng này tăng hay giảm so với tháng trước?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 1924,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 44,
+    "targetTool": "compare_spending_between_two_months",
+    "question": "So sánh thu nhập 2 tháng gần nhất của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4119,
+    "intent": "personal_finance",
+    "replyPreview": "Tháng 7 có tổng thu nhập là 18.800.000 VND và tổng chi là 11.058.000 VND. Tháng 6 có tổng thu nhập là 8.400.000 VND và tổng chi là 800.000 VND."
+  },
+  {
+    "iteration": 45,
+    "targetTool": "get_spending_trend",
+    "question": "Xu hướng chi tiêu lọ thiết yếu trong 6 tháng qua của tôi thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3399,
+    "intent": "personal_finance",
+    "replyPreview": "Trong 2 tháng gần đây, chi tiêu cho Lọ Thiết yếu của bạn như sau:\n- Tháng 6/2026: 0 VND\n- Tháng 7/2026: 5.339.000 VND"
+  },
+  {
+    "iteration": 46,
+    "targetTool": "get_spending_trend",
+    "question": "Chi tiêu lọ giải trí có xu hướng tăng hay giảm gần đây?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 38040,
+    "intent": "hybrid",
+    "replyPreview": "Trong 6 tháng qua, chi tiêu cho lọ Hưởng thụ (Enjoyment) của bạn có xu hướng tăng. Cụ thể, tháng 6 chi tiêu là 0 VND, nhưng tháng 7 đã tăng lên 3.952.000 VND."
+  },
+  {
+    "iteration": 47,
+    "targetTool": "get_spending_trend",
+    "question": "Cho tôi xem biến động chi tiêu lọ giáo dục vài tháng qua.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 40068,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi sẽ hiển thị biến động chi tiêu của lọ Giáo dục trong 3 tháng qua.\n\n**Tháng 6/2026:**\n*   Tổng chi: 0 VND\n*   Tổng thu: 800.000 VND\n\n**Tháng 7/2026:**\n*   Tổng chi: 1.189.000 VND\n*   Tổng thu: 2.00"
+  },
+  {
+    "iteration": 48,
+    "targetTool": "get_spending_trend",
+    "question": "Xu hướng thu chi lọ dự phòng gần đây ra sao?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3980,
+    "intent": "personal_finance",
+    "replyPreview": "**Xu hướng chi tiêu lọ Dự phòng (Reserve) trong 6 tháng qua:**\n\n*   **Tháng 6/2026:** Ghi nhận chi tiêu 300.000 VND và thu nhập 800.000 VND.\n*   **Tháng 7/2026:** Chưa ghi nhận chi tiêu, thu nhập 1.40"
+  },
+  {
+    "iteration": 49,
+    "targetTool": "get_auto_transfers",
+    "question": "Tôi có đang cài lịch tự động chia tiền không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3580,
+    "intent": "personal_finance",
+    "replyPreview": "Có, bạn đang cài đặt các lịch tự động sau:\n\n*   **Seed Finance - Phân bổ học bổng hàng tháng**: Phân bổ 14.000.000 VND mỗi tháng theo tỷ lệ mặc định.\n*   **Seed Finance - Tiết kiệm khẩn cấp**: Chuyển "
+  },
+  {
+    "iteration": 50,
+    "targetTool": "get_auto_transfers",
+    "question": "Danh sách các lịch chuyển tiền tự động đang hoạt động của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3796,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là danh sách các lịch chuyển tiền tự động đang hoạt động của bạn:\n\n*   **Seed Finance - Phân bổ học bổng hàng tháng**: 14.000.000 VND mỗi tháng, vào ngày mùng 5 hàng tháng. Phân bổ theo tỷ lệ"
+  },
+  {
+    "iteration": 51,
+    "targetTool": "get_auto_transfers",
+    "question": "Tôi đã thiết lập tự động phân bổ thu nhập chưa?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2619,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 52,
+    "targetTool": "get_auto_transfers",
+    "question": "Cho tôi xem các lịch tự động đang bật.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2570,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là các lịch chuyển tiền tự động đang hoạt động:\n\n*   **Seed Finance - Phân bổ học bổng hàng tháng**: 14.000.000 VND mỗi tháng, phân bổ theo tỷ lệ mặc định.\n*   **Seed Finance - Tiết kiệm khẩn"
+  },
+  {
+    "iteration": 53,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có nên mua bàn phím cơ giá 3 triệu không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4851,
+    "intent": "hybrid",
+    "replyPreview": "Bạn có thể cân nhắc mua bàn phím cơ, tuy nhiên, với số dư hiện tại ở lọ Hưởng thụ là 748.000 VND, bạn nên chờ thêm một thời gian hoặc xem xét các lựa chọn khác có giá thấp hơn để đảm bảo cân đối tài c"
+  },
+  {
+    "iteration": 54,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có đủ khả năng mua một chiếc laptop 15 triệu không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17666,
+    "intent": "hybrid",
+    "replyPreview": "Bạn vui lòng chờ một chút, tôi đang gặp sự cố khi truy cập dữ liệu tài chính của bạn. Tôi sẽ thử lại ngay."
+  },
+  {
+    "iteration": 55,
+    "targetTool": "can_afford_this",
+    "question": "Với tình hình tài chính hiện tại, tôi có nên mua tai nghe 2 triệu không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16485,
+    "intent": "hybrid",
+    "replyPreview": "Bạn ơi, với tình hình tài chính hiện tại, mình chưa nên mua tai nghe 2 triệu đâu. Số dư trong lọ Hưởng thụ hiện tại còn hơi ít, khoản chi này sẽ làm hụt ngân sách tháng này đó."
+  },
+  {
+    "iteration": 56,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có nên chi 5 triệu để đi du lịch cuối năm không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 26626,
+    "intent": "hybrid",
+    "replyPreview": "Bạn có thể cân nhắc đi du lịch cuối năm. Tuy nhiên, hiện tại số dư trong lọ Hưởng thụ của bạn là 748.000 VND, có thể chưa đủ cho chuyến đi 5 triệu. Bạn có muốn xem xét lại kế hoạch chi tiêu hoặc bổ su"
+  },
+  {
+    "iteration": 57,
+    "targetTool": "compare_jar_allocation",
+    "question": "Phân bổ lọ của tôi có hợp lý theo phương pháp 6 lọ chuẩn không?",
+    "ok": false,
+    "latencyMs": 90347,
+    "error": "timeout of 90000ms exceeded"
+  }
+]

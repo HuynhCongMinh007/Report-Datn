@@ -1,0 +1,603 @@
+{
+  "generated_at": "2026-07-26T09:44:59.832031+00:00",
+  "backend_url": "http://localhost:3000/api",
+  "dataset": "../../../../../private/tmp/claude-501/-Users-nguyenvh-School-Student360/4f6f324b-430f-4c2d-9f72-8811e8a76e8b/scratchpad/eval_batches/batch_education.json",
+  "total": 50,
+  "correct": 49,
+  "accuracy": 0.98,
+  "per_jar": {
+    "essentials": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "education": {
+      "total": 50,
+      "correct": 49,
+      "accuracy": 0.98
+    },
+    "investment": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "sharing": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "enjoyment": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "reserve": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    }
+  },
+  "confusion_matrix": {
+    "essentials": {},
+    "education": {
+      "education": 49,
+      "enjoyment": 1
+    },
+    "investment": {},
+    "sharing": {},
+    "enjoyment": {},
+    "reserve": {}
+  },
+  "results": [
+    {
+      "id": "edu-01",
+      "description": "Đóng học phí học kỳ này",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-02",
+      "description": "Mua giáo trình lập trình Python",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-03",
+      "description": "Đăng ký khóa học tiếng Anh IELTS",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-04",
+      "description": "Mua laptop mới để học lập trình",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-05",
+      "description": "In ấn tài liệu đồ án tốt nghiệp",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-06",
+      "description": "Đóng lệ phí thi chứng chỉ TOEIC",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-07",
+      "description": "Mua sách tham khảo môn cơ sở dữ liệu",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-08",
+      "description": "Đăng ký khóa học online trên Udemy",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-09",
+      "description": "Mua bút và vở ghi chép",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-10",
+      "description": "Đóng tiền học thêm buổi tối",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-11",
+      "description": "Phí tham gia hội thảo công nghệ",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-12",
+      "description": "Mua phần mềm bản quyền để làm đồ án",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-13",
+      "description": "Đóng phí thi lại môn giải tích",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-14",
+      "description": "Thuê gia sư kèm môn xác suất thống kê",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-15",
+      "description": "Mua tai nghe để học online",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-16",
+      "description": "Mua giáo trình toán cao cấp",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-17",
+      "description": "Đóng tiền học phí bổ sung tín chỉ",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-18",
+      "description": "Mua USB lưu bài tập và đồ án",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-19",
+      "description": "Đăng ký khóa học thiết kế trên Coursera",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-20",
+      "description": "Mua máy tính cầm tay Casio",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-21",
+      "description": "Photo tài liệu ôn thi cuối kỳ",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-22",
+      "description": "Đóng phí thi lại môn tiếng Anh",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-23",
+      "description": "Mua sách luyện thi IELTS",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-24",
+      "description": "Thuê phòng học nhóm ở thư viện",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-25",
+      "description": "Mua ổ cứng di động lưu dữ liệu học tập",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-26",
+      "description": "Đăng ký thi chứng chỉ tin học văn phòng",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-27",
+      "description": "Mua vé tham dự hội thảo khởi nghiệp sinh viên",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-28",
+      "description": "Đóng tiền học phí học lại môn xác suất",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-29",
+      "description": "Mua áo đồng phục trường",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-30",
+      "description": "Đăng ký khóa học machine learning online",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-31",
+      "description": "Mua sách tiếng Anh chuyên ngành",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-32",
+      "description": "Thuê laptop dùng cho kỳ thực tập",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-33",
+      "description": "Mua bảng vẽ để học thiết kế đồ họa",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-34",
+      "description": "Mua tài liệu ôn thi tốt nghiệp",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-35",
+      "description": "Đóng lệ phí bảo vệ đồ án tốt nghiệp",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-36",
+      "description": "Mua chuột và bàn phím phục vụ học tập",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-37",
+      "description": "Đăng ký học chứng chỉ nghiệp vụ sư phạm",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-38",
+      "description": "Mua vé xem triển lãm sách",
+      "expected_jar": "education",
+      "predicted_jar": "enjoyment",
+      "correct": false,
+      "confidence": 0.9,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-39",
+      "description": "Thuê gia sư luyện thi đầu vào cao học",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-40",
+      "description": "Mua phần mềm thiết kế bản quyền phục vụ đồ án",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-41",
+      "description": "Đóng phí tham gia cuộc thi lập trình sinh viên",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-42",
+      "description": "Mua giáo trình kinh tế vi mô",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-43",
+      "description": "Đăng ký khóa học tiếng Nhật giao tiếp",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-44",
+      "description": "Mua tai nghe chống ồn để tập trung học",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-45",
+      "description": "Đóng học phí học kỳ hè",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-46",
+      "description": "Mua sách kỹ năng mềm cho sinh viên",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-47",
+      "description": "Thuê phòng lab máy tính làm đồ án",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-48",
+      "description": "Mua bút chì và thước kẻ vẽ kỹ thuật",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-49",
+      "description": "Đăng ký kỳ thi đánh giá năng lực",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "edu-50",
+      "description": "Mua balo đựng laptop đi học",
+      "expected_jar": "education",
+      "predicted_jar": "education",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "iteration": 62,
+    "description": "Mua khóa học online trên Udemy",
+    "amount": 350000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2373,
+    "suggestedJarCode": "education",
+    "confidence": 0.98
+  }
+]

@@ -1,0 +1,48 @@
+diff --git a/app/domains/finance/agents/finance/scholarships/tools/matching.py b/app/domains/finance/agents/finance/scholarships/tools/matching.py
+index ccffc11..9588ce6 100644
+--- a/app/domains/finance/agents/finance/scholarships/tools/matching.py
++++ b/app/domains/finance/agents/finance/scholarships/tools/matching.py
+@@ -704,15 +704,33 @@ async def get_all_scholarships(
+ 		offset: Vị trí bắt đầu (>= 0).
+ 
+ 	Returns:
+-		JSON string chứa danh sách học bổng và thông tin phân trang.
++		JSON string chứa danh sách học bổng và thông tin phân trang. Để trả lời câu hỏi dạng
++		"có bao nhiêu / tổng cộng bao nhiêu học bổng", LUÔN dùng `paging.total_matching` (tổng số
++		bản ghi thỏa điều kiện lọc trong toàn bộ hệ thống) -- KHÔNG dùng `paging.returned` hay độ
++		dài của `items`, vì hai giá trị đó chỉ phản ánh số bản ghi của TRANG hiện tại (bị giới hạn
++		bởi `limit`) và có thể nhỏ hơn nhiều so với tổng số thật.
+ 	"""
+-	safe_limit = max(1, min(int(limit), 500))
++	# limit<=0 rơi về giá trị mặc định (200) thay vì bị ép thành 1 -- trước đây limit=0 lặng lẽ
++	# thành LIMIT 1, khiến model đọc paging.returned=1 và báo sai đó là tổng số học bổng.
++	requested_limit = int(limit)
++	safe_limit = min(requested_limit, 500) if requested_limit > 0 else 200
+ 	safe_offset = max(0, int(offset))
+ 
+ 	try:
+ 		now = datetime.utcnow()
+ 		pool = await get_pool()
+ 		async with pool.acquire() as conn:
++			total_matching = await conn.fetchval(
++				"""
++				SELECT COUNT(*)
++				FROM scholarships s
++				WHERE ($1::boolean = false OR s.is_active = true)
++				  AND ($2::boolean = false OR (s.is_active = true AND (s.application_deadline IS NULL OR s.application_deadline >= $3)))
++				""",
++				active_only,
++				open_only,
++				now,
++			)
+ 			rows = await conn.fetch(
+ 				"""
+ 				SELECT s.id,
+@@ -812,6 +830,7 @@ async def get_all_scholarships(
+ 				"limit": safe_limit,
+ 				"offset": safe_offset,
+ 				"returned": len(items),
++				"total_matching": total_matching,
+ 			},
+ 			"items": _serialize(items),
+ 		}

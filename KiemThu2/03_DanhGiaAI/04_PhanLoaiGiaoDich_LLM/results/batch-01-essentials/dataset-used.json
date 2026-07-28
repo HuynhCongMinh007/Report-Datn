@@ -1,0 +1,313 @@
+{
+  "description": "Fixed labeled dataset for the transaction -> jar classification eval (POST /ai/6jars/classify). Each item is a natural Vietnamese transaction description a student might type, with the jar it should be classified into. Frozen so the eval is reproducible across runs. (batch: essentials only)",
+  "jars": [
+    "essentials",
+    "education",
+    "investment",
+    "sharing",
+    "enjoyment",
+    "reserve"
+  ],
+  "items": [
+    {
+      "id": "ess-01",
+      "description": "Tiền thuê phòng trọ tháng này",
+      "amount": 2500000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-02",
+      "description": "Đóng tiền điện nước",
+      "amount": 350000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-03",
+      "description": "Mua gạo và thực phẩm ở chợ",
+      "amount": 200000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-04",
+      "description": "Nạp tiền điện thoại tháng",
+      "amount": 100000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-05",
+      "description": "Vé xe bus đi học",
+      "amount": 20000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-06",
+      "description": "Ăn cơm trưa ở căng tin",
+      "amount": 25000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-07",
+      "description": "Mua dầu gội và đồ vệ sinh cá nhân",
+      "amount": 120000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-08",
+      "description": "Đổ xăng xe máy đi học",
+      "amount": 80000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-09",
+      "description": "Đóng tiền internet wifi phòng trọ",
+      "amount": 180000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-10",
+      "description": "Mua nồi cơm điện mới vì cái cũ hỏng",
+      "amount": 350000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-11",
+      "description": "Ăn sáng bánh mì trước khi đi học",
+      "amount": 15000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-12",
+      "description": "Tiền gửi xe máy ở trường tháng này",
+      "amount": 50000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-13",
+      "description": "Mua thuốc cảm cúm ở nhà thuốc",
+      "amount": 60000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-14",
+      "description": "Đóng phí quản lý chung cư trọ",
+      "amount": 100000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-15",
+      "description": "Mua rau củ nấu ăn cho cả tuần",
+      "amount": 150000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-16",
+      "description": "Đóng tiền thuê nhà trọ hàng tháng",
+      "amount": 2200000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-17",
+      "description": "Mua bàn chải đánh răng và kem đánh răng",
+      "amount": 40000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-18",
+      "description": "Sửa xe máy bị hỏng",
+      "amount": 250000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-19",
+      "description": "Mua khẩu trang y tế",
+      "amount": 30000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-20",
+      "description": "Đóng phí gửi xe đạp ở trường",
+      "amount": 30000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-21",
+      "description": "Mua nước rửa chén và bột giặt",
+      "amount": 90000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-22",
+      "description": "Khám bệnh ở phòng khám gần nhà",
+      "amount": 200000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-23",
+      "description": "Mua giấy vệ sinh và khăn giấy",
+      "amount": 50000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-24",
+      "description": "Đóng tiền nước sinh hoạt tháng này",
+      "amount": 80000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-25",
+      "description": "Mua trứng và sữa ở siêu thị",
+      "amount": 100000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-26",
+      "description": "Cắt tóc ở tiệm gần trọ",
+      "amount": 50000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-27",
+      "description": "Đổ xăng xe đạp điện đi học",
+      "amount": 40000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-28",
+      "description": "Mua bếp gas mini thay cái cũ hỏng",
+      "amount": 300000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-29",
+      "description": "Đóng phí rác thải sinh hoạt tháng này",
+      "amount": 30000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-30",
+      "description": "Mua đồ ăn sáng cả tuần dự trữ",
+      "amount": 100000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-31",
+      "description": "Sửa quạt điện trong phòng trọ",
+      "amount": 150000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-32",
+      "description": "Mua bóng đèn thay cái bị cháy",
+      "amount": 25000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-33",
+      "description": "Đóng tiền giữ xe máy tháng này",
+      "amount": 100000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-34",
+      "description": "Mua nước lọc uống hàng tuần",
+      "amount": 60000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-35",
+      "description": "Khám răng định kỳ",
+      "amount": 300000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-36",
+      "description": "Mua đồ dùng nhà bếp cơ bản",
+      "amount": 200000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-37",
+      "description": "Sạc lại bình gas nấu ăn",
+      "amount": 350000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-38",
+      "description": "Mua áo mưa đi học mùa mưa",
+      "amount": 80000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-39",
+      "description": "Đóng tiền vệ sinh khu trọ",
+      "amount": 20000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-40",
+      "description": "Mua rổ rá và dụng cụ nấu ăn",
+      "amount": 120000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-41",
+      "description": "Thay nhớt xe máy định kỳ",
+      "amount": 90000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-42",
+      "description": "Mua vitamin bổ sung sức khỏe",
+      "amount": 150000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-43",
+      "description": "Mua chăn màn mới cho phòng trọ",
+      "amount": 400000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-44",
+      "description": "Sửa khóa cửa phòng trọ bị hỏng",
+      "amount": 100000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-45",
+      "description": "Mua đồ ăn tối nấu ở nhà",
+      "amount": 70000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-46",
+      "description": "Đóng tiền thuê wifi chung với bạn cùng phòng",
+      "amount": 100000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-47",
+      "description": "Mua thuốc đau bụng ở tiệm thuốc",
+      "amount": 30000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-48",
+      "description": "Đi khám mắt và mua kính cận",
+      "amount": 500000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-49",
+      "description": "Mua giày dép đi học hàng ngày",
+      "amount": 250000,
+      "expected_jar": "essentials"
+    },
+    {
+      "id": "ess-50",
+      "description": "Đóng tiền học phí ký túc xá tháng này",
+      "amount": 800000,
+      "expected_jar": "essentials"
+    }
+  ]
+}

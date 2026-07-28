@@ -1,0 +1,202 @@
+[
+  {
+    "iteration": 21,
+    "targetTool": "get_recent_transactions",
+    "question": "Liệt kê các giao dịch mới nhất trên tất cả các lọ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 25331,
+    "intent": "personal_finance",
+    "replyPreview": "Chào bạn, dưới đây là 10 giao dịch gần nhất trên tất cả các lọ của bạn:\n\n*   **Lọ Thiết yếu:** Chi 50.000 VND cho \"Ăn sáng\" vào ngày 23/07/2026.\n*   **Lọ Đầu tư:** Thu 200.000 VND từ \"Ct\" vào ngày 22/"
+  },
+  {
+    "iteration": 22,
+    "targetTool": "get_recent_transactions",
+    "question": "Tôi vừa mới tiêu tiền vào những việc gì gần đây?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 19964,
+    "intent": "personal_finance",
+    "replyPreview": "Đây là các giao dịch gần đây của bạn:\n\n*   **Chi 50.000 VND** cho \"Ăn sáng\" từ lọ **Thiết yếu** (23/07)\n*   **Thu 200.000 VND** vào \"Ct\" trong lọ **Đầu tư** (22/07)\n*   **Chi 200.000 VND** cho \"Ct\" từ"
+  },
+  {
+    "iteration": 23,
+    "targetTool": "get_recent_transactions",
+    "question": "Cho tôi xem 5 giao dịch mới nhất của lọ thiết yếu.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 7188,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chỉ có thể xem các giao dịch gần nhất trên tất cả các lọ, chứ chưa lọc riêng cho từng lọ được.\n\nBạn có muốn xem 5 giao dịch gần nhất trên tất cả các lọ không?"
+  },
+  {
+    "iteration": 24,
+    "targetTool": "get_recent_transactions",
+    "question": "Hôm nay tôi có phát sinh giao dịch nào không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 14672,
+    "intent": "personal_finance",
+    "replyPreview": "Hôm nay (26/07/2026) bạn không có giao dịch nào được ghi nhận.\n\nGiao dịch gần nhất của bạn là vào ngày 23/07/2026, một khoản chi 50.000 VND cho \"Ăn sáng\" từ lọ Thiết yếu."
+  },
+  {
+    "iteration": 25,
+    "targetTool": "get_top_expenses",
+    "question": "Tháng này tôi tiêu nhiều nhất vào việc gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 15292,
+    "intent": "personal_finance",
+    "replyPreview": "Dựa trên dữ liệu giao dịch của bạn trong tháng này, các khoản chi lớn nhất bao gồm:\n\n*   **Lọ Hưởng thụ (enjoyment):**\n    *   Cà phê với bạn bè: 2.000.000 VND\n    *   Mua vé concert sinh viên: 690.00"
+  },
+  {
+    "iteration": 26,
+    "targetTool": "get_top_expenses",
+    "question": "10 khoản chi lớn nhất trong 30 ngày qua của tôi là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 15166,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là 10 khoản chi lớn nhất của bạn trong 30 ngày qua:\n\n*   **2.000.000 VND** - Cà phê với bạn bè (Lọ Hưởng thụ)\n*   **2.000.000 VND** - Chuyển tiền giữa các hũ (Lọ Thiết yếu)\n*   **1.800.000 VN"
+  },
+  {
+    "iteration": 27,
+    "targetTool": "get_top_expenses",
+    "question": "Khoản chi tiêu lớn nhất gần đây của tôi là khoản nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 12273,
+    "intent": "personal_finance",
+    "replyPreview": "Để biết khoản chi tiêu lớn nhất gần đây, bạn vui lòng cho biết bạn muốn xem trong khoảng bao nhiêu ngày trở lại đây (ví dụ: 7 ngày, 30 ngày, 90 ngày)?"
+  },
+  {
+    "iteration": 28,
+    "targetTool": "get_top_expenses",
+    "question": "Cho tôi biết những chi tiêu đáng kể nhất tuần vừa rồi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 18188,
+    "intent": "personal_finance",
+    "replyPreview": "Các khoản chi lớn nhất của bạn trong 7 ngày qua là:\n\n*   **200.000 VND** cho \"Ct\" (từ lọ Thiết yếu)\n*   **100.000 VND** cho \"Tiền lương part-time\" (từ lọ Tiết kiệm)\n*   **100.000 VND** cho \"Test\" (từ "
+  },
+  {
+    "iteration": 29,
+    "targetTool": "get_top_expenses",
+    "question": "5 khoản chi tiêu tốn kém nhất của lọ giải trí trong tháng là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 48907,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi không thể lọc các khoản chi tiêu tốn kém nhất theo một lọ cụ thể. Tuy nhiên, tôi có thể liệt kê 10 khoản chi tiêu lớn nhất trên tất cả các lọ trong 30 ngày qua. Bạn có muốn xem danh sách "
+  },
+  {
+    "iteration": 30,
+    "targetTool": "get_top_expenses",
+    "question": "Xếp hạng các khoản chi lớn nhất từ đầu tháng đến giờ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 21610,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là bảng xếp hạng các khoản chi lớn nhất của bạn từ đầu tháng 7 đến nay:\n\n1.  **Cà phê với bạn bè**: 2.000.000 VND (Lọ Hưởng thụ)\n2.  **Chuyển tiền giữa các hũ**: 2.000.000 VND (Lọ Thiết yếu)\n"
+  },
+  {
+    "iteration": 31,
+    "targetTool": "search_transactions",
+    "question": "Tìm giúp tôi giao dịch nào có chữ 'Grab' trong mô tả.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13211,
+    "intent": "personal_finance",
+    "replyPreview": "Mình tìm thấy 2 giao dịch có chữ \"Grab\" trong mô tả:\n\n*   **Ngày 2026-07-16:** Chi 60.000 VND cho \"Grab về nhà\" (lọ Thiết yếu).\n*   **Ngày 2026-07-16:** Chi 80.000 VND cho \"Grab đi học\" (lọ Thiết yếu)"
+  },
+  {
+    "iteration": 32,
+    "targetTool": "search_transactions",
+    "question": "Tôi có giao dịch nào liên quan đến 'cà phê' không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13314,
+    "intent": "personal_finance",
+    "replyPreview": "Có, bạn có một vài giao dịch liên quan đến 'cà phê' trong 2 tuần qua, tất cả đều được ghi vào lọ Hưởng thụ:\n\n*   **Ngày 21/07:**\n    *   Chi 100.000 VND cho \"Cà phê đen\".\n    *   Chi 45.000 VND cho \"C"
+  },
+  {
+    "iteration": 33,
+    "targetTool": "search_transactions",
+    "question": "Tìm kiếm các giao dịch có từ 'học phí'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13665,
+    "intent": "personal_finance",
+    "replyPreview": "Không tìm thấy giao dịch nào có từ 'học phí'."
+  },
+  {
+    "iteration": 34,
+    "targetTool": "search_transactions",
+    "question": "Có giao dịch nào chứa từ 'sách' trong mô tả không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 14363,
+    "intent": "personal_finance",
+    "replyPreview": "Có, mình tìm thấy 2 giao dịch liên quan đến \"sách\":\n\n*   **Ngày 11/07/2026**: Chi 500.000 VND để \"Mua giáo trình + sách tham khảo\".\n*   **Ngày 10/07/2026**: Chi 240.000 VND để \"Mua sách kỹ năng tài ch"
+  },
+  {
+    "iteration": 35,
+    "targetTool": "search_transactions",
+    "question": "Tìm các giao dịch có ghi chú 'tiền nhà' giúp tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 10894,
+    "intent": "personal_finance",
+    "replyPreview": "Mình tìm thấy một giao dịch có ghi chú 'tiền nhà' vào ngày 05/07/2026. Bạn đã chi 1.800.000 VND cho \"Thanh toán tiền nhà\" từ lọ Thiết yếu."
+  },
+  {
+    "iteration": 36,
+    "targetTool": "search_transactions",
+    "question": "Trước đây tôi có giao dịch nào ghi 'sinh nhật' không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 14028,
+    "intent": "personal_finance",
+    "replyPreview": "Chào bạn, có 2 giao dịch có ghi \"sinh nhật\" được tìm thấy:\n- Ngày 10/07/2026, bạn đã chi 50.000 VND để \"Mừng sinh nhật bạn cùng phòng\" từ lọ Chia sẻ.\n- Ngày 09/07/2026, bạn đã chi 320.000 VND cho \"Ăn "
+  },
+  {
+    "iteration": 37,
+    "targetTool": "get_jar_tags",
+    "question": "Lọ hưởng thụ tôi đang gắn những tag nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13972,
+    "intent": "personal_finance",
+    "replyPreview": "Lọ Hưởng thụ của bạn đang được gắn các tag sau:\n*   Giải trí\n*   Ăn ngoài\n*   Mua sắm\n*   Du lịch\n*   Sở thích\n*   Khác"
+  },
+  {
+    "iteration": 38,
+    "targetTool": "get_jar_tags",
+    "question": "Danh sách tag đang hoạt động của lọ thiết yếu là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16786,
+    "intent": "personal_finance",
+    "replyPreview": "Các tag đang hoạt động của lọ Thiết yếu (essentials) bao gồm:\n*   Ăn uống\n*   Tiền nhà\n*   Điện nước\n*   Di chuyển\n*   Y tế\n*   Viễn thông\n*   Đi chơi\n*   Khác"
+  },
+  {
+    "iteration": 39,
+    "targetTool": "get_jar_tags",
+    "question": "Tôi đã tạo những tag nào cho lọ giải trí?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 12837,
+    "intent": "personal_finance",
+    "replyPreview": "Bạn đã tạo các tag sau cho lọ Hưởng thụ (enjoyment):\n*   Giải trí\n*   Ăn ngoài\n*   Mua sắm\n*   Du lịch\n*   Sở thích\n*   Khác"
+  },
+  {
+    "iteration": 40,
+    "targetTool": "get_jar_tags",
+    "question": "Cho tôi xem các tag của lọ dự phòng.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 6242,
+    "intent": "personal_finance",
+    "replyPreview": "Các tag hiện tại của Lọ Dự phòng (reserve) bao gồm:\n*   Dự phòng\n*   Khẩn cấp\n*   Bảo hiểm\n*   Tiết kiệm ngắn hạn\n*   Khác"
+  }
+]

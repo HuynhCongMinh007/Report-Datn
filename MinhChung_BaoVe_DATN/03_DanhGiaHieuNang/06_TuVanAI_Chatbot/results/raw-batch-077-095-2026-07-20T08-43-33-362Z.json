@@ -1,0 +1,188 @@
+[
+  {
+    "iteration": 77,
+    "targetTool": "get_all_scholarships",
+    "question": "Liệt kê tất cả học bổng đang mở hiện tại.",
+    "ok": false,
+    "latencyMs": 90061,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 78,
+    "targetTool": "get_all_scholarships",
+    "question": "Hiện có bao nhiêu học bổng đang nhận hồ sơ?",
+    "ok": false,
+    "latencyMs": 90020,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 79,
+    "targetTool": "get_all_scholarships",
+    "question": "Cho tôi danh sách đầy đủ các học bổng hiện có.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 64286,
+    "intent": "scholarships",
+    "replyPreview": "Dưới đây là danh sách đầy đủ các học bổng hiện có:\n\n**Học bổng TPBank Innovation Grant 2026**\n* Nhà cung cấp: TPBank Foundation for Future Leaders\n* Quyền lợi: Tài trợ dự án, Mentor doanh nghiệp, Demo"
+  },
+  {
+    "iteration": 80,
+    "targetTool": "get_all_scholarships",
+    "question": "Trường tôi hiện đang có những học bổng nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2122,
+    "intent": "scholarships",
+    "replyPreview": "Mình chưa tìm thấy hồ sơ xin học bổng nào bạn đã đăng ký. Bạn có muốn tìm kiếm các học bổng mới không?"
+  },
+  {
+    "iteration": 81,
+    "targetTool": "get_my_full_profile",
+    "question": "Xem lại hồ sơ đầy đủ của tôi (học vấn, kỹ năng, sở thích) để tư vấn học bổng phù hợp.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 188,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  },
+  {
+    "iteration": 82,
+    "targetTool": "get_my_full_profile",
+    "question": "Hồ sơ cá nhân của tôi hiện đang có những thông tin gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 5144,
+    "intent": "personal_finance",
+    "replyPreview": "Hiện tại, hồ sơ cá nhân của bạn có các thông tin sau:\n\n**Học vấn:**\n*   Bạn đang là sinh viên năm 3, chuyên ngành Công nghệ thông tin tại University of Science, VNU-HCM.\n*   GPA hiện tại là 3.45.\n*   "
+  },
+  {
+    "iteration": 83,
+    "targetTool": "get_my_full_profile",
+    "question": "Dựa vào toàn bộ hồ sơ của tôi, tôi phù hợp với loại học bổng nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 123,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 8 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  },
+  {
+    "iteration": 84,
+    "targetTool": "get_my_full_profile",
+    "question": "Tóm tắt hồ sơ học vấn và kỹ năng hiện tại của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 5270,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 85,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Tôi đang apply những học bổng nào rồi?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2179,
+    "intent": "scholarships",
+    "replyPreview": "Mình chưa thấy bạn apply học bổng nào cả. Bạn có muốn tìm kiếm học bổng không?"
+  },
+  {
+    "iteration": 86,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Danh sách hồ sơ học bổng tôi đã nộp là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13707,
+    "intent": "scholarships",
+    "replyPreview": "Bạn chưa nộp hồ sơ xin học bổng nào."
+  },
+  {
+    "iteration": 87,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Hồ sơ nào của tôi đang chờ xét duyệt?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 22089,
+    "intent": "hybrid",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 88,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Tôi đã nộp bao nhiêu hồ sơ học bổng từ trước đến giờ?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2400,
+    "intent": "scholarships",
+    "replyPreview": "Bạn chưa nộp hồ sơ học bổng nào trước đây."
+  },
+  {
+    "iteration": 89,
+    "targetTool": "get_scholarship_application_detail",
+    "question": "Hồ sơ apply học bổng gần nhất của tôi còn thiếu giấy tờ gì không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3175,
+    "intent": "scholarships",
+    "replyPreview": "Bạn chưa có hồ sơ xin học bổng nào trong hệ thống. Bạn có muốn tìm kiếm học bổng không?"
+  },
+  {
+    "iteration": 90,
+    "targetTool": "get_scholarship_application_detail",
+    "question": "Tôi có khả năng đậu học bổng mà tôi vừa apply không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3360,
+    "intent": "scholarships",
+    "replyPreview": "Tôi xin lỗi, nhưng tôi không tìm thấy bất kỳ hồ sơ xin học bổng nào trong tài khoản của bạn. Bạn có muốn tìm kiếm các học bổng có sẵn không?"
+  },
+  {
+    "iteration": 91,
+    "targetTool": "get_scholarship_application_detail",
+    "question": "Trạng thái xét duyệt hồ sơ học bổng của tôi hiện ra sao?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4963,
+    "intent": "scholarships",
+    "replyPreview": "Mình kiểm tra thấy bạn chưa có hồ sơ xin học bổng nào. Bạn có muốn tìm kiếm học bổng không?"
+  },
+  {
+    "iteration": 92,
+    "targetTool": "get_scholarship_application_detail",
+    "question": "Xem chi tiết lịch sử xét duyệt hồ sơ học bổng gần nhất của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 95,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 57 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Nhấn vào từng thẻ để xem tóm tắt."
+  },
+  {
+    "iteration": 93,
+    "targetTool": "get_scholarship_recommendations_for_chat",
+    "question": "Gợi ý học bổng phù hợp với hồ sơ của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 118,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  },
+  {
+    "iteration": 94,
+    "targetTool": "get_scholarship_recommendations_for_chat",
+    "question": "Học bổng nào tôi nên apply dựa trên thông tin hiện tại?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3248,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 95,
+    "targetTool": "get_scholarship_recommendations_for_chat",
+    "question": "Đề xuất giúp tôi vài học bổng phù hợp nhất.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 117,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  }
+]

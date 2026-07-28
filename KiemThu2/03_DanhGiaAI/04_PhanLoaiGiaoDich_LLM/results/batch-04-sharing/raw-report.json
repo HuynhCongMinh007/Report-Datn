@@ -1,0 +1,602 @@
+{
+  "generated_at": "2026-07-26T10:09:40.349793+00:00",
+  "backend_url": "http://localhost:3000/api",
+  "dataset": "../../../../../private/tmp/claude-501/-Users-nguyenvh-School-Student360/4f6f324b-430f-4c2d-9f72-8811e8a76e8b/scratchpad/eval_batches/batch_sharing.json",
+  "total": 50,
+  "correct": 50,
+  "accuracy": 1.0,
+  "per_jar": {
+    "essentials": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "education": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "investment": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "sharing": {
+      "total": 50,
+      "correct": 50,
+      "accuracy": 1.0
+    },
+    "enjoyment": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "reserve": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    }
+  },
+  "confusion_matrix": {
+    "essentials": {},
+    "education": {},
+    "investment": {},
+    "sharing": {
+      "sharing": 50
+    },
+    "enjoyment": {},
+    "reserve": {}
+  },
+  "results": [
+    {
+      "id": "shr-01",
+      "description": "Quyên góp từ thiện cho trẻ em vùng cao",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-02",
+      "description": "Cho tiền người ăn xin ở ngã tư",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-03",
+      "description": "Đóng góp quỹ ủng hộ đồng bào lũ lụt",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-04",
+      "description": "Mừng cưới bạn thân",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-05",
+      "description": "Tặng quà sinh nhật cho em gái",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-06",
+      "description": "Góp tiền mua quà tặng thầy cô ngày 20/11",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-07",
+      "description": "Ủng hộ chương trình từ thiện của trường",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-08",
+      "description": "Cho bạn cùng phòng mượn tiền không lấy lại",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-09",
+      "description": "Đóng góp tiền xây nhà tình thương",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-10",
+      "description": "Tặng tiền lì xì cho các em nhỏ trong xóm",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-11",
+      "description": "Ủng hộ quỹ vắc xin phòng dịch",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-12",
+      "description": "Mua đồ tặng cho trại trẻ mồ côi",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-13",
+      "description": "Góp tiền phúng viếng đám tang hàng xóm",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-14",
+      "description": "Ủng hộ gây quỹ cho bạn bị bệnh nặng",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-15",
+      "description": "Tặng học bổng nhỏ cho em học sinh nghèo",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-16",
+      "description": "Ủng hộ quỹ mổ tim cho trẻ em nghèo",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-17",
+      "description": "Tặng quà tết cho gia đình khó khăn",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-18",
+      "description": "Góp tiền mua xe lăn tặng người khuyết tật",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-19",
+      "description": "Ủng hộ đồng bào miền Trung bị bão lũ",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-20",
+      "description": "Cho bạn vay tiền không tính lãi giúp đóng học phí",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-21",
+      "description": "Tặng sách vở cho trẻ em vùng sâu vùng xa",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-22",
+      "description": "Góp tiền tổ chức trung thu cho trẻ em nghèo",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-23",
+      "description": "Ủng hộ quỹ học bổng cho sinh viên khó khăn",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-24",
+      "description": "Tặng tiền mừng tân gia cho hàng xóm",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-25",
+      "description": "Góp quỹ lớp giúp bạn bị tai nạn",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-26",
+      "description": "Ủng hộ chương trình hiến máu nhân đạo",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-27",
+      "description": "Tặng đồ chơi cho trại trẻ mồ côi",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-28",
+      "description": "Góp tiền xây cầu cho bà con vùng khó khăn",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-29",
+      "description": "Ủng hộ quỹ chống dịch bệnh",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-30",
+      "description": "Tặng quà cho người già neo đơn",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-31",
+      "description": "Góp tiền hỗ trợ bạn cùng lớp mổ bệnh",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-32",
+      "description": "Ủng hộ chùa làm từ thiện cuối năm",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-33",
+      "description": "Tặng tiền cho em họ đi học xa nhà",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-34",
+      "description": "Góp quỹ từ thiện của câu lạc bộ sinh viên",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-35",
+      "description": "Ủng hộ nạn nhân chất độc da cam",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-36",
+      "description": "Tặng quà 8/3 cho các cô lao công trong trường",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-37",
+      "description": "Góp tiền mua chăn ấm tặng người vô gia cư",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-38",
+      "description": "Ủng hộ quỹ khuyến học địa phương",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-39",
+      "description": "Tặng tiền lì xì cho người giúp việc",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-40",
+      "description": "Góp tiền hỗ trợ nạn nhân hỏa hoạn",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-41",
+      "description": "Ủng hộ chương trình cơm miễn phí cho người nghèo",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-42",
+      "description": "Tặng học bổng khuyến khích cho em học sinh giỏi",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-43",
+      "description": "Góp tiền sửa nhà giúp gia đình chính sách",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-44",
+      "description": "Ủng hộ quỹ vì trẻ em khuyết tật",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-45",
+      "description": "Tặng quà cho bệnh nhân nghèo ở bệnh viện",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-46",
+      "description": "Góp tiền mua sách giáo khoa tặng học sinh nghèo",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-47",
+      "description": "Ủng hộ đội cứu hộ thiên tai",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-48",
+      "description": "Tặng tiền cho bạn thân đang thất nghiệp",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-49",
+      "description": "Góp quỹ tặng xe đạp cho học sinh vùng cao",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "shr-50",
+      "description": "Ủng hộ tổ chức bảo vệ động vật hoang dã",
+      "expected_jar": "sharing",
+      "predicted_jar": "sharing",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    }
+  ]
+}

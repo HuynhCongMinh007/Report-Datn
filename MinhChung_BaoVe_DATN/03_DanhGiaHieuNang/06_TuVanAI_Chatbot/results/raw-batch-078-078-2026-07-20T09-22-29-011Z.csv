@@ -1,0 +1,2 @@
+iteration,target_tool,question,ok,status,latency_ms,intent,error
+78,get_all_scholarships,"Hiện có bao nhiêu học bổng đang nhận hồ sơ?",false,,90051,,timeout of 90000ms exceeded

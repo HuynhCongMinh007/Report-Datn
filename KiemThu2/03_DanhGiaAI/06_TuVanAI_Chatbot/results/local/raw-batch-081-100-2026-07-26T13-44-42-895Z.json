@@ -1,0 +1,202 @@
+[
+  {
+    "iteration": 81,
+    "targetTool": "get_auto_transfers",
+    "question": "Có lịch chuyển tiền tự động nào của tôi đang tạm dừng không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 14801,
+    "intent": "hybrid",
+    "replyPreview": "Hiện tại, tôi chỉ có thể xem được các lịch chuyển tiền đang hoạt động chứ chưa có tính năng kiểm tra các lịch đang tạm dừng.\n\nCác lịch chuyển tiền tự động đang hoạt động của bạn bao gồm:\n*   **Trợ cấp"
+  },
+  {
+    "iteration": 82,
+    "targetTool": "get_auto_transfers",
+    "question": "Tôi có bao nhiêu lịch tự động chia tiền đang chạy?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 9161,
+    "intent": "personal_finance",
+    "replyPreview": "Bạn đang có 3 lịch tự động chia tiền đang hoạt động:\n\n1.  **Trợ cấp giải trí hàng tuần**: 100.000 VND được chuyển vào một lọ duy nhất vào thứ Hai hàng tuần.\n2.  **Lương làm thêm hàng tháng**: 5.000.00"
+  },
+  {
+    "iteration": 83,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có nên mua bàn phím cơ giá 3 triệu không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31906,
+    "intent": "hybrid",
+    "replyPreview": "Dựa trên phân tích nhanh, bạn nên **chờ** một thời gian nữa.\n\nKhoản mua sắm này thường sẽ được chi từ lọ Hưởng thụ (Enjoyment), nhưng số dư hiện tại của lọ này chỉ còn 906.000 VND, chưa đủ cho một chi"
+  },
+  {
+    "iteration": 84,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có đủ khả năng mua một chiếc laptop 15 triệu không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 65816,
+    "intent": "hybrid",
+    "replyPreview": "Dựa trên phân tích nhanh, có vẻ như bây giờ chưa phải là thời điểm thích hợp để mua laptop 15.000.000 VND.\n\nLọ Giáo dục (education) của bạn hiện có 1.924.000 VND, chưa đủ cho khoản chi này.\n\nBạn có mu"
+  },
+  {
+    "iteration": 85,
+    "targetTool": "can_afford_this",
+    "question": "Với tình hình tài chính hiện tại, tôi có nên mua tai nghe 2 triệu không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3814,
+    "intent": "hybrid",
+    "replyPreview": "Để đưa ra gợi ý phù hợp nhất, bạn có thể cho mình biết thêm về loại tai nghe bạn định mua không (ví dụ: tai nghe để học, để giải trí, hay để làm việc)?"
+  },
+  {
+    "iteration": 86,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có nên chi 5 triệu để đi du lịch cuối năm không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 50186,
+    "intent": "hybrid",
+    "replyPreview": "Với chi phí 5.000.000 VND cho chuyến du lịch, mình đề xuất bạn nên **chờ** thêm một thời gian nữa.\n\nLọ Hưởng thụ (enjoyment) của bạn, dùng cho các khoản chi tiêu giải trí và du lịch, hiện có 906.000 V"
+  },
+  {
+    "iteration": 87,
+    "targetTool": "can_afford_this",
+    "question": "Mua một đôi giày 1.5 triệu có ảnh hưởng nhiều đến tài chính của tôi không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43898,
+    "intent": "hybrid",
+    "replyPreview": "Mình vừa kiểm tra nhanh, và có vẻ như việc mua đôi giày giá 1.500.000 VND lúc này sẽ không hợp lý lắm.\n\nLọ Hưởng thụ (enjoyment) của bạn, vốn dùng cho các khoản chi tiêu cá nhân và giải trí, hiện có 9"
+  },
+  {
+    "iteration": 88,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có đủ tiền để đăng ký khóa học 4 triệu đồng không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 29049,
+    "intent": "hybrid",
+    "replyPreview": "Hiện tại, lọ Giáo dục (education) của bạn còn 1.924.000 VND, chưa đủ cho khóa học 4.000.000 VND.\n\nBạn có muốn xem xét phân bổ lại tiền từ các lọ khác không?"
+  },
+  {
+    "iteration": 89,
+    "targetTool": "compare_jar_allocation",
+    "question": "Phân bổ lọ của tôi có hợp lý theo phương pháp 6 lọ chuẩn không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 12653,
+    "intent": "hybrid",
+    "replyPreview": "Chào bạn, để đánh giá phân bổ các lọ của bạn, mình đã so sánh tỉ lệ phân bổ hiện tại và chi tiêu thực tế trong 3 tháng gần nhất của bạn với phương pháp 6 Lọ tiêu chuẩn.\n\nDưới đây là kết quả:\n\n*   **Lọ"
+  },
+  {
+    "iteration": 90,
+    "targetTool": "compare_jar_allocation",
+    "question": "So sánh cách tôi đang chia tiền với tỷ lệ 6 lọ khuyến nghị.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 14949,
+    "intent": "hybrid",
+    "replyPreview": "Chào bạn, đây là so sánh giữa tỷ lệ phân bổ hiện tại của bạn, chi tiêu thực tế trong 3 tháng qua và tỷ lệ 6 Lọ tiêu chuẩn:\n\n*   **Lọ Thiết yếu (Essentials):**\n    *   **Bạn phân bổ:** 51%\n    *   **Ti"
+  },
+  {
+    "iteration": 91,
+    "targetTool": "compare_jar_allocation",
+    "question": "Tỷ lệ phân bổ hiện tại của tôi lệch bao nhiêu so với chuẩn?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 18134,
+    "intent": "hybrid",
+    "replyPreview": "Dưới đây là so sánh giữa tỷ lệ phân bổ hiện tại của bạn và phương pháp 6 Lọ tiêu chuẩn:\n\n*   **Thiết yếu (essentials)**: 51% (thấp hơn 4% so với chuẩn 55%)\n*   **Hưởng thụ (enjoyment)**: 14% (cao hơn "
+  },
+  {
+    "iteration": 92,
+    "targetTool": "compare_jar_allocation",
+    "question": "Đánh giá xem cách chia lọ của tôi có đúng nguyên tắc 6 lọ không.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17243,
+    "intent": "hybrid",
+    "replyPreview": "Chào bạn, để đánh giá cách chia lọ của bạn, mình đã so sánh phân bổ hiện tại và chi tiêu thực tế của bạn trong 3 tháng qua với phương pháp 6 Lọ tiêu chuẩn.\n\nDưới đây là kết quả:\n\n*   **Lọ Thiết yếu (E"
+  },
+  {
+    "iteration": 93,
+    "targetTool": "compare_jar_allocation",
+    "question": "Lọ nào của tôi đang lệch nhiều nhất so với tỷ lệ khuyến nghị?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 11741,
+    "intent": "hybrid",
+    "replyPreview": "Dựa trên phân tích gần đây, lọ Tiết kiệm (Reserve) của bạn đang có chênh lệch lớn nhất so với tỷ lệ khuyến nghị. Cụ thể:\n\n*   **Lọ Tiết kiệm (Reserve)**: Bạn đang phân bổ 5%, thấp hơn 5% so với mức 10"
+  },
+  {
+    "iteration": 94,
+    "targetTool": "compare_jar_allocation",
+    "question": "Cách chia 6 lọ của tôi có cần điều chỉnh gì không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 21408,
+    "intent": "personal_finance",
+    "replyPreview": "Chào bạn,\n\nDựa trên phân tích chi tiêu 3 tháng gần nhất, mình thấy có một vài điểm bạn có thể cân nhắc để điều chỉnh cách chia 6 lọ cho phù hợp hơn với thực tế:\n\n**Điểm đáng chú ý nhất:** Lọ **Hưởng t"
+  },
+  {
+    "iteration": 95,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Giúp tôi tái cân bằng lại tỷ lệ các lọ tài chính.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 10549,
+    "intent": "personal_finance",
+    "replyPreview": "Dựa trên phân tích chi tiêu 3 tháng gần nhất, mình gợi ý bạn điều chỉnh lại tỷ lệ các lọ như sau để phù hợp hơn với thực tế:\n\n*   **Thiết yếu (essentials):** Giảm từ 51% xuống **48%** (chi tiêu thực t"
+  },
+  {
+    "iteration": 96,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Đề xuất cách phân bổ lại 6 lọ cho hợp lý hơn.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 9822,
+    "intent": "hybrid",
+    "replyPreview": "Dựa trên phân tích chi tiêu của bạn trong 3 tháng qua, mình đề xuất một vài điều chỉnh nhỏ trong cách phân bổ 6 lọ để phù hợp hơn với thực tế:\n\n*   **Lọ Thiết yếu (essentials):** Giảm từ 51% xuống **4"
+  },
+  {
+    "iteration": 97,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Tôi nên điều chỉnh % các lọ như thế nào cho tốt hơn?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16829,
+    "intent": "personal_finance",
+    "replyPreview": "Dựa trên phân tích chi tiêu 3 tháng gần nhất của bạn, mình có một vài gợi ý điều chỉnh tỷ lệ các lọ để phù hợp hơn với thực tế:\n\n*   **Lọ Thiết yếu (Essentials):** Giảm từ 51% xuống **48%**.\n    *   *"
+  },
+  {
+    "iteration": 98,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Gợi ý tỷ lệ phân bổ mới dựa trên chi tiêu thực tế của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17047,
+    "intent": "hybrid",
+    "replyPreview": "Dựa trên phân tích chi tiêu 3 tháng gần nhất, mình gợi ý bạn điều chỉnh lại tỷ lệ phân bổ các lọ như sau để phù hợp hơn với thực tế:\n\n*   **Lọ Thiết yếu (essentials):** Giảm từ 51% xuống **48%**. (Chi"
+  },
+  {
+    "iteration": 99,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Lọ giải trí đang chi vượt quá nhiều, giúp tôi cân bằng lại các lọ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 15318,
+    "intent": "personal_finance",
+    "replyPreview": "Chào bạn, mình hiểu bạn đang muốn điều chỉnh lại tỷ lệ các lọ vì lọ Hưởng thụ (enjoyment) đang chi tiêu nhiều hơn dự kiến.\n\nMình đã phân tích chi tiêu trong 3 tháng gần nhất và có một vài gợi ý điều c"
+  },
+  {
+    "iteration": 100,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Nếu muốn tiết kiệm nhiều hơn thì tôi nên chỉnh lại tỷ lệ lọ ra sao?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 46330,
+    "intent": "hybrid",
+    "replyPreview": "Chào bạn, mình đã phân tích xong chi tiêu của bạn trong 3 tháng qua.\n\nPhân tích cho thấy có một điểm quan trọng cần chú ý: chi tiêu thực tế cho lọ **Hưởng thụ (Enjoyment)** của bạn đang chiếm tới **33"
+  }
+]

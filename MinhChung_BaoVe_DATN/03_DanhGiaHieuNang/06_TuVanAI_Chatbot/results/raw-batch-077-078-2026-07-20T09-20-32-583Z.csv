@@ -1,0 +1,3 @@
+iteration,target_tool,question,ok,status,latency_ms,intent,error
+77,get_all_scholarships,"Liệt kê tất cả học bổng đang mở hiện tại.",true,200,11344,scholarships,
+78,get_all_scholarships,"Hiện có bao nhiêu học bổng đang nhận hồ sơ?",false,,90131,,timeout of 90000ms exceeded

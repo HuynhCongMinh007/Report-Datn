@@ -1,0 +1,313 @@
+{
+  "description": "Fixed labeled dataset for the transaction -> jar classification eval (POST /ai/6jars/classify). Each item is a natural Vietnamese transaction description a student might type, with the jar it should be classified into. Frozen so the eval is reproducible across runs. (batch: sharing only)",
+  "jars": [
+    "essentials",
+    "education",
+    "investment",
+    "sharing",
+    "enjoyment",
+    "reserve"
+  ],
+  "items": [
+    {
+      "id": "shr-01",
+      "description": "Quyên góp từ thiện cho trẻ em vùng cao",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-02",
+      "description": "Cho tiền người ăn xin ở ngã tư",
+      "amount": 20000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-03",
+      "description": "Đóng góp quỹ ủng hộ đồng bào lũ lụt",
+      "amount": 300000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-04",
+      "description": "Mừng cưới bạn thân",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-05",
+      "description": "Tặng quà sinh nhật cho em gái",
+      "amount": 250000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-06",
+      "description": "Góp tiền mua quà tặng thầy cô ngày 20/11",
+      "amount": 150000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-07",
+      "description": "Ủng hộ chương trình từ thiện của trường",
+      "amount": 100000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-08",
+      "description": "Cho bạn cùng phòng mượn tiền không lấy lại",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-09",
+      "description": "Đóng góp tiền xây nhà tình thương",
+      "amount": 300000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-10",
+      "description": "Tặng tiền lì xì cho các em nhỏ trong xóm",
+      "amount": 100000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-11",
+      "description": "Ủng hộ quỹ vắc xin phòng dịch",
+      "amount": 150000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-12",
+      "description": "Mua đồ tặng cho trại trẻ mồ côi",
+      "amount": 250000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-13",
+      "description": "Góp tiền phúng viếng đám tang hàng xóm",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-14",
+      "description": "Ủng hộ gây quỹ cho bạn bị bệnh nặng",
+      "amount": 300000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-15",
+      "description": "Tặng học bổng nhỏ cho em học sinh nghèo",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-16",
+      "description": "Ủng hộ quỹ mổ tim cho trẻ em nghèo",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-17",
+      "description": "Tặng quà tết cho gia đình khó khăn",
+      "amount": 300000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-18",
+      "description": "Góp tiền mua xe lăn tặng người khuyết tật",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-19",
+      "description": "Ủng hộ đồng bào miền Trung bị bão lũ",
+      "amount": 250000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-20",
+      "description": "Cho bạn vay tiền không tính lãi giúp đóng học phí",
+      "amount": 1000000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-21",
+      "description": "Tặng sách vở cho trẻ em vùng sâu vùng xa",
+      "amount": 150000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-22",
+      "description": "Góp tiền tổ chức trung thu cho trẻ em nghèo",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-23",
+      "description": "Ủng hộ quỹ học bổng cho sinh viên khó khăn",
+      "amount": 300000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-24",
+      "description": "Tặng tiền mừng tân gia cho hàng xóm",
+      "amount": 300000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-25",
+      "description": "Góp quỹ lớp giúp bạn bị tai nạn",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-26",
+      "description": "Ủng hộ chương trình hiến máu nhân đạo",
+      "amount": 50000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-27",
+      "description": "Tặng đồ chơi cho trại trẻ mồ côi",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-28",
+      "description": "Góp tiền xây cầu cho bà con vùng khó khăn",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-29",
+      "description": "Ủng hộ quỹ chống dịch bệnh",
+      "amount": 100000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-30",
+      "description": "Tặng quà cho người già neo đơn",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-31",
+      "description": "Góp tiền hỗ trợ bạn cùng lớp mổ bệnh",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-32",
+      "description": "Ủng hộ chùa làm từ thiện cuối năm",
+      "amount": 100000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-33",
+      "description": "Tặng tiền cho em họ đi học xa nhà",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-34",
+      "description": "Góp quỹ từ thiện của câu lạc bộ sinh viên",
+      "amount": 150000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-35",
+      "description": "Ủng hộ nạn nhân chất độc da cam",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-36",
+      "description": "Tặng quà 8/3 cho các cô lao công trong trường",
+      "amount": 150000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-37",
+      "description": "Góp tiền mua chăn ấm tặng người vô gia cư",
+      "amount": 300000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-38",
+      "description": "Ủng hộ quỹ khuyến học địa phương",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-39",
+      "description": "Tặng tiền lì xì cho người giúp việc",
+      "amount": 100000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-40",
+      "description": "Góp tiền hỗ trợ nạn nhân hỏa hoạn",
+      "amount": 400000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-41",
+      "description": "Ủng hộ chương trình cơm miễn phí cho người nghèo",
+      "amount": 150000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-42",
+      "description": "Tặng học bổng khuyến khích cho em học sinh giỏi",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-43",
+      "description": "Góp tiền sửa nhà giúp gia đình chính sách",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-44",
+      "description": "Ủng hộ quỹ vì trẻ em khuyết tật",
+      "amount": 200000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-45",
+      "description": "Tặng quà cho bệnh nhân nghèo ở bệnh viện",
+      "amount": 300000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-46",
+      "description": "Góp tiền mua sách giáo khoa tặng học sinh nghèo",
+      "amount": 150000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-47",
+      "description": "Ủng hộ đội cứu hộ thiên tai",
+      "amount": 100000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-48",
+      "description": "Tặng tiền cho bạn thân đang thất nghiệp",
+      "amount": 500000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-49",
+      "description": "Góp quỹ tặng xe đạp cho học sinh vùng cao",
+      "amount": 400000,
+      "expected_jar": "sharing"
+    },
+    {
+      "id": "shr-50",
+      "description": "Ủng hộ tổ chức bảo vệ động vật hoang dã",
+      "amount": 100000,
+      "expected_jar": "sharing"
+    }
+  ]
+}

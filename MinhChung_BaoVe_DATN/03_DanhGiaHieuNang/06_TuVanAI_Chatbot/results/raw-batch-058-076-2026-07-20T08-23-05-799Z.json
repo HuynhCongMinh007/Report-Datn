@@ -1,0 +1,192 @@
+[
+  {
+    "iteration": 58,
+    "targetTool": "compare_jar_allocation",
+    "question": "So sánh cách tôi đang chia tiền với tỷ lệ 6 lọ khuyến nghị.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3743,
+    "intent": "hybrid",
+    "replyPreview": "Phân bổ 6 lọ của bạn đang như sau:\n*   **Thiết yếu:** 55% (7.261.000 VND)\n*   **Giáo dục:** 10% (1.411.000 VND)\n*   **Đầu tư:** 10% (1.400.000 VND)\n*   **Hưởng thụ:** 10% (748.000 VND)\n*   **Tiết kiệm"
+  },
+  {
+    "iteration": 59,
+    "targetTool": "compare_jar_allocation",
+    "question": "Tỷ lệ phân bổ hiện tại của tôi lệch bao nhiêu so với chuẩn?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 5322,
+    "intent": "hybrid",
+    "replyPreview": "Phân bổ 6 Lọ của bạn đang có một số chênh lệch nhỏ so với chuẩn:\n\n*   **Hưởng thụ:** Tỷ lệ chi tiêu thực tế (33.04%) cao hơn nhiều so với tỷ lệ phân bổ (10%) và chuẩn (10%).\n*   **Thiết yếu:** Tỷ lệ c"
+  },
+  {
+    "iteration": 60,
+    "targetTool": "compare_jar_allocation",
+    "question": "Đánh giá xem cách chia lọ của tôi có đúng nguyên tắc 6 lọ không.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 1370,
+    "intent": "hybrid",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 61,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Giúp tôi tái cân bằng lại tỷ lệ các lọ tài chính.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3963,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Bạn có thể tái cân bằng tỷ lệ các lọ tài chính theo tỷ lệ chuẩn hoặc điều chỉnh linh hoạt cho phù hợp với hoàn cảnh sinh viên.\n\nTỷ lệ chuẩn:\n*   **Essentials (Thiết yếu):** 55%\n*   **Education (Giáo d"
+  },
+  {
+    "iteration": 62,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Đề xuất cách phân bổ lại 6 lọ cho hợp lý hơn.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2213,
+    "intent": "hybrid",
+    "replyPreview": "Để phân bổ lại 6 lọ hợp lý hơn, tôi cần xem xét tỷ lệ phân bổ hiện tại và xu hướng chi tiêu của bạn trong 3 tháng gần nhất. Bạn có muốn tôi đề xuất một phương án phân bổ mới dựa trên dữ liệu này không"
+  },
+  {
+    "iteration": 63,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Tôi nên điều chỉnh % các lọ như thế nào cho tốt hơn?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 12572,
+    "intent": "hybrid",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 64,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Gợi ý tỷ lệ phân bổ mới dựa trên chi tiêu thực tế của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 39939,
+    "intent": "hybrid",
+    "replyPreview": "Dựa trên chi tiêu 3 tháng gần nhất, đây là tỷ lệ phân bổ 6 lọ được đề xuất:\n\n*   **Thiết yếu:** Giảm từ 55% xuống 51% (chi tiêu thực tế 44.6%)\n*   **Giáo dục:** Giữ nguyên 10% (chi tiêu thực tế 9.9%)\n"
+  },
+  {
+    "iteration": 65,
+    "targetTool": "get_financial_guidelines",
+    "question": "Làm sao để quản lý nợ hiệu quả khi là sinh viên?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 8090,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Để quản lý nợ hiệu quả khi là sinh viên, bạn có thể áp dụng phương pháp 6 lọ như sau:\n\n*   **Phân loại nợ:** Xác định xem khoản nợ của bạn thuộc loại nào (tiêu dùng, học tập, hay khẩn cấp) để có kế ho"
+  },
+  {
+    "iteration": 66,
+    "targetTool": "get_financial_guidelines",
+    "question": "Thu nhập không đều thì nên chia lọ như thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3400,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Với thu nhập không đều, bạn có thể áp dụng mô hình \"Lọ Chờ\". Khi có thu nhập, hãy gom hết vào một nơi tạm gọi là \"Lọ Chờ\". Cuối tuần hoặc cuối tháng, bạn mới chia tổng số tiền đó vào 6 lọ theo tỷ lệ c"
+  },
+  {
+    "iteration": 67,
+    "targetTool": "get_financial_guidelines",
+    "question": "Có lời khuyên nào về việc đặt mục tiêu tiết kiệm không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 37906,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Để đặt mục tiêu tiết kiệm hiệu quả theo phương pháp 6 lọ, bạn có thể thực hiện các bước sau:\n\n1.  **Xác định rõ mục tiêu:** Bạn muốn tiết kiệm cho việc gì? (Ví dụ: mua laptop mới, chi phí cho một chuy"
+  },
+  {
+    "iteration": 68,
+    "targetTool": "get_financial_guidelines",
+    "question": "Cho tôi vài mẹo quản lý tài chính dành cho sinh viên.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3579,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Dưới đây là một vài mẹo quản lý tài chính dành riêng cho sinh viên:\n\n*   **Ăn uống:** Tự nấu ăn giúp bạn tiết kiệm đáng kể chi phí sinh hoạt hàng tháng so với việc ăn ngoài.\n*   **Di chuyển:** Ưu tiên"
+  },
+  {
+    "iteration": 69,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Học bổng có tên gần giống 'Vươn Cao' thì ID là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2749,
+    "intent": "scholarships",
+    "replyPreview": "Tôi không tìm thấy học bổng nào có tên gần giống 'Vươn Cao'. Tuy nhiên, đây là một vài học bổng có tên tương tự mà tôi tìm được:\n\n* Tech Innovation Scholarship (ID: 64d3de0c-edab-4a54-a232-a6a32c434d1"
+  },
+  {
+    "iteration": 70,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Tìm giúp tôi ID của học bổng tên có chữ 'Khuyến khích'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2965,
+    "intent": "scholarships",
+    "replyPreview": "Tìm thấy một số học bổng có tên gần giống với 'Khuyến khích'. Bạn có thể tham khảo danh sách dưới đây và cho biết ID của học bổng bạn cần tìm không?\n* Business Leadership Scholarship (ID: b46dddf0-28f"
+  },
+  {
+    "iteration": 71,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Học bổng nào tên gần giống 'Tài năng' vậy, cho tôi ID.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2568,
+    "intent": "scholarships",
+    "replyPreview": "Có một vài học bổng có tên gần giống với 'Tài năng'. Học bổng 'Data Science Innovation Grant' có ID là 'fefd5999-d553-46ba-899d-966b92f1331f'. Bạn có muốn xem chi tiết học bổng này không?"
+  },
+  {
+    "iteration": 72,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Tìm ID học bổng có tên chứa từ 'Sinh viên'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 37264,
+    "intent": "scholarships",
+    "replyPreview": "Tôi đã tìm thấy một số học bổng có tên chứa từ \"Sinh viên\". Tuy nhiên, kết quả khớp không cao, vì vậy bạn nên xác nhận lại tên học bổng hoặc xem xét danh sách các học bổng gợi ý:\n\n*   Marine Science R"
+  },
+  {
+    "iteration": 73,
+    "targetTool": "get_scholarship_details",
+    "question": "Học bổng đầu tiên trong danh sách đang mở yêu cầu GPA bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2217,
+    "intent": "scholarships",
+    "replyPreview": "Tôi chưa tìm thấy học bổng nào đang mở. Bạn có muốn tìm kiếm các học bổng đã đóng hoặc không hoạt động không?"
+  },
+  {
+    "iteration": 74,
+    "targetTool": "get_scholarship_details",
+    "question": "Chi tiết điều kiện và giấy tờ cần nộp cho học bổng đang phổ biến nhất là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2079,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 75,
+    "targetTool": "get_scholarship_details",
+    "question": "Học bổng có hạn nộp sớm nhất yêu cầu những gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2024,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 76,
+    "targetTool": "get_scholarship_details",
+    "question": "Cho tôi biết chi tiết đầy đủ của một học bổng bất kỳ đang mở.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4369,
+    "intent": "scholarships",
+    "replyPreview": "I've found several scholarships that are currently open for application. Here are some details:\n\n**TPBank Innovation Grant 2026**\n*   **Provider:** TPBank Foundation for Future Leaders\n*   **Benefits:"
+  }
+]

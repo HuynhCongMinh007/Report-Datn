@@ -1,0 +1,12 @@
+[
+  {
+    "iteration": 57,
+    "targetTool": "compare_jar_allocation",
+    "question": "Phân bổ lọ của tôi có hợp lý theo phương pháp 6 lọ chuẩn không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4845,
+    "intent": "hybrid",
+    "replyPreview": "Chào bạn, để xem xét việc phân bổ các lọ của bạn có hợp lý không, chúng ta hãy so sánh với tiêu chuẩn của phương pháp 6 Lọ nhé.\n\n**Tiêu chuẩn 80/20:**\n*   **Thiết yếu (55%):** Bạn đang phân bổ 55%, ch"
+  }
+]

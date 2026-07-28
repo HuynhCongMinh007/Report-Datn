@@ -1,0 +1,11 @@
+iteration,target_tool,question,ok,status,latency_ms,intent,error
+119,get_all_scholarships,"Liệt kê tất cả học bổng đang mở hiện tại.",true,200,27796,scholarships,
+120,get_all_scholarships,"Hiện có bao nhiêu học bổng đang nhận hồ sơ?",true,200,14372,scholarships,
+121,get_all_scholarships,"Cho tôi danh sách đầy đủ các học bổng hiện có.",true,200,22078,scholarships,
+122,get_all_scholarships,"Trường tôi hiện đang có những học bổng nào?",true,200,11621,scholarships,
+123,get_all_scholarships,"Có tổng cộng bao nhiêu học bổng trong hệ thống?",false,,90036,,timeout of 90000ms exceeded
+124,get_all_scholarships,"Đếm giúp tôi số lượng học bổng đang còn hạn nộp.",true,200,40185,scholarships,
+125,get_all_scholarships,"Liệt kê toàn bộ học bổng, kể cả đã đóng hạn nộp.",true,200,23914,scholarships,
+126,get_all_scholarships,"Có bao nhiêu học bổng đang tạm đóng hồ sơ?",true,200,32402,scholarships,
+127,get_all_scholarships,"Xem tất cả học bổng hiện có trên hệ thống.",true,200,45637,scholarships,
+128,get_all_scholarships,"Số lượng học bổng đang mở hiện tại là bao nhiêu?",true,200,17790,scholarships,

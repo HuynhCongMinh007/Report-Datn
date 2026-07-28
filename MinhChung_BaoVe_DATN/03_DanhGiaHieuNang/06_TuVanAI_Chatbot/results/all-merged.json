@@ -1,0 +1,1178 @@
+[
+  {
+    "iteration": 1,
+    "targetTool": "get_jar_balance",
+    "question": "Lọ chi tiêu thiết yếu của tôi còn bao nhiêu tiền?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3391,
+    "intent": "personal_finance",
+    "replyPreview": "Lọ chi tiêu thiết yếu của bạn còn 7.261.000 VND."
+  },
+  {
+    "iteration": 2,
+    "targetTool": "get_jar_balance",
+    "question": "Số dư hiện tại của lọ giáo dục là bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 24232,
+    "intent": "personal_finance",
+    "replyPreview": "Dư hiện tại của lọ Giáo dục là 1.411.000 VND."
+  },
+  {
+    "iteration": 3,
+    "targetTool": "get_jar_balance",
+    "question": "Lọ hưởng thụ còn lại bao nhiêu tiền để tôi chi tiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3133,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 4,
+    "targetTool": "get_jar_balance",
+    "question": "Cho tôi biết số dư lọ dự phòng ngay bây giờ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3441,
+    "intent": "personal_finance",
+    "replyPreview": "Dư của bạn trong lọ Dự phòng (reserve) hiện là 1.900.000 VND."
+  },
+  {
+    "iteration": 5,
+    "targetTool": "get_jar_allocations",
+    "question": "Cho tôi xem tổng quan 6 lọ tài chính của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 38046,
+    "intent": "personal_finance",
+    "replyPreview": "Đây là tổng quan 6 lọ tài chính của bạn:\n\n*   **Giáo dục**: Phân bổ 10.0%, số dư hiện tại 1.411.000 VND.\n*   **Hưởng thụ**: Phân bổ 10.0%, số dư hiện tại 748.000 VND.\n*   **Thiết yếu**: Phân bổ 55.0%,"
+  },
+  {
+    "iteration": 6,
+    "targetTool": "get_jar_allocations",
+    "question": "Hiện tại tôi đang phân bổ bao nhiêu % vào mỗi lọ?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3317,
+    "intent": "personal_finance",
+    "replyPreview": "Hiện tại, bạn đang phân bổ như sau:\n*   **Thiết yếu:** 55%\n*   **Giáo dục:** 10%\n*   **Đầu tư:** 10%\n*   **Hưởng thụ:** 10%\n*   **Tiết kiệm:** 10%\n*   **Thiện tâm:** 5%"
+  },
+  {
+    "iteration": 7,
+    "targetTool": "get_jar_allocations",
+    "question": "Danh sách 6 lọ kèm số dư từng lọ hiện tại là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3560,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là danh sách 6 lọ cùng số dư hiện tại của bạn:\n\n*   **Giáo dục**: 1.411.000 VND (10%)\n*   **Hưởng thụ**: 748.000 VND (10%)\n*   **Thiết yếu**: 7.261.000 VND (55%)\n*   **Đầu tư**: 1.400.000 VND"
+  },
+  {
+    "iteration": 8,
+    "targetTool": "get_jar_allocations",
+    "question": "Tóm tắt tình hình tất cả các lọ tài chính giúp tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3576,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là tóm tắt tình hình tài chính của bạn theo phương pháp 6 Lọ:\n\n*   **Giáo dục:** 1.411.000 VND (10%)\n*   **Hưởng thụ:** 748.000 VND (10%)\n*   **Thiết yếu:** 7.261.000 VND (55%)\n*   **Đầu tư:*"
+  },
+  {
+    "iteration": 9,
+    "targetTool": "get_jar_statistics",
+    "question": "Từ trước đến giờ lọ giáo dục tôi đã thu chi tổng cộng bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 38007,
+    "intent": "personal_finance",
+    "replyPreview": "Bạn đã thu 2.600.000 VND và chi 1.189.000 VND cho lọ Giáo dục. Dòng tiền ròng là 1.411.000 VND."
+  },
+  {
+    "iteration": 10,
+    "targetTool": "get_jar_statistics",
+    "question": "Thống kê toàn bộ dòng tiền của lọ thiết yếu từ lúc tạo tới giờ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3378,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi sẽ thống kê dòng tiền của lọ Thiết yếu cho bạn:\n\n*   **Tổng thu:** 12.600.000 VND\n*   **Tổng chi:** 5.339.000 VND\n*   **Dòng tiền ròng:** 7.261.000 VND"
+  },
+  {
+    "iteration": 11,
+    "targetTool": "get_jar_statistics",
+    "question": "Lọ đầu tư của tôi có tổng thu chi lũy kế như thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 10636,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi sẽ cung cấp thông tin về thu nhập, chi tiêu và dòng tiền ròng lũy kế của Lọ Đầu tư.\n\n**Lọ Đầu tư:**\n*   **Tổng thu:** 2.200.000 VND\n*   **Tổng chi:** 800.000 VND\n*   **Dòng tiền ròng:** 1.400.000 "
+  },
+  {
+    "iteration": 12,
+    "targetTool": "get_jar_statistics",
+    "question": "Cho tôi số liệu tổng quan lịch sử của lọ hưởng thụ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16407,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là số liệu tổng quan lịch sử của lọ Hưởng thụ:\n\n*   **Tổng thu:** 4.700.000 VND\n*   **Tổng chi:** 3.952.000 VND\n*   **Dòng tiền ròng:** 748.000 VND"
+  },
+  {
+    "iteration": 13,
+    "targetTool": "get_recent_transactions",
+    "question": "Cho tôi xem 10 giao dịch gần đây nhất của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 36523,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là 10 giao dịch gần đây nhất của bạn:\n\n1.  **20/07/2026**: Thu nhập 100.000 VND vào lọ Hưởng thụ (Auto-transfer: Single jar allocation)\n2.  **20/07/2026**: Thu nhập 100.000 VND vào lọ Hưởng t"
+  },
+  {
+    "iteration": 14,
+    "targetTool": "get_recent_transactions",
+    "question": "Gần đây tôi đã chi tiêu những khoản nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3304,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là các giao dịch gần đây của bạn:\n\n*   **20/07/2026**:\n    *   Nhận: 100.000 VND (Hưởng thụ)\n    *   Nhận: 100.000 VND (Hưởng thụ)\n    *   Chi: 2.000 VND (Thiết yếu) - [e2e-test] confirmed pr"
+  },
+  {
+    "iteration": 15,
+    "targetTool": "get_recent_transactions",
+    "question": "Liệt kê các giao dịch mới nhất trên tất cả các lọ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3893,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là các giao dịch mới nhất:\n\n*   **20/07/2026**:\n    *   Nhận Auto-transfer: Single jar allocation vào lọ Hưởng thụ: 100.000 VND\n    *   Nhận Auto-transfer: Single jar allocation vào lọ Hưởng "
+  },
+  {
+    "iteration": 16,
+    "targetTool": "get_recent_transactions",
+    "question": "Tôi vừa mới tiêu tiền vào những việc gì gần đây?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3789,
+    "intent": "hybrid",
+    "replyPreview": "Dưới đây là những giao dịch gần đây của bạn:\n\n**Ngày 20 tháng 7:**\n*   Thu nhập: 100.000 VND (tự động chuyển) vào lọ Hưởng thụ.\n*   Thu nhập: 100.000 VND (tự động chuyển) vào lọ Hưởng thụ.\n*   Chi tiê"
+  },
+  {
+    "iteration": 17,
+    "targetTool": "get_top_expenses",
+    "question": "Tháng này tôi tiêu nhiều nhất vào việc gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 25628,
+    "intent": "personal_finance",
+    "replyPreview": "Tháng này bạn tiêu nhiều nhất vào khoản \"Khác\" trong lọ \"Thiết yếu\" với 3.119.000 VND."
+  },
+  {
+    "iteration": 18,
+    "targetTool": "get_top_expenses",
+    "question": "10 khoản chi lớn nhất trong 30 ngày qua của tôi là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4513,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là 10 khoản chi lớn nhất của bạn trong 30 ngày qua:\n\n1.  **2.000.000 VND** - Cà phê với bạn bè (Hưởng thụ)\n2.  **2.000.000 VND** - Chuyển tiền giữa các hũ (Thiết yếu)\n3.  **1.800.000 VND** - "
+  },
+  {
+    "iteration": 19,
+    "targetTool": "get_top_expenses",
+    "question": "Khoản chi tiêu lớn nhất gần đây của tôi là khoản nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3402,
+    "intent": "personal_finance",
+    "replyPreview": "Khoản chi tiêu lớn nhất gần đây của bạn là 2.000.000 VND cho \"Cà phê với bạn bè\" và \"Chuyển tiền giữa các hũ\"."
+  },
+  {
+    "iteration": 20,
+    "targetTool": "get_top_expenses",
+    "question": "Cho tôi biết những chi tiêu đáng kể nhất tuần vừa rồi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 5645,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là những chi tiêu đáng kể nhất của bạn trong tuần vừa qua:\n*   Chuyển tiền giữa các hũ: 2.000.000 VND (vào lọ Thiết yếu)\n*   Mua vé concert sinh viên: 690.000 VND (vào lọ Hưởng thụ)\n*   Ăn tố"
+  },
+  {
+    "iteration": 21,
+    "targetTool": "search_transactions",
+    "question": "Tìm giúp tôi giao dịch nào có chữ 'Grab' trong mô tả.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3884,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi tìm thấy 2 giao dịch có chữ 'Grab' trong mô tả:\n\n*   **Grab về nhà**: Chi 60.000 VND, thuộc lọ Essentials.\n*   **Grab đi học**: Chi 80.000 VND, thuộc lọ Essentials."
+  },
+  {
+    "iteration": 22,
+    "targetTool": "search_transactions",
+    "question": "Tôi có giao dịch nào liên quan đến 'cà phê' không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3764,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi tìm thấy 4 giao dịch liên quan đến 'cà phê':\n*   Ngày 19/07/2026: 3 giao dịch, mỗi giao dịch 50.000 VND, thuộc lọ Hưởng thụ.\n*   Ngày 12/07/2026: 1 giao dịch, 2.000.000 VND, thuộc lọ Hưởng thụ."
+  },
+  {
+    "iteration": 23,
+    "targetTool": "search_transactions",
+    "question": "Tìm kiếm các giao dịch có từ 'học phí'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 15885,
+    "intent": "personal_finance",
+    "replyPreview": "Không tìm thấy giao dịch nào có chứa từ khóa 'học phí'."
+  },
+  {
+    "iteration": 24,
+    "targetTool": "search_transactions",
+    "question": "Có giao dịch nào chứa từ 'sách' trong mô tả không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16086,
+    "intent": "personal_finance",
+    "replyPreview": "Có, có 2 giao dịch chứa từ 'sách':\n\n1.  **Mua giáo trình + sách tham khảo**: 500.000 VND, ngày 11/07/2026, thuộc lọ Giáo dục.\n2.  **Mua sách kỹ năng tài chính**: 240.000 VND, ngày 10/07/2026, thuộc lọ"
+  },
+  {
+    "iteration": 25,
+    "targetTool": "get_jar_tags",
+    "question": "Lọ hưởng thụ tôi đang gắn những tag nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3182,
+    "intent": "personal_finance",
+    "replyPreview": "Lọ Hưởng thụ của bạn có các tag sau: Giải trí, Ăn ngoài, Mua sắm, Du lịch, Sở thích, Khác."
+  },
+  {
+    "iteration": 26,
+    "targetTool": "get_jar_tags",
+    "question": "Danh sách tag đang hoạt động của lọ thiết yếu là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2258,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Xin lỗi, tôi không thể cung cấp danh sách các thẻ tag đang hoạt động cho lọ thiết yếu. Tôi chỉ có thể cung cấp thông tin về các loại lọ trong phương pháp 6 Lọ."
+  },
+  {
+    "iteration": 27,
+    "targetTool": "get_jar_tags",
+    "question": "Tôi đã tạo những tag nào cho lọ giải trí?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 36986,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Xin lỗi, tôi không thể xem các thẻ bạn đã tạo cho lọ \"Hưởng thụ\". Tuy nhiên, tôi có thể cung cấp cho bạn thông tin về cách sử dụng lọ này theo phương pháp 6 Lọ.\n\nLọ \"Hưởng thụ\" (Enjoyment) chiếm 10% t"
+  },
+  {
+    "iteration": 28,
+    "targetTool": "get_jar_tags",
+    "question": "Cho tôi xem các tag của lọ dự phòng.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13831,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là các tag của lọ Dự phòng:\n* Dự phòng\n* Khẩn cấp\n* Bảo hiểm\n* Tiết kiệm ngắn hạn\n* Khác"
+  },
+  {
+    "iteration": 29,
+    "targetTool": "get_budget_status",
+    "question": "Ngân sách lọ thiết yếu tháng này còn lại bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53479,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 30,
+    "targetTool": "get_budget_status",
+    "question": "Tình trạng ngân sách của lọ giải trí hiện tại ra sao?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3380,
+    "intent": "personal_finance",
+    "replyPreview": "Dữ liệu về ngân sách của lọ Hưởng thụ (Enjoyment) bao gồm các mục sau: Giải trí, Ăn ngoài, Mua sắm, Du lịch, Sở thích và Khác. Bạn có muốn biết chi tiết về khoản chi nào không?"
+  },
+  {
+    "iteration": 31,
+    "targetTool": "get_budget_status",
+    "question": "Tôi đã dùng hết bao nhiêu % ngân sách lọ ăn uống?",
+    "ok": false,
+    "latencyMs": 90298,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 31,
+    "targetTool": "get_budget_status",
+    "question": "Tôi đã dùng hết bao nhiêu % ngân sách lọ ăn uống?",
+    "ok": false,
+    "latencyMs": 90049,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 32,
+    "targetTool": "get_budget_status",
+    "question": "Ngân sách còn lại của lọ hưởng thụ tháng này là bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 25581,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 33,
+    "targetTool": "get_tag_spending_summary",
+    "question": "Tháng 5 tôi chi bao nhiêu cho từng tag trong lọ thiết yếu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2236,
+    "intent": "personal_finance",
+    "replyPreview": "Rất tiếc, tôi không tìm thấy dữ liệu chi tiêu nào cho tháng 5. Bạn có muốn cung cấp thêm thông tin hoặc xem chi tiêu của tháng khác không?"
+  },
+  {
+    "iteration": 34,
+    "targetTool": "get_tag_spending_summary",
+    "question": "Tổng hợp chi tiêu theo tag của tháng trước giúp tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3895,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi đã tổng hợp chi tiêu theo tag của tháng trước (tháng 6 năm 2026) cho bạn:\n\n*   **Đầu tư - Khác:** 500.000 VND (1 giao dịch)\n*   **Tiết kiệm - Khác:** 300.000 VND (1 giao dịch)"
+  },
+  {
+    "iteration": 35,
+    "targetTool": "get_tag_spending_summary",
+    "question": "Tag nào tôi chi nhiều tiền nhất trong tháng này?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3653,
+    "intent": "personal_finance",
+    "replyPreview": "Trong tháng này, bạn đã chi nhiều tiền nhất vào các tag sau:\n*   **Khác** (lọ Thiết yếu): 3.119.000 VND\n*   **Khác** (lọ Hưởng thụ): 2.662.000 VND\n*   **Thiết yếu** (lọ Thiết yếu): 2.220.000 VND"
+  },
+  {
+    "iteration": 36,
+    "targetTool": "get_tag_spending_summary",
+    "question": "Phân tích chi tiêu theo từng tag của tháng hiện tại.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3534,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là phân tích chi tiêu theo từng tag của tháng 7 năm 2026:\n\n**Thiết yếu:**\n*   Khác: 3.119.000 VND (12 giao dịch)\n*   Thiết yếu: 2.220.000 VND (2 giao dịch)\n\n**Hưởng thụ:**\n*   Khác: 2.662.000"
+  },
+  {
+    "iteration": 37,
+    "targetTool": "get_monthly_summary",
+    "question": "Tổng kết thu chi tháng 3 của tôi như thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2997,
+    "intent": "personal_finance",
+    "replyPreview": "Vào tháng 3, bạn chưa có giao dịch nào được ghi nhận. Bạn có muốn ghi nhận thu nhập hoặc chi tiêu cho tháng này không?"
+  },
+  {
+    "iteration": 38,
+    "targetTool": "get_monthly_summary",
+    "question": "Tháng trước tôi thu và chi tổng cộng bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2192,
+    "intent": "personal_finance",
+    "replyPreview": "Trong tháng 6, tổng thu nhập của bạn là 8.000.000 VND và tổng chi phí là 800.000 VND. Dòng tiền ròng là 7.200.000 VND."
+  },
+  {
+    "iteration": 39,
+    "targetTool": "get_monthly_summary",
+    "question": "Cho tôi báo cáo tổng quan thu chi tháng này.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17303,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là báo cáo thu chi tháng 7/2026:\n\n**Thiết yếu:**\n*   Tổng thu: 8.200.000 VND\n*   Tổng chi: 5.339.000 VND\n*   Dòng tiền: +2.861.000 VND\n\n**Hưởng thụ:**\n*   Tổng thu: 3.900.000 VND\n*   Tổng chi"
+  },
+  {
+    "iteration": 40,
+    "targetTool": "get_monthly_summary",
+    "question": "Tóm tắt tài chính tháng 6 của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 18615,
+    "intent": "personal_finance",
+    "replyPreview": "Tháng 6 vừa qua, tài chính của bạn như sau:\n\n*   **Đầu tư**: Thu 800.000 VND, Chi 500.000 VND, Dòng tiền: 300.000 VND\n*   **Tiết kiệm**: Thu 800.000 VND, Chi 300.000 VND, Dòng tiền: 500.000 VND\n*   **"
+  },
+  {
+    "iteration": 41,
+    "targetTool": "compare_spending_between_two_months",
+    "question": "So sánh chi tiêu tháng này với tháng trước giúp tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4264,
+    "intent": "personal_finance",
+    "replyPreview": "**Tháng 7 (2026-07):**\n\n*   **Tổng thu:** 11.600.000 VND\n*   **Tổng chi:** 7.451.000 VND\n*   **Dòng tiền ròng:** 4.149.000 VND\n\n**Tháng 6 (2026-06):**\n\n*   **Tổng thu:** 8.600.000 VND\n*   **Tổng chi:*"
+  },
+  {
+    "iteration": 42,
+    "targetTool": "compare_spending_between_two_months",
+    "question": "Tháng 4 và tháng 5 tôi chi tiêu khác nhau thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16200,
+    "intent": "personal_finance",
+    "replyPreview": "Trong tháng 4, tổng chi tiêu của bạn là 0 VND và tổng thu nhập là 0 VND.\nTrong tháng 5, tổng chi tiêu của bạn là 0 VND và tổng thu nhập là 0 VND.\n\nDường như bạn chưa có giao dịch nào trong hai tháng n"
+  },
+  {
+    "iteration": 43,
+    "targetTool": "compare_spending_between_two_months",
+    "question": "Chi tiêu của tôi tháng này tăng hay giảm so với tháng trước?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 1924,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 44,
+    "targetTool": "compare_spending_between_two_months",
+    "question": "So sánh thu nhập 2 tháng gần nhất của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4119,
+    "intent": "personal_finance",
+    "replyPreview": "Tháng 7 có tổng thu nhập là 18.800.000 VND và tổng chi là 11.058.000 VND. Tháng 6 có tổng thu nhập là 8.400.000 VND và tổng chi là 800.000 VND."
+  },
+  {
+    "iteration": 45,
+    "targetTool": "get_spending_trend",
+    "question": "Xu hướng chi tiêu lọ thiết yếu trong 6 tháng qua của tôi thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3399,
+    "intent": "personal_finance",
+    "replyPreview": "Trong 2 tháng gần đây, chi tiêu cho Lọ Thiết yếu của bạn như sau:\n- Tháng 6/2026: 0 VND\n- Tháng 7/2026: 5.339.000 VND"
+  },
+  {
+    "iteration": 46,
+    "targetTool": "get_spending_trend",
+    "question": "Chi tiêu lọ giải trí có xu hướng tăng hay giảm gần đây?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 38040,
+    "intent": "hybrid",
+    "replyPreview": "Trong 6 tháng qua, chi tiêu cho lọ Hưởng thụ (Enjoyment) của bạn có xu hướng tăng. Cụ thể, tháng 6 chi tiêu là 0 VND, nhưng tháng 7 đã tăng lên 3.952.000 VND."
+  },
+  {
+    "iteration": 47,
+    "targetTool": "get_spending_trend",
+    "question": "Cho tôi xem biến động chi tiêu lọ giáo dục vài tháng qua.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 40068,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi sẽ hiển thị biến động chi tiêu của lọ Giáo dục trong 3 tháng qua.\n\n**Tháng 6/2026:**\n*   Tổng chi: 0 VND\n*   Tổng thu: 800.000 VND\n\n**Tháng 7/2026:**\n*   Tổng chi: 1.189.000 VND\n*   Tổng thu: 2.00"
+  },
+  {
+    "iteration": 48,
+    "targetTool": "get_spending_trend",
+    "question": "Xu hướng thu chi lọ dự phòng gần đây ra sao?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3980,
+    "intent": "personal_finance",
+    "replyPreview": "**Xu hướng chi tiêu lọ Dự phòng (Reserve) trong 6 tháng qua:**\n\n*   **Tháng 6/2026:** Ghi nhận chi tiêu 300.000 VND và thu nhập 800.000 VND.\n*   **Tháng 7/2026:** Chưa ghi nhận chi tiêu, thu nhập 1.40"
+  },
+  {
+    "iteration": 49,
+    "targetTool": "get_auto_transfers",
+    "question": "Tôi có đang cài lịch tự động chia tiền không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3580,
+    "intent": "personal_finance",
+    "replyPreview": "Có, bạn đang cài đặt các lịch tự động sau:\n\n*   **Seed Finance - Phân bổ học bổng hàng tháng**: Phân bổ 14.000.000 VND mỗi tháng theo tỷ lệ mặc định.\n*   **Seed Finance - Tiết kiệm khẩn cấp**: Chuyển "
+  },
+  {
+    "iteration": 50,
+    "targetTool": "get_auto_transfers",
+    "question": "Danh sách các lịch chuyển tiền tự động đang hoạt động của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3796,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là danh sách các lịch chuyển tiền tự động đang hoạt động của bạn:\n\n*   **Seed Finance - Phân bổ học bổng hàng tháng**: 14.000.000 VND mỗi tháng, vào ngày mùng 5 hàng tháng. Phân bổ theo tỷ lệ"
+  },
+  {
+    "iteration": 51,
+    "targetTool": "get_auto_transfers",
+    "question": "Tôi đã thiết lập tự động phân bổ thu nhập chưa?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2619,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 52,
+    "targetTool": "get_auto_transfers",
+    "question": "Cho tôi xem các lịch tự động đang bật.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2570,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là các lịch chuyển tiền tự động đang hoạt động:\n\n*   **Seed Finance - Phân bổ học bổng hàng tháng**: 14.000.000 VND mỗi tháng, phân bổ theo tỷ lệ mặc định.\n*   **Seed Finance - Tiết kiệm khẩn"
+  },
+  {
+    "iteration": 53,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có nên mua bàn phím cơ giá 3 triệu không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4851,
+    "intent": "hybrid",
+    "replyPreview": "Bạn có thể cân nhắc mua bàn phím cơ, tuy nhiên, với số dư hiện tại ở lọ Hưởng thụ là 748.000 VND, bạn nên chờ thêm một thời gian hoặc xem xét các lựa chọn khác có giá thấp hơn để đảm bảo cân đối tài c"
+  },
+  {
+    "iteration": 54,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có đủ khả năng mua một chiếc laptop 15 triệu không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17666,
+    "intent": "hybrid",
+    "replyPreview": "Bạn vui lòng chờ một chút, tôi đang gặp sự cố khi truy cập dữ liệu tài chính của bạn. Tôi sẽ thử lại ngay."
+  },
+  {
+    "iteration": 55,
+    "targetTool": "can_afford_this",
+    "question": "Với tình hình tài chính hiện tại, tôi có nên mua tai nghe 2 triệu không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16485,
+    "intent": "hybrid",
+    "replyPreview": "Bạn ơi, với tình hình tài chính hiện tại, mình chưa nên mua tai nghe 2 triệu đâu. Số dư trong lọ Hưởng thụ hiện tại còn hơi ít, khoản chi này sẽ làm hụt ngân sách tháng này đó."
+  },
+  {
+    "iteration": 56,
+    "targetTool": "can_afford_this",
+    "question": "Tôi có nên chi 5 triệu để đi du lịch cuối năm không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 26626,
+    "intent": "hybrid",
+    "replyPreview": "Bạn có thể cân nhắc đi du lịch cuối năm. Tuy nhiên, hiện tại số dư trong lọ Hưởng thụ của bạn là 748.000 VND, có thể chưa đủ cho chuyến đi 5 triệu. Bạn có muốn xem xét lại kế hoạch chi tiêu hoặc bổ su"
+  },
+  {
+    "iteration": 57,
+    "targetTool": "compare_jar_allocation",
+    "question": "Phân bổ lọ của tôi có hợp lý theo phương pháp 6 lọ chuẩn không?",
+    "ok": false,
+    "latencyMs": 90347,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 57,
+    "targetTool": "compare_jar_allocation",
+    "question": "Phân bổ lọ của tôi có hợp lý theo phương pháp 6 lọ chuẩn không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4845,
+    "intent": "hybrid",
+    "replyPreview": "Chào bạn, để xem xét việc phân bổ các lọ của bạn có hợp lý không, chúng ta hãy so sánh với tiêu chuẩn của phương pháp 6 Lọ nhé.\n\n**Tiêu chuẩn 80/20:**\n*   **Thiết yếu (55%):** Bạn đang phân bổ 55%, ch"
+  },
+  {
+    "iteration": 58,
+    "targetTool": "compare_jar_allocation",
+    "question": "So sánh cách tôi đang chia tiền với tỷ lệ 6 lọ khuyến nghị.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3743,
+    "intent": "hybrid",
+    "replyPreview": "Phân bổ 6 lọ của bạn đang như sau:\n*   **Thiết yếu:** 55% (7.261.000 VND)\n*   **Giáo dục:** 10% (1.411.000 VND)\n*   **Đầu tư:** 10% (1.400.000 VND)\n*   **Hưởng thụ:** 10% (748.000 VND)\n*   **Tiết kiệm"
+  },
+  {
+    "iteration": 59,
+    "targetTool": "compare_jar_allocation",
+    "question": "Tỷ lệ phân bổ hiện tại của tôi lệch bao nhiêu so với chuẩn?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 5322,
+    "intent": "hybrid",
+    "replyPreview": "Phân bổ 6 Lọ của bạn đang có một số chênh lệch nhỏ so với chuẩn:\n\n*   **Hưởng thụ:** Tỷ lệ chi tiêu thực tế (33.04%) cao hơn nhiều so với tỷ lệ phân bổ (10%) và chuẩn (10%).\n*   **Thiết yếu:** Tỷ lệ c"
+  },
+  {
+    "iteration": 60,
+    "targetTool": "compare_jar_allocation",
+    "question": "Đánh giá xem cách chia lọ của tôi có đúng nguyên tắc 6 lọ không.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 1370,
+    "intent": "hybrid",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 61,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Giúp tôi tái cân bằng lại tỷ lệ các lọ tài chính.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3963,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Bạn có thể tái cân bằng tỷ lệ các lọ tài chính theo tỷ lệ chuẩn hoặc điều chỉnh linh hoạt cho phù hợp với hoàn cảnh sinh viên.\n\nTỷ lệ chuẩn:\n*   **Essentials (Thiết yếu):** 55%\n*   **Education (Giáo d"
+  },
+  {
+    "iteration": 62,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Đề xuất cách phân bổ lại 6 lọ cho hợp lý hơn.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2213,
+    "intent": "hybrid",
+    "replyPreview": "Để phân bổ lại 6 lọ hợp lý hơn, tôi cần xem xét tỷ lệ phân bổ hiện tại và xu hướng chi tiêu của bạn trong 3 tháng gần nhất. Bạn có muốn tôi đề xuất một phương án phân bổ mới dựa trên dữ liệu này không"
+  },
+  {
+    "iteration": 63,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Tôi nên điều chỉnh % các lọ như thế nào cho tốt hơn?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 12572,
+    "intent": "hybrid",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 64,
+    "targetTool": "suggest_jar_rebalancing",
+    "question": "Gợi ý tỷ lệ phân bổ mới dựa trên chi tiêu thực tế của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 39939,
+    "intent": "hybrid",
+    "replyPreview": "Dựa trên chi tiêu 3 tháng gần nhất, đây là tỷ lệ phân bổ 6 lọ được đề xuất:\n\n*   **Thiết yếu:** Giảm từ 55% xuống 51% (chi tiêu thực tế 44.6%)\n*   **Giáo dục:** Giữ nguyên 10% (chi tiêu thực tế 9.9%)\n"
+  },
+  {
+    "iteration": 65,
+    "targetTool": "get_financial_guidelines",
+    "question": "Làm sao để quản lý nợ hiệu quả khi là sinh viên?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 8090,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Để quản lý nợ hiệu quả khi là sinh viên, bạn có thể áp dụng phương pháp 6 lọ như sau:\n\n*   **Phân loại nợ:** Xác định xem khoản nợ của bạn thuộc loại nào (tiêu dùng, học tập, hay khẩn cấp) để có kế ho"
+  },
+  {
+    "iteration": 66,
+    "targetTool": "get_financial_guidelines",
+    "question": "Thu nhập không đều thì nên chia lọ như thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3400,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Với thu nhập không đều, bạn có thể áp dụng mô hình \"Lọ Chờ\". Khi có thu nhập, hãy gom hết vào một nơi tạm gọi là \"Lọ Chờ\". Cuối tuần hoặc cuối tháng, bạn mới chia tổng số tiền đó vào 6 lọ theo tỷ lệ c"
+  },
+  {
+    "iteration": 67,
+    "targetTool": "get_financial_guidelines",
+    "question": "Có lời khuyên nào về việc đặt mục tiêu tiết kiệm không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 37906,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Để đặt mục tiêu tiết kiệm hiệu quả theo phương pháp 6 lọ, bạn có thể thực hiện các bước sau:\n\n1.  **Xác định rõ mục tiêu:** Bạn muốn tiết kiệm cho việc gì? (Ví dụ: mua laptop mới, chi phí cho một chuy"
+  },
+  {
+    "iteration": 68,
+    "targetTool": "get_financial_guidelines",
+    "question": "Cho tôi vài mẹo quản lý tài chính dành cho sinh viên.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3579,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Dưới đây là một vài mẹo quản lý tài chính dành riêng cho sinh viên:\n\n*   **Ăn uống:** Tự nấu ăn giúp bạn tiết kiệm đáng kể chi phí sinh hoạt hàng tháng so với việc ăn ngoài.\n*   **Di chuyển:** Ưu tiên"
+  },
+  {
+    "iteration": 69,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Học bổng có tên gần giống 'Vươn Cao' thì ID là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2749,
+    "intent": "scholarships",
+    "replyPreview": "Tôi không tìm thấy học bổng nào có tên gần giống 'Vươn Cao'. Tuy nhiên, đây là một vài học bổng có tên tương tự mà tôi tìm được:\n\n* Tech Innovation Scholarship (ID: 64d3de0c-edab-4a54-a232-a6a32c434d1"
+  },
+  {
+    "iteration": 70,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Tìm giúp tôi ID của học bổng tên có chữ 'Khuyến khích'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2965,
+    "intent": "scholarships",
+    "replyPreview": "Tìm thấy một số học bổng có tên gần giống với 'Khuyến khích'. Bạn có thể tham khảo danh sách dưới đây và cho biết ID của học bổng bạn cần tìm không?\n* Business Leadership Scholarship (ID: b46dddf0-28f"
+  },
+  {
+    "iteration": 71,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Học bổng nào tên gần giống 'Tài năng' vậy, cho tôi ID.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2568,
+    "intent": "scholarships",
+    "replyPreview": "Có một vài học bổng có tên gần giống với 'Tài năng'. Học bổng 'Data Science Innovation Grant' có ID là 'fefd5999-d553-46ba-899d-966b92f1331f'. Bạn có muốn xem chi tiết học bổng này không?"
+  },
+  {
+    "iteration": 72,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Tìm ID học bổng có tên chứa từ 'Sinh viên'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 37264,
+    "intent": "scholarships",
+    "replyPreview": "Tôi đã tìm thấy một số học bổng có tên chứa từ \"Sinh viên\". Tuy nhiên, kết quả khớp không cao, vì vậy bạn nên xác nhận lại tên học bổng hoặc xem xét danh sách các học bổng gợi ý:\n\n*   Marine Science R"
+  },
+  {
+    "iteration": 73,
+    "targetTool": "get_scholarship_details",
+    "question": "Học bổng đầu tiên trong danh sách đang mở yêu cầu GPA bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2217,
+    "intent": "scholarships",
+    "replyPreview": "Tôi chưa tìm thấy học bổng nào đang mở. Bạn có muốn tìm kiếm các học bổng đã đóng hoặc không hoạt động không?"
+  },
+  {
+    "iteration": 74,
+    "targetTool": "get_scholarship_details",
+    "question": "Chi tiết điều kiện và giấy tờ cần nộp cho học bổng đang phổ biến nhất là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2079,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 75,
+    "targetTool": "get_scholarship_details",
+    "question": "Học bổng có hạn nộp sớm nhất yêu cầu những gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2024,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 76,
+    "targetTool": "get_scholarship_details",
+    "question": "Cho tôi biết chi tiết đầy đủ của một học bổng bất kỳ đang mở.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4369,
+    "intent": "scholarships",
+    "replyPreview": "I've found several scholarships that are currently open for application. Here are some details:\n\n**TPBank Innovation Grant 2026**\n*   **Provider:** TPBank Foundation for Future Leaders\n*   **Benefits:"
+  },
+  {
+    "iteration": 77,
+    "targetTool": "get_all_scholarships",
+    "question": "Liệt kê tất cả học bổng đang mở hiện tại.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 11344,
+    "intent": "scholarships",
+    "replyPreview": "I have found the following scholarships that are currently open for application:\n\n**TPBank Innovation Grant 2026**\n*   **Provider:** TPBank Foundation for Future Leaders\n*   **Benefits:** Project spon"
+  },
+  {
+    "iteration": 77,
+    "targetTool": "get_all_scholarships",
+    "question": "Liệt kê tất cả học bổng đang mở hiện tại.",
+    "ok": false,
+    "latencyMs": 90061,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 78,
+    "targetTool": "get_all_scholarships",
+    "question": "Hiện có bao nhiêu học bổng đang nhận hồ sơ?",
+    "ok": false,
+    "latencyMs": 90131,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 78,
+    "targetTool": "get_all_scholarships",
+    "question": "Hiện có bao nhiêu học bổng đang nhận hồ sơ?",
+    "ok": false,
+    "latencyMs": 90020,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 78,
+    "targetTool": "get_all_scholarships",
+    "question": "Hiện có bao nhiêu học bổng đang nhận hồ sơ?",
+    "ok": false,
+    "latencyMs": 90051,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 79,
+    "targetTool": "get_all_scholarships",
+    "question": "Cho tôi danh sách đầy đủ các học bổng hiện có.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 64286,
+    "intent": "scholarships",
+    "replyPreview": "Dưới đây là danh sách đầy đủ các học bổng hiện có:\n\n**Học bổng TPBank Innovation Grant 2026**\n* Nhà cung cấp: TPBank Foundation for Future Leaders\n* Quyền lợi: Tài trợ dự án, Mentor doanh nghiệp, Demo"
+  },
+  {
+    "iteration": 80,
+    "targetTool": "get_all_scholarships",
+    "question": "Trường tôi hiện đang có những học bổng nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2122,
+    "intent": "scholarships",
+    "replyPreview": "Mình chưa tìm thấy hồ sơ xin học bổng nào bạn đã đăng ký. Bạn có muốn tìm kiếm các học bổng mới không?"
+  },
+  {
+    "iteration": 81,
+    "targetTool": "get_my_full_profile",
+    "question": "Xem lại hồ sơ đầy đủ của tôi (học vấn, kỹ năng, sở thích) để tư vấn học bổng phù hợp.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 188,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  },
+  {
+    "iteration": 82,
+    "targetTool": "get_my_full_profile",
+    "question": "Hồ sơ cá nhân của tôi hiện đang có những thông tin gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 5144,
+    "intent": "personal_finance",
+    "replyPreview": "Hiện tại, hồ sơ cá nhân của bạn có các thông tin sau:\n\n**Học vấn:**\n*   Bạn đang là sinh viên năm 3, chuyên ngành Công nghệ thông tin tại University of Science, VNU-HCM.\n*   GPA hiện tại là 3.45.\n*   "
+  },
+  {
+    "iteration": 83,
+    "targetTool": "get_my_full_profile",
+    "question": "Dựa vào toàn bộ hồ sơ của tôi, tôi phù hợp với loại học bổng nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 123,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 8 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  },
+  {
+    "iteration": 84,
+    "targetTool": "get_my_full_profile",
+    "question": "Tóm tắt hồ sơ học vấn và kỹ năng hiện tại của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 5270,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 85,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Tôi đang apply những học bổng nào rồi?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2179,
+    "intent": "scholarships",
+    "replyPreview": "Mình chưa thấy bạn apply học bổng nào cả. Bạn có muốn tìm kiếm học bổng không?"
+  },
+  {
+    "iteration": 86,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Danh sách hồ sơ học bổng tôi đã nộp là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13707,
+    "intent": "scholarships",
+    "replyPreview": "Bạn chưa nộp hồ sơ xin học bổng nào."
+  },
+  {
+    "iteration": 87,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Hồ sơ nào của tôi đang chờ xét duyệt?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 22089,
+    "intent": "hybrid",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 88,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Tôi đã nộp bao nhiêu hồ sơ học bổng từ trước đến giờ?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2400,
+    "intent": "scholarships",
+    "replyPreview": "Bạn chưa nộp hồ sơ học bổng nào trước đây."
+  },
+  {
+    "iteration": 89,
+    "targetTool": "get_scholarship_application_detail",
+    "question": "Hồ sơ apply học bổng gần nhất của tôi còn thiếu giấy tờ gì không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3175,
+    "intent": "scholarships",
+    "replyPreview": "Bạn chưa có hồ sơ xin học bổng nào trong hệ thống. Bạn có muốn tìm kiếm học bổng không?"
+  },
+  {
+    "iteration": 90,
+    "targetTool": "get_scholarship_application_detail",
+    "question": "Tôi có khả năng đậu học bổng mà tôi vừa apply không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3360,
+    "intent": "scholarships",
+    "replyPreview": "Tôi xin lỗi, nhưng tôi không tìm thấy bất kỳ hồ sơ xin học bổng nào trong tài khoản của bạn. Bạn có muốn tìm kiếm các học bổng có sẵn không?"
+  },
+  {
+    "iteration": 91,
+    "targetTool": "get_scholarship_application_detail",
+    "question": "Trạng thái xét duyệt hồ sơ học bổng của tôi hiện ra sao?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4963,
+    "intent": "scholarships",
+    "replyPreview": "Mình kiểm tra thấy bạn chưa có hồ sơ xin học bổng nào. Bạn có muốn tìm kiếm học bổng không?"
+  },
+  {
+    "iteration": 92,
+    "targetTool": "get_scholarship_application_detail",
+    "question": "Xem chi tiết lịch sử xét duyệt hồ sơ học bổng gần nhất của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 95,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 57 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Nhấn vào từng thẻ để xem tóm tắt."
+  },
+  {
+    "iteration": 93,
+    "targetTool": "get_scholarship_recommendations_for_chat",
+    "question": "Gợi ý học bổng phù hợp với hồ sơ của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 118,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  },
+  {
+    "iteration": 94,
+    "targetTool": "get_scholarship_recommendations_for_chat",
+    "question": "Học bổng nào tôi nên apply dựa trên thông tin hiện tại?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3248,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 95,
+    "targetTool": "get_scholarship_recommendations_for_chat",
+    "question": "Đề xuất giúp tôi vài học bổng phù hợp nhất.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 117,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  },
+  {
+    "iteration": 96,
+    "targetTool": "get_scholarship_recommendations_for_chat",
+    "question": "Với hồ sơ của tôi thì học bổng nào khả thi nhất?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3071,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 97,
+    "targetTool": "search_scholarship_recommendations_by_criteria",
+    "question": "Học bổng nào yêu cầu GPA từ 3.2 trở lên và hạn nộp trong tháng tới?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2838,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã tìm thấy 5 học bổng phù hợp với yêu cầu của bạn. Dưới đây là 3 học bổng nổi bật nhất."
+  },
+  {
+    "iteration": 98,
+    "targetTool": "search_scholarship_recommendations_by_criteria",
+    "question": "Tìm học bổng của trường Đại học Bách Khoa cho tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2245,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 99,
+    "targetTool": "search_scholarship_recommendations_by_criteria",
+    "question": "Có học bổng nào dành riêng cho ngành Công nghệ thông tin không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2196,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 100,
+    "targetTool": "search_scholarship_recommendations_by_criteria",
+    "question": "Tìm học bổng có giá trị từ 5 triệu trở lên.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 42005,
+    "intent": "scholarships",
+    "replyPreview": "Chưa có học bổng nào với thông tin bạn cung cấp. Bạn có thể thử tìm kiếm với các tiêu chí khác không?"
+  },
+  {
+    "iteration": 101,
+    "targetTool": "get_scholarship_recommendations_for_described_profile",
+    "question": "Bạn tôi GPA 3.5, ngành Công nghệ thông tin, năm 3 — gợi ý học bổng phù hợp cho bạn ấy.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 118,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  },
+  {
+    "iteration": 102,
+    "targetTool": "get_scholarship_recommendations_for_described_profile",
+    "question": "Em họ tôi học ngành Kinh tế, GPA 3.0, năm 2 — có học bổng nào phù hợp không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 111,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Kinh tế, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, GPA 3.0), nh"
+  },
+  {
+    "iteration": 103,
+    "targetTool": "get_scholarship_recommendations_for_described_profile",
+    "question": "Một bạn sinh viên ngành Sư phạm, hoàn cảnh khó khăn, GPA 3.4 thì nên apply học bổng nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4113,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 104,
+    "targetTool": "get_scholarship_recommendations_for_described_profile",
+    "question": "Bạn cùng phòng tôi học Khoa học máy tính, GPA 3.7, thích nghiên cứu AI — gợi ý học bổng giúp bạn ấy.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 106,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành AI Khoa học máy tính, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM,"
+  },
+  {
+    "iteration": 105,
+    "targetTool": "get_latest_scholarship_recommendations_for_chat",
+    "question": "Học bổng nào mới được cập nhật gần đây nhất?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2866,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 106,
+    "targetTool": "get_latest_scholarship_recommendations_for_chat",
+    "question": "Gần đây có học bổng mới nào không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2197,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 107,
+    "targetTool": "get_latest_scholarship_recommendations_for_chat",
+    "question": "Cho tôi xem các học bổng vừa được thêm vào hệ thống.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2566,
+    "intent": "hybrid",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Theo tiêu chí mới cập nhật gần đây, nhấn vào từng thẻ để xem tóm tắt."
+  },
+  {
+    "iteration": 108,
+    "targetTool": "get_latest_scholarship_recommendations_for_chat",
+    "question": "Học bổng mới nhất hiện tại là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2019,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 109,
+    "targetTool": "match_scholarships_for_profile",
+    "question": "Xếp hạng học bổng phù hợp cho hồ sơ: ngành Khoa học máy tính, trường Đại học Khoa học Tự nhiên, kỹ năng Python và Machine Learning, sở thích nghiên cứu AI.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 125,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Khoa học máy tính, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, GP"
+  },
+  {
+    "iteration": 110,
+    "targetTool": "match_scholarships_for_profile",
+    "question": "Với profile: major=Công nghệ thông tin, university=Bách Khoa, skills=[Java, SQL], hãy xếp hạng học bổng phù hợp.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 111,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  },
+  {
+    "iteration": 111,
+    "targetTool": "match_scholarships_for_profile",
+    "question": "Xếp hạng độ phù hợp học bổng cho hồ sơ: ngành Kinh tế, GPA 3.6, kỹ năng phân tích dữ liệu, sở thích tài chính.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 109,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Kinh tế, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, GPA 3.6), nh"
+  },
+  {
+    "iteration": 112,
+    "targetTool": "match_scholarships_for_profile",
+    "question": "Dựa trên hồ sơ JSON sau, xếp hạng học bổng: {\"major\": \"Sinh học\", \"university\": \"KHTN\", \"interests\": [\"nghiên cứu\", \"công nghệ sinh học\"]}.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4016,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã tìm thấy một số học bổng có thể phù hợp với hồ sơ của bạn. Mình đã đưa danh sách vào các thẻ bên dưới."
+  },
+  {
+    "iteration": 113,
+    "targetTool": "(tổng quát)",
+    "question": "Tổng hợp giúp tôi tình hình tài chính và cơ hội học bổng hiện tại của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17137,
+    "intent": "scholarships",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 114,
+    "targetTool": "(tổng quát)",
+    "question": "Tôi nên làm gì để vừa quản lý tiền tốt hơn vừa tăng cơ hội nhận học bổng?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 41244,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 56 học bổng phù hợp; dưới đây là 3 lựa chọn tốt nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, "
+  }
+]

@@ -1,0 +1,313 @@
+{
+  "description": "Fixed labeled dataset for the transaction -> jar classification eval (POST /ai/6jars/classify). Each item is a natural Vietnamese transaction description a student might type, with the jar it should be classified into. Frozen so the eval is reproducible across runs. (batch: enjoyment only)",
+  "jars": [
+    "essentials",
+    "education",
+    "investment",
+    "sharing",
+    "enjoyment",
+    "reserve"
+  ],
+  "items": [
+    {
+      "id": "enj-01",
+      "description": "Xem phim ở rạp CGV cuối tuần",
+      "amount": 90000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-02",
+      "description": "Cà phê với bạn bè ở Highlands",
+      "amount": 60000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-03",
+      "description": "Đi du lịch Đà Lạt cuối tuần",
+      "amount": 2000000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-04",
+      "description": "Mua vé xem concert ca sĩ yêu thích",
+      "amount": 800000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-05",
+      "description": "Trà sữa với nhóm bạn",
+      "amount": 45000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-06",
+      "description": "Mua game mới trên Steam",
+      "amount": 300000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-07",
+      "description": "Đi ăn buffet lẩu với bạn gái",
+      "amount": 400000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-08",
+      "description": "Mua quần áo mới đi chơi",
+      "amount": 350000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-09",
+      "description": "Đi karaoke với nhóm bạn cùng lớp",
+      "amount": 200000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-10",
+      "description": "Mua vé vào khu vui chơi giải trí",
+      "amount": 150000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-11",
+      "description": "Đặt phòng khách sạn đi phượt Đà Nẵng",
+      "amount": 900000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-12",
+      "description": "Mua đồ ăn vặt xem phim ở nhà",
+      "amount": 80000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-13",
+      "description": "Đi bar cùng bạn bè cuối tuần",
+      "amount": 500000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-14",
+      "description": "Mua tai nghe chơi game mới",
+      "amount": 400000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-15",
+      "description": "Đi spa thư giãn cuối tuần",
+      "amount": 300000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-16",
+      "description": "Đặt vé xem phim IMAX cuối tuần",
+      "amount": 150000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-17",
+      "description": "Ăn buffet nướng với nhóm bạn thân",
+      "amount": 350000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-18",
+      "description": "Mua vé tham gia lễ hội âm nhạc",
+      "amount": 600000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-19",
+      "description": "Đi chơi công viên nước cuối tuần",
+      "amount": 200000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-20",
+      "description": "Order trà sữa freeship về phòng trọ",
+      "amount": 40000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-21",
+      "description": "Mua đồ hóa trang đi dự tiệc Halloween",
+      "amount": 150000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-22",
+      "description": "Đi xem kịch ở nhà hát thành phố",
+      "amount": 200000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-23",
+      "description": "Mua vé đá bóng sân cỏ với bạn bè",
+      "amount": 100000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-24",
+      "description": "Đi phượt Mộc Châu dịp lễ",
+      "amount": 1500000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-25",
+      "description": "Mua đồ chơi mô hình sưu tầm",
+      "amount": 300000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-26",
+      "description": "Đi ăn hải sản cuối tuần với nhóm bạn",
+      "amount": 500000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-27",
+      "description": "Mua vé xem trận đấu bóng đá tại sân vận động",
+      "amount": 250000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-28",
+      "description": "Đi cắm trại qua đêm cùng câu lạc bộ",
+      "amount": 400000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-29",
+      "description": "Mua thẻ nạp game online",
+      "amount": 100000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-30",
+      "description": "Đi chơi bowling với bạn cùng lớp",
+      "amount": 150000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-31",
+      "description": "Đặt phòng homestay đi Đà Lạt",
+      "amount": 700000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-32",
+      "description": "Mua đồ trang trí phòng theo sở thích",
+      "amount": 200000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-33",
+      "description": "Đi xem triển lãm nghệ thuật đương đại",
+      "amount": 50000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-34",
+      "description": "Mua vé concert nhóm nhạc Kpop",
+      "amount": 1500000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-35",
+      "description": "Đi ăn lẩu nướng buffet với người yêu",
+      "amount": 300000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-36",
+      "description": "Mua đồ lặn biển đi du lịch Phú Quốc",
+      "amount": 500000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-37",
+      "description": "Đi nhảy dù mạo hiểm cùng nhóm bạn",
+      "amount": 1000000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-38",
+      "description": "Mua vé vào công viên giải trí Đầm Sen",
+      "amount": 200000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-39",
+      "description": "Đi uống trà chiều ở quán decor đẹp",
+      "amount": 100000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-40",
+      "description": "Mua phụ kiện thời trang đi chơi cuối tuần",
+      "amount": 250000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-41",
+      "description": "Đi xem pháo hoa và ăn vặt dịp lễ hội",
+      "amount": 50000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-42",
+      "description": "Mua vé du thuyền ngắm cảnh vịnh Hạ Long",
+      "amount": 800000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-43",
+      "description": "Đi cà phê sách với bạn thân",
+      "amount": 60000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-44",
+      "description": "Mua đồ chơi board game chơi cùng bạn",
+      "amount": 300000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-45",
+      "description": "Đi chơi VR ở trung tâm giải trí",
+      "amount": 150000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-46",
+      "description": "Mua vé xem stand-up comedy",
+      "amount": 250000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-47",
+      "description": "Đi ăn buffet chay trải nghiệm",
+      "amount": 200000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-48",
+      "description": "Mua đồ cắm trại đi dã ngoại cuối tuần",
+      "amount": 300000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-49",
+      "description": "Đi chơi công viên chủ đề dịp sinh nhật",
+      "amount": 400000,
+      "expected_jar": "enjoyment"
+    },
+    {
+      "id": "enj-50",
+      "description": "Mua vé tham gia trại hè kỹ năng sống",
+      "amount": 500000,
+      "expected_jar": "enjoyment"
+    }
+  ]
+}

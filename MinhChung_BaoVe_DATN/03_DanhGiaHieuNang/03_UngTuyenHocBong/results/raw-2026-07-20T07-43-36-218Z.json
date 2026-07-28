@@ -1,0 +1,602 @@
+[
+  {
+    "iteration": 1,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 51
+  },
+  {
+    "iteration": 2,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 3,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 4,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 5,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 38
+  },
+  {
+    "iteration": 6,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 7,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 8,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 41
+  },
+  {
+    "iteration": 9,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 10,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 38
+  },
+  {
+    "iteration": 11,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 36
+  },
+  {
+    "iteration": 12,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 13,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 36
+  },
+  {
+    "iteration": 14,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 15,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 16,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 36
+  },
+  {
+    "iteration": 17,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 18,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 41
+  },
+  {
+    "iteration": 19,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 41
+  },
+  {
+    "iteration": 20,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 35
+  },
+  {
+    "iteration": 21,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 22,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 23,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 24,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 25,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 35
+  },
+  {
+    "iteration": 26,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 27,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 28,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 29,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 36
+  },
+  {
+    "iteration": 30,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 31,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 32,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 27
+  },
+  {
+    "iteration": 33,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 34,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 35,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 49
+  },
+  {
+    "iteration": 36,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 34
+  },
+  {
+    "iteration": 37,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 35
+  },
+  {
+    "iteration": 38,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 39
+  },
+  {
+    "iteration": 39,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 40,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 35
+  },
+  {
+    "iteration": 41,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 42,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 43,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 44,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 45,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 46,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 47,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 48,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 49,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 50,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 51,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 52,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 53,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 28
+  },
+  {
+    "iteration": 54,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 26
+  },
+  {
+    "iteration": 55,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 56,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 57,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 58,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 38
+  },
+  {
+    "iteration": 59,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 60,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 61,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 62,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 34
+  },
+  {
+    "iteration": 63,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 64,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 65,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 66,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 67,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 36
+  },
+  {
+    "iteration": 68,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 44
+  },
+  {
+    "iteration": 69,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 70,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 71,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 72,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 73,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 74,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 26
+  },
+  {
+    "iteration": 75,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 38
+  },
+  {
+    "iteration": 76,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 77,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 78,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 79,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 80,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 81,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 82,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 83,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 84,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 40
+  },
+  {
+    "iteration": 85,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 86,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 87,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 88,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 28
+  },
+  {
+    "iteration": 89,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 90,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 26
+  },
+  {
+    "iteration": 91,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 39
+  },
+  {
+    "iteration": 92,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 93,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 94,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 39
+  },
+  {
+    "iteration": 95,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 96,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 97,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 98,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 99,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 38
+  },
+  {
+    "iteration": 100,
+    "ok": true,
+    "status": 404,
+    "latencyMs": 33
+  }
+]

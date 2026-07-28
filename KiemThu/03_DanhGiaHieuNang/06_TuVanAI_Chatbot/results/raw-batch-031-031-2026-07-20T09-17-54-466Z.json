@@ -1,0 +1,10 @@
+[
+  {
+    "iteration": 31,
+    "targetTool": "get_budget_status",
+    "question": "Tôi đã dùng hết bao nhiêu % ngân sách lọ ăn uống?",
+    "ok": false,
+    "latencyMs": 90049,
+    "error": "timeout of 90000ms exceeded"
+  }
+]

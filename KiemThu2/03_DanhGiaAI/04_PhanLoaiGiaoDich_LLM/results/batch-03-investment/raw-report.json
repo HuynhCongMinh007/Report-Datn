@@ -1,0 +1,602 @@
+{
+  "generated_at": "2026-07-26T09:57:42.705989+00:00",
+  "backend_url": "http://localhost:3000/api",
+  "dataset": "../../../../../private/tmp/claude-501/-Users-nguyenvh-School-Student360/4f6f324b-430f-4c2d-9f72-8811e8a76e8b/scratchpad/eval_batches/batch_investment.json",
+  "total": 50,
+  "correct": 50,
+  "accuracy": 1.0,
+  "per_jar": {
+    "essentials": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "education": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "investment": {
+      "total": 50,
+      "correct": 50,
+      "accuracy": 1.0
+    },
+    "sharing": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "enjoyment": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "reserve": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    }
+  },
+  "confusion_matrix": {
+    "essentials": {},
+    "education": {},
+    "investment": {
+      "investment": 50
+    },
+    "sharing": {},
+    "enjoyment": {},
+    "reserve": {}
+  },
+  "results": [
+    {
+      "id": "inv-01",
+      "description": "Mua cổ phiếu công ty công nghệ",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-02",
+      "description": "Chuyển tiền vào tài khoản chứng khoán",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-03",
+      "description": "Mua Bitcoin trên sàn giao dịch",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-04",
+      "description": "Góp vốn vào quỹ đầu tư mở",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-05",
+      "description": "Mua vàng miếng để đầu tư dài hạn",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-06",
+      "description": "Đầu tư vào quỹ ETF VN30",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-07",
+      "description": "Mua trái phiếu doanh nghiệp",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-08",
+      "description": "Nạp tiền vào ví đầu tư chứng khoán quốc tế",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-09",
+      "description": "Mua thêm cổ phiếu ngân hàng",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-10",
+      "description": "Đầu tư tiền vào startup của bạn",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-11",
+      "description": "Chuyển tiền góp vốn kinh doanh cùng bạn bè",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-12",
+      "description": "Mua Ethereum để đầu tư",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-13",
+      "description": "Đầu tư vào quỹ đầu tư bất động sản",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-14",
+      "description": "Mua chứng chỉ quỹ mở VFMVF1",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-15",
+      "description": "Góp vốn đầu tư chung cửa hàng online",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-16",
+      "description": "Mua thêm cổ phiếu quỹ VN Index",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-17",
+      "description": "Đầu tư vào coin altcoin mới",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-18",
+      "description": "Góp vốn mở quán cà phê cùng bạn",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-19",
+      "description": "Mua chứng chỉ quỹ trái phiếu doanh nghiệp",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-20",
+      "description": "Đầu tư margin chứng khoán",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-21",
+      "description": "Mua NFT trên sàn quốc tế",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-22",
+      "description": "Góp vốn kinh doanh online với nhóm bạn",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-23",
+      "description": "Đầu tư vào quỹ mở trái phiếu chính phủ",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-24",
+      "description": "Mua cổ phiếu quỹ ETF nước ngoài",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-25",
+      "description": "Đầu tư vào dự án bất động sản chia nhỏ",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-26",
+      "description": "Mua thêm Bitcoin khi giá giảm",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-27",
+      "description": "Góp vốn cùng anh trai mở cửa hàng",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-28",
+      "description": "Đầu tư vào quỹ hưu trí tự nguyện sinh lời",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-29",
+      "description": "Mua quyền chọn cổ phiếu (option)",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-30",
+      "description": "Đầu tư kinh doanh dropshipping",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-31",
+      "description": "Mua vàng tích lũy đầu tư dài hạn theo tháng",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-32",
+      "description": "Góp vốn vào ứng dụng công nghệ khởi nghiệp",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-33",
+      "description": "Đầu tư vào chứng khoán phái sinh",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-34",
+      "description": "Mua cổ phần công ty của bạn học cùng lớp",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-35",
+      "description": "Đầu tư vào quỹ đầu tư mạo hiểm sinh viên",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-36",
+      "description": "Mua thêm Ethereum để tích lũy dài hạn",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-37",
+      "description": "Góp vốn đầu tư chung xưởng may nhỏ",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-38",
+      "description": "Đầu tư vào cổ phiếu công ty bất động sản",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-39",
+      "description": "Mua chứng khoán quốc tế qua ứng dụng đầu tư",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-40",
+      "description": "Đầu tư tiền nhàn rỗi vào quỹ trái phiếu",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-41",
+      "description": "Góp vốn mua chung mặt bằng kinh doanh",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-42",
+      "description": "Mua cổ phiếu ngành công nghệ Mỹ",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-43",
+      "description": "Đầu tư vào token dự án blockchain mới",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-44",
+      "description": "Mua chứng chỉ quỹ đầu tư cổ phiếu tăng trưởng",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-45",
+      "description": "Góp vốn đầu tư sản xuất cùng gia đình",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-46",
+      "description": "Đầu tư dài hạn vào cổ phiếu blue-chip",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-47",
+      "description": "Mua thêm phần quỹ đầu tư định kỳ hàng tháng",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-48",
+      "description": "Đầu tư vào dự án năng lượng tái tạo qua quỹ",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 0.98,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-49",
+      "description": "Góp vốn đầu tư quán trà sữa nhượng quyền",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "inv-50",
+      "description": "Mua cổ phiếu quỹ mở tăng trưởng dài hạn",
+      "expected_jar": "investment",
+      "predicted_jar": "investment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    }
+  ]
+}

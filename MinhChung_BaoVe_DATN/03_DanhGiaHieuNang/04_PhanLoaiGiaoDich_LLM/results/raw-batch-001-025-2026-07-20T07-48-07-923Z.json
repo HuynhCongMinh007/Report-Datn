@@ -1,0 +1,252 @@
+[
+  {
+    "iteration": 1,
+    "description": "Ăn trưa với bạn ở quán cơm",
+    "amount": 45000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2279,
+    "suggestedJarCode": "enjoyment",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 2,
+    "description": "Cà phê sáng ở highlands",
+    "amount": 55000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 750,
+    "suggestedJarCode": "enjoyment",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 3,
+    "description": "Trà sữa buổi chiều",
+    "amount": 39000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 832,
+    "suggestedJarCode": "enjoyment",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 4,
+    "description": "Ăn tối gọi Grabfood",
+    "amount": 85000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 878,
+    "suggestedJarCode": "enjoyment",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 5,
+    "description": "Đi Grab đến trường",
+    "amount": 32000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 1136,
+    "suggestedJarCode": "essentials",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 6,
+    "description": "Đổ xăng xe máy",
+    "amount": 70000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 774,
+    "suggestedJarCode": "essentials",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 7,
+    "description": "Vé xe buýt tháng",
+    "amount": 200000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 864,
+    "suggestedJarCode": "essentials",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 8,
+    "description": "Mua vé xem phim CGV",
+    "amount": 90000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 1976,
+    "suggestedJarCode": "enjoyment",
+    "confidence": 0.98
+  },
+  {
+    "iteration": 9,
+    "description": "Chơi game nạp thẻ",
+    "amount": 100000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 972,
+    "suggestedJarCode": "enjoyment",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 10,
+    "description": "Mua sách giáo trình lập trình",
+    "amount": 250000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 943,
+    "suggestedJarCode": "education",
+    "confidence": 0.98
+  },
+  {
+    "iteration": 11,
+    "description": "Đóng học phí kỳ này",
+    "amount": 5000000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 792,
+    "suggestedJarCode": "education",
+    "confidence": 1
+  },
+  {
+    "iteration": 12,
+    "description": "Mua khóa học online trên Udemy",
+    "amount": 350000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 422,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 13,
+    "description": "Mua áo thun mới",
+    "amount": 180000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 838,
+    "suggestedJarCode": "enjoyment",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 14,
+    "description": "Mua giày thể thao",
+    "amount": 650000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 436,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 15,
+    "description": "Khám bệnh ở phòng khám",
+    "amount": 300000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 455,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 16,
+    "description": "Mua thuốc cảm ở nhà thuốc",
+    "amount": 45000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 615,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 17,
+    "description": "Đóng tiền điện tháng này",
+    "amount": 220000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 466,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 18,
+    "description": "Đóng tiền nước",
+    "amount": 80000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 476,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 19,
+    "description": "Đóng tiền internet wifi",
+    "amount": 165000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 438,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 20,
+    "description": "Nạp tiền điện thoại",
+    "amount": 50000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 411,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 21,
+    "description": "Mua quà sinh nhật cho bạn",
+    "amount": 200000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 416,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 22,
+    "description": "Ủng hộ quỹ từ thiện của trường",
+    "amount": 100000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 435,
+    "suggestedJarCode": "essentials",
+    "confidence": 0
+  },
+  {
+    "iteration": 23,
+    "description": "Góp tiền mua quà tặng thầy cô 20/11",
+    "amount": 50000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 786,
+    "suggestedJarCode": "sharing",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 24,
+    "description": "Chuyển tiền tiết kiệm vào sổ",
+    "amount": 1000000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 953,
+    "suggestedJarCode": "investment",
+    "confidence": 0.9
+  },
+  {
+    "iteration": 25,
+    "description": "Mua vàng tích lũy đầu tháng",
+    "amount": 500000,
+    "ok": true,
+    "status": 200,
+    "latencyMs": 729,
+    "suggestedJarCode": "investment",
+    "confidence": 0.9
+  }
+]

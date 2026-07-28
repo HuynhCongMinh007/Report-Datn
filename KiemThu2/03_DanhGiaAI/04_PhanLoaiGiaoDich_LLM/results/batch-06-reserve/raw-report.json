@@ -1,0 +1,602 @@
+{
+  "generated_at": "2026-07-28T04:30:33.741287+00:00",
+  "backend_url": "http://localhost:3000/api",
+  "dataset": "../Report-Datn/KiemThu2/03_DanhGiaAI/04_PhanLoaiGiaoDich_LLM/results/batch-06-reserve-after-fix/dataset-used.json",
+  "total": 50,
+  "correct": 50,
+  "accuracy": 1.0,
+  "per_jar": {
+    "essentials": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "education": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "investment": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "sharing": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "enjoyment": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "reserve": {
+      "total": 50,
+      "correct": 50,
+      "accuracy": 1.0
+    }
+  },
+  "confusion_matrix": {
+    "essentials": {},
+    "education": {},
+    "investment": {},
+    "sharing": {},
+    "enjoyment": {},
+    "reserve": {
+      "reserve": 50
+    }
+  },
+  "results": [
+    {
+      "id": "res-01",
+      "description": "Gửi tiết kiệm ngân hàng kỳ hạn 6 tháng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-02",
+      "description": "Bỏ ống heo tiết kiệm hàng tháng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-03",
+      "description": "Chuyển tiền vào tài khoản tiết kiệm dự phòng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-04",
+      "description": "Mua vàng nhẫn để dành phòng khi cần",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 0.9,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-05",
+      "description": "Trích lương để dành quỹ khẩn cấp",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-06",
+      "description": "Gửi tiết kiệm online lãi suất cao",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-07",
+      "description": "Để dành tiền phòng khi ốm đau",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-08",
+      "description": "Tiết kiệm tiền chuẩn bị mua xe sau này",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-09",
+      "description": "Gửi tiết kiệm không kỳ hạn",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-10",
+      "description": "Trích một phần thu nhập vào quỹ dự phòng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-11",
+      "description": "Để dành tiền dự phòng thất nghiệp",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-12",
+      "description": "Gửi tiền tiết kiệm mừng tuổi vào ngân hàng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-13",
+      "description": "Tiết kiệm tiền cho quỹ hưu trí sau này",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-14",
+      "description": "Dành dụm tiền phòng trường hợp khẩn cấp",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-15",
+      "description": "Gửi tiết kiệm tích lũy mua nhà tương lai",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-16",
+      "description": "Bỏ tiền tiết kiệm vào heo đất mỗi tuần",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-17",
+      "description": "Để dành tiền mua xe máy mới sau này",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-18",
+      "description": "Gửi tiết kiệm lãi suất cố định 12 tháng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-19",
+      "description": "Trích 10% lương tháng vào quỹ tiết kiệm",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-20",
+      "description": "Để dành tiền về quê ăn tết",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-21",
+      "description": "Gửi tiết kiệm dành cho học phí năm sau",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-22",
+      "description": "Dành dụm tiền mua điện thoại mới",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-23",
+      "description": "Để dành tiền phòng khi xe hỏng đột xuất",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 0.98,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-24",
+      "description": "Gửi tiết kiệm ngân hàng kỳ hạn 3 tháng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-25",
+      "description": "Trích tiền tiêu vặt để dành mỗi tháng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-26",
+      "description": "Để dành tiền chuẩn bị đi du học",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-27",
+      "description": "Gửi tiết kiệm lấy lãi hàng tháng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-28",
+      "description": "Dành tiền tiết kiệm mua laptop mới sang năm",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-29",
+      "description": "Để dành tiền dự phòng khi thất nghiệp tạm thời",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-30",
+      "description": "Gửi tiết kiệm quỹ cưới trong tương lai",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-31",
+      "description": "Trích lương để dành mua nhà sau này",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-32",
+      "description": "Để dành tiền mừng tuổi ông bà năm sau",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-33",
+      "description": "Gửi tiết kiệm định kỳ hàng tháng vào ngân hàng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-34",
+      "description": "Dành dụm tiền sửa chữa phòng trọ",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-35",
+      "description": "Để dành tiền dự phòng ốm đau bất ngờ",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-36",
+      "description": "Gửi tiết kiệm không kỳ hạn để rút khi cần gấp",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-37",
+      "description": "Trích tiền để dành cho quỹ hưu trí sau này",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-38",
+      "description": "Để dành tiền mua quà tặng người thân dịp lễ",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-39",
+      "description": "Gửi tiết kiệm mục tiêu mua xe đạp điện",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-40",
+      "description": "Dành tiền tiết kiệm phòng khi mất việc làm thêm",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-41",
+      "description": "Để dành tiền chuẩn bị sinh nhật bố mẹ",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-42",
+      "description": "Gửi tiết kiệm tích lũy dần mỗi tháng",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-43",
+      "description": "Trích một khoản nhỏ để dành phòng thân",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-44",
+      "description": "Để dành tiền đóng học phí kỳ tới",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-45",
+      "description": "Gửi tiết kiệm cho quỹ dự phòng gia đình",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-46",
+      "description": "Dành dụm tiền mua quà cưới bạn thân",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-47",
+      "description": "Để dành tiền sửa xe máy khi cần",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-48",
+      "description": "Gửi tiết kiệm mục tiêu du lịch năm sau",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-49",
+      "description": "Trích tiền để dành mua sách năm học mới",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "res-50",
+      "description": "Để dành tiền dự phòng chi tiêu bất thường",
+      "expected_jar": "reserve",
+      "predicted_jar": "reserve",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    }
+  ]
+}

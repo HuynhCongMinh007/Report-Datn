@@ -13,7 +13,7 @@
 \end{itemize}
 
 \subsection{Định vị sản phẩm và phân tích sự khác biệt hóa}
-Nhóm phát triển đối chiếu các nhóm chức năng của hệ thống Student360 với ba ứng dụng quản lý tài chính phổ biến: Money Lover, Sổ Thu Chi MISA và Spendee. Ba ứng dụng này là giải pháp chuyên biệt cho lĩnh vực tài chính cá nhân đại chúng, trong khi Student360 là giải pháp lai (hybrid) tích hợp tài chính và học thuật dành riêng cho sinh viên. Việc so sánh được chia thành hai nhóm: (1) Tính năng tài chính cốt lõi; (2) Tính năng học bổng và học thuật thể hiện sự khác biệt hóa.
+Nhóm phát triển đối chiếu các nhóm chức năng của hệ thống Student360 với các giải pháp hiện hành trên thị trường. Việc so sánh được chia thành hai nhóm đối chiếu chuyên biệt: (1) Tính năng tài chính cốt lõi -- đối chiếu với các ứng dụng quản lý tài chính cá nhân phổ biến (Money Lover, Sổ Thu Chi MISA, Spendee); (2) Tính năng học bổng và học thuật -- đối chiếu với các giải pháp học thuật và cổng học bổng truyền thống (Cổng thông tin sinh viên trường, các trang tin học bổng trực tuyến và ứng dụng tính GPA độc lập).
 
 \textbf{Nhóm 1: Các tính năng Tài chính tương đồng (so sánh cùng phạm vi)}
 
@@ -42,32 +42,32 @@ Nhóm phát triển đối chiếu các nhóm chức năng của hệ thống St
     \centering
     \begin{tabular}{|L{4.2cm}|C{2.6cm}|C{2.8cm}|C{2.8cm}|C{2.6cm}|}
         \hline
-        \textbf{Tính năng Giáo dục} & \textbf{Money Lover} & \textbf{Sổ Thu Chi MISA} & \textbf{Spendee} & \textbf{Student360} \\
+        \textbf{Tính năng Học bổng \& Học thuật} & \textbf{Cổng SV trường} & \textbf{Trang tin học bổng} & \textbf{App GPA độc lập} & \textbf{Student360} \\
         \hline
-        So khớp học bổng thông minh & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
-        Quy trình học bổng trực tuyến & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
-        Đồng bộ dữ liệu nền đào tạo & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
-        Quản lý dữ liệu học thuật chuẩn hóa & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
-        Bảng điểm cá nhân và GPA theo tín chỉ & Không áp dụng & Không áp dụng & Không áp dụng & \textbf{Có} \\ \hline
+        So khớp học bổng thông minh & Không hỗ trợ & Lọc thô sơ & Không áp dụng & \textbf{Có (AI khớp hồ sơ)} \\ \hline
+        Quy trình nộp \& duyệt hồ sơ trực tuyến & Một phần (Tải form) & Chuyển hướng link & Không áp dụng & \textbf{Trực tuyến toàn trình} \\ \hline
+        Đồng bộ dữ liệu nền đào tạo & Có (Nội bộ 1 trường) & Không hỗ trợ & Không hỗ trợ & \textbf{Có (Đa trường)} \\ \hline
+        Theo dõi bảng điểm \& GPA theo tín chỉ & Có (Điểm thực tế) & Không áp dụng & Có (Thủ công) & \textbf{Có (Mô phỏng GPA)} \\ \hline
+        Tự động dùng hồ sơ học thuật ứng tuyển & Nộp minh chứng & Không áp dụng & Không áp dụng & \textbf{Tự động liên kết} \\ \hline
     \end{tabular}
 
-    \caption{Phân tích sự khác biệt hóa về tính năng giáo dục (ngoài phạm vi của đối thủ)}
+    \caption{Đối chiếu tính năng Học bổng và Học thuật giữa các giải pháp}
     \label{tab:comparison-education}
 \end{table}
 
-\textit{Phân tích Nhóm 2:} Các tính năng này không nằm trong phạm vi mục tiêu của Money Lover, MISA hay Spendee. Sự hiện diện của chúng trên Student360 minh chứng cho hướng đi khác biệt: không thay thế các ứng dụng tài chính chuyên nghiệp, mà giải quyết bài toán giao thoa giữa tài chính (học phí, chi tiêu sinh hoạt) và học tập (học bổng, kết quả học tập) của sinh viên.
+\textit{Phân tích Nhóm 2:} Các giải pháp hiện hữu như Cổng thông tin sinh viên của trường hay các trang tin học bổng trực tuyến chủ yếu cung cấp thông tin dạng tĩnh, thiếu tính năng so khớp tự động và chưa hỗ trợ luồng nộp - xét duyệt hồ sơ trực tuyến hoàn chỉnh. Trong khi đó, các ứng dụng tính GPA độc lập chỉ phục vụ nhu cầu tra cứu điểm số riêng lẻ mà hoàn toàn tách biệt với nhu cầu tài chính và tìm kiếm học bổng. Student360 đã giải quyết được khoảng trống này bằng cách tự động liên kết dữ liệu học thuật (GPA, bảng điểm, thông tin ngành học) với cơ chế so khớp học bổng AI và luồng ứng tuyển trực tuyến, mang lại trải nghiệm toàn diện và tối ưu cho sinh viên.
 
 \textbf{Kết luận định vị sản phẩm:} Student360 không chỉ đáp ứng tốt các nhu cầu quản lý chi tiêu cơ bản mà còn đạt được định vị chuyên biệt cao độ cho đối tượng đích thông qua hệ sinh thái giáo dục tích hợp. Sự kết hợp giữa quản lý chi tiêu 6 lọ, theo dõi học tập cá nhân và cổng học bổng trực tuyến giúp Student360 tạo lập phân khúc sản phẩm riêng biệt, hỗ trợ toàn diện cuộc sống và học tập của sinh viên.
 
 \section{Hạn chế của hệ thống}
 Mặc dù đạt được những kết quả khả quan, hệ thống vẫn tồn tại một số điểm hạn chế cần cải thiện:
 \begin{enumerate}
-    \item \textbf{Độ trễ khi gọi LLM:} Thời gian phản hồi trọn vẹn của AI Chatbot trung bình khoảng 4 giây, có thể lên tới hơn 10 giây với câu hỏi phức tạp cần gọi nhiều tool (xem Bảng~\ref{tab:api-performance-slo} tại Chương 5). Cơ chế lưu snapshot chỉ áp dụng cho phần nhận định tài chính định kỳ (AI Insights), chưa áp dụng được cho hội thoại chatbot vì mỗi câu hỏi về bản chất là duy nhất.
+    \item \textbf{Độ trễ khi gọi LLM:} Thời gian phản hồi trọn vẹn của AI Chatbot trung bình khoảng 16 giây, có thể lên tới khoảng 54 giây (P99) với câu hỏi phức tạp cần gọi nhiều tool (xem Bảng~\ref{tab:chatbot-eval} tại Chương 5). Cơ chế lưu snapshot chỉ áp dụng cho phần nhận định tài chính định kỳ (AI Insights), chưa áp dụng được cho hội thoại chatbot vì mỗi câu hỏi về bản chất là duy nhất.
     \item \textbf{Giới hạn của cơ chế gợi ý học bổng:} Cơ chế hiện tại hoạt động dựa trên phân tích văn bản tĩnh (Jaccard Token + Bigram + SequenceMatcher), chưa nắm bắt được ý nghĩa ngữ nghĩa sâu. Các từ vựng khác nhau nhưng cùng ý nghĩa (ví dụ: ``kỹ thuật phần mềm'' và ``CNTT'') có thể không được nhận diện là tương đương.
     \item \textbf{Kịch bản kiểm thử dữ liệu:} Dữ liệu học bổng và hồ sơ học thuật sử dụng trong thử nghiệm chủ yếu là dữ liệu giả lập. Hệ thống chưa được kiểm thử trên quy mô dữ liệu thực tế hàng chục nghìn hồ sơ sinh viên.
     \item \textbf{Sự phụ thuộc vào bên thứ ba:} Cơ chế thông báo di động phụ thuộc vào sự ổn định của Google FCM và kết nối mạng của thiết bị.
     \item \textbf{Chưa liên kết tài khoản ngân hàng thực tế:} Ghi nhận thu chi hiện vẫn phụ thuộc vào nhập liệu thủ công của sinh viên hoặc đề xuất từ trợ lý AI, chưa liên kết trực tiếp với tài khoản ngân hàng.
-    \item \textbf{Quy mô benchmark định lượng còn nhỏ:} Bộ dữ liệu gán nhãn cố định đã được xây dựng cho phân loại giao dịch, gợi ý học bổng (xem Bảng~\ref{tab:ai-classify-eval} và Bảng~\ref{tab:api-performance-slo}), nhưng quy mô mẫu hiện tại (90 giao dịch, 12 hồ sơ học bổng) còn nhỏ so với thực tế; cần mở rộng và chạy lại benchmark định kỳ khi hệ thống có thêm người dùng thật.
+    \item \textbf{Quy mô benchmark định lượng còn nhỏ:} Bộ dữ liệu gán nhãn cố định đã được xây dựng cho phân loại giao dịch, gợi ý học bổng (xem Bảng~\ref{tab:ai-classify-eval} và Bảng~\ref{tab:scholarship-matching}), nhưng quy mô mẫu hiện tại (300 giao dịch, 30 hồ sơ học bổng) vẫn còn nhỏ so với quy mô dữ liệu thực tế khi hệ thống vận hành ở diện rộng; cần mở rộng và chạy lại benchmark định kỳ khi hệ thống có thêm người dùng thật.
 \end{enumerate}
 
 \section{Hướng phát triển}

@@ -1,0 +1,5 @@
+iteration,target_tool,question,ok,status,latency_ms,intent,error
+181,(tổng quát),"Nếu tôi đậu học bổng sắp tới thì nên phân bổ số tiền đó vào lọ nào cho hợp lý?",true,200,5241,scholarships,
+182,(tổng quát),"Cho tôi lời khuyên tổng thể để cải thiện tình hình tài chính và học tập của tôi.",true,200,40995,hybrid,
+183,(tổng quát),"Có gì đáng chú ý về tiền bạc và học bổng của tôi tuần này không?",true,200,25475,scholarships,
+184,(tổng quát),"Giúp tôi lên kế hoạch tài chính cho học kỳ tới, có tính đến khả năng nhận học bổng.",true,200,29709,scholarships,

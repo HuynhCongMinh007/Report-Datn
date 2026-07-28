@@ -1,0 +1,11 @@
+iteration,target_tool,question,ok,status,latency_ms,intent,error
+43,get_budget_status,"Ngân sách lọ thiết yếu tháng này còn lại bao nhiêu?",true,200,23092,personal_finance,
+44,get_budget_status,"Tình trạng ngân sách của lọ giải trí hiện tại ra sao?",true,200,17777,personal_finance,
+45,get_budget_status,"Tôi đã dùng hết bao nhiêu % ngân sách lọ ăn uống?",true,200,17465,personal_finance,
+46,get_budget_status,"Ngân sách còn lại của lọ hưởng thụ tháng này là bao nhiêu?",true,200,28976,personal_finance,
+47,get_budget_status,"Tôi đã tiêu hết bao nhiêu phần trăm ngân sách lọ thiết yếu?",true,200,18868,personal_finance,
+48,get_budget_status,"Lọ giáo dục còn bao nhiêu % ngân sách chưa dùng đến?",true,200,19358,personal_finance,
+49,get_budget_status,"Ngân sách lọ đầu tư tháng này tôi đã xài quá hạn mức chưa?",true,200,23104,personal_finance,
+50,get_budget_status,"Tình hình sử dụng ngân sách lọ dự phòng hiện ra sao?",true,200,24990,personal_finance,
+51,get_budget_status,"So với hạn mức ngân sách, lọ chia sẻ của tôi đang ở mức nào?",true,200,16933,hybrid,
+52,get_budget_status,"Ngân sách lọ hưởng thụ, tôi đã dùng gần hết chưa?",true,200,57586,hybrid,

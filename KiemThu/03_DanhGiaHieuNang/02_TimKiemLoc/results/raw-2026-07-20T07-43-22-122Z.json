@@ -1,0 +1,702 @@
+[
+  {
+    "iteration": 1,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 80
+  },
+  {
+    "iteration": 2,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 70
+  },
+  {
+    "iteration": 3,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 54
+  },
+  {
+    "iteration": 4,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 51
+  },
+  {
+    "iteration": 5,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 70
+  },
+  {
+    "iteration": 6,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 63
+  },
+  {
+    "iteration": 7,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53
+  },
+  {
+    "iteration": 8,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 56
+  },
+  {
+    "iteration": 9,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53
+  },
+  {
+    "iteration": 10,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53
+  },
+  {
+    "iteration": 11,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 54
+  },
+  {
+    "iteration": 12,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 61
+  },
+  {
+    "iteration": 13,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 54
+  },
+  {
+    "iteration": 14,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 56
+  },
+  {
+    "iteration": 15,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 16,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 70
+  },
+  {
+    "iteration": 17,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 18,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 54
+  },
+  {
+    "iteration": 19,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 20,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 60
+  },
+  {
+    "iteration": 21,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 52
+  },
+  {
+    "iteration": 22,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 49
+  },
+  {
+    "iteration": 23,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 55
+  },
+  {
+    "iteration": 24,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 51
+  },
+  {
+    "iteration": 25,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 55
+  },
+  {
+    "iteration": 26,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 50
+  },
+  {
+    "iteration": 27,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 50
+  },
+  {
+    "iteration": 28,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 52
+  },
+  {
+    "iteration": 29,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 47
+  },
+  {
+    "iteration": 30,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 46
+  },
+  {
+    "iteration": 31,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 51
+  },
+  {
+    "iteration": 32,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53
+  },
+  {
+    "iteration": 33,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 48
+  },
+  {
+    "iteration": 34,
+    "endpoint": "GET /finance/transactions",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53
+  },
+  {
+    "iteration": 1,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 93
+  },
+  {
+    "iteration": 2,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 47
+  },
+  {
+    "iteration": 3,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 4,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 48
+  },
+  {
+    "iteration": 5,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53
+  },
+  {
+    "iteration": 6,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 50
+  },
+  {
+    "iteration": 7,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53
+  },
+  {
+    "iteration": 8,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 9,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53
+  },
+  {
+    "iteration": 10,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 54
+  },
+  {
+    "iteration": 11,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 62
+  },
+  {
+    "iteration": 12,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 62
+  },
+  {
+    "iteration": 13,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 63
+  },
+  {
+    "iteration": 14,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 65
+  },
+  {
+    "iteration": 15,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 50
+  },
+  {
+    "iteration": 16,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53
+  },
+  {
+    "iteration": 17,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 68
+  },
+  {
+    "iteration": 18,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 80
+  },
+  {
+    "iteration": 19,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 68
+  },
+  {
+    "iteration": 20,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 21,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 50
+  },
+  {
+    "iteration": 22,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 23,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 70
+  },
+  {
+    "iteration": 24,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 84
+  },
+  {
+    "iteration": 25,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 85
+  },
+  {
+    "iteration": 26,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 72
+  },
+  {
+    "iteration": 27,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 52
+  },
+  {
+    "iteration": 28,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 51
+  },
+  {
+    "iteration": 29,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 55
+  },
+  {
+    "iteration": 30,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 47
+  },
+  {
+    "iteration": 31,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 52
+  },
+  {
+    "iteration": 32,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 71
+  },
+  {
+    "iteration": 33,
+    "endpoint": "GET /scholarships",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 66
+  },
+  {
+    "iteration": 1,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 2,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 3,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 4,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 5,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 36
+  },
+  {
+    "iteration": 6,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 7,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 8,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 9,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 10,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 11,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 12,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 13,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 14,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 15,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 16,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 26
+  },
+  {
+    "iteration": 17,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 18,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 34
+  },
+  {
+    "iteration": 19,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 20,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 30
+  },
+  {
+    "iteration": 21,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 61
+  },
+  {
+    "iteration": 22,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 34
+  },
+  {
+    "iteration": 23,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 28
+  },
+  {
+    "iteration": 24,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 25,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 26
+  },
+  {
+    "iteration": 26,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 29
+  },
+  {
+    "iteration": 27,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 28
+  },
+  {
+    "iteration": 28,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 44
+  },
+  {
+    "iteration": 29,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 34
+  },
+  {
+    "iteration": 30,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 31,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 33
+  },
+  {
+    "iteration": 32,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 34
+  },
+  {
+    "iteration": 33,
+    "endpoint": "GET /universities/dropdown",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 30
+  }
+]

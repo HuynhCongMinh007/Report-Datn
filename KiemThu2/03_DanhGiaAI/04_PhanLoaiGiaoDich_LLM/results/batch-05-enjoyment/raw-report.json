@@ -1,0 +1,603 @@
+{
+  "generated_at": "2026-07-26T10:28:13.984534+00:00",
+  "backend_url": "http://localhost:3000/api",
+  "dataset": "../../../../../private/tmp/claude-501/-Users-nguyenvh-School-Student360/4f6f324b-430f-4c2d-9f72-8811e8a76e8b/scratchpad/eval_batches/batch_enjoyment.json",
+  "total": 50,
+  "correct": 49,
+  "accuracy": 0.98,
+  "per_jar": {
+    "essentials": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "education": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "investment": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "sharing": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "enjoyment": {
+      "total": 50,
+      "correct": 49,
+      "accuracy": 0.98
+    },
+    "reserve": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    }
+  },
+  "confusion_matrix": {
+    "essentials": {},
+    "education": {},
+    "investment": {},
+    "sharing": {},
+    "enjoyment": {
+      "enjoyment": 49,
+      "education": 1
+    },
+    "reserve": {}
+  },
+  "results": [
+    {
+      "id": "enj-01",
+      "description": "Xem phim ở rạp CGV cuối tuần",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-02",
+      "description": "Cà phê với bạn bè ở Highlands",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-03",
+      "description": "Đi du lịch Đà Lạt cuối tuần",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-04",
+      "description": "Mua vé xem concert ca sĩ yêu thích",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-05",
+      "description": "Trà sữa với nhóm bạn",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-06",
+      "description": "Mua game mới trên Steam",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-07",
+      "description": "Đi ăn buffet lẩu với bạn gái",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-08",
+      "description": "Mua quần áo mới đi chơi",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-09",
+      "description": "Đi karaoke với nhóm bạn cùng lớp",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-10",
+      "description": "Mua vé vào khu vui chơi giải trí",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-11",
+      "description": "Đặt phòng khách sạn đi phượt Đà Nẵng",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-12",
+      "description": "Mua đồ ăn vặt xem phim ở nhà",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-13",
+      "description": "Đi bar cùng bạn bè cuối tuần",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.98,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-14",
+      "description": "Mua tai nghe chơi game mới",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-15",
+      "description": "Đi spa thư giãn cuối tuần",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-16",
+      "description": "Đặt vé xem phim IMAX cuối tuần",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-17",
+      "description": "Ăn buffet nướng với nhóm bạn thân",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-18",
+      "description": "Mua vé tham gia lễ hội âm nhạc",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-19",
+      "description": "Đi chơi công viên nước cuối tuần",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-20",
+      "description": "Order trà sữa freeship về phòng trọ",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-21",
+      "description": "Mua đồ hóa trang đi dự tiệc Halloween",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-22",
+      "description": "Đi xem kịch ở nhà hát thành phố",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-23",
+      "description": "Mua vé đá bóng sân cỏ với bạn bè",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-24",
+      "description": "Đi phượt Mộc Châu dịp lễ",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-25",
+      "description": "Mua đồ chơi mô hình sưu tầm",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-26",
+      "description": "Đi ăn hải sản cuối tuần với nhóm bạn",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-27",
+      "description": "Mua vé xem trận đấu bóng đá tại sân vận động",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-28",
+      "description": "Đi cắm trại qua đêm cùng câu lạc bộ",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-29",
+      "description": "Mua thẻ nạp game online",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-30",
+      "description": "Đi chơi bowling với bạn cùng lớp",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-31",
+      "description": "Đặt phòng homestay đi Đà Lạt",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-32",
+      "description": "Mua đồ trang trí phòng theo sở thích",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-33",
+      "description": "Đi xem triển lãm nghệ thuật đương đại",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-34",
+      "description": "Mua vé concert nhóm nhạc Kpop",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-35",
+      "description": "Đi ăn lẩu nướng buffet với người yêu",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-36",
+      "description": "Mua đồ lặn biển đi du lịch Phú Quốc",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-37",
+      "description": "Đi nhảy dù mạo hiểm cùng nhóm bạn",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-38",
+      "description": "Mua vé vào công viên giải trí Đầm Sen",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-39",
+      "description": "Đi uống trà chiều ở quán decor đẹp",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-40",
+      "description": "Mua phụ kiện thời trang đi chơi cuối tuần",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-41",
+      "description": "Đi xem pháo hoa và ăn vặt dịp lễ hội",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-42",
+      "description": "Mua vé du thuyền ngắm cảnh vịnh Hạ Long",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-43",
+      "description": "Đi cà phê sách với bạn thân",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-44",
+      "description": "Mua đồ chơi board game chơi cùng bạn",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-45",
+      "description": "Đi chơi VR ở trung tâm giải trí",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-46",
+      "description": "Mua vé xem stand-up comedy",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 1,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-47",
+      "description": "Đi ăn buffet chay trải nghiệm",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-48",
+      "description": "Mua đồ cắm trại đi dã ngoại cuối tuần",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-49",
+      "description": "Đi chơi công viên chủ đề dịp sinh nhật",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "enjoyment",
+      "correct": true,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    },
+    {
+      "id": "enj-50",
+      "description": "Mua vé tham gia trại hè kỹ năng sống",
+      "expected_jar": "enjoyment",
+      "predicted_jar": "education",
+      "correct": false,
+      "confidence": 0.95,
+      "source": "ai",
+      "error": null,
+      "rate_limited_retries": 0
+    }
+  ]
+}

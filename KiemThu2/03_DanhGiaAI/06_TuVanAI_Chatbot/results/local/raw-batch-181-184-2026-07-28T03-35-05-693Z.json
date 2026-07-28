@@ -1,0 +1,42 @@
+[
+  {
+    "iteration": 181,
+    "targetTool": "(tổng quát)",
+    "question": "Nếu tôi đậu học bổng sắp tới thì nên phân bổ số tiền đó vào lọ nào cho hợp lý?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 5241,
+    "intent": "scholarships",
+    "replyPreview": "Chào bạn, việc phân bổ tài chính cá nhân là một quyết định quan trọng và mang tính cá nhân cao. Tuy nhiên, vai trò của tôi là một AI Assistant chuyên về học bổng của Student360, vì vậy tôi không được "
+  },
+  {
+    "iteration": 182,
+    "targetTool": "(tổng quát)",
+    "question": "Cho tôi lời khuyên tổng thể để cải thiện tình hình tài chính và học tập của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 40995,
+    "intent": "hybrid",
+    "replyPreview": "Cảm ơn bạn đã chia sẻ. Mình đã phân tích dữ liệu và có một vài nhận xét để giúp bạn cải thiện tình hình tài chính và học tập:\n\n**Về mặt tài chính:**\n\n*   **Điểm sáng:** Bạn quản lý các lọ chi tiêu cho"
+  },
+  {
+    "iteration": 183,
+    "targetTool": "(tổng quát)",
+    "question": "Có gì đáng chú ý về tiền bạc và học bổng của tôi tuần này không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 25475,
+    "intent": "scholarships",
+    "replyPreview": "Chào bạn, tuần này hồ sơ học bổng của bạn có một số cập nhật quan trọng:\n\n*   **Chúc mừng!** Hồ sơ của bạn cho **Học bổng TPBank Community Impact Scholarship 2026** đã được duyệt với số tiền 12.000.00"
+  },
+  {
+    "iteration": 184,
+    "targetTool": "(tổng quát)",
+    "question": "Giúp tôi lên kế hoạch tài chính cho học kỳ tới, có tính đến khả năng nhận học bổng.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 29709,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã tìm thấy 1 học bổng phù hợp nhất với hồ sơ của bạn. Bạn xem chi tiết trong thẻ dưới đây để cân nhắc cho kế hoạch tài chính của mình nhé.\n\nNgoài ra, để có một kế hoạch tài chính hoàn chỉnh, bạn"
+  }
+]

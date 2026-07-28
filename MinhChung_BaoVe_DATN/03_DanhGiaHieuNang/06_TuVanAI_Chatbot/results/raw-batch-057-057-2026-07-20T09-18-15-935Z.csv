@@ -1,0 +1,2 @@
+iteration,target_tool,question,ok,status,latency_ms,intent,error
+57,compare_jar_allocation,"Phân bổ lọ của tôi có hợp lý theo phương pháp 6 lọ chuẩn không?",true,200,4845,hybrid,

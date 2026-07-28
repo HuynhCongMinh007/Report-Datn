@@ -1,0 +1,20 @@
+iteration,target_tool,question,ok,status,latency_ms,intent,error
+77,get_all_scholarships,"Liệt kê tất cả học bổng đang mở hiện tại.",false,,90061,,timeout of 90000ms exceeded
+78,get_all_scholarships,"Hiện có bao nhiêu học bổng đang nhận hồ sơ?",false,,90020,,timeout of 90000ms exceeded
+79,get_all_scholarships,"Cho tôi danh sách đầy đủ các học bổng hiện có.",true,200,64286,scholarships,
+80,get_all_scholarships,"Trường tôi hiện đang có những học bổng nào?",true,200,2122,scholarships,
+81,get_my_full_profile,"Xem lại hồ sơ đầy đủ của tôi (học vấn, kỹ năng, sở thích) để tư vấn học bổng phù hợp.",true,200,188,scholarships,
+82,get_my_full_profile,"Hồ sơ cá nhân của tôi hiện đang có những thông tin gì?",true,200,5144,personal_finance,
+83,get_my_full_profile,"Dựa vào toàn bộ hồ sơ của tôi, tôi phù hợp với loại học bổng nào?",true,200,123,scholarships,
+84,get_my_full_profile,"Tóm tắt hồ sơ học vấn và kỹ năng hiện tại của tôi.",true,200,5270,personal_finance,
+85,get_my_scholarship_applications,"Tôi đang apply những học bổng nào rồi?",true,200,2179,scholarships,
+86,get_my_scholarship_applications,"Danh sách hồ sơ học bổng tôi đã nộp là gì?",true,200,13707,scholarships,
+87,get_my_scholarship_applications,"Hồ sơ nào của tôi đang chờ xét duyệt?",true,200,22089,hybrid,
+88,get_my_scholarship_applications,"Tôi đã nộp bao nhiêu hồ sơ học bổng từ trước đến giờ?",true,200,2400,scholarships,
+89,get_scholarship_application_detail,"Hồ sơ apply học bổng gần nhất của tôi còn thiếu giấy tờ gì không?",true,200,3175,scholarships,
+90,get_scholarship_application_detail,"Tôi có khả năng đậu học bổng mà tôi vừa apply không?",true,200,3360,scholarships,
+91,get_scholarship_application_detail,"Trạng thái xét duyệt hồ sơ học bổng của tôi hiện ra sao?",true,200,4963,scholarships,
+92,get_scholarship_application_detail,"Xem chi tiết lịch sử xét duyệt hồ sơ học bổng gần nhất của tôi.",true,200,95,scholarships,
+93,get_scholarship_recommendations_for_chat,"Gợi ý học bổng phù hợp với hồ sơ của tôi.",true,200,118,scholarships,
+94,get_scholarship_recommendations_for_chat,"Học bổng nào tôi nên apply dựa trên thông tin hiện tại?",true,200,3248,scholarships,
+95,get_scholarship_recommendations_for_chat,"Đề xuất giúp tôi vài học bổng phù hợp nhất.",true,200,117,scholarships,

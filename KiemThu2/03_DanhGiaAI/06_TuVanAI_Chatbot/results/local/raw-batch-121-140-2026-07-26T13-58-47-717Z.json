@@ -1,0 +1,202 @@
+[
+  {
+    "iteration": 121,
+    "targetTool": "get_all_scholarships",
+    "question": "Cho tôi danh sách đầy đủ các học bổng hiện có.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 27955,
+    "intent": "scholarships",
+    "replyPreview": "Hiện tại, hệ thống có tổng cộng 60 học bổng đang hoạt động và còn hạn nộp hồ sơ. Dưới đây là danh sách đầy đủ:\n\n*   V5 Học bổng Tài năng Công nghệ TPBank 2026\n*   V3 Học bổng Tài năng Công nghệ TPBank"
+  },
+  {
+    "iteration": 122,
+    "targetTool": "get_all_scholarships",
+    "question": "Trường tôi hiện đang có những học bổng nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 15088,
+    "intent": "scholarships",
+    "replyPreview": "Dựa trên thông tin về trường và ngành học của bạn, mình đã tìm thấy một số học bổng có thể phù hợp. Bạn xem chi tiết trong danh sách các thẻ học bổng bên dưới nhé."
+  },
+  {
+    "iteration": 123,
+    "targetTool": "get_all_scholarships",
+    "question": "Có tổng cộng bao nhiêu học bổng trong hệ thống?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 12650,
+    "intent": "scholarships",
+    "replyPreview": "Hiện tại, hệ thống có tổng cộng 63 học bổng."
+  },
+  {
+    "iteration": 124,
+    "targetTool": "get_all_scholarships",
+    "question": "Đếm giúp tôi số lượng học bổng đang còn hạn nộp.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 11728,
+    "intent": "scholarships",
+    "replyPreview": "Hiện có 60 học bổng đang còn hạn nộp hồ sơ."
+  },
+  {
+    "iteration": 125,
+    "targetTool": "get_all_scholarships",
+    "question": "Liệt kê toàn bộ học bổng, kể cả đã đóng hạn nộp.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 26845,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã tìm kiếm nhưng rất tiếc là không có học bổng nào trong hệ thống, kể cả các học bổng đã hết hạn."
+  },
+  {
+    "iteration": 126,
+    "targetTool": "get_all_scholarships",
+    "question": "Có bao nhiêu học bổng đang tạm đóng hồ sơ?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 21083,
+    "intent": "scholarships",
+    "replyPreview": "Hiện có 1 học bổng đang tạm đóng hồ sơ."
+  },
+  {
+    "iteration": 127,
+    "targetTool": "get_all_scholarships",
+    "question": "Xem tất cả học bổng hiện có trên hệ thống.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 14179,
+    "intent": "scholarships",
+    "replyPreview": "Hiện tại, hệ thống có tổng cộng 61 học bổng. Dưới đây là danh sách các học bổng đang hoạt động:\n\n*   **V5 Học bổng Tài năng Công nghệ TPBank 2026**: Hạn chót: 11/08/2026.\n*   **v4 Học bổng Tài năng Cô"
+  },
+  {
+    "iteration": 128,
+    "targetTool": "get_all_scholarships",
+    "question": "Số lượng học bổng đang mở hiện tại là bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 12938,
+    "intent": "scholarships",
+    "replyPreview": "Hiện tại có 60 học bổng đang mở nhận hồ sơ."
+  },
+  {
+    "iteration": 129,
+    "targetTool": "get_my_full_profile",
+    "question": "Xem lại hồ sơ đầy đủ của tôi (học vấn, kỹ năng, sở thích) để tư vấn học bổng phù hợp.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 1014,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 1 học bổng phù hợp nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, GPA 3.45), nhấn vào từng thẻ "
+  },
+  {
+    "iteration": 130,
+    "targetTool": "get_my_full_profile",
+    "question": "Hồ sơ cá nhân của tôi hiện đang có những thông tin gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 25273,
+    "intent": "personal_finance",
+    "replyPreview": "Chào bạn, đây là tổng quan về thông tin hồ sơ của bạn trên hệ thống Student360:\n\n**Thông tin cá nhân:**\n*   **Họ và tên:** Finance Seed Student\n*   **Ngày sinh:** 02/01/2003\n*   **Email:** finance.see"
+  },
+  {
+    "iteration": 131,
+    "targetTool": "get_my_full_profile",
+    "question": "Dựa vào toàn bộ hồ sơ của tôi, tôi phù hợp với loại học bổng nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 1036,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 1 học bổng phù hợp nhất. Dựa trên profile của bạn (ngành Công nghệ thông tin, khoa Khoa Khoa học và Kỹ thuật Máy tính, trường University of Science, VNU-HCM, GPA 3.45), nhấn vào từng thẻ "
+  },
+  {
+    "iteration": 132,
+    "targetTool": "get_my_full_profile",
+    "question": "Tóm tắt hồ sơ học vấn và kỹ năng hiện tại của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17613,
+    "intent": "scholarships",
+    "replyPreview": "Chào bạn, đây là tóm tắt hồ sơ của bạn:\n\n**Học vấn:**\n*   Bạn là sinh viên năm 3, khoa Khoa học và Kỹ thuật Máy tính tại trường Đại học Khoa học Tự nhiên - ĐHQG TP.HCM.\n*   Chuyên ngành: Công nghệ thô"
+  },
+  {
+    "iteration": 133,
+    "targetTool": "get_my_full_profile",
+    "question": "Hồ sơ của tôi hiện có thiếu thông tin gì không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 24468,
+    "intent": "scholarships",
+    "replyPreview": "Chào bạn, hồ sơ của bạn đã có những thông tin quan trọng nhất để hệ thống gợi ý học bổng, bao gồm GPA, ngành học, kỹ năng và sở thích.\n\nTuy nhiên, để hồ sơ đầy đủ và ấn tượng hơn trong mắt nhà tuyển d"
+  },
+  {
+    "iteration": 134,
+    "targetTool": "get_my_full_profile",
+    "question": "Cho tôi xem lại toàn bộ thông tin cá nhân đã khai báo.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 9905,
+    "intent": "personal_finance",
+    "replyPreview": "Chào bạn, đây là toàn bộ thông tin cá nhân bạn đã khai báo trên hệ thống Student360:\n\n**Thông tin chung:**\n*   **Họ và tên:** Finance Seed Student\n*   **Email:** finance.seed@student360.test\n*   **Số "
+  },
+  {
+    "iteration": 135,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Tôi đang apply những học bổng nào rồi?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17115,
+    "intent": "scholarships",
+    "replyPreview": "Chào bạn, bạn đã nộp hồ sơ cho các học bổng sau:\n\n*   **Đã được duyệt**:\n    *   TPBank Community Impact Scholarship 2026\n\n*   **Đang xét duyệt**:\n    *   TPBank Career Ready Scholarship 2026\n\n*   **Đ"
+  },
+  {
+    "iteration": 136,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Danh sách hồ sơ học bổng tôi đã nộp là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 10014,
+    "intent": "scholarships",
+    "replyPreview": "Chào bạn, bạn có một hồ sơ học bổng đã nộp:\n- **Tên học bổng:** V3 Học bổng Tài năng Công nghệ TPBank 2026\n- **Nhà cung cấp:** TPBank Foundation for Future Leaders\n- **Trạng thái:** Đã nộp (submitted)"
+  },
+  {
+    "iteration": 137,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Hồ sơ nào của tôi đang chờ xét duyệt?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 8332,
+    "intent": "hybrid",
+    "replyPreview": "Bạn có 1 hồ sơ học bổng đang chờ xét duyệt, đó là \"TPBank Career Ready Scholarship 2026\"."
+  },
+  {
+    "iteration": 138,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Tôi đã nộp bao nhiêu hồ sơ học bổng từ trước đến giờ?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 9492,
+    "intent": "scholarships",
+    "replyPreview": "Bạn đã có tổng cộng 5 hồ sơ xin học bổng. Trong đó:\n*   2 hồ sơ đang ở trạng thái bản nháp.\n*   1 hồ sơ đã nộp.\n*   1 hồ sơ đang được xét duyệt.\n*   1 hồ sơ đã được phê duyệt."
+  },
+  {
+    "iteration": 139,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Có hồ sơ học bổng nào của tôi bị từ chối không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 8089,
+    "intent": "scholarships",
+    "replyPreview": "Không, bạn không có hồ sơ học bổng nào bị từ chối cả. Bạn có muốn kiểm tra trạng thái khác không?"
+  },
+  {
+    "iteration": 140,
+    "targetTool": "get_my_scholarship_applications",
+    "question": "Cho tôi xem toàn bộ lịch sử apply học bổng của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 1340,
+    "intent": "scholarships",
+    "replyPreview": "Tôi tìm thấy 63 học bổng phù hợp; dưới đây là 8 lựa chọn tốt nhất. Nhấn vào từng thẻ để xem tóm tắt."
+  }
+]

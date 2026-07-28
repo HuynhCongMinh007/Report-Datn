@@ -1,0 +1,313 @@
+{
+  "description": "Fixed labeled dataset for the transaction -> jar classification eval (POST /ai/6jars/classify). Each item is a natural Vietnamese transaction description a student might type, with the jar it should be classified into. Frozen so the eval is reproducible across runs. (batch: education only)",
+  "jars": [
+    "essentials",
+    "education",
+    "investment",
+    "sharing",
+    "enjoyment",
+    "reserve"
+  ],
+  "items": [
+    {
+      "id": "edu-01",
+      "description": "Đóng học phí học kỳ này",
+      "amount": 8000000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-02",
+      "description": "Mua giáo trình lập trình Python",
+      "amount": 150000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-03",
+      "description": "Đăng ký khóa học tiếng Anh IELTS",
+      "amount": 3000000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-04",
+      "description": "Mua laptop mới để học lập trình",
+      "amount": 15000000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-05",
+      "description": "In ấn tài liệu đồ án tốt nghiệp",
+      "amount": 50000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-06",
+      "description": "Đóng lệ phí thi chứng chỉ TOEIC",
+      "amount": 500000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-07",
+      "description": "Mua sách tham khảo môn cơ sở dữ liệu",
+      "amount": 120000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-08",
+      "description": "Đăng ký khóa học online trên Udemy",
+      "amount": 300000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-09",
+      "description": "Mua bút và vở ghi chép",
+      "amount": 40000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-10",
+      "description": "Đóng tiền học thêm buổi tối",
+      "amount": 600000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-11",
+      "description": "Phí tham gia hội thảo công nghệ",
+      "amount": 200000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-12",
+      "description": "Mua phần mềm bản quyền để làm đồ án",
+      "amount": 400000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-13",
+      "description": "Đóng phí thi lại môn giải tích",
+      "amount": 150000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-14",
+      "description": "Thuê gia sư kèm môn xác suất thống kê",
+      "amount": 800000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-15",
+      "description": "Mua tai nghe để học online",
+      "amount": 250000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-16",
+      "description": "Mua giáo trình toán cao cấp",
+      "amount": 100000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-17",
+      "description": "Đóng tiền học phí bổ sung tín chỉ",
+      "amount": 1500000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-18",
+      "description": "Mua USB lưu bài tập và đồ án",
+      "amount": 80000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-19",
+      "description": "Đăng ký khóa học thiết kế trên Coursera",
+      "amount": 400000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-20",
+      "description": "Mua máy tính cầm tay Casio",
+      "amount": 300000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-21",
+      "description": "Photo tài liệu ôn thi cuối kỳ",
+      "amount": 40000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-22",
+      "description": "Đóng phí thi lại môn tiếng Anh",
+      "amount": 200000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-23",
+      "description": "Mua sách luyện thi IELTS",
+      "amount": 250000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-24",
+      "description": "Thuê phòng học nhóm ở thư viện",
+      "amount": 50000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-25",
+      "description": "Mua ổ cứng di động lưu dữ liệu học tập",
+      "amount": 600000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-26",
+      "description": "Đăng ký thi chứng chỉ tin học văn phòng",
+      "amount": 300000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-27",
+      "description": "Mua vé tham dự hội thảo khởi nghiệp sinh viên",
+      "amount": 100000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-28",
+      "description": "Đóng tiền học phí học lại môn xác suất",
+      "amount": 600000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-29",
+      "description": "Mua áo đồng phục trường",
+      "amount": 150000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-30",
+      "description": "Đăng ký khóa học machine learning online",
+      "amount": 500000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-31",
+      "description": "Mua sách tiếng Anh chuyên ngành",
+      "amount": 200000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-32",
+      "description": "Thuê laptop dùng cho kỳ thực tập",
+      "amount": 500000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-33",
+      "description": "Mua bảng vẽ để học thiết kế đồ họa",
+      "amount": 700000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-34",
+      "description": "Mua tài liệu ôn thi tốt nghiệp",
+      "amount": 100000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-35",
+      "description": "Đóng lệ phí bảo vệ đồ án tốt nghiệp",
+      "amount": 300000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-36",
+      "description": "Mua chuột và bàn phím phục vụ học tập",
+      "amount": 200000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-37",
+      "description": "Đăng ký học chứng chỉ nghiệp vụ sư phạm",
+      "amount": 800000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-38",
+      "description": "Mua vé xem triển lãm sách",
+      "amount": 20000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-39",
+      "description": "Thuê gia sư luyện thi đầu vào cao học",
+      "amount": 1000000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-40",
+      "description": "Mua phần mềm thiết kế bản quyền phục vụ đồ án",
+      "amount": 500000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-41",
+      "description": "Đóng phí tham gia cuộc thi lập trình sinh viên",
+      "amount": 100000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-42",
+      "description": "Mua giáo trình kinh tế vi mô",
+      "amount": 130000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-43",
+      "description": "Đăng ký khóa học tiếng Nhật giao tiếp",
+      "amount": 1200000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-44",
+      "description": "Mua tai nghe chống ồn để tập trung học",
+      "amount": 350000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-45",
+      "description": "Đóng học phí học kỳ hè",
+      "amount": 4000000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-46",
+      "description": "Mua sách kỹ năng mềm cho sinh viên",
+      "amount": 90000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-47",
+      "description": "Thuê phòng lab máy tính làm đồ án",
+      "amount": 100000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-48",
+      "description": "Mua bút chì và thước kẻ vẽ kỹ thuật",
+      "amount": 50000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-49",
+      "description": "Đăng ký kỳ thi đánh giá năng lực",
+      "amount": 200000,
+      "expected_jar": "education"
+    },
+    {
+      "id": "edu-50",
+      "description": "Mua balo đựng laptop đi học",
+      "amount": 300000,
+      "expected_jar": "education"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "iteration": 77,
+    "targetTool": "get_all_scholarships",
+    "question": "Liệt kê tất cả học bổng đang mở hiện tại.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 11344,
+    "intent": "scholarships",
+    "replyPreview": "I have found the following scholarships that are currently open for application:\n\n**TPBank Innovation Grant 2026**\n*   **Provider:** TPBank Foundation for Future Leaders\n*   **Benefits:** Project spon"
+  },
+  {
+    "iteration": 78,
+    "targetTool": "get_all_scholarships",
+    "question": "Hiện có bao nhiêu học bổng đang nhận hồ sơ?",
+    "ok": false,
+    "latencyMs": 90131,
+    "error": "timeout of 90000ms exceeded"
+  }
+]

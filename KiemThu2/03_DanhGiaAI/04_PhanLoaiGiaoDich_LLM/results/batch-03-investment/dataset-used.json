@@ -1,0 +1,313 @@
+{
+  "description": "Fixed labeled dataset for the transaction -> jar classification eval (POST /ai/6jars/classify). Each item is a natural Vietnamese transaction description a student might type, with the jar it should be classified into. Frozen so the eval is reproducible across runs. (batch: investment only)",
+  "jars": [
+    "essentials",
+    "education",
+    "investment",
+    "sharing",
+    "enjoyment",
+    "reserve"
+  ],
+  "items": [
+    {
+      "id": "inv-01",
+      "description": "Mua cổ phiếu công ty công nghệ",
+      "amount": 5000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-02",
+      "description": "Chuyển tiền vào tài khoản chứng khoán",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-03",
+      "description": "Mua Bitcoin trên sàn giao dịch",
+      "amount": 2000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-04",
+      "description": "Góp vốn vào quỹ đầu tư mở",
+      "amount": 4000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-05",
+      "description": "Mua vàng miếng để đầu tư dài hạn",
+      "amount": 6000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-06",
+      "description": "Đầu tư vào quỹ ETF VN30",
+      "amount": 3500000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-07",
+      "description": "Mua trái phiếu doanh nghiệp",
+      "amount": 5000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-08",
+      "description": "Nạp tiền vào ví đầu tư chứng khoán quốc tế",
+      "amount": 4000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-09",
+      "description": "Mua thêm cổ phiếu ngân hàng",
+      "amount": 2500000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-10",
+      "description": "Đầu tư tiền vào startup của bạn",
+      "amount": 10000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-11",
+      "description": "Chuyển tiền góp vốn kinh doanh cùng bạn bè",
+      "amount": 5000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-12",
+      "description": "Mua Ethereum để đầu tư",
+      "amount": 1500000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-13",
+      "description": "Đầu tư vào quỹ đầu tư bất động sản",
+      "amount": 8000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-14",
+      "description": "Mua chứng chỉ quỹ mở VFMVF1",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-15",
+      "description": "Góp vốn đầu tư chung cửa hàng online",
+      "amount": 6000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-16",
+      "description": "Mua thêm cổ phiếu quỹ VN Index",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-17",
+      "description": "Đầu tư vào coin altcoin mới",
+      "amount": 1000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-18",
+      "description": "Góp vốn mở quán cà phê cùng bạn",
+      "amount": 15000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-19",
+      "description": "Mua chứng chỉ quỹ trái phiếu doanh nghiệp",
+      "amount": 4000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-20",
+      "description": "Đầu tư margin chứng khoán",
+      "amount": 5000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-21",
+      "description": "Mua NFT trên sàn quốc tế",
+      "amount": 2000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-22",
+      "description": "Góp vốn kinh doanh online với nhóm bạn",
+      "amount": 8000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-23",
+      "description": "Đầu tư vào quỹ mở trái phiếu chính phủ",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-24",
+      "description": "Mua cổ phiếu quỹ ETF nước ngoài",
+      "amount": 4000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-25",
+      "description": "Đầu tư vào dự án bất động sản chia nhỏ",
+      "amount": 5000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-26",
+      "description": "Mua thêm Bitcoin khi giá giảm",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-27",
+      "description": "Góp vốn cùng anh trai mở cửa hàng",
+      "amount": 10000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-28",
+      "description": "Đầu tư vào quỹ hưu trí tự nguyện sinh lời",
+      "amount": 2000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-29",
+      "description": "Mua quyền chọn cổ phiếu (option)",
+      "amount": 1500000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-30",
+      "description": "Đầu tư kinh doanh dropshipping",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-31",
+      "description": "Mua vàng tích lũy đầu tư dài hạn theo tháng",
+      "amount": 2000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-32",
+      "description": "Góp vốn vào ứng dụng công nghệ khởi nghiệp",
+      "amount": 7000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-33",
+      "description": "Đầu tư vào chứng khoán phái sinh",
+      "amount": 4000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-34",
+      "description": "Mua cổ phần công ty của bạn học cùng lớp",
+      "amount": 5000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-35",
+      "description": "Đầu tư vào quỹ đầu tư mạo hiểm sinh viên",
+      "amount": 2000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-36",
+      "description": "Mua thêm Ethereum để tích lũy dài hạn",
+      "amount": 1800000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-37",
+      "description": "Góp vốn đầu tư chung xưởng may nhỏ",
+      "amount": 6000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-38",
+      "description": "Đầu tư vào cổ phiếu công ty bất động sản",
+      "amount": 3500000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-39",
+      "description": "Mua chứng khoán quốc tế qua ứng dụng đầu tư",
+      "amount": 2500000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-40",
+      "description": "Đầu tư tiền nhàn rỗi vào quỹ trái phiếu",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-41",
+      "description": "Góp vốn mua chung mặt bằng kinh doanh",
+      "amount": 9000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-42",
+      "description": "Mua cổ phiếu ngành công nghệ Mỹ",
+      "amount": 4000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-43",
+      "description": "Đầu tư vào token dự án blockchain mới",
+      "amount": 1000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-44",
+      "description": "Mua chứng chỉ quỹ đầu tư cổ phiếu tăng trưởng",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-45",
+      "description": "Góp vốn đầu tư sản xuất cùng gia đình",
+      "amount": 12000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-46",
+      "description": "Đầu tư dài hạn vào cổ phiếu blue-chip",
+      "amount": 5000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-47",
+      "description": "Mua thêm phần quỹ đầu tư định kỳ hàng tháng",
+      "amount": 1000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-48",
+      "description": "Đầu tư vào dự án năng lượng tái tạo qua quỹ",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-49",
+      "description": "Góp vốn đầu tư quán trà sữa nhượng quyền",
+      "amount": 20000000,
+      "expected_jar": "investment"
+    },
+    {
+      "id": "inv-50",
+      "description": "Mua cổ phiếu quỹ mở tăng trưởng dài hạn",
+      "amount": 3000000,
+      "expected_jar": "investment"
+    }
+  ]
+}

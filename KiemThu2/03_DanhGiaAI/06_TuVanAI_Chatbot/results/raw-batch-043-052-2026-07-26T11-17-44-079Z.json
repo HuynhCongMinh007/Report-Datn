@@ -1,0 +1,102 @@
+[
+  {
+    "iteration": 43,
+    "targetTool": "get_budget_status",
+    "question": "Ngân sách lọ thiết yếu tháng này còn lại bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 23092,
+    "intent": "personal_finance",
+    "replyPreview": "Hiện tại, hệ thống chưa hỗ trợ tính năng đặt ngân sách (budget) riêng cho từng lọ.\n\nTuy nhiên, bạn có thể xem lại các khoản chi tiêu trong tháng của lọ Thiết yếu để tự đánh giá. Bạn có muốn xem tóm tắ"
+  },
+  {
+    "iteration": 44,
+    "targetTool": "get_budget_status",
+    "question": "Tình trạng ngân sách của lọ giải trí hiện tại ra sao?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17777,
+    "intent": "personal_finance",
+    "replyPreview": "Hiện tại, lọ Hưởng thụ (enjoyment) của bạn đang được phân loại theo các thẻ (tags) sau:\n*   Giải trí\n*   Ăn ngoài\n*   Mua sắm\n*   Du lịch\n*   Sở thích\n*   Khác\n\nĐây là các danh mục chi tiêu bạn đã thi"
+  },
+  {
+    "iteration": 45,
+    "targetTool": "get_budget_status",
+    "question": "Tôi đã dùng hết bao nhiêu % ngân sách lọ ăn uống?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 17465,
+    "intent": "personal_finance",
+    "replyPreview": "Để xem được thông tin này, bạn vui lòng cho biết \"lọ ăn uống\" mà bạn muốn kiểm tra thuộc lọ nào trong 6 lọ nhé. Ví dụ: Lọ thiết yếu, Lọ hưởng thụ,..."
+  },
+  {
+    "iteration": 46,
+    "targetTool": "get_budget_status",
+    "question": "Ngân sách còn lại của lọ hưởng thụ tháng này là bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 28976,
+    "intent": "personal_finance",
+    "replyPreview": "Trong tháng 7/2026, lọ Hưởng thụ của bạn đã có các khoản thu và chi như sau:\n\n*   **Tổng thu (Ngân sách):** 4.443.000 VND\n*   **Tổng chi:** 4.337.000 VND\n\nNhư vậy, ngân sách còn lại của lọ Hưởng thụ t"
+  },
+  {
+    "iteration": 47,
+    "targetTool": "get_budget_status",
+    "question": "Tôi đã tiêu hết bao nhiêu phần trăm ngân sách lọ thiết yếu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 18868,
+    "intent": "personal_finance",
+    "replyPreview": "Chào bạn, tính năng \"Ngân sách\" (Budget) trước đây giờ đã được nâng cấp thành các \"Thẻ\" (Tag) chi tiêu để bạn theo dõi chi tiết hơn.\n\nĐể xem báo cáo chi tiêu theo từng thẻ trong lọ Thiết yếu, bạn vui "
+  },
+  {
+    "iteration": 48,
+    "targetTool": "get_budget_status",
+    "question": "Lọ giáo dục còn bao nhiêu % ngân sách chưa dùng đến?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 19358,
+    "intent": "personal_finance",
+    "replyPreview": "Để biết được phần trăm ngân sách chưa dùng, mình cần thêm thông tin về tổng ngân sách bạn đã đặt ra cho lọ này. Hiện tại, mình chỉ thấy các khoản mục bạn đã tạo cho lọ Giáo dục, bao gồm \"Học phí\", \"Sá"
+  },
+  {
+    "iteration": 49,
+    "targetTool": "get_budget_status",
+    "question": "Ngân sách lọ đầu tư tháng này tôi đã xài quá hạn mức chưa?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 23104,
+    "intent": "personal_finance",
+    "replyPreview": "Chào bạn, trong tháng 7/2026, bạn đã chi 300.000 VND từ lọ Đầu tư.\n\nHiện tại, bạn chưa đặt hạn mức chi tiêu (ngân sách) cho lọ này, vì vậy tôi không thể kiểm tra xem bạn đã chi quá hạn mức hay chưa. N"
+  },
+  {
+    "iteration": 50,
+    "targetTool": "get_budget_status",
+    "question": "Tình hình sử dụng ngân sách lọ dự phòng hiện ra sao?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 24990,
+    "intent": "personal_finance",
+    "replyPreview": "Chào bạn, lọ Tiết kiệm (reserve) của bạn hiện đang được theo dõi qua các thẻ (tags) sau:\n*   Dự phòng\n*   Khẩn cấp\n*   Bảo hiểm\n*   Tiết kiệm ngắn hạn\n*   Khác\n\nBạn có muốn xem chi tiêu chi tiết theo "
+  },
+  {
+    "iteration": 51,
+    "targetTool": "get_budget_status",
+    "question": "So với hạn mức ngân sách, lọ chia sẻ của tôi đang ở mức nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16933,
+    "intent": "hybrid",
+    "replyPreview": "Hiện tại, các khoản chi trong Lọ Chia sẻ (sharing) của bạn đang được phân loại theo các thẻ (tags) sau:\n*   Từ thiện\n*   Quà tặng\n*   Gia đình\n*   Cộng đồng\n*   Khác\n\nĐể biết chi tiết hơn về tình hình"
+  },
+  {
+    "iteration": 52,
+    "targetTool": "get_budget_status",
+    "question": "Ngân sách lọ hưởng thụ, tôi đã dùng gần hết chưa?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 57586,
+    "intent": "hybrid",
+    "replyPreview": "Chào bạn, trong tháng 7 này, bạn đã chi tổng cộng **4.337.000 VND** từ lọ Hưởng thụ.\n\nSố liệu chi tiêu theo từng khoản của bạn như sau:\n*   **Ăn ngoài:** 470.000 VND\n*   **Hưởng thụ:** 1.140.000 VND\n*"
+  }
+]

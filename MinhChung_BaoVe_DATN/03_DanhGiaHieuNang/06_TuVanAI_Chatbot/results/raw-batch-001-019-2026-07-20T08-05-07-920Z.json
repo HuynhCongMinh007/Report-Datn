@@ -1,0 +1,192 @@
+[
+  {
+    "iteration": 1,
+    "targetTool": "get_jar_balance",
+    "question": "Lọ chi tiêu thiết yếu của tôi còn bao nhiêu tiền?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3391,
+    "intent": "personal_finance",
+    "replyPreview": "Lọ chi tiêu thiết yếu của bạn còn 7.261.000 VND."
+  },
+  {
+    "iteration": 2,
+    "targetTool": "get_jar_balance",
+    "question": "Số dư hiện tại của lọ giáo dục là bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 24232,
+    "intent": "personal_finance",
+    "replyPreview": "Dư hiện tại của lọ Giáo dục là 1.411.000 VND."
+  },
+  {
+    "iteration": 3,
+    "targetTool": "get_jar_balance",
+    "question": "Lọ hưởng thụ còn lại bao nhiêu tiền để tôi chi tiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3133,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 4,
+    "targetTool": "get_jar_balance",
+    "question": "Cho tôi biết số dư lọ dự phòng ngay bây giờ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3441,
+    "intent": "personal_finance",
+    "replyPreview": "Dư của bạn trong lọ Dự phòng (reserve) hiện là 1.900.000 VND."
+  },
+  {
+    "iteration": 5,
+    "targetTool": "get_jar_allocations",
+    "question": "Cho tôi xem tổng quan 6 lọ tài chính của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 38046,
+    "intent": "personal_finance",
+    "replyPreview": "Đây là tổng quan 6 lọ tài chính của bạn:\n\n*   **Giáo dục**: Phân bổ 10.0%, số dư hiện tại 1.411.000 VND.\n*   **Hưởng thụ**: Phân bổ 10.0%, số dư hiện tại 748.000 VND.\n*   **Thiết yếu**: Phân bổ 55.0%,"
+  },
+  {
+    "iteration": 6,
+    "targetTool": "get_jar_allocations",
+    "question": "Hiện tại tôi đang phân bổ bao nhiêu % vào mỗi lọ?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3317,
+    "intent": "personal_finance",
+    "replyPreview": "Hiện tại, bạn đang phân bổ như sau:\n*   **Thiết yếu:** 55%\n*   **Giáo dục:** 10%\n*   **Đầu tư:** 10%\n*   **Hưởng thụ:** 10%\n*   **Tiết kiệm:** 10%\n*   **Thiện tâm:** 5%"
+  },
+  {
+    "iteration": 7,
+    "targetTool": "get_jar_allocations",
+    "question": "Danh sách 6 lọ kèm số dư từng lọ hiện tại là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3560,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là danh sách 6 lọ cùng số dư hiện tại của bạn:\n\n*   **Giáo dục**: 1.411.000 VND (10%)\n*   **Hưởng thụ**: 748.000 VND (10%)\n*   **Thiết yếu**: 7.261.000 VND (55%)\n*   **Đầu tư**: 1.400.000 VND"
+  },
+  {
+    "iteration": 8,
+    "targetTool": "get_jar_allocations",
+    "question": "Tóm tắt tình hình tất cả các lọ tài chính giúp tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3576,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là tóm tắt tình hình tài chính của bạn theo phương pháp 6 Lọ:\n\n*   **Giáo dục:** 1.411.000 VND (10%)\n*   **Hưởng thụ:** 748.000 VND (10%)\n*   **Thiết yếu:** 7.261.000 VND (55%)\n*   **Đầu tư:*"
+  },
+  {
+    "iteration": 9,
+    "targetTool": "get_jar_statistics",
+    "question": "Từ trước đến giờ lọ giáo dục tôi đã thu chi tổng cộng bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 38007,
+    "intent": "personal_finance",
+    "replyPreview": "Bạn đã thu 2.600.000 VND và chi 1.189.000 VND cho lọ Giáo dục. Dòng tiền ròng là 1.411.000 VND."
+  },
+  {
+    "iteration": 10,
+    "targetTool": "get_jar_statistics",
+    "question": "Thống kê toàn bộ dòng tiền của lọ thiết yếu từ lúc tạo tới giờ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3378,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi sẽ thống kê dòng tiền của lọ Thiết yếu cho bạn:\n\n*   **Tổng thu:** 12.600.000 VND\n*   **Tổng chi:** 5.339.000 VND\n*   **Dòng tiền ròng:** 7.261.000 VND"
+  },
+  {
+    "iteration": 11,
+    "targetTool": "get_jar_statistics",
+    "question": "Lọ đầu tư của tôi có tổng thu chi lũy kế như thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 10636,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi sẽ cung cấp thông tin về thu nhập, chi tiêu và dòng tiền ròng lũy kế của Lọ Đầu tư.\n\n**Lọ Đầu tư:**\n*   **Tổng thu:** 2.200.000 VND\n*   **Tổng chi:** 800.000 VND\n*   **Dòng tiền ròng:** 1.400.000 "
+  },
+  {
+    "iteration": 12,
+    "targetTool": "get_jar_statistics",
+    "question": "Cho tôi số liệu tổng quan lịch sử của lọ hưởng thụ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16407,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là số liệu tổng quan lịch sử của lọ Hưởng thụ:\n\n*   **Tổng thu:** 4.700.000 VND\n*   **Tổng chi:** 3.952.000 VND\n*   **Dòng tiền ròng:** 748.000 VND"
+  },
+  {
+    "iteration": 13,
+    "targetTool": "get_recent_transactions",
+    "question": "Cho tôi xem 10 giao dịch gần đây nhất của tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 36523,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là 10 giao dịch gần đây nhất của bạn:\n\n1.  **20/07/2026**: Thu nhập 100.000 VND vào lọ Hưởng thụ (Auto-transfer: Single jar allocation)\n2.  **20/07/2026**: Thu nhập 100.000 VND vào lọ Hưởng t"
+  },
+  {
+    "iteration": 14,
+    "targetTool": "get_recent_transactions",
+    "question": "Gần đây tôi đã chi tiêu những khoản nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3304,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là các giao dịch gần đây của bạn:\n\n*   **20/07/2026**:\n    *   Nhận: 100.000 VND (Hưởng thụ)\n    *   Nhận: 100.000 VND (Hưởng thụ)\n    *   Chi: 2.000 VND (Thiết yếu) - [e2e-test] confirmed pr"
+  },
+  {
+    "iteration": 15,
+    "targetTool": "get_recent_transactions",
+    "question": "Liệt kê các giao dịch mới nhất trên tất cả các lọ.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3893,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là các giao dịch mới nhất:\n\n*   **20/07/2026**:\n    *   Nhận Auto-transfer: Single jar allocation vào lọ Hưởng thụ: 100.000 VND\n    *   Nhận Auto-transfer: Single jar allocation vào lọ Hưởng "
+  },
+  {
+    "iteration": 16,
+    "targetTool": "get_recent_transactions",
+    "question": "Tôi vừa mới tiêu tiền vào những việc gì gần đây?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3789,
+    "intent": "hybrid",
+    "replyPreview": "Dưới đây là những giao dịch gần đây của bạn:\n\n**Ngày 20 tháng 7:**\n*   Thu nhập: 100.000 VND (tự động chuyển) vào lọ Hưởng thụ.\n*   Thu nhập: 100.000 VND (tự động chuyển) vào lọ Hưởng thụ.\n*   Chi tiê"
+  },
+  {
+    "iteration": 17,
+    "targetTool": "get_top_expenses",
+    "question": "Tháng này tôi tiêu nhiều nhất vào việc gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 25628,
+    "intent": "personal_finance",
+    "replyPreview": "Tháng này bạn tiêu nhiều nhất vào khoản \"Khác\" trong lọ \"Thiết yếu\" với 3.119.000 VND."
+  },
+  {
+    "iteration": 18,
+    "targetTool": "get_top_expenses",
+    "question": "10 khoản chi lớn nhất trong 30 ngày qua của tôi là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 4513,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là 10 khoản chi lớn nhất của bạn trong 30 ngày qua:\n\n1.  **2.000.000 VND** - Cà phê với bạn bè (Hưởng thụ)\n2.  **2.000.000 VND** - Chuyển tiền giữa các hũ (Thiết yếu)\n3.  **1.800.000 VND** - "
+  },
+  {
+    "iteration": 19,
+    "targetTool": "get_top_expenses",
+    "question": "Khoản chi tiêu lớn nhất gần đây của tôi là khoản nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3402,
+    "intent": "personal_finance",
+    "replyPreview": "Khoản chi tiêu lớn nhất gần đây của bạn là 2.000.000 VND cho \"Cà phê với bạn bè\" và \"Chuyển tiền giữa các hũ\"."
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "iteration": 101,
+    "targetTool": "get_financial_guidelines",
+    "question": "Làm sao để quản lý nợ hiệu quả khi là sinh viên?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31529,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Chào bạn, để quản lý nợ hiệu quả khi là sinh viên, bạn có thể tham khảo các gợi ý sau theo phương pháp 6 Lọ:\n\n1.  **Phân loại nợ:**\n    *   **Nợ tiêu dùng** (vay mượn tiền ăn, mua sắm): Trích từ lọ Ch"
+  },
+  {
+    "iteration": 102,
+    "targetTool": "get_financial_guidelines",
+    "question": "Thu nhập không đều thì nên chia lọ như thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 19940,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Chào bạn, với thu nhập không đều, bạn có thể áp dụng một vài chiến lược nhỏ để việc chia lọ được hiệu quả hơn. Dưới đây là hướng dẫn từ Student360:\n\n1.  **Áp dụng mô hình \"Lọ Chờ\" (Holding Jar):**\n   "
+  },
+  {
+    "iteration": 103,
+    "targetTool": "get_financial_guidelines",
+    "question": "Có lời khuyên nào về việc đặt mục tiêu tiết kiệm không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 8651,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Chào bạn, Student360 có một vài gợi ý giúp bạn đặt mục tiêu tiết kiệm hiệu quả hơn theo phương pháp 6 lọ:\n\n1.  **Xác định mục tiêu cụ thể:** Bạn muốn tiết kiệm để làm gì? Ví dụ: mua laptop mới, đi du "
+  },
+  {
+    "iteration": 104,
+    "targetTool": "get_financial_guidelines",
+    "question": "Cho tôi vài mẹo quản lý tài chính dành cho sinh viên.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13333,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Chào bạn, dưới đây là một vài mẹo quản lý tài chính dành riêng cho sinh viên Việt Nam, bạn tham khảo nhé:\n\n1.  **Ăn uống:** Tự nấu ăn giúp tiết kiệm cho lọ Thiết yếu (essentials) khoảng 30-50% so với "
+  },
+  {
+    "iteration": 105,
+    "targetTool": "get_financial_guidelines",
+    "question": "Phương pháp 6 lọ hoạt động theo nguyên tắc nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 11067,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Tuyệt vời! Mình đã có thông tin chi tiết về tỷ lệ các lọ.\n\nPhương pháp 6 Lọ hoạt động bằng cách chia thu nhập của bạn thành 6 phần trăm khác nhau, mỗi phần cho một mục đích cụ thể. Tỷ lệ phân chia chu"
+  },
+  {
+    "iteration": 106,
+    "targetTool": "get_financial_guidelines",
+    "question": "Sinh viên mới đi làm thêm nên bắt đầu quản lý tiền từ đâu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 28719,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Tuyệt vời! Bắt đầu quản lý tài chính ngay khi có thu nhập đầu tiên là một bước rất quan trọng. Với vai trò là một sinh viên vừa đi làm thêm, bạn có thể bắt đầu bằng phương pháp 6 Lọ nổi tiếng.\n\nPhương"
+  },
+  {
+    "iteration": 107,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Học bổng có tên gần giống 'Vươn Cao' thì ID là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 8720,
+    "intent": "scholarships",
+    "replyPreview": "Không tìm thấy học bổng nào có tên là 'Vươn Cao'. Dưới đây là một số kết quả có tên gần giống nhất:\n\n*   **Tech Innovation Scholarship**\n*   **Education Technology Innovation Award**\n*   **Rural Devel"
+  },
+  {
+    "iteration": 108,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Tìm giúp tôi ID của học bổng tên có chữ 'Khuyến khích'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13271,
+    "intent": "scholarships",
+    "replyPreview": "Không tìm thấy học bổng nào có tên chứa chữ 'Khuyến khích'. Kết quả tìm kiếm có độ tin cậy thấp.\n\nDưới đây là danh sách các học bổng gần đúng nhất mà hệ thống tìm được, bạn có thể tham khảo:\n- **Busin"
+  },
+  {
+    "iteration": 109,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Học bổng nào tên gần giống 'Tài năng' vậy, cho tôi ID.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 11459,
+    "intent": "scholarships",
+    "replyPreview": "Chào bạn, với tên \"Tài năng\", hệ thống tìm thấy kết quả phù hợp nhất là học bổng \"Học bổng tài năng KHTN\" với ID `ddd7bc66-dc7b-403d-8abf-9a4130d474e1`.\n\nNgoài ra, còn có một số học bổng khác cũng chứ"
+  },
+  {
+    "iteration": 110,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Tìm ID học bổng có tên chứa từ 'Sinh viên'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 7987,
+    "intent": "scholarships",
+    "replyPreview": "Rất tiếc, tôi không tìm thấy học bổng nào có tên chứa từ 'Sinh viên'. Bạn vui lòng kiểm tra lại tên chính xác của học bổng và thử lại nhé."
+  },
+  {
+    "iteration": 111,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "ID của học bổng có tên gần giống 'Xuất Sắc' là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 12513,
+    "intent": "scholarships",
+    "replyPreview": "Không tìm thấy học bổng nào có tên chính xác là 'Xuất Sắc'. Hệ thống gợi ý một vài kết quả có thể liên quan nhưng với độ chính xác không cao.\n\nID của học bổng gần nhất là `74000dd9-f6a7-443a-acf0-52da"
+  },
+  {
+    "iteration": 112,
+    "targetTool": "find_scholarship_id_by_name",
+    "question": "Tìm giúp tôi mã học bổng có tên chứa từ 'Nghị Lực'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 10159,
+    "intent": "scholarships",
+    "replyPreview": "Không tìm thấy học bổng nào có tên chính xác chứa từ 'Nghị Lực'. Kết quả tìm kiếm có độ chính xác thấp.\n\nDưới đây là một số kết quả gần đúng bạn có thể tham khảo:\n*   **Language Excellence Award** (ID"
+  },
+  {
+    "iteration": 113,
+    "targetTool": "get_scholarship_details",
+    "question": "Học bổng đầu tiên trong danh sách đang mở yêu cầu GPA bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13376,
+    "intent": "scholarships",
+    "replyPreview": "Học bổng đầu tiên trong danh sách đang mở yêu cầu GPA từ 3.0/4.0 trở lên."
+  },
+  {
+    "iteration": 114,
+    "targetTool": "get_scholarship_details",
+    "question": "Chi tiết điều kiện và giấy tờ cần nộp cho học bổng đang phổ biến nhất là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 10279,
+    "intent": "scholarships",
+    "replyPreview": "Mình chưa rõ \"học bổng phổ biến nhất\" là học bổng nào. Bạn có thể cho mình biết tên cụ thể của học bổng bạn đang quan tâm không?\n\nKhi có tên, mình sẽ tra cứu chi tiết điều kiện và các giấy tờ cần thiế"
+  },
+  {
+    "iteration": 115,
+    "targetTool": "get_scholarship_details",
+    "question": "Học bổng có hạn nộp sớm nhất yêu cầu những gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 9889,
+    "intent": "scholarships",
+    "replyPreview": "Mình chưa tìm thấy học bổng nào phù hợp với tiêu chí của bạn."
+  },
+  {
+    "iteration": 116,
+    "targetTool": "get_scholarship_details",
+    "question": "Cho tôi biết chi tiết đầy đủ của một học bổng bất kỳ đang mở.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 18956,
+    "intent": "scholarships",
+    "replyPreview": "Mình đã tìm thấy một học bổng đang mở và dưới đây là thông tin chi tiết về học bổng đó:\n\n**Tên học bổng:** V5 Học bổng Tài năng Công nghệ TPBank 2026\n**Nhà cung cấp:** TPBank Foundation for Future Lea"
+  },
+  {
+    "iteration": 117,
+    "targetTool": "get_scholarship_details",
+    "question": "Giá trị và quyền lợi của học bổng đang mở gần bạn nhất là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 18938,
+    "intent": "scholarships",
+    "replyPreview": "Chào bạn, học bổng TPBank Career Ready Scholarship 2026 đang mở có giá trị 15.000.000 VND. Ngoài ra, bạn còn nhận được các quyền lợi khác như được hỗ trợ học phí, review CV và tham gia phỏng vấn thử. "
+  },
+  {
+    "iteration": 118,
+    "targetTool": "get_scholarship_details",
+    "question": "Học bổng đang mở có giá trị cao nhất yêu cầu hồ sơ gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13959,
+    "intent": "scholarships",
+    "replyPreview": "Rất tiếc, tôi không tìm thấy học bổng nào phù hợp với yêu cầu của bạn."
+  },
+  {
+    "iteration": 119,
+    "targetTool": "get_all_scholarships",
+    "question": "Liệt kê tất cả học bổng đang mở hiện tại.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 18628,
+    "intent": "scholarships",
+    "replyPreview": "Hiện tại có 60 học bổng đang mở, bao gồm:\n- V5 Học bổng Tài năng Công nghệ TPBank 2026\n- V3 Học bổng Tài năng Công nghệ TPBank 2026\n- Học bổng tài năng KHTN\n- V2 Học bổng Tài năng Công nghệ TPBank 202"
+  },
+  {
+    "iteration": 120,
+    "targetTool": "get_all_scholarships",
+    "question": "Hiện có bao nhiêu học bổng đang nhận hồ sơ?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 10469,
+    "intent": "scholarships",
+    "replyPreview": "Hiện có 60 học bổng đang nhận hồ sơ."
+  }
+]

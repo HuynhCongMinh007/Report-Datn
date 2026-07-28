@@ -1,0 +1,702 @@
+[
+  {
+    "iteration": 1,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 55
+  },
+  {
+    "iteration": 2,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 52
+  },
+  {
+    "iteration": 3,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 51
+  },
+  {
+    "iteration": 4,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 45
+  },
+  {
+    "iteration": 5,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 40
+  },
+  {
+    "iteration": 6,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 47
+  },
+  {
+    "iteration": 7,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 54
+  },
+  {
+    "iteration": 8,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 51
+  },
+  {
+    "iteration": 9,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 47
+  },
+  {
+    "iteration": 10,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 48
+  },
+  {
+    "iteration": 11,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 50
+  },
+  {
+    "iteration": 12,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 50
+  },
+  {
+    "iteration": 13,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 46
+  },
+  {
+    "iteration": 14,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 39
+  },
+  {
+    "iteration": 15,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 45
+  },
+  {
+    "iteration": 16,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 47
+  },
+  {
+    "iteration": 17,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 39
+  },
+  {
+    "iteration": 18,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43
+  },
+  {
+    "iteration": 19,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 44
+  },
+  {
+    "iteration": 20,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 40
+  },
+  {
+    "iteration": 21,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 39
+  },
+  {
+    "iteration": 22,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 39
+  },
+  {
+    "iteration": 23,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 42
+  },
+  {
+    "iteration": 24,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 45
+  },
+  {
+    "iteration": 25,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43
+  },
+  {
+    "iteration": 26,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 38
+  },
+  {
+    "iteration": 27,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 51
+  },
+  {
+    "iteration": 28,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 40
+  },
+  {
+    "iteration": 29,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 30,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 45
+  },
+  {
+    "iteration": 31,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 39
+  },
+  {
+    "iteration": 32,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 42
+  },
+  {
+    "iteration": 33,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43
+  },
+  {
+    "iteration": 34,
+    "endpoint": "GET /finance/jars",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43
+  },
+  {
+    "iteration": 1,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 111
+  },
+  {
+    "iteration": 1,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 1,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 46
+  },
+  {
+    "iteration": 2,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 55
+  },
+  {
+    "iteration": 2,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 2,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 48
+  },
+  {
+    "iteration": 3,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 3,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 3,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 64
+  },
+  {
+    "iteration": 4,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 79
+  },
+  {
+    "iteration": 4,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 47
+  },
+  {
+    "iteration": 4,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 47
+  },
+  {
+    "iteration": 5,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 81
+  },
+  {
+    "iteration": 5,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 5,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43
+  },
+  {
+    "iteration": 6,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 6,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43
+  },
+  {
+    "iteration": 6,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 50
+  },
+  {
+    "iteration": 7,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 63
+  },
+  {
+    "iteration": 7,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 35
+  },
+  {
+    "iteration": 7,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43
+  },
+  {
+    "iteration": 8,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 56
+  },
+  {
+    "iteration": 8,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 8,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 44
+  },
+  {
+    "iteration": 9,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 59
+  },
+  {
+    "iteration": 9,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 34
+  },
+  {
+    "iteration": 9,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 48
+  },
+  {
+    "iteration": 10,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 10,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 10,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 84
+  },
+  {
+    "iteration": 11,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 64
+  },
+  {
+    "iteration": 11,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 34
+  },
+  {
+    "iteration": 11,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 46
+  },
+  {
+    "iteration": 12,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 70
+  },
+  {
+    "iteration": 12,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 12,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 110
+  },
+  {
+    "iteration": 13,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 57
+  },
+  {
+    "iteration": 13,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 13,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 44
+  },
+  {
+    "iteration": 14,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 65
+  },
+  {
+    "iteration": 14,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 31
+  },
+  {
+    "iteration": 14,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 44
+  },
+  {
+    "iteration": 15,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 69
+  },
+  {
+    "iteration": 15,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 36
+  },
+  {
+    "iteration": 15,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 48
+  },
+  {
+    "iteration": 16,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 69
+  },
+  {
+    "iteration": 16,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 40
+  },
+  {
+    "iteration": 16,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 52
+  },
+  {
+    "iteration": 17,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 62
+  },
+  {
+    "iteration": 17,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 52
+  },
+  {
+    "iteration": 17,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43
+  },
+  {
+    "iteration": 18,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 72
+  },
+  {
+    "iteration": 18,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 46
+  },
+  {
+    "iteration": 18,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 49
+  },
+  {
+    "iteration": 19,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 58
+  },
+  {
+    "iteration": 19,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 37
+  },
+  {
+    "iteration": 19,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 44
+  },
+  {
+    "iteration": 20,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 52
+  },
+  {
+    "iteration": 20,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 40
+  },
+  {
+    "iteration": 20,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 43
+  },
+  {
+    "iteration": 21,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 52
+  },
+  {
+    "iteration": 21,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 21,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 44
+  },
+  {
+    "iteration": 22,
+    "endpoint": "POST /finance/transactions",
+    "ok": true,
+    "status": 201,
+    "latencyMs": 59
+  },
+  {
+    "iteration": 22,
+    "endpoint": "GET /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 32
+  },
+  {
+    "iteration": 22,
+    "endpoint": "DELETE /finance/transactions/:id",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 42
+  }
+]

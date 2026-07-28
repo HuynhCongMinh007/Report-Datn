@@ -1,0 +1,190 @@
+[
+  {
+    "iteration": 20,
+    "targetTool": "get_top_expenses",
+    "question": "Cho tôi biết những chi tiêu đáng kể nhất tuần vừa rồi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 5645,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là những chi tiêu đáng kể nhất của bạn trong tuần vừa qua:\n*   Chuyển tiền giữa các hũ: 2.000.000 VND (vào lọ Thiết yếu)\n*   Mua vé concert sinh viên: 690.000 VND (vào lọ Hưởng thụ)\n*   Ăn tố"
+  },
+  {
+    "iteration": 21,
+    "targetTool": "search_transactions",
+    "question": "Tìm giúp tôi giao dịch nào có chữ 'Grab' trong mô tả.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3884,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi tìm thấy 2 giao dịch có chữ 'Grab' trong mô tả:\n\n*   **Grab về nhà**: Chi 60.000 VND, thuộc lọ Essentials.\n*   **Grab đi học**: Chi 80.000 VND, thuộc lọ Essentials."
+  },
+  {
+    "iteration": 22,
+    "targetTool": "search_transactions",
+    "question": "Tôi có giao dịch nào liên quan đến 'cà phê' không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3764,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi tìm thấy 4 giao dịch liên quan đến 'cà phê':\n*   Ngày 19/07/2026: 3 giao dịch, mỗi giao dịch 50.000 VND, thuộc lọ Hưởng thụ.\n*   Ngày 12/07/2026: 1 giao dịch, 2.000.000 VND, thuộc lọ Hưởng thụ."
+  },
+  {
+    "iteration": 23,
+    "targetTool": "search_transactions",
+    "question": "Tìm kiếm các giao dịch có từ 'học phí'.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 15885,
+    "intent": "personal_finance",
+    "replyPreview": "Không tìm thấy giao dịch nào có chứa từ khóa 'học phí'."
+  },
+  {
+    "iteration": 24,
+    "targetTool": "search_transactions",
+    "question": "Có giao dịch nào chứa từ 'sách' trong mô tả không?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 16086,
+    "intent": "personal_finance",
+    "replyPreview": "Có, có 2 giao dịch chứa từ 'sách':\n\n1.  **Mua giáo trình + sách tham khảo**: 500.000 VND, ngày 11/07/2026, thuộc lọ Giáo dục.\n2.  **Mua sách kỹ năng tài chính**: 240.000 VND, ngày 10/07/2026, thuộc lọ"
+  },
+  {
+    "iteration": 25,
+    "targetTool": "get_jar_tags",
+    "question": "Lọ hưởng thụ tôi đang gắn những tag nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3182,
+    "intent": "personal_finance",
+    "replyPreview": "Lọ Hưởng thụ của bạn có các tag sau: Giải trí, Ăn ngoài, Mua sắm, Du lịch, Sở thích, Khác."
+  },
+  {
+    "iteration": 26,
+    "targetTool": "get_jar_tags",
+    "question": "Danh sách tag đang hoạt động của lọ thiết yếu là gì?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2258,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Xin lỗi, tôi không thể cung cấp danh sách các thẻ tag đang hoạt động cho lọ thiết yếu. Tôi chỉ có thể cung cấp thông tin về các loại lọ trong phương pháp 6 Lọ."
+  },
+  {
+    "iteration": 27,
+    "targetTool": "get_jar_tags",
+    "question": "Tôi đã tạo những tag nào cho lọ giải trí?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 36986,
+    "intent": "knowledge_6jars",
+    "replyPreview": "Xin lỗi, tôi không thể xem các thẻ bạn đã tạo cho lọ \"Hưởng thụ\". Tuy nhiên, tôi có thể cung cấp cho bạn thông tin về cách sử dụng lọ này theo phương pháp 6 Lọ.\n\nLọ \"Hưởng thụ\" (Enjoyment) chiếm 10% t"
+  },
+  {
+    "iteration": 28,
+    "targetTool": "get_jar_tags",
+    "question": "Cho tôi xem các tag của lọ dự phòng.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 13831,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là các tag của lọ Dự phòng:\n* Dự phòng\n* Khẩn cấp\n* Bảo hiểm\n* Tiết kiệm ngắn hạn\n* Khác"
+  },
+  {
+    "iteration": 29,
+    "targetTool": "get_budget_status",
+    "question": "Ngân sách lọ thiết yếu tháng này còn lại bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 53479,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 30,
+    "targetTool": "get_budget_status",
+    "question": "Tình trạng ngân sách của lọ giải trí hiện tại ra sao?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3380,
+    "intent": "personal_finance",
+    "replyPreview": "Dữ liệu về ngân sách của lọ Hưởng thụ (Enjoyment) bao gồm các mục sau: Giải trí, Ăn ngoài, Mua sắm, Du lịch, Sở thích và Khác. Bạn có muốn biết chi tiết về khoản chi nào không?"
+  },
+  {
+    "iteration": 31,
+    "targetTool": "get_budget_status",
+    "question": "Tôi đã dùng hết bao nhiêu % ngân sách lọ ăn uống?",
+    "ok": false,
+    "latencyMs": 90298,
+    "error": "timeout of 90000ms exceeded"
+  },
+  {
+    "iteration": 32,
+    "targetTool": "get_budget_status",
+    "question": "Ngân sách còn lại của lọ hưởng thụ tháng này là bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 25581,
+    "intent": "personal_finance",
+    "replyPreview": "Xin lỗi, tôi chưa thể tổng hợp kết quả. Vui lòng thử lại."
+  },
+  {
+    "iteration": 33,
+    "targetTool": "get_tag_spending_summary",
+    "question": "Tháng 5 tôi chi bao nhiêu cho từng tag trong lọ thiết yếu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2236,
+    "intent": "personal_finance",
+    "replyPreview": "Rất tiếc, tôi không tìm thấy dữ liệu chi tiêu nào cho tháng 5. Bạn có muốn cung cấp thêm thông tin hoặc xem chi tiêu của tháng khác không?"
+  },
+  {
+    "iteration": 34,
+    "targetTool": "get_tag_spending_summary",
+    "question": "Tổng hợp chi tiêu theo tag của tháng trước giúp tôi.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3895,
+    "intent": "personal_finance",
+    "replyPreview": "Tôi đã tổng hợp chi tiêu theo tag của tháng trước (tháng 6 năm 2026) cho bạn:\n\n*   **Đầu tư - Khác:** 500.000 VND (1 giao dịch)\n*   **Tiết kiệm - Khác:** 300.000 VND (1 giao dịch)"
+  },
+  {
+    "iteration": 35,
+    "targetTool": "get_tag_spending_summary",
+    "question": "Tag nào tôi chi nhiều tiền nhất trong tháng này?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3653,
+    "intent": "personal_finance",
+    "replyPreview": "Trong tháng này, bạn đã chi nhiều tiền nhất vào các tag sau:\n*   **Khác** (lọ Thiết yếu): 3.119.000 VND\n*   **Khác** (lọ Hưởng thụ): 2.662.000 VND\n*   **Thiết yếu** (lọ Thiết yếu): 2.220.000 VND"
+  },
+  {
+    "iteration": 36,
+    "targetTool": "get_tag_spending_summary",
+    "question": "Phân tích chi tiêu theo từng tag của tháng hiện tại.",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 3534,
+    "intent": "personal_finance",
+    "replyPreview": "Dưới đây là phân tích chi tiêu theo từng tag của tháng 7 năm 2026:\n\n**Thiết yếu:**\n*   Khác: 3.119.000 VND (12 giao dịch)\n*   Thiết yếu: 2.220.000 VND (2 giao dịch)\n\n**Hưởng thụ:**\n*   Khác: 2.662.000"
+  },
+  {
+    "iteration": 37,
+    "targetTool": "get_monthly_summary",
+    "question": "Tổng kết thu chi tháng 3 của tôi như thế nào?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2997,
+    "intent": "personal_finance",
+    "replyPreview": "Vào tháng 3, bạn chưa có giao dịch nào được ghi nhận. Bạn có muốn ghi nhận thu nhập hoặc chi tiêu cho tháng này không?"
+  },
+  {
+    "iteration": 38,
+    "targetTool": "get_monthly_summary",
+    "question": "Tháng trước tôi thu và chi tổng cộng bao nhiêu?",
+    "ok": true,
+    "status": 200,
+    "latencyMs": 2192,
+    "intent": "personal_finance",
+    "replyPreview": "Trong tháng 6, tổng thu nhập của bạn là 8.000.000 VND và tổng chi phí là 800.000 VND. Dòng tiền ròng là 7.200.000 VND."
+  }
+]
