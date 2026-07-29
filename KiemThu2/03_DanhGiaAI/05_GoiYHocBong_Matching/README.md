@@ -5,7 +5,7 @@
 ## Phạm vi đo
 
 Đo độ chính xác/chất lượng xếp hạng của thuật toán gợi ý học bổng — điều mà đo latency thuần
-(P50/P95/P99) không phản ánh được. Dữ liệu: 30 hồ sơ x 36 học bổng (10 trường x 10 ngành, từ vựng
+(P50/P95/P99) không phản ánh được. Dữ liệu: 30 hồ sơ x 150 học bổng (10 trường x 10 ngành, từ vựng
 có kiểm soát để so khớp chuỗi chính xác), sinh bằng `script/gen_scholarship_dataset.py` (seed=42,
 tái lập được 100%).
 
@@ -18,9 +18,9 @@ thức fuzzy-matching đang được kiểm thử — tránh vòng lặp tự-ch
 Rà soát phát hiện: hàm production thật sự trả kết quả gợi ý (`_rank_recommendation_items`,
 `student360-ai/app/domains/finance/agents/finance/scholarships/tools/matching.py`) làm 2 việc mà
 công thức tính điểm text-similarity (`_score_profile_match`) một mình không thể hiện — (1) **gate
-cứng**: chỉ giữ học bổng khớp CẢ trường lẫn ngành hồ sơ; (2) **sắp xếp theo GPA-gap/amount/đang mở**
-cho các học bổng qua gate, không phải theo điểm text-similarity (điểm đó chỉ dùng hiển thị badge %
-trên UI). Vì vậy có 2 script đo 2 tầng riêng:
+cứng**: chỉ giữ học bổng khớp CẢ trường lẫn ngành hồ sơ; (2) **sắp xếp theo điểm tổng hợp có trọng
+số** `rank_score = 0.6 × match_score + 0.25 × độ_gần_GPA + 0.15 × giá_trị_chuẩn_hoá` cho các học
+bổng qua gate (xem `results/fix_rank_score_weighting.diff`). Vì vậy có 2 script đo 2 tầng riêng:
 
 - **`script/eval_scholarship_matching.py`** — đo riêng công thức `_score_profile_match` (sub-component).
 - **`script/eval_scholarship_ranking_pipeline.py`** — đo đúng hàm production `_rank_recommendation_items`
@@ -49,9 +49,10 @@ python3 tests/eval/eval_scholarship_ranking_pipeline.py
 │   ├── eval_scholarship_matching.py       Đo riêng _score_profile_match (sub-component)
 │   └── eval_scholarship_ranking_pipeline.py  Đo pipeline đầy đủ (gate + sort)
 ├── data/
-│   └── scholarship_matching_eval_set.json 30 hồ sơ x 36 học bổng
+│   └── scholarship_matching_eval_set.json 30 hồ sơ x 150 học bổng
 └── results/
     ├── summary.md                          Số liệu + nhận định chính thức
     ├── scholarship_matching_eval_*.json    Báo cáo chi tiết per-hồ-sơ (sub-component)
-    └── scholarship_ranking_pipeline_eval_*.json  Báo cáo chi tiết per-hồ-sơ (pipeline đầy đủ)
+    ├── scholarship_ranking_pipeline_eval_*.json  Báo cáo chi tiết per-hồ-sơ (pipeline đầy đủ)
+    └── fix_rank_score_weighting.diff       Diff thật của thay đổi tiêu chí sắp xếp trong matching.py
 ```

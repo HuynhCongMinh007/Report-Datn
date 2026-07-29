@@ -112,15 +112,17 @@ def gen_scholarships():
     idx = 1
     rng = random.Random(7)
 
-    # (a) 6 national/general scholarships: open to all universities AND all majors
+    # (a) 10 national/general scholarships: open to all universities AND all majors
     general_names = [
         "Học bổng Vươn Cao Toàn Quốc", "Học bổng Khuyến Học Vì Cộng Đồng",
         "Học bổng Nghị Lực Sinh Viên", "Học bổng Đồng Hành Tri Thức",
         "Học bổng Ước Mơ Việt", "Học bổng Tài Năng Trẻ Toàn Quốc",
+        "Học bổng Thắp Sáng Tương Lai", "Học bổng Hạt Giống Tri Thức",
+        "Học bổng Phát Triển Nhân Tài", "Học bổng Chắp Cánh Ước Mơ",
     ]
     for name in general_names:
         scholarships.append({
-            "id": f"s{idx:02d}",
+            "id": f"s{idx:03d}",
             "name": name,
             "description": f"Dành cho mọi sinh viên có thành tích học tập tốt, không giới hạn ngành hay trường, "
                             f"ưu tiên hoàn cảnh khó khăn vươn lên trong học tập.",
@@ -140,14 +142,19 @@ def gen_scholarships():
         })
         idx += 1
 
-    # (b) 2 field-specific scholarships per major, open to ALL universities (target_majors specific)
+    # (b) 12 field-specific scholarships per major (10 majors x 12 = 120), open to ALL universities
+    variant_labels = [
+        "Xuất Sắc", "Phát Triển", "Tiềm Năng", "Đồng Hành", "Vươn Xa",
+        "Sáng Tạo", "Nghiên Cứu", "Tài Năng", "Khuyến Khích", "Đổi Mới",
+        "Tiên Phong", "Hội Nhập",
+    ]
     for major in MAJORS:
         category, flavor = MAJOR_SCHOLARSHIP_TRAITS[major]
-        for variant in range(2):
-            deadline_open = variant == 0  # 1 open, 1 either open/closed for variety
+        for variant in range(12):
+            deadline_open = variant % 2 == 0  # xen kẽ mở/đóng hạn cho đa dạng
             scholarships.append({
-                "id": f"s{idx:02d}",
-                "name": f"Học bổng {category} {'Xuất Sắc' if variant == 0 else 'Phát Triển'} — {major}",
+                "id": f"s{idx:03d}",
+                "name": f"Học bổng {category} {variant_labels[variant]} — {major}",
                 "description": f"Dành cho {flavor}.",
                 "eligibility_criteria": f"Sinh viên ngành {major}, có thành tích học tập tốt",
                 "benefits": f"{rng.choice([8, 10, 15, 20])} triệu đồng",
@@ -165,27 +172,29 @@ def gen_scholarships():
             })
             idx += 1
 
-    # (c) 1 university-wide merit scholarship per university (target_universities specific, all majors)
+    # (c) 2 university-wide merit scholarships per university (10 unis x 2 = 20)
+    uni_variants = ["Khuyến Khích", "Tài Năng"]
     for uni in UNIS:
-        scholarships.append({
-            "id": f"s{idx:02d}",
-            "name": f"Học bổng Khuyến Khích {uni}",
-            "description": f"Dành cho sinh viên xuất sắc đang theo học tại {uni}, không phân biệt ngành.",
-            "eligibility_criteria": f"Đang là sinh viên chính quy tại {uni}, GPA đạt yêu cầu tối thiểu",
-            "benefits": "Miễn giảm học phí một kỳ",
-            "provider": uni,
-            "category_name": "Học bổng trường",
-            "target_universities": [uni],
-            "target_majors": ["all"],
-            "minimum_gpa": rng.choice([3.0, 3.2, 3.4]),
-            "minimum_gpa_scale": 4,
-            "amount": rng.choice([6000000, 9000000, 12000000]),
-            "application_deadline": "2026-11-30T23:59:59",
-            "is_active": True,
-            "applicants_count": rng.randint(30, 150),
-            "quantity": rng.randint(15, 50),
-        })
-        idx += 1
+        for uvar in uni_variants:
+            scholarships.append({
+                "id": f"s{idx:03d}",
+                "name": f"Học bổng {uvar} {uni}",
+                "description": f"Dành cho sinh viên xuất sắc đang theo học tại {uni}, không phân biệt ngành.",
+                "eligibility_criteria": f"Đang là sinh viên chính quy tại {uni}, GPA đạt yêu cầu tối thiểu",
+                "benefits": "Miễn giảm học phí một kỳ",
+                "provider": uni,
+                "category_name": "Học bổng trường",
+                "target_universities": [uni],
+                "target_majors": ["all"],
+                "minimum_gpa": rng.choice([3.0, 3.2, 3.4]),
+                "minimum_gpa_scale": 4,
+                "amount": rng.choice([6000000, 9000000, 12000000]),
+                "application_deadline": "2026-11-30T23:59:59",
+                "is_active": True,
+                "applicants_count": rng.randint(30, 150),
+                "quantity": rng.randint(15, 50),
+            })
+            idx += 1
 
     return scholarships
 
@@ -217,7 +226,7 @@ def main():
     dataset = {
         "_meta": {
             "description": (
-                "Expanded scholarship-matching eval dataset (30 profiles x 36 scholarships, "
+                "Expanded scholarship-matching eval dataset (30 profiles x 150 scholarships, "
                 "10 universities x 10 majors controlled vocabulary). Generated by "
                 "gen_scholarship_dataset.py (seeded, reproducible). Ground truth "
                 "relevant_scholarship_ids is defined structurally from target_majors coverage, "

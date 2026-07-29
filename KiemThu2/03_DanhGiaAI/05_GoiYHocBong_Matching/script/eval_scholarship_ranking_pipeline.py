@@ -11,10 +11,11 @@ does two things `_score_profile_match` alone does not:
   1. A HARD GATE: a scholarship is only kept if it matches *both* the profile's university and
      major (exact string match after normalization, or a "all" wildcard on either field). One
      matching, one not -> excluded entirely, regardless of text-similarity score.
-  2. A DIFFERENT SORT KEY for survivors: `_compare_ranked_entries` orders by (1) smallest GPA
-     gap, (2) largest scholarship amount, (3) is_open, (4) recurrence strategy -- NOT by the
-     Jaccard/Bigram/SequenceMatcher score. The score is only carried through for the UI's
-     "match_score" percentage badge.
+  2. A SORT KEY for survivors: `_compare_ranked_entries` orders by a weighted `rank_score`
+     (0.6 * match_score + 0.25 * GPA-closeness + 0.15 * normalized amount), falling back to
+     (3) is_open, (4) recurrence strategy on ties. `match_score` is the same Jaccard/Bigram/
+     SequenceMatcher-derived score shown on the UI's "match_score" percentage badge -- it is now
+     also the dominant ranking signal, not just a display-only figure.
 
 So `eval_scholarship_matching.py` measures the quality of a sub-component (the text-similarity
 formula) in isolation, not what the product actually returns. This script calls

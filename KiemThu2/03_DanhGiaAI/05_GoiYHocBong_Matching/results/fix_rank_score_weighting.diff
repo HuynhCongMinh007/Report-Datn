@@ -1,0 +1,71 @@
+diff --git a/app/domains/finance/agents/finance/scholarships/tools/matching.py b/app/domains/finance/agents/finance/scholarships/tools/matching.py
+index 9588ce6..03b2e7a 100644
+--- a/app/domains/finance/agents/finance/scholarships/tools/matching.py
++++ b/app/domains/finance/agents/finance/scholarships/tools/matching.py
+@@ -1498,22 +1498,39 @@ def _gpa_gap(profile: dict[str, Any], row: dict[str, Any]) -> float | None:
+         return None
+ 
+ 
++# Trong so cho diem xep hang tong hop (rank_score): uu tien do lien quan chu de (match_score)
++# la chinh, do gan GPA va gia tri hoc bong la phu — thay cho cach cu chi sap theo GPA-gap/amount
++# va bo qua hoan toan match_score (truoc day match_score chi dung de hien thi badge % tren UI).
++_RANK_WEIGHT_MATCH_SCORE = 0.6
++_RANK_WEIGHT_GPA_CLOSENESS = 0.25
++_RANK_WEIGHT_AMOUNT = 0.15
++
++
++def _gpa_closeness(gpa_gap: float | None) -> float:
++    """Doi do lech GPA (cang nho cang tot) thanh diem gan (0..1, cang cao cang tot).
++    Thieu du lieu GPA (gap=None) -> tra ve 0.5 (trung lap, khong thien vi tieu chi nay)."""
++    if gpa_gap is None:
++        return 0.5
++    return max(0.0, 1.0 - gpa_gap / 4.0)
++
++
++def _amount_normalized(amount: float | None, max_amount: float) -> float:
++    """Chuan hoa gia tri hoc bong ve doan 0..1 tuong doi trong danh sach dang xep hang."""
++    if not amount or max_amount <= 0:
++        return 0.0
++    return min(1.0, amount / max_amount)
++
++
+ def _compare_ranked_entries(a: dict[str, Any], b: dict[str, Any]) -> int:
+     """
+     Thu tu uu tien cho danh sach hoc bong DA QUA GATE truong+khoa (chi con lai cac hoc bong
+     khop CA truong LAN khoa cua ho so — xem dieu kien loc o _rank_recommendation_items):
+-      1) Do lech GPA nho nhat truoc (chi ap dung khi ca hoc bong va ho so deu co GPA;
+-         neu thieu 1 ben thi bo qua tieu chi nay, roi den tieu chi 2).
+-      2) Tien thuong (amount) cao hon dung truoc.
+-      3) (tie-break con lai, giu hanh vi cu) hoc bong dang mo/apply_now truoc hoc bong lich su.
++      1) Diem xep hang tong hop (rank_score) cao hon truoc — ket hop co trong so giua do lien
++         quan chu de (match_score, trong so 0.6), do gan GPA (0.25) va gia tri hoc bong (0.15).
++      2) (tie-break khi rank_score gan bang nhau) hoc bong dang mo/apply_now truoc hoc bong lich su.
+     """
+-    if a["gpa_gap"] is not None and b["gpa_gap"] is not None and a["gpa_gap"] != b["gpa_gap"]:
+-        return -1 if a["gpa_gap"] < b["gpa_gap"] else 1
+-
+-    a_amount = a["amount"] or 0
+-    b_amount = b["amount"] or 0
+-    if a_amount != b_amount:
+-        return -1 if a_amount > b_amount else 1
++    if abs(a["rank_score"] - b["rank_score"]) > 1e-9:
++        return -1 if a["rank_score"] > b["rank_score"] else 1
+ 
+     if a["is_open"] != b["is_open"]:
+         return -1 if a["is_open"] else 1
+@@ -1606,6 +1623,15 @@ def _rank_recommendation_items(
+                 }
+             )
+ 
++    max_amount = max((entry["amount"] or 0 for entry in ranked), default=0)
++    for entry in ranked:
++        entry["rank_score"] = round(
++            _RANK_WEIGHT_MATCH_SCORE * entry["score"]
++            + _RANK_WEIGHT_GPA_CLOSENESS * _gpa_closeness(entry["gpa_gap"])
++            + _RANK_WEIGHT_AMOUNT * _amount_normalized(entry["amount"], max_amount),
++            6,
++        )
++
+     ranked.sort(key=cmp_to_key(_compare_ranked_entries))
+     return [entry["item"] for entry in ranked[offset : offset + safe_limit]], len(ranked)
+ 

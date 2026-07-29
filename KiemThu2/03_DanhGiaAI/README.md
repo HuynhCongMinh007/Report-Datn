@@ -42,11 +42,11 @@ python3 -u tests/eval/eval_classification.py
 
 Bổ sung thêm 2 mục để đánh giá độ chính xác/chất lượng (không chỉ độ trễ):
 
-- **`05_GoiYHocBong_Matching/`** — **đã chạy xong**. Mở rộng dữ liệu lên 30 hồ sơ / 36 học bổng,
-  đo cả công thức matching (`_score_profile_match`, 96.7% top-1) lẫn pipeline production đầy đủ có
-  gate + sort (`_rank_recommendation_items`, 53.3% top-1) — phát hiện chênh lệch đáng kể giữa 2
-  tầng do bước sắp xếp cuối ưu tiên GPA-gap/amount hơn mức liên quan chủ đề. Chi tiết:
-  `05_GoiYHocBong_Matching/results/summary.md`.
+- **`05_GoiYHocBong_Matching/`** — **đã chạy xong**. Mở rộng dữ liệu lên 30 hồ sơ / 150 học bổng (12
+  học bổng đúng/hồ sơ), đo cả công thức matching (`_score_profile_match`, 100.0% top-1, 96.7%
+  P@5) lẫn pipeline production đầy đủ có gate + sort (`_rank_recommendation_items`,
+  **83.3% top-1** sau khi đổi tiêu chí sắp xếp cuối sang điểm tổng hợp có trọng số ưu tiên
+  match_score thay vì chỉ GPA-gap/amount). Chi tiết: `05_GoiYHocBong_Matching/results/summary.md`.
 - **`06_TuVanAI_Chatbot/`** — **đã chạy xong đủ 184/184 câu, 100% thành công**. Mở rộng bộ câu hỏi
   từ 114 lên 184 câu. Phát hiện 1 lỗi thật: agent trả lời **sai số liệu không nhất quán** cho câu
   hỏi đếm đơn giản (63 học bổng thật nhưng có lần trả lời "1 học bổng") — nguyên nhân gốc là tool

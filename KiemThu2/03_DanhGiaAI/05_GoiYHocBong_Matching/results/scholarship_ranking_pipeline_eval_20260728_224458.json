@@ -1,0 +1,1590 @@
+{
+  "generated_at": "2026-07-28T15:44:58.026392+00:00",
+  "eval_now_reference": "2026-07-26T00:00:00+00:00",
+  "function_under_test": "_rank_recommendation_items [production ranking function, includes hard university+major gate + GPA-gap/amount/openness sort -- NOT the raw fuzzy score, see eval_scholarship_matching.py for that sub-component]",
+  "methodology_note": "Precision/Recall/F1@K and MRR are computed against gate_eligible_relevant (topically relevant scholarships that also pass the hard university+major gate) -- a topically relevant scholarship for a different university is correctly excluded by design, not a ranking failure. avg_gate_coverage reports what fraction of topically-relevant scholarships the hard gate discards, as a separate diagnostic.",
+  "num_profiles": 30,
+  "num_scholarships": 66,
+  "avg_gate_coverage": 1.0,
+  "top1_accuracy": 0.8333333333333334,
+  "mrr": 0.888888888888889,
+  "metrics_at_k": {
+    "1": {
+      "precision": 0.8333333333333334,
+      "recall": 0.16666666666666666,
+      "f1": 0.2777777777777778
+    },
+    "3": {
+      "precision": 0.7555555555555556,
+      "recall": 0.4533333333333333,
+      "f1": 0.5666666666666667
+    },
+    "5": {
+      "precision": 0.6866666666666668,
+      "recall": 0.6866666666666668,
+      "f1": 0.6866666666666668
+    }
+  },
+  "per_profile": [
+    {
+      "profile_id": "p01",
+      "profile_label": "Công nghệ thông ti/FPT",
+      "relevant_ids_topical": [
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s05",
+        "s06",
+        "s11",
+        "s09",
+        "s07",
+        "s08",
+        "s10",
+        "s03",
+        "s57",
+        "s01",
+        "s04",
+        "s02"
+      ],
+      "reciprocal_rank": 0.3333333333333333,
+      "metrics_at_k": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25
+        },
+        "5": {
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1": 0.6
+        }
+      }
+    },
+    {
+      "profile_id": "p02",
+      "profile_label": "Công nghệ thông ti/dân",
+      "relevant_ids_topical": [
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s08",
+        "s03",
+        "s05",
+        "s11",
+        "s06",
+        "s01",
+        "s04",
+        "s09",
+        "s07",
+        "s10",
+        "s60",
+        "s02"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4000000000000001
+        }
+      }
+    },
+    {
+      "profile_id": "p03",
+      "profile_label": "Công nghệ thông ti/Minh",
+      "relevant_ids_topical": [
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s08",
+        "s03",
+        "s11",
+        "s05",
+        "s06",
+        "s01",
+        "s02",
+        "s04",
+        "s09",
+        "s07",
+        "s10",
+        "s63"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4000000000000001
+        }
+      }
+    },
+    {
+      "profile_id": "p04",
+      "profile_label": "Khoa học máy tính/Nội",
+      "relevant_ids_topical": [
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s14",
+        "s13",
+        "s16",
+        "s12",
+        "s58",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s04",
+        "s02",
+        "s15"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p05",
+      "profile_label": "Khoa học máy tính/thương",
+      "relevant_ids_topical": [
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s14",
+        "s13",
+        "s16",
+        "s15",
+        "s12",
+        "s61",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s04",
+        "s02"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "profile_id": "p06",
+      "profile_label": "Khoa học máy tính/tin",
+      "relevant_ids_topical": [
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s14",
+        "s13",
+        "s16",
+        "s15",
+        "s12",
+        "s64",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s04",
+        "s02"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "profile_id": "p07",
+      "profile_label": "Kinh tế/Minh",
+      "relevant_ids_topical": [
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s21",
+        "s19",
+        "s20",
+        "s17",
+        "s59",
+        "s18",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s02",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p08",
+      "profile_label": "Kinh tế/Nội",
+      "relevant_ids_topical": [
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s05",
+        "s06",
+        "s19",
+        "s18",
+        "s21",
+        "s20",
+        "s17",
+        "s03",
+        "s62",
+        "s01",
+        "s04",
+        "s02"
+      ],
+      "reciprocal_rank": 0.3333333333333333,
+      "metrics_at_k": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25
+        },
+        "5": {
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1": 0.6
+        }
+      }
+    },
+    {
+      "profile_id": "p09",
+      "profile_label": "Kinh tế/Nội",
+      "relevant_ids_topical": [
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s18",
+        "s03",
+        "s05",
+        "s19",
+        "s21",
+        "s01",
+        "s04",
+        "s06",
+        "s20",
+        "s17",
+        "s65",
+        "s02"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25
+        },
+        "5": {
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1": 0.6
+        }
+      }
+    },
+    {
+      "profile_id": "p10",
+      "profile_label": "Tài chính - Ngân h/dân",
+      "relevant_ids_topical": [
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s23",
+        "s22",
+        "s24",
+        "s03",
+        "s05",
+        "s01",
+        "s06",
+        "s26",
+        "s02",
+        "s04",
+        "s25",
+        "s60"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1": 0.6
+        }
+      }
+    },
+    {
+      "profile_id": "p11",
+      "profile_label": "Tài chính - Ngân h/Minh",
+      "relevant_ids_topical": [
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s23",
+        "s63",
+        "s22",
+        "s25",
+        "s24",
+        "s03",
+        "s26",
+        "s05",
+        "s01",
+        "s06",
+        "s02",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p12",
+      "profile_label": "Tài chính - Ngân h/Thơ",
+      "relevant_ids_topical": [
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s26",
+        "s23",
+        "s22",
+        "s25",
+        "s24",
+        "s66",
+        "s03",
+        "s05",
+        "s01",
+        "s06",
+        "s02",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "profile_id": "p13",
+      "profile_label": "Kế toán/thương",
+      "relevant_ids_topical": [
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s31",
+        "s27",
+        "s29",
+        "s61",
+        "s28",
+        "s30",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s02",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p14",
+      "profile_label": "Kế toán/tin",
+      "relevant_ids_topical": [
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s31",
+        "s27",
+        "s29",
+        "s28",
+        "s64",
+        "s30",
+        "s03",
+        "s05",
+        "s06",
+        "s02",
+        "s01",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p15",
+      "profile_label": "Kế toán/FPT",
+      "relevant_ids_topical": [
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s05",
+        "s06",
+        "s31",
+        "s29",
+        "s30",
+        "s28",
+        "s27",
+        "s03",
+        "s57",
+        "s01",
+        "s04",
+        "s02"
+      ],
+      "reciprocal_rank": 0.3333333333333333,
+      "metrics_at_k": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25
+        },
+        "5": {
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1": 0.6
+        }
+      }
+    },
+    {
+      "profile_id": "p16",
+      "profile_label": "Sư phạm Toán/Nội",
+      "relevant_ids_topical": [
+        "s32",
+        "s33",
+        "s34",
+        "s35",
+        "s36"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s32",
+        "s33",
+        "s34",
+        "s35",
+        "s36"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s32",
+        "s33",
+        "s03",
+        "s05",
+        "s01",
+        "s06",
+        "s04",
+        "s35",
+        "s36",
+        "s34",
+        "s62",
+        "s02"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4000000000000001
+        }
+      }
+    },
+    {
+      "profile_id": "p17",
+      "profile_label": "Sư phạm Toán/Nội",
+      "relevant_ids_topical": [
+        "s32",
+        "s33",
+        "s34",
+        "s35",
+        "s36"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s32",
+        "s33",
+        "s34",
+        "s35",
+        "s36"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s32",
+        "s33",
+        "s65",
+        "s03",
+        "s05",
+        "s01",
+        "s06",
+        "s02",
+        "s04",
+        "s35",
+        "s36",
+        "s34"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4000000000000001
+        }
+      }
+    },
+    {
+      "profile_id": "p18",
+      "profile_label": "Sư phạm Toán/Nội",
+      "relevant_ids_topical": [
+        "s32",
+        "s33",
+        "s34",
+        "s35",
+        "s36"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s32",
+        "s33",
+        "s34",
+        "s35",
+        "s36"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s32",
+        "s35",
+        "s36",
+        "s58",
+        "s33",
+        "s03",
+        "s05",
+        "s01",
+        "s06",
+        "s02",
+        "s04",
+        "s34"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p19",
+      "profile_label": "Y đa khoa/Minh",
+      "relevant_ids_topical": [
+        "s37",
+        "s38",
+        "s39",
+        "s40",
+        "s41"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s37",
+        "s38",
+        "s39",
+        "s40",
+        "s41"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s39",
+        "s41",
+        "s63",
+        "s37",
+        "s40",
+        "s38",
+        "s03",
+        "s05",
+        "s06",
+        "s02",
+        "s01",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p20",
+      "profile_label": "Y đa khoa/Thơ",
+      "relevant_ids_topical": [
+        "s37",
+        "s38",
+        "s39",
+        "s40",
+        "s41"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s37",
+        "s38",
+        "s39",
+        "s40",
+        "s41"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s39",
+        "s41",
+        "s37",
+        "s40",
+        "s38",
+        "s66",
+        "s03",
+        "s05",
+        "s06",
+        "s02",
+        "s01",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "profile_id": "p21",
+      "profile_label": "Y đa khoa/Minh",
+      "relevant_ids_topical": [
+        "s37",
+        "s38",
+        "s39",
+        "s40",
+        "s41"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s37",
+        "s38",
+        "s39",
+        "s40",
+        "s41"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s39",
+        "s41",
+        "s59",
+        "s37",
+        "s40",
+        "s38",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s02",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p22",
+      "profile_label": "Ngôn ngữ Anh/tin",
+      "relevant_ids_topical": [
+        "s42",
+        "s43",
+        "s44",
+        "s45",
+        "s46"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s42",
+        "s43",
+        "s44",
+        "s45",
+        "s46"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s05",
+        "s06",
+        "s43",
+        "s45",
+        "s46",
+        "s42",
+        "s44",
+        "s03",
+        "s01",
+        "s64",
+        "s02",
+        "s04"
+      ],
+      "reciprocal_rank": 0.3333333333333333,
+      "metrics_at_k": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25
+        },
+        "5": {
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1": 0.6
+        }
+      }
+    },
+    {
+      "profile_id": "p23",
+      "profile_label": "Ngôn ngữ Anh/FPT",
+      "relevant_ids_topical": [
+        "s42",
+        "s43",
+        "s44",
+        "s45",
+        "s46"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s42",
+        "s43",
+        "s44",
+        "s45",
+        "s46"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s45",
+        "s43",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s46",
+        "s04",
+        "s42",
+        "s44",
+        "s57",
+        "s02"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4000000000000001
+        }
+      }
+    },
+    {
+      "profile_id": "p24",
+      "profile_label": "Ngôn ngữ Anh/dân",
+      "relevant_ids_topical": [
+        "s42",
+        "s43",
+        "s44",
+        "s45",
+        "s46"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s42",
+        "s43",
+        "s44",
+        "s45",
+        "s46"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s45",
+        "s43",
+        "s46",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s02",
+        "s04",
+        "s42",
+        "s44",
+        "s60"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1": 0.6
+        }
+      }
+    },
+    {
+      "profile_id": "p25",
+      "profile_label": "Quản trị kinh doan/Nội",
+      "relevant_ids_topical": [
+        "s47",
+        "s48",
+        "s49",
+        "s50",
+        "s51"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s47",
+        "s48",
+        "s49",
+        "s50",
+        "s51"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s50",
+        "s51",
+        "s49",
+        "s48",
+        "s65",
+        "s03",
+        "s05",
+        "s47",
+        "s06",
+        "s02",
+        "s01",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p26",
+      "profile_label": "Quản trị kinh doan/Nội",
+      "relevant_ids_topical": [
+        "s47",
+        "s48",
+        "s49",
+        "s50",
+        "s51"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s47",
+        "s48",
+        "s49",
+        "s50",
+        "s51"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s47",
+        "s51",
+        "s50",
+        "s49",
+        "s58",
+        "s48",
+        "s03",
+        "s05",
+        "s06",
+        "s02",
+        "s01",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p27",
+      "profile_label": "Quản trị kinh doan/thương",
+      "relevant_ids_topical": [
+        "s47",
+        "s48",
+        "s49",
+        "s50",
+        "s51"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s47",
+        "s48",
+        "s49",
+        "s50",
+        "s51"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s47",
+        "s51",
+        "s50",
+        "s49",
+        "s61",
+        "s48",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s04",
+        "s02"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p28",
+      "profile_label": "Kỹ thuật điện/Thơ",
+      "relevant_ids_topical": [
+        "s52",
+        "s53",
+        "s54",
+        "s55",
+        "s56"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s52",
+        "s53",
+        "s54",
+        "s55",
+        "s56"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s52",
+        "s56",
+        "s54",
+        "s66",
+        "s53",
+        "s55",
+        "s03",
+        "s05",
+        "s06",
+        "s02",
+        "s01",
+        "s04"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999
+        },
+        "5": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8000000000000002
+        }
+      }
+    },
+    {
+      "profile_id": "p29",
+      "profile_label": "Kỹ thuật điện/Minh",
+      "relevant_ids_topical": [
+        "s52",
+        "s53",
+        "s54",
+        "s55",
+        "s56"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s52",
+        "s53",
+        "s54",
+        "s55",
+        "s56"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s05",
+        "s06",
+        "s52",
+        "s59",
+        "s54",
+        "s55",
+        "s03",
+        "s53",
+        "s56",
+        "s01",
+        "s04",
+        "s02"
+      ],
+      "reciprocal_rank": 0.3333333333333333,
+      "metrics_at_k": {
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4000000000000001
+        }
+      }
+    },
+    {
+      "profile_id": "p30",
+      "profile_label": "Kỹ thuật điện/Nội",
+      "relevant_ids_topical": [
+        "s52",
+        "s53",
+        "s54",
+        "s55",
+        "s56"
+      ],
+      "relevant_ids_gate_eligible": [
+        "s52",
+        "s53",
+        "s54",
+        "s55",
+        "s56"
+      ],
+      "gate_coverage": 1.0,
+      "total_survivors_after_gate": 12,
+      "ranked_ids_after_gate": [
+        "s54",
+        "s55",
+        "s03",
+        "s05",
+        "s06",
+        "s01",
+        "s04",
+        "s52",
+        "s53",
+        "s56",
+        "s62",
+        "s02"
+      ],
+      "reciprocal_rank": 1.0,
+      "metrics_at_k": {
+        "1": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.33333333333333337
+        },
+        "3": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5
+        },
+        "5": {
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4000000000000001
+        }
+      }
+    }
+  ]
+}

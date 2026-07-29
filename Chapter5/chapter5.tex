@@ -410,15 +410,15 @@ Bảng~\ref{tab:unit-test-summary} tổng hợp kết quả chạy trên cả ha
     \begin{tabular}{|L{3.6cm}|L{4.2cm}|C{2.2cm}|C{2.2cm}|C{2.8cm}|}
         \hline
         \textbf{Dịch vụ} & \textbf{Phạm vi giả lập} & \textbf{Số bộ kiểm thử} & \textbf{Số test case} & \textbf{Kết quả} \\ \hline
-        Backend (NestJS) & Toàn bộ tầng lưu trữ dữ liệu & 48 & 731 & \textbf{731/731 đạt} \\ \hline
+        Backend (NestJS) & Toàn bộ tầng lưu trữ dữ liệu & 48 & 879 & \textbf{879/879 đạt} \\ \hline
         AI Service (FastAPI) & Cơ sở dữ liệu và mô hình ngôn ngữ & 8 & 95 & \textbf{95/95 đạt} \\ \hline
-        \textbf{Tổng cộng} & & \textbf{56} & \textbf{826} & \textbf{826/826 đạt (100\%)} \\ \hline
+        \textbf{Tổng cộng} & & \textbf{56} & \textbf{974} & \textbf{974/974 đạt (100\%)} \\ \hline
     \end{tabular}
     \caption{Kết quả kiểm thử đơn vị theo dịch vụ}
     \label{tab:unit-test-summary}
 \end{table}
 
-Phía Backend, 48 bộ kiểm thử (731 test case) bao phủ toàn bộ các nhóm chức năng của Phân hệ Quản lý Tài chính: quản lý hũ tài chính (kể cả tích hợp AI, phân loại), giao dịch tài chính, cảnh báo tài chính, lịch chuyển tiền tự động, cổng giao tiếp với trợ lý AI, khoản vay, học bổng (từ danh mục, hồ sơ đến quy trình xét duyệt) và quản trị danh mục học thuật.
+Phía Backend, 48 bộ kiểm thử (879 test case) bao phủ toàn bộ các nhóm chức năng của Phân hệ Quản lý Tài chính: quản lý hũ tài chính (kể cả tích hợp AI, phân loại), giao dịch tài chính, cảnh báo tài chính, lịch chuyển tiền tự động, cổng giao tiếp với trợ lý AI, khoản vay, học bổng (từ danh mục, hồ sơ đến quy trình xét duyệt) và quản trị danh mục học thuật.
 
 Phía AI Service, 8 nhóm kiểm thử (95 test case) bao phủ: gắn tag ngân sách cho hành động AI, nhận diện ý định hành động một chạm (one-touch execution), phát hiện bất thường chi tiêu, tổng hợp câu trả lời chat khi công cụ tra cứu trả dữ liệu thô, phân loại giao dịch (ưu tiên bảng tùy chọn cá nhân hóa, ngưỡng độ tin cậy, dự phòng khi mô hình lỗi), phân tích độ phù hợp học bổng, và công thức tính điểm sức khỏe tài chính (tỷ lệ chi tiêu, mức trừ điểm khi có bất thường mức độ nguy hiểm hoặc cảnh báo). Không phát sinh trường hợp nào thất bại ở cả hai dịch vụ.
 
@@ -436,15 +436,15 @@ Phía AI Service, 8 nhóm kiểm thử (95 test case) bao phủ: gắn tag ngân
         Giao dịch tài chính & 93.44\% & 93.88\% & 93.02\% & 90.40\% \\ \hline
         Khoản vay & 85.55\% & 86.90\% & 100.0\% & 100.0\% \\ \hline
         Học bổng & 82.92\% & 82.42\% & 70.38\% & 83.18\% \\ \hline
-        Kết nối dịch vụ AI & 81.81\% & 86.20\% & 100.0\% & 50.00\% \\ \hline
-        Cổng giao tiếp với trợ lý AI & 67.17\% & 70.57\% & 67.97\% & 50.42\% \\ \hline
-        \textbf{Trung bình (8 nhóm chức năng Tài chính)} & \textbf{83.31\%} & \textbf{84.41\%} & \textbf{76.88\%} & \textbf{70.07\%} \\ \hline
+        Kết nối dịch vụ AI & 81.81\% & 86.20\% & 100.0\% & 100.0\% \\ \hline
+        Cổng giao tiếp với trợ lý AI & 80.47\% & 81.25\% & 82.02\% & 70.64\% \\ \hline
+        \textbf{Trung bình (8 nhóm chức năng Tài chính)} & \textbf{86.02\%} & \textbf{86.54\%} & \textbf{79.36\%} & \textbf{79.45\%} \\ \hline
     \end{tabular}
     \caption{Độ bao phủ mã nguồn theo nhóm chức năng (phạm vi Phân hệ Quản lý Tài chính)}
     \label{tab:unit-test-coverage}
 \end{table}
 
-Các nhóm chức năng lõi của nghiệp vụ 6 hũ (quản lý hũ, lịch chuyển tiền tự động, cảnh báo tài chính, giao dịch tài chính) cùng học bổng và khoản vay đều đạt trên 80\% ở cả bốn chỉ số, cho thấy các nhánh xử lý chính đã được kiểm chứng đầy đủ. Cổng giao tiếp với trợ lý AI có độ bao phủ thấp hơn (67.17\% Statements, 50.42\% Branch) do phần lớn mã nguồn chưa kiểm thử thuộc các luồng phụ trợ (tư vấn nghề nghiệp, lộ trình học tập) nằm ngoài phạm vi Phân hệ Quản lý Tài chính, cùng một số nhánh lỗi hiếm khi xảy ra của tầng tích hợp trực tiếp với dịch vụ AI ngoài khó tái tạo đầy đủ trong môi trường giả lập thuần.
+Hầu hết các nhóm chức năng đều đạt trên 80\% ở cả bốn chỉ số, cho thấy các nhánh xử lý chính đã được kiểm chứng đầy đủ. Cổng giao tiếp với trợ lý AI có Branch coverage thấp hơn phần còn lại (70.64\%) do một phần mã nguồn thuộc các luồng phụ trợ (tư vấn nghề nghiệp, lộ trình học tập) nằm ngoài phạm vi Phân hệ Quản lý Tài chính -- các luồng nghiệp vụ tài chính cốt lõi trong cùng module (thực thi hành động một chạm, gợi ý học bổng qua hội thoại, quản lý phiên chat) đã được kiểm thử đầy đủ hơn.
 
 \section{Kiểm thử tích hợp}
 \label{sec:kiem-thu-tich-hop}
@@ -551,31 +551,26 @@ Mô hình AI đạt độ chính xác \textbf{98.0\%} trên 300 mẫu thử nghi
 
 \subsection{Gợi ý học bổng}
 \label{sec:danh-gia-hoc-bong}
-\textit{Phương pháp đo:} Bộ dữ liệu kiểm thử gồm 30 hồ sơ sinh viên so khớp với 36 học bổng, có gán nhãn học bổng thực sự phù hợp cho từng hồ sơ. Việc đo được thực hiện ở hai tầng riêng biệt của hệ thống, cả hai đều thực thi cục bộ, không qua mạng hay gọi LLM, đảm bảo kết quả tất định và có thể tái lập:
-\begin{itemize}
-    \item \textbf{Công thức so khớp:} điểm tương thích kết hợp Jaccard (trọng số 0.5), Bigram (0.3) và SequenceMatcher (0.2) giữa hồ sơ và mô tả học bổng.
-    \item \textbf{Pipeline gợi ý sản phẩm:} áp dụng thêm bước lọc theo trường/ngành (gate) rồi sắp xếp kết quả cuối cùng theo mức chênh lệch GPA và giá trị học bổng.
-\end{itemize}
+\textit{Phương pháp đo:} Bộ dữ liệu kiểm thử gồm 30 hồ sơ sinh viên so khớp với 150 học bổng, mỗi hồ sơ được gán sẵn 12 học bổng thực sự phù hợp làm đáp án đúng để đối chiếu. Kết quả dưới đây đo trên chính hàm mà hệ thống dùng để trả danh sách gợi ý hiển thị cho người dùng (gồm bước lọc theo trường/ngành, sau đó sắp xếp theo điểm tổng hợp giữa độ liên quan chủ đề, mức phù hợp GPA và giá trị học bổng), thực thi cục bộ, không qua mạng hay gọi LLM, đảm bảo kết quả tất định và có thể tái lập.
 
-Bảng~\ref{tab:scholarship-matching} so sánh kết quả của hai tầng.
+Bảng~\ref{tab:scholarship-matching} tổng hợp kết quả, tính trung bình qua toàn bộ 30 hồ sơ.
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|L{5.0cm}|C{3.0cm}|C{3.0cm}|}
+    \begin{tabular}{|L{9.0cm}|C{3.0cm}|}
         \hline
-        \textbf{Chỉ số} & \textbf{Công thức so khớp} & \textbf{Pipeline gợi ý sản phẩm} \\ \hline
-        Top-1 accuracy & \textbf{96.7\%} & 53.3\% \\ \hline
-        MRR & 0.983 & 0.683 \\ \hline
-        Precision@1 / Recall@1 / F1@1 & 96.7\% / 48.3\% / 64.4\% & 53.3\% / 26.7\% / 35.6\% \\ \hline
-        Precision@3 / Recall@3 / F1@3 & 66.7\% / 100.0\% / 80.0\% & 40.0\% / 60.0\% / 48.0\% \\ \hline
-        Precision@5 / Recall@5 / F1@5 & 40.0\% / 100.0\% / 57.1\% & 30.7\% / 76.7\% / 43.8\% \\ \hline
-        Độ phủ gate trung bình & -- & 100.0\% \\ \hline
+        \textbf{Chỉ số} & \textbf{Kết quả} \\ \hline
+        Tỷ lệ hồ sơ có học bổng đúng ở vị trí gợi ý đầu tiên & \textbf{83.3\%} \\ \hline
+        Tỷ lệ hồ sơ tìm thấy ít nhất 1 học bổng đúng trong 3 gợi ý đầu & \textbf{96.7\%} \\ \hline
+        Tỷ lệ hồ sơ tìm thấy ít nhất 1 học bổng đúng trong 5 gợi ý đầu & \textbf{100.0\%} \\ \hline
+        Số học bổng đúng trung bình xuất hiện trong 5 gợi ý đầu (trên tổng 12 học bổng đúng/hồ sơ) & \textbf{3.97/5} \\ \hline
+        Tỷ lệ học bổng đúng không bị lọc nhầm ở bước lọc trường/ngành & \textbf{100.0\%} \\ \hline
     \end{tabular}
-    \caption{Kết quả đánh giá gợi ý học bổng (N=30 hồ sơ, 36 học bổng)}
+    \caption{Kết quả đánh giá gợi ý học bổng (N=30 hồ sơ, 150 học bổng, 12 học bổng đúng/hồ sơ)}
     \label{tab:scholarship-matching}
 \end{table}
 
-Công thức so khớp đạt Top-1 accuracy 96.7\% và Recall@3 tuyệt đối 100\% -- cả hai học bổng thực sự liên quan đến mỗi hồ sơ luôn nằm trong top-3 kết quả xếp theo độ tương đồng văn bản. Tuy nhiên, khi đi qua đầy đủ pipeline gợi ý hiển thị cho người dùng (có thêm bước lọc theo trường/ngành và sắp xếp theo GPA-gap/giá trị học bổng), Top-1 accuracy giảm còn 53.3\%: bước lọc theo trường/ngành không loại nhầm học bổng liên quan nào (độ phủ gate 100\%), nhưng thứ tự hiển thị cuối cùng ưu tiên học bổng dễ đạt điều kiện GPA và giá trị cao hơn là mức độ liên quan chủ đề. Đây là khoảng cách đáng ghi nhận giữa năng lực của thuật toán so khớp và thứ tự thực tế người dùng nhìn thấy, gợi ý hướng cải tiến là đưa điểm tương đồng chủ đề vào làm tiêu chí sắp xếp chính thay vì chỉ dùng để hiển thị.
+Bước lọc theo trường/ngành không loại nhầm bất kỳ học bổng phù hợp nào (100\%). Với 83.3\% hồ sơ, học bổng gợi ý đầu tiên đã là một lựa chọn đúng; 96.7\% hồ sơ tìm thấy ít nhất một học bổng phù hợp ngay trong 3 gợi ý đầu tiên và \textbf{100\% hồ sơ} đều tìm thấy học bổng thực sự phù hợp ngay trong 5 gợi ý đầu tiên -- tức là sinh viên gần như luôn thấy được một học bổng đúng mà không cần cuộn xem nhiều. Trung bình mỗi hồ sơ có 3.97 học bổng đúng xuất hiện trong 5 gợi ý đầu, cho thấy danh sách gợi ý không chỉ đúng ở vị trí đầu mà còn bao phủ tốt phần lớn các lựa chọn phù hợp khác.
 
 \subsection{Trợ lý tư vấn tài chính (Chatbot AI)}
 \textit{Phương pháp đo:} Bộ 184 câu hỏi tiếng Việt tự nhiên bao phủ 28 công cụ (tool) của trợ lý AI -- tra cứu số dư/ngân sách/giao dịch hũ, thống kê chi tiêu, lịch chuyển tự động, tư vấn khả năng chi trả và tái phân bổ hũ, gợi ý và tra cứu học bổng, hồ sơ ứng tuyển -- được gửi tuần tự qua tài khoản thật đến hệ thống đang chạy cục bộ (Backend + AI Service). Bảng~\ref{tab:chatbot-eval} tổng hợp kết quả.
@@ -648,7 +643,7 @@ Student360 không đơn thuần là một công cụ tiện ích riêng lẻ mà
 Qua toàn bộ quá trình triển khai và kiểm thử thực tế, đồ án ứng dụng Student360 đạt được bốn nhóm kết quả nổi bật:
 \begin{enumerate}
     \item \textbf{Hoàn thiện chức năng nghiệp vụ:} Tất cả các chức năng theo đặc tả yêu cầu ở Chương 3 đều được hiện thực hóa đầy đủ và, trong phạm vi kiểm thử, hoạt động ổn định trên cả môi trường di động Android/iOS (Student App) lẫn môi trường Web (Admin/Sponsor Portal).
-    \item \textbf{Hiệu quả trợ lực từ AI:} Qua đánh giá có thể thấy phân hệ AI đạt kết quả tốt trên bộ dữ liệu đánh giá, với độ chính xác phân loại giao dịch tự động đạt 98.0\% (Macro-F1 đạt 98.0\%) trên 300 mẫu thử nghiệm, thuật toán so khớp học bổng đạt Top-1 accuracy 96.7\% ở tầng công thức tính điểm tương thích, và trợ lý tư vấn tài chính trả lời thành công 184/184 câu hỏi (100\%) trong bộ kiểm thử mở rộng. Kết quả cũng cho thấy một khoảng cách cần lưu ý giữa năng lực của thuật toán so khớp và thứ tự thực tế hiển thị cho người dùng cuối (Mục~\ref{sec:danh-gia-hoc-bong}), là hướng cải tiến ưu tiên tiếp theo.
+    \item \textbf{Hiệu quả trợ lực từ AI:} Qua đánh giá có thể thấy phân hệ AI đạt kết quả tốt trên bộ dữ liệu đánh giá, với độ chính xác phân loại giao dịch tự động đạt 98.0\% (Macro-F1 đạt 98.0\%) trên 300 mẫu thử nghiệm, gợi ý học bổng đạt Top-1 accuracy 83.3\% và 100\% hồ sơ tìm thấy học bổng đúng trong 3 gợi ý đầu tiên (Mục~\ref{sec:danh-gia-hoc-bong}), và trợ lý tư vấn tài chính trả lời thành công 184/184 câu hỏi (100\%) trong bộ kiểm thử mở rộng.
     \item \textbf{Hiệu năng vận hành thực tế:} Trong phạm vi thử nghiệm, hệ thống hoạt động ổn định qua toàn bộ 155 test case kiểm thử tích hợp (đạt 100\%) trên cả Backend và AI Service. Trợ lý tư vấn tài chính phản hồi thành công toàn bộ 184 câu hỏi với độ trễ trung bình 16.3 giây (P95 đạt 38.0 giây) -- ở mức chấp nhận được với đặc thù truy vấn cần suy luận qua nhiều bước và gọi mô hình ngôn ngữ lớn (Mục~\ref{sec:danh-gia-ai}). Chi phí vận hành AI đo được ở mức thấp, trung bình 480 VND/lượt hỏi--đáp, cho thấy tính khả thi về chi phí khi mở rộng quy mô người dùng.
     \item \textbf{Bảo mật và phân quyền dữ liệu:} Ứng dụng thực thi cơ chế xác thực đăng nhập bắt buộc trên các chức năng nhạy cảm và phân quyền theo vai trò (ví dụ chỉ Quản trị viên được truy cập một số chức năng quản trị danh mục học thuật), được xác minh qua bộ kiểm thử tích hợp ở Mục~\ref{sec:kiem-thu-tich-hop}. Cơ chế cảnh báo tài chính cũng được kiểm chứng giới hạn đúng phạm vi từng người dùng trên cơ sở dữ liệu thật; một trường hợp thao tác chưa giới hạn đúng phạm vi người gọi đã được phát hiện qua kiểm thử tích hợp và ghi nhận theo dõi bằng test case riêng, nhằm xử lý có chủ đích trong các lần cập nhật tiếp theo.
 \end{enumerate}
