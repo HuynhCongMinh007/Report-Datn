@@ -494,6 +494,40 @@ Bảng~\ref{tab:integration-test-backend-detail} liệt kê chi tiết 8 bộ ki
 
 Phía AI Service, 2 nhóm kiểm thử tích hợp (16 test case) chạm PostgreSQL thật: một nhóm 8 case cho chức năng cảnh báo bất thường (đọc/ghi thật bảng cảnh báo, lọc theo trạng thái đã đọc/loại cảnh báo, giới hạn phạm vi theo người dùng, từ chối khi thiếu/sai thông tin xác thực) và một nhóm 8 case cho chức năng phân loại giao dịch (khớp bảng tùy chọn cá nhân hóa thật, dự phòng qua mô hình ngôn ngữ khi không khớp, ngưỡng độ tin cậy, dự phòng về hũ mặc định khi mô hình lỗi).
 
+\section{Quét lỗ hổng bảo mật mã nguồn}
+\label{sec:kiem-thu-bao-mat}
+
+Song song với kiểm thử chức năng, mã nguồn Backend được quét lỗ hổng bảo mật bằng công cụ \textbf{Trivy} nhằm đối chiếu các thư viện phụ thuộc của dự án với cơ sở dữ liệu lỗ hổng đã công bố (CVE), từ đó phát hiện sớm các rủi ro bảo mật từ bên thứ ba.
+
+\subsection{Kỹ thuật khắc phục lỗ hổng bảo mật}
+Để xử lý các lỗ hổng phát hiện bởi Trivy mà vẫn đảm bảo tính ổn định của ứng dụng, các kỹ thuật sau đã được áp dụng:
+
+\begin{itemize}
+    \item \textbf{Nâng cấp gói phụ thuộc trực tiếp:} Đối với các thư viện khai báo trực tiếp trong dự án, tiến hành cập nhật lên phiên bản đã được nhà phát triển vá lỗi bảo mật.
+    \item \textbf{Ghi đè phiên bản gói phụ thuộc gián tiếp:} Đối với các lỗ hổng xuất phát từ thư viện con (được kéo vào bởi thư viện khác), áp dụng kỹ thuật ghi đè phiên bản (\textit{dependency overrides}) để buộc hệ thống sử dụng phiên bản an toàn.
+    \item \textbf{Xác minh tính ổn định:} Sau khi áp dụng các biện pháp khắc phục, hệ thống được kiểm tra biên dịch lại và đóng gói để đảm bảo không phát sinh xung đột hay lỗi vận hành.
+\end{itemize}
+
+\subsection{Kết quả trước và sau khi khắc phục}
+Bảng~\ref{tab:trivy-before-after} so sánh kết quả quét lỗ hổng bảo mật trước và sau khi áp dụng các biện pháp xử lý.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|L{3.2cm}|C{3.2cm}|C{3.2cm}|}
+        \hline
+        \textbf{Mức độ nghiêm trọng} & \textbf{Trước khắc phục} & \textbf{Sau khắc phục} \\ \hline
+        CRITICAL & 3 & \textbf{0} \\ \hline
+        HIGH & 30 & \textbf{0} \\ \hline
+        MEDIUM & 39 & \textbf{1} \\ \hline
+        LOW & 7 & \textbf{1} \\ \hline
+        \textbf{Tổng cộng} & \textbf{79} & \textbf{2} \\ \hline
+    \end{tabular}
+    \caption{Số lỗ hổng bảo mật mã nguồn theo mức độ nghiêm trọng trước và sau khắc phục}
+    \label{tab:trivy-before-after}
+\end{table}
+
+Kết quả cho thấy toàn bộ các lỗ hổng ở mức nghiêm trọng (CRITICAL) và cao (HIGH) đã được khắc phục triệt để, tổng số lỗ hổng giảm từ 79 xuống còn 2. Hai lỗ hổng còn tồn đọng (1 MEDIUM, 1 LOW) được tạm thời chấp nhận rủi ro do một lỗ hổng đòi hỏi nâng cấp toàn bộ khung làm việc (NestJS) lên phiên bản mới và lỗ hổng còn lại hiện chưa có bản vá từ nhà phát triển.
+
 \section{Đánh giá chất lượng và hiệu năng các chức năng AI}
 \label{sec:danh-gia-ai}
 
