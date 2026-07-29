@@ -42,10 +42,10 @@ python3 -u tests/eval/eval_classification.py
 
 Bổ sung thêm 2 mục để đánh giá độ chính xác/chất lượng (không chỉ độ trễ):
 
-- **`05_GoiYHocBong_Matching/`** — **đã chạy xong**. Mở rộng dữ liệu lên 30 hồ sơ / 150 học bổng (12
-  học bổng đúng/hồ sơ), đo cả công thức matching (`_score_profile_match`, 100.0% top-1, 96.7%
+- **`05_GoiYHocBong_Matching/`** — **đã chạy xong**. Mở rộng dữ liệu lên 150 hồ sơ / 300 học bổng (25
+  học bổng đúng/hồ sơ), đo cả công thức matching (`_score_profile_match`, 99.3% top-1, 99.3%
   P@5) lẫn pipeline production đầy đủ có gate + sort (`_rank_recommendation_items`,
-  **83.3% top-1** sau khi đổi tiêu chí sắp xếp cuối sang điểm tổng hợp có trọng số ưu tiên
+  **92.0% top-1** sau khi đổi tiêu chí sắp xếp cuối sang điểm tổng hợp có trọng số ưu tiên
   match_score thay vì chỉ GPA-gap/amount). Chi tiết: `05_GoiYHocBong_Matching/results/summary.md`.
 - **`06_TuVanAI_Chatbot/`** — **đã chạy xong đủ 184/184 câu, 100% thành công**. Mở rộng bộ câu hỏi
   từ 114 lên 184 câu. Phát hiện 1 lỗi thật: agent trả lời **sai số liệu không nhất quán** cho câu

@@ -5,7 +5,7 @@
 ## Phạm vi đo
 
 Đo độ chính xác/chất lượng xếp hạng của thuật toán gợi ý học bổng — điều mà đo latency thuần
-(P50/P95/P99) không phản ánh được. Dữ liệu: 30 hồ sơ x 150 học bổng (10 trường x 10 ngành, từ vựng
+(P50/P95/P99) không phản ánh được. Dữ liệu: 150 hồ sơ x 300 học bổng (10 trường x 10 ngành, từ vựng
 có kiểm soát để so khớp chuỗi chính xác), sinh bằng `script/gen_scholarship_dataset.py` (seed=42,
 tái lập được 100%).
 
@@ -49,7 +49,7 @@ python3 tests/eval/eval_scholarship_ranking_pipeline.py
 │   ├── eval_scholarship_matching.py       Đo riêng _score_profile_match (sub-component)
 │   └── eval_scholarship_ranking_pipeline.py  Đo pipeline đầy đủ (gate + sort)
 ├── data/
-│   └── scholarship_matching_eval_set.json 30 hồ sơ x 150 học bổng
+│   └── scholarship_matching_eval_set.json 150 hồ sơ x 300 học bổng
 └── results/
     ├── summary.md                          Số liệu + nhận định chính thức
     ├── scholarship_matching_eval_*.json    Báo cáo chi tiết per-hồ-sơ (sub-component)

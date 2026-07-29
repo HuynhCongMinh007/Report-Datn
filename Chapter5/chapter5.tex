@@ -585,26 +585,26 @@ Mô hình AI đạt độ chính xác \textbf{98.0\%} trên 300 mẫu thử nghi
 
 \subsection{Gợi ý học bổng}
 \label{sec:danh-gia-hoc-bong}
-\textit{Phương pháp đo:} Bộ dữ liệu kiểm thử gồm 30 hồ sơ sinh viên so khớp với 150 học bổng, mỗi hồ sơ được gán sẵn 12 học bổng thực sự phù hợp làm đáp án đúng để đối chiếu. Kết quả dưới đây đo trên chính hàm mà hệ thống dùng để trả danh sách gợi ý hiển thị cho người dùng (gồm bước lọc theo trường/ngành, sau đó sắp xếp theo điểm tổng hợp giữa độ liên quan chủ đề, mức phù hợp GPA và giá trị học bổng), thực thi cục bộ, không qua mạng hay gọi LLM, đảm bảo kết quả tất định và có thể tái lập.
+\textit{Phương pháp đo:} Bộ dữ liệu kiểm thử gồm 150 hồ sơ sinh viên so khớp với 300 học bổng, mỗi hồ sơ được gán sẵn 25 học bổng thực sự phù hợp làm đáp án đúng để đối chiếu. Kết quả dưới đây đo trên chính hàm mà hệ thống dùng để trả danh sách gợi ý hiển thị cho người dùng (gồm bước lọc theo trường/ngành, sau đó sắp xếp theo điểm tổng hợp giữa độ liên quan chủ đề, mức phù hợp GPA và giá trị học bổng), thực thi cục bộ, không qua mạng hay gọi LLM, đảm bảo kết quả tất định và có thể tái lập.
 
-Bảng~\ref{tab:scholarship-matching} tổng hợp kết quả, tính trung bình qua toàn bộ 30 hồ sơ.
+Bảng~\ref{tab:scholarship-matching} tổng hợp kết quả, tính trung bình qua toàn bộ 150 hồ sơ.
 
 \begin{table}[H]
     \centering
     \begin{tabular}{|L{9.0cm}|C{3.0cm}|}
         \hline
         \textbf{Chỉ số} & \textbf{Kết quả} \\ \hline
-        Tỷ lệ hồ sơ có học bổng đúng ở vị trí gợi ý đầu tiên & \textbf{83.3\%} \\ \hline
-        Tỷ lệ hồ sơ tìm thấy ít nhất 1 học bổng đúng trong 3 gợi ý đầu & \textbf{96.7\%} \\ \hline
-        Tỷ lệ hồ sơ tìm thấy ít nhất 1 học bổng đúng trong 5 gợi ý đầu & \textbf{100.0\%} \\ \hline
-        Số học bổng đúng trung bình xuất hiện trong 5 gợi ý đầu (trên tổng 12 học bổng đúng/hồ sơ) & \textbf{3.97/5} \\ \hline
+        Tỷ lệ hồ sơ có học bổng đúng ở vị trí gợi ý đầu tiên & \textbf{92.0\%} \\ \hline
+        Tỷ lệ hồ sơ tìm thấy ít nhất 1 học bổng đúng trong 3 gợi ý đầu & \textbf{92.7\%} \\ \hline
+        Tỷ lệ hồ sơ tìm thấy ít nhất 1 học bổng đúng trong 5 gợi ý đầu & \textbf{94.7\%} \\ \hline
+        Số học bổng đúng trung bình xuất hiện trong 5 gợi ý đầu (trên tổng 25 học bổng đúng/hồ sơ) & \textbf{4.54/5} \\ \hline
         Tỷ lệ học bổng đúng không bị lọc nhầm ở bước lọc trường/ngành & \textbf{100.0\%} \\ \hline
     \end{tabular}
-    \caption{Kết quả đánh giá gợi ý học bổng (N=30 hồ sơ, 150 học bổng, 12 học bổng đúng/hồ sơ)}
+    \caption{Kết quả đánh giá gợi ý học bổng (N=150 hồ sơ, 300 học bổng, 25 học bổng đúng/hồ sơ)}
     \label{tab:scholarship-matching}
 \end{table}
 
-Bước lọc theo trường/ngành không loại nhầm bất kỳ học bổng phù hợp nào (100\%). Với 83.3\% hồ sơ, học bổng gợi ý đầu tiên đã là một lựa chọn đúng; 96.7\% hồ sơ tìm thấy ít nhất một học bổng phù hợp ngay trong 3 gợi ý đầu tiên và \textbf{100\% hồ sơ} đều tìm thấy học bổng thực sự phù hợp ngay trong 5 gợi ý đầu tiên -- tức là sinh viên gần như luôn thấy được một học bổng đúng mà không cần cuộn xem nhiều. Trung bình mỗi hồ sơ có 3.97 học bổng đúng xuất hiện trong 5 gợi ý đầu, cho thấy danh sách gợi ý không chỉ đúng ở vị trí đầu mà còn bao phủ tốt phần lớn các lựa chọn phù hợp khác.
+Bước lọc theo trường/ngành không loại nhầm bất kỳ học bổng phù hợp nào (100\%). Với 92.0\% hồ sơ, học bổng gợi ý đầu tiên đã là một lựa chọn đúng; 92.7\% hồ sơ tìm thấy ít nhất một học bổng phù hợp ngay trong 3 gợi ý đầu tiên và \textbf{94.7\% hồ sơ} tìm thấy học bổng thực sự phù hợp ngay trong 5 gợi ý đầu tiên -- tức là sinh viên gần như luôn thấy được một học bổng đúng mà không cần cuộn xem nhiều. Trung bình mỗi hồ sơ có 4.54 học bổng đúng xuất hiện trong 5 gợi ý đầu, cho thấy danh sách gợi ý không chỉ đúng ở vị trí đầu mà còn bao phủ tốt phần lớn các lựa chọn phù hợp khác.
 
 \subsection{Trợ lý tư vấn tài chính (Chatbot AI)}
 \textit{Phương pháp đo:} Bộ 184 câu hỏi tiếng Việt tự nhiên bao phủ 28 công cụ (tool) của trợ lý AI -- tra cứu số dư/ngân sách/giao dịch hũ, thống kê chi tiêu, lịch chuyển tự động, tư vấn khả năng chi trả và tái phân bổ hũ, gợi ý và tra cứu học bổng, hồ sơ ứng tuyển -- được gửi tuần tự qua tài khoản thật đến hệ thống đang chạy cục bộ (Backend + AI Service). Bảng~\ref{tab:chatbot-eval} tổng hợp kết quả.
