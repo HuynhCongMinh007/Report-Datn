@@ -21,7 +21,7 @@ import {
 } from '@nestjs/common';
 import { AiService } from './ai.service';
 import { ExecutableActionType } from './dtos/execute-action.dto';
-import { AiChatSession } from '@/database/entities/ai_core/ai-chat-session.entity';
+import { AiChatSession, AiModuleType } from '@/database/entities/ai_core/ai-chat-session.entity';
 import { AiMessage } from '@/database/entities/ai_core/ai-message.entity';
 import { AiMessageRole } from '@/database/entities/ai_core/ai-message.entity';
 import { AiAnomalyAlert } from '@/database/entities/ai_core/ai-anomaly-alert.entity';
@@ -1618,6 +1618,862 @@ describe('AiService — classify/insights proxy, anomaly alerts & scholarship re
       await expect(
         service.loadMoreScholarshipRecommendations('user-1', 'unknown-session', { limit: 1 } as any),
       ).rejects.toThrow(HttpException);
+    });
+  });
+
+  describe('private normalization/mapping helpers (direct branch coverage)', () => {
+    const call = (method: string, ...args: any[]) => (service as any)[method](...args);
+
+    describe('asOptionalString', () => {
+      it('returns null for null/undefined', () => {
+        expect(call('asOptionalString', null)).toBeNull();
+        expect(call('asOptionalString', undefined)).toBeNull();
+      });
+      it('returns null for a blank/whitespace-only string', () => {
+        expect(call('asOptionalString', '   ')).toBeNull();
+      });
+      it('trims and returns a non-empty string', () => {
+        expect(call('asOptionalString', '  abc  ')).toBe('abc');
+      });
+      it('coerces non-string values to string', () => {
+        expect(call('asOptionalString', 42)).toBe('42');
+      });
+    });
+
+    describe('asStringArray', () => {
+      it('returns [] when the value is not an array', () => {
+        expect(call('asStringArray', 'not-an-array')).toEqual([]);
+      });
+      it('filters out blank/null items and keeps valid strings', () => {
+        expect(call('asStringArray', ['a', '', null, '  b  ', undefined])).toEqual(['a', 'b']);
+      });
+    });
+
+    describe('asOptionalNumber', () => {
+      it('returns null for null/undefined/empty string', () => {
+        expect(call('asOptionalNumber', null)).toBeNull();
+        expect(call('asOptionalNumber', undefined)).toBeNull();
+        expect(call('asOptionalNumber', '')).toBeNull();
+      });
+      it('returns null for a non-numeric string', () => {
+        expect(call('asOptionalNumber', 'abc')).toBeNull();
+      });
+      it('parses a numeric string or number', () => {
+        expect(call('asOptionalNumber', '42')).toBe(42);
+        expect(call('asOptionalNumber', 42)).toBe(42);
+      });
+    });
+
+    describe('normalizeRecommendationBasis', () => {
+      it.each([
+        ['latest', 'latest'],
+        ['criteria', 'criteria'],
+        ['described_profile_match', 'described_profile_match'],
+        ['anything-else', 'profile_match'],
+        [undefined, 'profile_match'],
+      ])('maps %s -> %s', (input, expected) => {
+        expect(call('normalizeRecommendationBasis', input)).toBe(expected);
+      });
+    });
+
+    describe('normalizeCompetitionLevel', () => {
+      it.each([
+        ['low', 'low'],
+        ['medium', 'medium'],
+        ['high', 'high'],
+        ['bogus', 'unknown'],
+        [undefined, 'unknown'],
+      ])('maps %s -> %s', (input, expected) => {
+        expect(call('normalizeCompetitionLevel', input)).toBe(expected);
+      });
+    });
+
+    describe('normalizeCompetitionBasis', () => {
+      it.each([
+        ['applicants_per_slot', 'applicants_per_slot'],
+        ['applicants_count', 'applicants_count'],
+        ['bogus', 'unknown'],
+      ])('maps %s -> %s', (input, expected) => {
+        expect(call('normalizeCompetitionBasis', input)).toBe(expected);
+      });
+    });
+
+    describe('normalizeRecurrenceType', () => {
+      it('returns the value directly when already recurring/one_time', () => {
+        expect(call('normalizeRecurrenceType', 'recurring')).toBe('recurring');
+        expect(call('normalizeRecurrenceType', 'one_time')).toBe('one_time');
+      });
+      it('falls back to recurring when legacyIsRecurring=true', () => {
+        expect(call('normalizeRecurrenceType', undefined, true)).toBe('recurring');
+      });
+      it('falls back to unknown otherwise', () => {
+        expect(call('normalizeRecurrenceType', undefined, false)).toBe('unknown');
+        expect(call('normalizeRecurrenceType', 'bogus', undefined)).toBe('unknown');
+      });
+    });
+
+    describe('normalizeRecommendationStrategy', () => {
+      it.each([
+        ['apply_now', 'apply_now'],
+        ['prepare_ahead', 'prepare_ahead'],
+        ['historical_only', 'historical_only'],
+        ['bogus', 'apply_now'],
+      ])('maps %s -> %s', (input, expected) => {
+        expect(call('normalizeRecommendationStrategy', input)).toBe(expected);
+      });
+    });
+
+    describe('normalizeFitReasons', () => {
+      it('returns [] when raw is not an array', () => {
+        expect(call('normalizeFitReasons', 'nope')).toEqual([]);
+      });
+      it('skips non-object items and items without a message', () => {
+        expect(
+          call('normalizeFitReasons', [null, 'string-item', { code: 'x' }]),
+        ).toEqual([]);
+      });
+      it('normalizes a valid reason, defaulting code/severity when missing', () => {
+        expect(
+          call('normalizeFitReasons', [{ message: 'GPA thấp' }]),
+        ).toEqual([
+          { code: 'unknown', severity: 'unknown', message: 'GPA thấp', evidence: null },
+        ]);
+      });
+    });
+
+    describe('normalizeFitActions', () => {
+      it('returns [] when raw is not an array', () => {
+        expect(call('normalizeFitActions', null)).toEqual([]);
+      });
+      it('skips non-object items and items without a message', () => {
+        expect(call('normalizeFitActions', [42, {}])).toEqual([]);
+      });
+      it('normalizes a valid action, defaulting code/priority when missing', () => {
+        expect(call('normalizeFitActions', [{ message: 'Nộp minh chứng' }])).toEqual([
+          { code: 'next_step', priority: 'medium', message: 'Nộp minh chứng' },
+        ]);
+      });
+    });
+
+    describe('normalizeFitLevel / defaultFitLabel', () => {
+      it.each([
+        ['high', 'high', 'Cao'],
+        ['medium', 'medium', 'Trung bình'],
+        ['low', 'low', 'Thấp'],
+        ['impossible', 'impossible', 'Không thể nộp'],
+        ['bogus', 'low', 'Thấp'],
+      ])('%s -> level=%s, label=%s', (input, expectedLevel, expectedLabel) => {
+        expect(call('normalizeFitLevel', input)).toBe(expectedLevel);
+        expect(call('defaultFitLabel', input)).toBe(expectedLabel);
+      });
+    });
+
+    describe('normalizeReasonSeverity', () => {
+      it.each([
+        ['positive', 'positive'],
+        ['warning', 'warning'],
+        ['improvable', 'improvable'],
+        ['blocker', 'blocker'],
+        ['unknown', 'unknown'],
+        ['bogus', 'unknown'],
+      ])('maps %s -> %s', (input, expected) => {
+        expect(call('normalizeReasonSeverity', input)).toBe(expected);
+      });
+    });
+
+    describe('normalizeActionPriority', () => {
+      it.each([
+        ['high', 'high'],
+        ['medium', 'medium'],
+        ['low', 'low'],
+        ['bogus', 'medium'],
+      ])('maps %s -> %s', (input, expected) => {
+        expect(call('normalizeActionPriority', input)).toBe(expected);
+      });
+    });
+
+    describe('clampScore', () => {
+      it('returns 0 for non-numeric input', () => {
+        expect(call('clampScore', 'abc')).toBe(0);
+      });
+      it('clamps negative values to 0', () => {
+        expect(call('clampScore', -10)).toBe(0);
+      });
+      it('clamps values above 100 to 100', () => {
+        expect(call('clampScore', 150)).toBe(100);
+      });
+      it('rounds a normal value', () => {
+        expect(call('clampScore', 55.6)).toBe(56);
+      });
+    });
+
+    describe('asObject', () => {
+      it('returns {} for null, arrays, and non-objects', () => {
+        expect(call('asObject', null)).toEqual({});
+        expect(call('asObject', [1, 2])).toEqual({});
+        expect(call('asObject', 'str')).toEqual({});
+      });
+      it('returns the object as-is', () => {
+        expect(call('asObject', { a: 1 })).toEqual({ a: 1 });
+      });
+    });
+
+    describe('toSnakeRecommendationSnapshot', () => {
+      it('returns undefined when snapshot is undefined', () => {
+        expect(call('toSnakeRecommendationSnapshot', undefined)).toBeUndefined();
+      });
+      it('maps camelCase fields to snake_case', () => {
+        expect(
+          call('toSnakeRecommendationSnapshot', {
+            id: 'sch-1',
+            title: 'Học bổng A',
+            importantRequirement: 'GPA >= 3.0',
+            competitionLevel: 'low',
+            applicantsCount: 10,
+            quantity: 5,
+            applicantsPerSlot: 2,
+            competitionBasis: 'applicants_per_slot',
+            recurrenceType: 'recurring',
+            expectedNextOpenDate: '2027-01-01',
+            recommendationStrategy: 'apply_now',
+          }),
+        ).toEqual({
+          id: 'sch-1',
+          title: 'Học bổng A',
+          important_requirement: 'GPA >= 3.0',
+          competition_level: 'low',
+          applicants_count: 10,
+          quantity: 5,
+          applicants_per_slot: 2,
+          competition_basis: 'applicants_per_slot',
+          recurrence_type: 'recurring',
+          expected_next_open_date: '2027-01-01',
+          recommendation_strategy: 'apply_now',
+        });
+      });
+    });
+
+    describe('mapProvider', () => {
+      it.each([
+        ['google_ai_studio', 'gemini'],
+        ['local', 'ollama'],
+        ['vertexai', 'vertexai'],
+        ['bogus', undefined],
+        [undefined, undefined],
+      ])('maps %s -> %s', (input, expected) => {
+        expect(call('mapProvider', input)).toBe(expected);
+      });
+    });
+
+    describe('mapContextToModuleType', () => {
+      it.each([
+        ['finance', AiModuleType.SIX_JARS],
+        ['debt', AiModuleType.DEBT],
+        ['goal', AiModuleType.GOAL],
+        ['investment', AiModuleType.INVESTMENT],
+        ['bogus', AiModuleType.GENERAL],
+      ])('maps %s -> %s', (input, expected) => {
+        expect(call('mapContextToModuleType', input)).toBe(expected);
+      });
+    });
+
+    describe('mapModuleTypeToTopic', () => {
+      it.each([
+        [AiModuleType.SIX_JARS, 'finance'],
+        [AiModuleType.DEBT, 'debt'],
+        [AiModuleType.GOAL, 'goal'],
+        [AiModuleType.INVESTMENT, 'investment'],
+        [AiModuleType.CAREER, 'career'],
+        ['bogus', 'finance'],
+      ])('maps %s -> %s', (input, expected) => {
+        expect(call('mapModuleTypeToTopic', input)).toBe(expected);
+      });
+    });
+
+    describe('buildSessionTitle', () => {
+      it('returns a default title for a blank message', () => {
+        expect(call('buildSessionTitle', '   ')).toBe('Phiên chat mới');
+      });
+      it('returns the trimmed message when short enough', () => {
+        expect(call('buildSessionTitle', '  Hỏi về học bổng  ')).toBe('Hỏi về học bổng');
+      });
+      it('truncates messages longer than 80 characters', () => {
+        const long = 'a'.repeat(100);
+        const result = call('buildSessionTitle', long);
+        expect(result).toBe(`${'a'.repeat(80)}...`);
+      });
+    });
+
+    describe('resolveScholarshipCompetition', () => {
+      it('returns unknown when applicantsCount is missing', () => {
+        expect(call('resolveScholarshipCompetition', undefined, 10)).toEqual({
+          competitionLevel: 'unknown',
+          applicantsCount: null,
+          quantity: 10,
+          applicantsPerSlot: null,
+          competitionBasis: 'unknown',
+        });
+      });
+      it('returns unknown when applicantsCount is negative, dropping a non-positive quantity', () => {
+        expect(call('resolveScholarshipCompetition', -5, 0)).toEqual({
+          competitionLevel: 'unknown',
+          applicantsCount: null,
+          quantity: null,
+          applicantsPerSlot: null,
+          competitionBasis: 'unknown',
+        });
+      });
+      it('computes a low ratio level from applicants-per-slot when quantity > 0', () => {
+        expect(call('resolveScholarshipCompetition', 3, 10)).toEqual({
+          competitionLevel: 'low',
+          applicantsCount: 3,
+          quantity: 10,
+          applicantsPerSlot: 0.3,
+          competitionBasis: 'applicants_per_slot',
+        });
+      });
+      it('computes a medium ratio level from applicants-per-slot', () => {
+        const result = call('resolveScholarshipCompetition', 100, 10);
+        expect(result.competitionLevel).toBe('medium');
+        expect(result.competitionBasis).toBe('applicants_per_slot');
+      });
+      it('computes a high ratio level from applicants-per-slot', () => {
+        const result = call('resolveScholarshipCompetition', 300, 10);
+        expect(result.competitionLevel).toBe('high');
+      });
+      it('falls back to applicants_count basis (low) when quantity is absent', () => {
+        const result = call('resolveScholarshipCompetition', 100, null);
+        expect(result).toEqual({
+          competitionLevel: 'low',
+          applicantsCount: 100,
+          quantity: null,
+          applicantsPerSlot: null,
+          competitionBasis: 'applicants_count',
+        });
+      });
+      it('computes a medium level purely by applicants count', () => {
+        const result = call('resolveScholarshipCompetition', 500, undefined);
+        expect(result.competitionLevel).toBe('medium');
+        expect(result.competitionBasis).toBe('applicants_count');
+      });
+      it('computes a high level purely by applicants count', () => {
+        const result = call('resolveScholarshipCompetition', 1500, undefined);
+        expect(result.competitionLevel).toBe('high');
+      });
+    });
+
+    describe('normalizedRecurrenceType', () => {
+      it('returns the entity value directly when recurring/one_time', () => {
+        expect(call('normalizedRecurrenceType', { recurrenceType: 'recurring' })).toBe('recurring');
+        expect(call('normalizedRecurrenceType', { recurrenceType: 'one_time' })).toBe('one_time');
+      });
+      it('falls back to isRecurring flag', () => {
+        expect(call('normalizedRecurrenceType', { recurrenceType: null, isRecurring: true })).toBe('recurring');
+        expect(call('normalizedRecurrenceType', { recurrenceType: null, isRecurring: false })).toBe('unknown');
+      });
+    });
+
+    describe('scholarshipRecommendationStrategy', () => {
+      it('returns apply_now when active with no deadline', () => {
+        expect(
+          call('scholarshipRecommendationStrategy', { isActive: true, applicationDeadline: null }),
+        ).toBe('apply_now');
+      });
+      it('returns apply_now when active and deadline is in the future', () => {
+        const future = new Date(Date.now() + 86_400_000);
+        expect(
+          call('scholarshipRecommendationStrategy', { isActive: true, applicationDeadline: future }),
+        ).toBe('apply_now');
+      });
+      it('returns prepare_ahead when closed but recurring', () => {
+        const past = new Date(Date.now() - 86_400_000);
+        expect(
+          call('scholarshipRecommendationStrategy', {
+            isActive: true,
+            applicationDeadline: past,
+            recurrenceType: 'recurring',
+          }),
+        ).toBe('prepare_ahead');
+      });
+      it('returns historical_only when inactive and not recurring', () => {
+        expect(
+          call('scholarshipRecommendationStrategy', {
+            isActive: false,
+            applicationDeadline: null,
+            recurrenceType: null,
+            isRecurring: false,
+          }),
+        ).toBe('historical_only');
+      });
+    });
+
+    describe('countRemainingRecommendations', () => {
+      it('counts ids after the cursor that have not been shown yet', () => {
+        const session = {
+          rankedScholarshipIds: ['a', 'b', 'c', 'd'],
+          shownIds: ['c'],
+          cursor: 1,
+        };
+        // slice(1) -> ['b','c','d'], minus shown 'c' -> ['b','d'] -> 2
+        expect(call('countRemainingRecommendations', session)).toBe(2);
+      });
+    });
+
+    describe('normalizeRecommendationLimit', () => {
+      it('returns the default limit when input is not finite', () => {
+        expect(call('normalizeRecommendationLimit', undefined)).toBe(3);
+        expect(call('normalizeRecommendationLimit', NaN)).toBe(3);
+      });
+      it('floors and clamps to the [1, max] range', () => {
+        expect(call('normalizeRecommendationLimit', 0)).toBe(1);
+        expect(call('normalizeRecommendationLimit', 2.9)).toBe(2);
+        expect(call('normalizeRecommendationLimit', 10)).toBe(5);
+      });
+    });
+
+    describe('uniqueIds', () => {
+      it('deduplicates and drops falsy entries', () => {
+        expect(call('uniqueIds', ['a', 'b', 'a', null, undefined, ''])).toEqual(['a', 'b']);
+      });
+    });
+
+    describe('cleanupExpiredRecommendationSessions', () => {
+      it('removes only sessions whose expiresAt has passed', () => {
+        const sessions: Map<string, any> = (service as any).recommendationSessions;
+        sessions.set('expired', { expiresAt: new Date(Date.now() - 1000) });
+        sessions.set('active', { expiresAt: new Date(Date.now() + 100_000) });
+
+        call('cleanupExpiredRecommendationSessions');
+
+        expect(sessions.has('expired')).toBe(false);
+        expect(sessions.has('active')).toBe(true);
+      });
+    });
+
+    describe('recommendationCacheKey', () => {
+      it('builds a namespaced cache key', () => {
+        expect(call('recommendationCacheKey', 'sess-1')).toBe('recommendation:sess-1');
+      });
+    });
+
+    describe('hydrateRecommendationSession', () => {
+      it('returns undefined for null/non-object input', () => {
+        expect(call('hydrateRecommendationSession', null)).toBeUndefined();
+      });
+      it('hydrates dates and defaults missing collection/number fields', () => {
+        const raw = {
+          id: 'sess-1',
+          userId: 'user-1',
+          originalQuery: 'q',
+          createdAt: '2027-01-01T00:00:00.000Z',
+          updatedAt: '2027-01-01T00:00:00.000Z',
+          expiresAt: '2027-01-01T00:30:00.000Z',
+        };
+        const result = call('hydrateRecommendationSession', raw);
+        expect(result.createdAt).toBeInstanceOf(Date);
+        expect(result.rankedScholarshipIds).toEqual([]);
+        expect(result.shownIds).toEqual([]);
+        expect(result.cursor).toBe(0);
+        expect(result.candidateCount).toBe(0);
+        expect(result.scoreThreshold).toBeNull();
+        expect(result.paginationSource).toBeNull();
+      });
+      it('preserves valid array/number/string fields when present', () => {
+        const raw = {
+          id: 'sess-1',
+          userId: 'user-1',
+          originalQuery: 'q',
+          createdAt: '2027-01-01T00:00:00.000Z',
+          updatedAt: '2027-01-01T00:00:00.000Z',
+          expiresAt: '2027-01-01T00:30:00.000Z',
+          rankedScholarshipIds: ['a', 'b'],
+          shownIds: ['a'],
+          cursor: 1,
+          candidateCount: 5,
+          scoreThreshold: 0.5,
+          paginationSource: 'offset',
+        };
+        const result = call('hydrateRecommendationSession', raw);
+        expect(result.rankedScholarshipIds).toEqual(['a', 'b']);
+        expect(result.cursor).toBe(1);
+        expect(result.scoreThreshold).toBe(0.5);
+        expect(result.paginationSource).toBe('offset');
+      });
+    });
+
+    describe('normalizeRecommendationText / tokenizeRecommendationText', () => {
+      it('strips diacritics and lowercases', () => {
+        expect(call('normalizeRecommendationText', 'Học Bổng')).toBe('hoc bong');
+      });
+      it('tokenizes, dropping stopwords and short tokens', () => {
+        expect(call('tokenizeRecommendationText', 'Tìm học bổng công nghệ thông tin cho tôi')).toEqual([
+          'cong', 'nghe', 'thong', 'tin',
+        ]);
+      });
+    });
+
+    describe('formatScholarshipCoverage', () => {
+      it('formats the amount with currency when present', () => {
+        expect(
+          call('formatScholarshipCoverage', { amount: 5000000, currency: 'VND' }),
+        ).toBe(`${new Intl.NumberFormat('vi-VN').format(5000000)} VND`);
+      });
+      it('formats the amount without a currency suffix when absent', () => {
+        expect(
+          call('formatScholarshipCoverage', { amount: 1000, currency: null }),
+        ).toBe(new Intl.NumberFormat('vi-VN').format(1000));
+      });
+      it('falls back to the first benefit when there is no amount', () => {
+        expect(
+          call('formatScholarshipCoverage', { amount: null, benefits: ['Học phí', 'Ký túc xá'] }),
+        ).toBe('Học phí');
+      });
+      it('returns null when there is neither an amount nor benefits', () => {
+        expect(call('formatScholarshipCoverage', { amount: null, benefits: null })).toBeNull();
+      });
+    });
+
+    describe('splitScholarshipText', () => {
+      it('returns [] for null/undefined', () => {
+        expect(call('splitScholarshipText', null)).toEqual([]);
+        expect(call('splitScholarshipText', undefined)).toEqual([]);
+      });
+      it('trims and filters an array', () => {
+        expect(call('splitScholarshipText', [' a ', '', ' b '])).toEqual(['a', 'b']);
+      });
+      it('splits a delimited string on newlines/semicolons/bullets/dashes', () => {
+        expect(call('splitScholarshipText', 'Học phí\n Ký túc xá; Sách vở • Bảo hiểm - Đi lại')).toEqual([
+          'Học phí', 'Ký túc xá', 'Sách vở', 'Bảo hiểm', 'Đi lại',
+        ]);
+      });
+    });
+
+    describe('buildAssistantMetadata', () => {
+      it('returns null when there are no recommendations or roadmap', () => {
+        expect(call('buildAssistantMetadata', undefined, undefined)).toBeNull();
+      });
+      it('omits scholarship recommendations with an empty items list', () => {
+        expect(call('buildAssistantMetadata', { items: [] }, undefined)).toBeNull();
+      });
+      it('includes scholarship recommendations when items are present', () => {
+        const recs = { items: [{ id: 'sch-1' }] };
+        expect(call('buildAssistantMetadata', recs, undefined)).toEqual([
+          { type: 'scholarshipRecommendations', data: recs },
+        ]);
+      });
+      it('includes both recommendations and career roadmap when both are present', () => {
+        const recs = { items: [{ id: 'sch-1' }] };
+        const roadmap = { id: 'road-1' };
+        expect(call('buildAssistantMetadata', recs, roadmap)).toEqual([
+          { type: 'scholarshipRecommendations', data: recs },
+          { type: 'careerRoadmap', data: roadmap },
+        ]);
+      });
+    });
+
+    describe('extractAssistantRecommendations', () => {
+      it('returns undefined when toolCalls is not an array', () => {
+        expect(call('extractAssistantRecommendations', null)).toBeUndefined();
+      });
+      it('returns undefined when no matching entry is found', () => {
+        expect(call('extractAssistantRecommendations', [{ type: 'careerRoadmap', data: {} }])).toBeUndefined();
+      });
+      it('normalizes the matching entry data', () => {
+        const toolCalls = [
+          {
+            type: 'scholarshipRecommendations',
+            data: { kind: 'scholarship_recommendations', items: [{ id: 's1', title: 'Học bổng A' }] },
+          },
+        ];
+        const result = call('extractAssistantRecommendations', toolCalls);
+        expect(result.items).toHaveLength(1);
+        expect(result.items[0].id).toBe('s1');
+      });
+    });
+
+    describe('extractCareerRoadmap', () => {
+      it('returns undefined when toolCalls is not an array', () => {
+        expect(call('extractCareerRoadmap', null)).toBeUndefined();
+      });
+      it('returns undefined when no matching entry is found', () => {
+        expect(call('extractCareerRoadmap', [{ type: 'scholarshipRecommendations', data: {} }])).toBeUndefined();
+      });
+      it('returns the data of the matching entry', () => {
+        const roadmap = { id: 'road-1' };
+        expect(call('extractCareerRoadmap', [{ type: 'careerRoadmap', data: roadmap }])).toBe(roadmap);
+      });
+    });
+
+    describe('extractLangChainToolCalls', () => {
+      it('returns null when toolCalls is not an array', () => {
+        expect(call('extractLangChainToolCalls', null)).toBeNull();
+      });
+      it('keeps only entries shaped like real LangChain tool calls', () => {
+        const toolCalls = [
+          { type: 'scholarshipRecommendations', data: {} },
+          { name: 'get_jar_balance', args: {} },
+        ];
+        expect(call('extractLangChainToolCalls', toolCalls)).toEqual([
+          { name: 'get_jar_balance', args: {} },
+        ]);
+      });
+      it('returns null when nothing matches the LangChain shape', () => {
+        expect(call('extractLangChainToolCalls', [{ type: 'careerRoadmap', data: {} }])).toBeNull();
+      });
+    });
+
+    describe('normalizeScholarshipRecommendations', () => {
+      it('returns undefined when raw is not an object', () => {
+        expect(call('normalizeScholarshipRecommendations', null)).toBeUndefined();
+        expect(call('normalizeScholarshipRecommendations', 'nope')).toBeUndefined();
+      });
+      it('returns undefined when items is missing/empty', () => {
+        expect(call('normalizeScholarshipRecommendations', { items: [] })).toBeUndefined();
+        expect(call('normalizeScholarshipRecommendations', {})).toBeUndefined();
+      });
+      it('returns undefined when every item fails to normalize', () => {
+        expect(
+          call('normalizeScholarshipRecommendations', { items: [{ id: 'no-title' }] }),
+        ).toBeUndefined();
+      });
+      it('normalizes a full payload with defaults for optional metadata', () => {
+        const result = call('normalizeScholarshipRecommendations', {
+          items: [{ id: 's1', title: 'Học bổng A' }],
+        });
+        expect(result.kind).toBe('scholarship_recommendations');
+        expect(result.items).toHaveLength(1);
+        expect(result.totalCount).toBe(1);
+        expect(result.returnedCount).toBe(1);
+        expect(result.hasMore).toBe(false);
+        expect(result.basis).toBe('profile_match');
+      });
+      it('caps items at 8 and prefers explicit pagination metadata', () => {
+        const items = Array.from({ length: 10 }, (_, i) => ({ id: `s${i}`, title: `Học bổng ${i}` }));
+        const result = call('normalizeScholarshipRecommendations', {
+          items,
+          total_count: 42,
+          has_more: true,
+          basis: 'latest',
+        });
+        expect(result.items).toHaveLength(8);
+        expect(result.totalCount).toBe(42);
+        expect(result.hasMore).toBe(true);
+        expect(result.basis).toBe('latest');
+      });
+    });
+
+    describe('mapMessageRoleToHistoryRole', () => {
+      it('maps ACTION role to action', () => {
+        expect(call('mapMessageRoleToHistoryRole', 'action')).toBe('action');
+      });
+      it('passes through user/assistant roles unchanged', () => {
+        expect(call('mapMessageRoleToHistoryRole', 'user')).toBe('user');
+        expect(call('mapMessageRoleToHistoryRole', 'assistant')).toBe('assistant');
+      });
+    });
+
+    describe('scoreScholarshipCandidate', () => {
+      it('returns 0 when the query has no meaningful tokens', () => {
+        expect(call('scoreScholarshipCandidate', 'a', { name: 'Học bổng CNTT' })).toBe(0);
+      });
+      it('counts how many query tokens appear in the scholarship text', () => {
+        const scholarship = {
+          name: 'Học bổng Công nghệ thông tin',
+          description: null,
+          eligibilityCriteria: null,
+          benefits: null,
+          provider: null,
+          category: { name: 'Công nghệ' },
+          targetMajors: ['Khoa học máy tính'],
+          targetUniversities: [],
+        };
+        const score = call('scoreScholarshipCandidate', 'học bổng công nghệ thông tin', scholarship);
+        expect(score).toBeGreaterThan(0);
+      });
+    });
+
+    describe('mapScholarshipToRecommendationItem', () => {
+      it('maps a full scholarship + requirements into a recommendation item', () => {
+        const scholarship = {
+          id: 'sch-1',
+          name: 'Học bổng Khuyến học',
+          targetUniversities: ['Trường A'],
+          provider: 'Quỹ ABC',
+          providerOrganization: null,
+          category: { name: 'Khuyến học' },
+          targetMajors: ['CNTT'],
+          amount: 3000000,
+          currency: 'VND',
+          benefits: null,
+          eligibilityCriteria: 'Sinh viên năm 3',
+          minimumGpa: 3.2,
+          minimumGpaScale: 4,
+          level: 'Đại học',
+          applicationDeadline: new Date('2027-06-01T00:00:00.000Z'),
+          expectedNextOpenDate: null,
+          applicantsCount: 10,
+          quantity: 5,
+          isActive: true,
+          recurrenceType: 'recurring',
+          isRecurring: true,
+        };
+        const requirements = [
+          { isRequired: true, title: 'Bảng điểm' },
+          { isRequired: false, title: 'Thư giới thiệu' },
+        ];
+        const result = call('mapScholarshipToRecommendationItem', scholarship, requirements);
+        expect(result.id).toBe('sch-1');
+        expect(result.title).toBe('Học bổng Khuyến học');
+        expect(result.importantRequirement).toBe('Bảng điểm');
+        expect(result.requirements.gpa).toBe('GPA tối thiểu 3.2/4');
+        expect(result.requirements.other).toEqual(['Bảng điểm']);
+        expect(result.recurrenceType).toBe('recurring');
+      });
+      it('falls back to the first requirement and eligibility criteria when none are required', () => {
+        const scholarship = {
+          id: 'sch-2',
+          name: 'Học bổng B',
+          targetUniversities: [],
+          provider: null,
+          providerOrganization: { name: 'Tổ chức XYZ' },
+          category: null,
+          targetMajors: [],
+          amount: null,
+          currency: null,
+          benefits: ['Học phí'],
+          eligibilityCriteria: 'Không yêu cầu đặc biệt',
+          minimumGpa: null,
+          minimumGpaScale: null,
+          level: null,
+          applicationDeadline: null,
+          expectedNextOpenDate: null,
+          applicantsCount: null,
+          quantity: null,
+          isActive: false,
+          recurrenceType: null,
+          isRecurring: false,
+        };
+        const result = call('mapScholarshipToRecommendationItem', scholarship, []);
+        expect(result.provider).toBe('Tổ chức XYZ');
+        expect(result.importantRequirement).toBe('Không yêu cầu đặc biệt');
+        expect(result.competitionLevel).toBe('unknown');
+        expect(result.recurrenceType).toBe('unknown');
+      });
+    });
+
+    describe('upsertSession', () => {
+      it('creates a new session when sessionId is not provided', async () => {
+        (mockChatSessionRepo as any).create = jest.fn((v: any) => v); (mockChatSessionRepo as any).save = jest.fn((v: any) => Promise.resolve(v));
+        const result = await call('upsertSession', {
+          userId: 'user-1',
+          moduleType: AiModuleType.SIX_JARS,
+          title: 'Phiên mới',
+        });
+        expect(result.userId).toBe('user-1');
+        expect(mockChatSessionRepo.findOneBy).not.toHaveBeenCalled();
+      });
+      it('reuses and updates an existing session, keeping the existing title if set', async () => {
+        const existing: any = { id: 'sess-1', title: 'Tiêu đề cũ', moduleType: AiModuleType.GENERAL };
+        mockChatSessionRepo.findOneBy.mockResolvedValue(existing);
+        (mockChatSessionRepo as any).create = jest.fn((v: any) => v); (mockChatSessionRepo as any).save = jest.fn((v: any) => Promise.resolve(v));
+        const result = await call('upsertSession', {
+          userId: 'user-1',
+          sessionId: 'sess-1',
+          moduleType: AiModuleType.SIX_JARS,
+          title: 'Tiêu đề mới',
+        });
+        expect(result.title).toBe('Tiêu đề cũ');
+        expect(result.moduleType).toBe(AiModuleType.SIX_JARS);
+      });
+      it('creates a fresh session when the given sessionId does not match an existing one', async () => {
+        mockChatSessionRepo.findOneBy.mockResolvedValue(null);
+        (mockChatSessionRepo as any).create = jest.fn((v: any) => v); (mockChatSessionRepo as any).save = jest.fn((v: any) => Promise.resolve(v));
+        const result = await call('upsertSession', {
+          userId: 'user-1',
+          sessionId: 'missing-session',
+          moduleType: AiModuleType.GENERAL,
+          title: 'Tiêu đề',
+        });
+        expect(result.title).toBe('Tiêu đề');
+      });
+    });
+
+    describe('parseReplyBlocks', () => {
+      it('returns a single empty paragraph for empty text', () => {
+        expect(call('parseReplyBlocks', '')).toEqual([{ type: 'paragraph', text: '' }]);
+      });
+      it('returns a single paragraph when there are no blank-line-separated chunks', () => {
+        expect(call('parseReplyBlocks', '   ')).toEqual([{ type: 'paragraph', text: '   ' }]);
+      });
+      it('parses a bullet list chunk', () => {
+        const result = call('parseReplyBlocks', '- Mục 1\n- Mục 2');
+        expect(result).toEqual([{ type: 'bulletList', items: ['Mục 1', 'Mục 2'] }]);
+      });
+      it('parses a numbered list chunk', () => {
+        const result = call('parseReplyBlocks', '1. Bước 1\n2. Bước 2');
+        expect(result).toEqual([{ type: 'numberedList', items: ['Bước 1', 'Bước 2'] }]);
+      });
+      it('falls back to a paragraph for plain text', () => {
+        const result = call('parseReplyBlocks', 'Xin chào\nBạn khỏe không');
+        expect(result).toEqual([{ type: 'paragraph', text: 'Xin chào\nBạn khỏe không' }]);
+      });
+    });
+
+    describe('recommendation session cache failure handling', () => {
+      it('logs a warning and still resolves via memory when the cache read fails', async () => {
+        mockCacheManager.get.mockRejectedValueOnce(new Error('cache down'));
+        const result = await call('getRecommendationSession', 'missing-in-memory');
+        expect(result).toBeUndefined();
+      });
+      it('logs a warning but does not throw when the cache write fails', async () => {
+        mockCacheManager.set.mockRejectedValueOnce(new Error('cache down'));
+        const session = {
+          id: 'sess-1',
+          userId: 'user-1',
+          originalQuery: 'q',
+          rankedScholarshipIds: [],
+          shownIds: [],
+          cursor: 0,
+          candidateCount: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          expiresAt: new Date(Date.now() + 100_000),
+        };
+        await expect(call('saveRecommendationSession', session)).resolves.toBeUndefined();
+      });
+      it('logs a warning but does not throw when the cache delete fails', async () => {
+        mockCacheManager.del.mockRejectedValueOnce(new Error('cache down'));
+        await expect(call('deleteRecommendationSession', 'sess-1')).resolves.toBeUndefined();
+      });
+    });
+
+    describe('normalizeScholarshipRecommendationItem', () => {
+      it('returns undefined when raw is not an object', () => {
+        expect(call('normalizeScholarshipRecommendationItem', null)).toBeUndefined();
+      });
+      it('returns undefined when id or title is missing', () => {
+        expect(call('normalizeScholarshipRecommendationItem', { title: 'x' })).toBeUndefined();
+        expect(call('normalizeScholarshipRecommendationItem', { id: 'x' })).toBeUndefined();
+      });
+      it('normalizes a minimal valid item with empty requirements object', () => {
+        const result = call('normalizeScholarshipRecommendationItem', { id: 's1', title: 'Học bổng A' });
+        expect(result.id).toBe('s1');
+        expect(result.requirements).toEqual({ gpa: null, language: null, yearLevel: null, other: [] });
+      });
+      it('normalizes a full item including nested requirements', () => {
+        const result = call('normalizeScholarshipRecommendationItem', {
+          id: 's1',
+          title: 'Học bổng A',
+          requirements: { gpa: '3.0', language: 'IELTS 6.0', year_level: 'Năm 3', other: ['CV'] },
+          competition_level: 'high',
+          recurrence_type: 'recurring',
+        });
+        expect(result.requirements).toEqual({
+          gpa: '3.0', language: 'IELTS 6.0', yearLevel: 'Năm 3', other: ['CV'],
+        });
+        expect(result.competitionLevel).toBe('high');
+        expect(result.recurrenceType).toBe('recurring');
+      });
     });
   });
 });

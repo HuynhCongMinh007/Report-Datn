@@ -18,7 +18,7 @@ Không bao gồm E2E/hiệu năng/tải; các mục đó xem `KiemThu/02_KiemThu
 
 | Service | Lệnh chạy | Kết quả |
 |---|---|---|
-| Backend (NestJS) | `npm run test:business -- --verbose` | **731/731 PASS** — 48 test suite |
+| Backend (NestJS) | `npm run test:business -- --verbose` | **879/879 PASS** — 48 test suite |
 | AI Service (FastAPI) | `pytest tests/unit/ tests/agent/insights/test_health_score.py -v` | **95/95 PASS** — 8 file test |
 
 **Không có test nào fail** — không có báo cáo phân tích nguyên nhân lỗi vì không phát sinh trường hợp nào.
@@ -47,7 +47,7 @@ Chi tiết đầy đủ từng file: `Backend/coverage-report.log`.
 
 ## Không cần tài khoản/hạ tầng ngoài
 
-Toàn bộ 826 test case (731 backend + 95 AI service) đều dùng **mock** (repository mock, LLM mock,
+Toàn bộ 974 test case (879 backend + 95 AI service) đều dùng **mock** (repository mock, LLM mock,
 `monkeypatch`/`unittest.mock` cho DB) — **không kết nối PostgreSQL/Redis/Vertex AI thật, không cần
 tài khoản đăng nhập thật**. Tài khoản seed `finance.seed@student360.test` (dùng cho E2E/hiệu năng ở
 `KiemThu/`) **không cần dùng ở đây** — đúng như ghi chú gốc trong `KiemThu/README.md`: "Mục 5.3.1
@@ -60,7 +60,7 @@ KiemThu2/
 ├── README.md                                  (file này)
 ├── 01_KiemThuDonVi/
 │   ├── Backend/
-│   │   ├── unit-test-results.log              Log: npm run test:business --verbose (731/731 PASS)
+│   │   ├── unit-test-results.log              Log: npm run test:business --verbose (879/879 PASS)
 │   │   ├── coverage-report.log                 Log: npm run test:cov:finance (83.31% stmt / 70.07% branch)
 │   │   ├── run-unit-tests.sh                   Script chạy lại test
 │   │   ├── run-coverage.sh                     Script chạy lại coverage

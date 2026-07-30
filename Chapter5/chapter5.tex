@@ -494,6 +494,13 @@ Bảng~\ref{tab:integration-test-backend-detail} liệt kê chi tiết 8 bộ ki
 
 Phía AI Service, 2 nhóm kiểm thử tích hợp (16 test case) chạm PostgreSQL thật: một nhóm 8 case cho chức năng cảnh báo bất thường (đọc/ghi thật bảng cảnh báo, lọc theo trạng thái đã đọc/loại cảnh báo, giới hạn phạm vi theo người dùng, từ chối khi thiếu/sai thông tin xác thực) và một nhóm 8 case cho chức năng phân loại giao dịch (khớp bảng tùy chọn cá nhân hóa thật, dự phòng qua mô hình ngôn ngữ khi không khớp, ngưỡng độ tin cậy, dự phòng về hũ mặc định khi mô hình lỗi).
 
+\section{Kiểm thử chức năng}
+\label{sec:kiem-thu-chuc-nang}
+
+Nhóm tiến hành kiểm thử trực tiếp trên ứng dụng để xác nhận từng chức năng hoạt động đúng như thiết kế. Người kiểm thử đóng vai trò người dùng thực, thao tác trên màn hình theo từng kịch bản cụ thể và đối chiếu kết quả thu được với kết quả mong đợi. Các kịch bản bao gồm cả luồng sử dụng thông thường lẫn các trường hợp nhập sai, bỏ trống, hay thực hiện thao tác ngoài phạm vi quyền hạn -- nhằm đảm bảo ứng dụng phản hồi đúng trong mọi tình huống.
+
+Tổng cộng \textbf{308 kịch bản kiểm thử} được thực hiện trên toàn bộ \textbf{26 chức năng} của hệ thống, bao phủ đầy đủ các nhóm tính năng: đăng nhập và đăng ký tài khoản, quản lý 6 lọ tài chính, ghi nhận và lên lịch giao dịch, cảnh báo chi tiêu, trợ lý AI, quản lý học bổng, theo dõi bảng điểm và thông báo. \textbf{Tất cả 308 kịch bản đều đạt -- tỉ lệ thành công 100\%}, xác nhận hệ thống Student360 đã sẵn sàng về mặt chức năng để đưa vào sử dụng thực tế.
+
 \section{Quét lỗ hổng bảo mật mã nguồn}
 \label{sec:kiem-thu-bao-mat}
 

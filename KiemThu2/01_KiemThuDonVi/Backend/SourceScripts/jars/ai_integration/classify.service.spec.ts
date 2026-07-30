@@ -10,11 +10,16 @@ describe('ClassifyService (AI-UC02 — phân loại giao dịch bằng AI)', () 
 
   const jarsRepository = {
     findUserJarByCode: jest.fn(),
+    findUserJarByIdOrCode: jest.fn(),
+    findUserJarByName: jest.fn(),
     findJarTagBySlug: jest.fn(),
   };
 
   beforeEach(() => {
     jest.clearAllMocks();
+    jarsRepository.findUserJarByIdOrCode.mockImplementation((userId: string, code: string) =>
+      jarsRepository.findUserJarByCode(userId, code),
+    );
     service = new ClassifyService(aiService as any, jarsRepository as any);
   });
 
