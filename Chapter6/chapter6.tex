@@ -47,7 +47,7 @@ Nhóm phát triển đối chiếu các nhóm chức năng của hệ thống St
         So khớp học bổng thông minh & Không hỗ trợ & Lọc thô sơ & Không áp dụng & \textbf{Có (AI khớp hồ sơ)} \\ \hline
         Quy trình nộp \& duyệt hồ sơ trực tuyến & Một phần (Tải form) & Chuyển hướng link & Không áp dụng & \textbf{Trực tuyến toàn trình} \\ \hline
         Đồng bộ dữ liệu nền đào tạo & Có (Nội bộ 1 trường) & Không hỗ trợ & Không hỗ trợ & \textbf{Có (Đa trường)} \\ \hline
-        Theo dõi bảng điểm \& GPA theo tín chỉ & Có (Điểm thực tế) & Không áp dụng & Có (Thủ công) & \textbf{Có (Mô phỏng GPA)} \\ \hline
+        Theo dõi bảng điểm \& GPA theo tín chỉ & Có (Điểm thực tế) & Không áp dụng & Có (Thủ công) & \textbf{Có (Hỗ trợ nhập liệu)} \\ \hline
         Tự động dùng hồ sơ học thuật ứng tuyển & Nộp minh chứng & Không áp dụng & Không áp dụng & \textbf{Tự động liên kết} \\ \hline
     \end{tabular}
 
@@ -67,7 +67,8 @@ Mặc dù đạt được những kết quả khả quan, hệ thống vẫn t�
     \item \textbf{Kịch bản kiểm thử dữ liệu:} Dữ liệu học bổng và hồ sơ học thuật sử dụng trong thử nghiệm chủ yếu là dữ liệu giả lập. Hệ thống chưa được kiểm thử trên quy mô dữ liệu thực tế hàng chục nghìn hồ sơ sinh viên.
     \item \textbf{Sự phụ thuộc vào bên thứ ba:} Cơ chế thông báo di động phụ thuộc vào sự ổn định của Google FCM và kết nối mạng của thiết bị.
     \item \textbf{Chưa liên kết tài khoản ngân hàng thực tế:} Ghi nhận thu chi hiện vẫn phụ thuộc vào nhập liệu thủ công của sinh viên hoặc đề xuất từ trợ lý AI, chưa liên kết trực tiếp với tài khoản ngân hàng.
-    \item \textbf{Quy mô benchmark định lượng còn nhỏ:} Bộ dữ liệu gán nhãn cố định đã được xây dựng cho phân loại giao dịch, gợi ý học bổng (xem Bảng~\ref{tab:ai-classify-eval} và Bảng~\ref{tab:scholarship-matching}), nhưng quy mô mẫu hiện tại (300 giao dịch, 30 hồ sơ học bổng) vẫn còn nhỏ so với quy mô dữ liệu thực tế khi hệ thống vận hành ở diện rộng; cần mở rộng và chạy lại benchmark định kỳ khi hệ thống có thêm người dùng thật.
+    \item \textbf{Quy mô benchmark định lượng còn nhỏ:} Bộ dữ liệu gán nhãn cố định đã được xây dựng cho phân loại giao dịch, gợi ý học bổng (xem Bảng~\ref{tab:ai-classify-eval} và Bảng~\ref{tab:scholarship-matching}), nhưng quy mô mẫu hiện tại (300 giao dịch, 150 hồ sơ học bổng) vẫn còn nhỏ so với quy mô dữ liệu thực tế khi hệ thống vận hành ở diện rộng; cần mở rộng và chạy lại benchmark định kỳ khi hệ thống có thêm người dùng thật.
+
 \end{enumerate}
 
 \section{Hướng phát triển}
